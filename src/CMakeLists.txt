@@ -1,8 +1,18 @@
-project (tutorial1)
+project(editor)
+
 find_package(KDE4 REQUIRED)
-include (KDE4Defaults)
 include_directories(${KDE4_INCLUDES})
-set(tutorial1_SRCS main.cpp kscope.cpp)
-kde4_add_executable(tutorial1 ${tutorial1_SRCS})
-target_link_libraries(tutorial1 ${KDE4_KDEUI_LIBS})
-install(TARGETS tutorial1  ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+set(editor_SRCS
+main.cpp
+mainwindow.cpp
+)
+
+kde4_add_executable(editor ${editor_SRCS})
+
+target_link_libraries(editor ${KDE4_KDEUI_LIBS}
+${KDE4_KIO_LIBS}
+${KDE4_KTEXTEDITOR_LIBS})
+
+install(TARGETS editor DESTINATION ${BIN_INSTALL_DIR})
+install(FILES editorui.rc DESTINATION ${DATA_INSTALL_DIR}/editor)
