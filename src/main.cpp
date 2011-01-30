@@ -67,10 +67,11 @@ int main(int argc, char *argv[])
 	aboutData.addCredit(ki18n("Gabor Fekete"), ki18n("Bug fixes and patches"), "feketgai@index.hu", "");
         // END Create the "About" dialogue
 
+        // BEGIN CMD LINE ARGS
+	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	KCmdLineArgs::init( argc, argv, &aboutData );
-	// KCmdLineArgs::addCmdLineOptions(options);
-
-	// Create the "About" dialogue
+	//KCmdLineArgs::addCmdLineOptions(options);
+        // BEGIN CMD LINE ARGS
 
 	//KScope* window = new KScope();
 	//window->show();
