@@ -206,6 +206,21 @@ kscope_automoc.s:
 .PHONY : kscope_automoc.s
 
 # target to build an object file
+kscopeconfig.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscopeconfig.o
+.PHONY : kscopeconfig.o
+
+# target to preprocess a source file
+kscopeconfig.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscopeconfig.i
+.PHONY : kscopeconfig.i
+
+# target to generate assembly for a file
+kscopeconfig.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscopeconfig.s
+.PHONY : kscopeconfig.s
+
+# target to build an object file
 main.o:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/main.o
 .PHONY : main.o
@@ -241,6 +256,9 @@ help:
 	@echo "... kscope_automoc.o"
 	@echo "... kscope_automoc.i"
 	@echo "... kscope_automoc.s"
+	@echo "... kscopeconfig.o"
+	@echo "... kscopeconfig.i"
+	@echo "... kscopeconfig.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
