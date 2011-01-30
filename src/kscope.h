@@ -32,10 +32,41 @@
 #include <kcmdlineargs.h>
 #include <kparts/part.h>
 
+class ProjectManager;
+class EditorTabs;
+class FileView;
+class FileList;
+class QueryWidget;
+class EditorManager;
+class CscopeFrontend;
+class EditorPage;
+class ProgressDlg;
+class CscopeMsgDlg;
+class MakeDlg;
+class CallTreeManager;
+class KScopeActions;
+
+/**
+ * Defines the main window of KScope.
+ * The main window has both UI and functional tasks. As a window, it is
+ * composed of three parts:
+ * 1. The editing area (EditorTabs - a tab widget with editor pages)
+ * 2. The project pane (FileList - listing the files in the project)
+ * 3. The query pane (QueryWidget - a tab widget with pages displaying query
+ *    results in lists)
+ * The main window also maintains the main menu, the toolbar and the status-
+ * bar, and is responsible for handling all the actions connected to these
+ * bars.
+ * As the application's main class, it is responsible for managing projects
+ * (using a ProjectManager object) and for running instances of Cscope
+ * (through a CscopeFrontend object).
+ * @author Elad Lahav
+ */
+
 namespace KTextEditor
 {
-class Document;
-class View;
+	class Document;
+	class View;
 }
 
 class Kscope : public KParts::MainWindow
@@ -43,15 +74,22 @@ class Kscope : public KParts::MainWindow
 Q_OBJECT
 
 public:
-Kscope(QWidget *parent=0);
+	Kscope(QWidget *parent=0);
+	// ~KScope();
+
+	void openProject(const QString&);
+	void openLastProject();
+	bool openCscopeOut(const QString&);
+	void parseCmdLine(KCmdLineArgs *pArgs);
+	void verifyCscope();
 
 private slots:
-void clear();
-void openFile();
+	void clear();
+	void openFile();
 
 private:
-void setupActions();
-KTextEditor::View *m_view;
-KTextEditor::Document *m_doc;
+	void setupActions();
+	KTextEditor::View *m_view;
+	KTextEditor::Document *m_doc;
 };
 #endif
