@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "editor_automoc.cpp"
-  "editor.shell"
+  "kscope_automoc.cpp"
+  "kscope.shell"
   "CMakeFiles/uninstall"
 )
 

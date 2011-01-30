@@ -84,7 +84,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/editor.dir/DependInfo.cmake"
-  "CMakeFiles/editor_automoc.dir/DependInfo.cmake"
+  "CMakeFiles/kscope.dir/DependInfo.cmake"
+  "CMakeFiles/kscope_automoc.dir/DependInfo.cmake"
   "CMakeFiles/uninstall.dir/DependInfo.cmake"
   )

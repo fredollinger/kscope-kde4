@@ -50,69 +50,69 @@ CMAKE_SOURCE_DIR = /home/follinge/projects/kscope-kde4/src
 CMAKE_BINARY_DIR = /home/follinge/projects/kscope-kde4/src/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/editor.dir
+# Target rules for target CMakeFiles/kscope.dir
 
 # All Build rule for target.
-CMakeFiles/editor.dir/all: CMakeFiles/editor_automoc.dir/all
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/depend
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/build
+CMakeFiles/kscope.dir/all: CMakeFiles/kscope_automoc.dir/all
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/depend
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles  1 2 3
-	@echo "Built target editor"
-.PHONY : CMakeFiles/editor.dir/all
+	@echo "Built target kscope"
+.PHONY : CMakeFiles/kscope.dir/all
 
 # Include target in all.
-all: CMakeFiles/editor.dir/all
+all: CMakeFiles/kscope.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/editor.dir/rule: cmake_check_build_system
+CMakeFiles/kscope.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/editor.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/kscope.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 0
-.PHONY : CMakeFiles/editor.dir/rule
+.PHONY : CMakeFiles/kscope.dir/rule
 
 # Convenience name for target.
-editor: CMakeFiles/editor.dir/rule
-.PHONY : editor
+kscope: CMakeFiles/kscope.dir/rule
+.PHONY : kscope
 
 # clean rule for target.
-CMakeFiles/editor.dir/clean:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/clean
-.PHONY : CMakeFiles/editor.dir/clean
+CMakeFiles/kscope.dir/clean:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/clean
+.PHONY : CMakeFiles/kscope.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/editor.dir/clean
+clean: CMakeFiles/kscope.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/editor_automoc.dir
+# Target rules for target CMakeFiles/kscope_automoc.dir
 
 # All Build rule for target.
-CMakeFiles/editor_automoc.dir/all:
-	$(MAKE) -f CMakeFiles/editor_automoc.dir/build.make CMakeFiles/editor_automoc.dir/depend
-	$(MAKE) -f CMakeFiles/editor_automoc.dir/build.make CMakeFiles/editor_automoc.dir/build
+CMakeFiles/kscope_automoc.dir/all:
+	$(MAKE) -f CMakeFiles/kscope_automoc.dir/build.make CMakeFiles/kscope_automoc.dir/depend
+	$(MAKE) -f CMakeFiles/kscope_automoc.dir/build.make CMakeFiles/kscope_automoc.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 
-	@echo "Built target editor_automoc"
-.PHONY : CMakeFiles/editor_automoc.dir/all
+	@echo "Built target kscope_automoc"
+.PHONY : CMakeFiles/kscope_automoc.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/editor_automoc.dir/rule: cmake_check_build_system
+CMakeFiles/kscope_automoc.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/editor_automoc.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/kscope_automoc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 0
-.PHONY : CMakeFiles/editor_automoc.dir/rule
+.PHONY : CMakeFiles/kscope_automoc.dir/rule
 
 # Convenience name for target.
-editor_automoc: CMakeFiles/editor_automoc.dir/rule
-.PHONY : editor_automoc
+kscope_automoc: CMakeFiles/kscope_automoc.dir/rule
+.PHONY : kscope_automoc
 
 # clean rule for target.
-CMakeFiles/editor_automoc.dir/clean:
-	$(MAKE) -f CMakeFiles/editor_automoc.dir/build.make CMakeFiles/editor_automoc.dir/clean
-.PHONY : CMakeFiles/editor_automoc.dir/clean
+CMakeFiles/kscope_automoc.dir/clean:
+	$(MAKE) -f CMakeFiles/kscope_automoc.dir/build.make CMakeFiles/kscope_automoc.dir/clean
+.PHONY : CMakeFiles/kscope_automoc.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/editor_automoc.dir/clean
+clean: CMakeFiles/kscope_automoc.dir/clean
 .PHONY : clean
 
 #=============================================================================

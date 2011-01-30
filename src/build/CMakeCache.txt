@@ -707,6 +707,12 @@ editor_BINARY_DIR:STATIC=/home/follinge/projects/kscope-kde4/src/build
 //Value Computed by CMake
 editor_SOURCE_DIR:STATIC=/home/follinge/projects/kscope-kde4/src
 
+//Value Computed by CMake
+kscope_BINARY_DIR:STATIC=/home/follinge/projects/kscope-kde4/src/build
+
+//Value Computed by CMake
+kscope_SOURCE_DIR:STATIC=/home/follinge/projects/kscope-kde4/src
+
 
 ########################
 # INTERNAL cache entries

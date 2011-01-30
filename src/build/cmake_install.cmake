@@ -33,27 +33,27 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  IF(EXISTS "$ENV{DESTDIR}/usr/local/bin/editor" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/editor")
+  IF(EXISTS "$ENV{DESTDIR}/usr/local/bin/kscope" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/kscope")
     FILE(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/usr/local/bin/editor"
+         FILE "$ENV{DESTDIR}/usr/local/bin/kscope"
          RPATH "/usr/local/lib")
   ENDIF()
-  FILE(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE FILES "/home/follinge/projects/kscope-kde4/src/build/editor")
-  IF(EXISTS "$ENV{DESTDIR}/usr/local/bin/editor" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/editor")
+  FILE(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE FILES "/home/follinge/projects/kscope-kde4/src/build/kscope")
+  IF(EXISTS "$ENV{DESTDIR}/usr/local/bin/kscope" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/kscope")
     FILE(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/usr/local/bin/editor"
+         FILE "$ENV{DESTDIR}/usr/local/bin/kscope"
          OLD_RPATH "::::::::::::::"
          NEW_RPATH "/usr/local/lib")
     IF(CMAKE_INSTALL_DO_STRIP)
-      EXECUTE_PROCESS(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/usr/local/bin/editor")
+      EXECUTE_PROCESS(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/usr/local/bin/kscope")
     ENDIF(CMAKE_INSTALL_DO_STRIP)
   ENDIF()
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "/usr/local/share/apps/editor" TYPE FILE FILES "/home/follinge/projects/kscope-kde4/src/editorui.rc")
+  FILE(INSTALL DESTINATION "/usr/local/share/apps/kscope" TYPE FILE FILES "/home/follinge/projects/kscope-kde4/src/kscopeui.rc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(CMAKE_INSTALL_COMPONENT)

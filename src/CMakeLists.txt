@@ -1,18 +1,18 @@
-project(editor)
+project(kscope)
 
 find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
-set(editor_SRCS
+set(kscope_SRCS
 main.cpp
 kscope.cpp
 )
 
-kde4_add_executable(editor ${editor_SRCS})
+kde4_add_executable(kscope ${kscope_SRCS})
 
-target_link_libraries(editor ${KDE4_KDEUI_LIBS}
+target_link_libraries(kscope ${KDE4_KDEUI_LIBS}
 ${KDE4_KIO_LIBS}
 ${KDE4_KTEXTEDITOR_LIBS})
 
-install(TARGETS editor DESTINATION ${BIN_INSTALL_DIR})
-install(FILES editorui.rc DESTINATION ${DATA_INSTALL_DIR}/editor)
+install(TARGETS kscope DESTINATION ${BIN_INSTALL_DIR})
+install(FILES kscopeui.rc DESTINATION ${DATA_INSTALL_DIR}/kscope)

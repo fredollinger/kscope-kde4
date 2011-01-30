@@ -137,30 +137,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named editor
+# Target rules for targets named kscope
 
 # Build rule for target.
-editor: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 editor
-.PHONY : editor
+kscope: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 kscope
+.PHONY : kscope
 
 # fast build rule for target.
-editor/fast:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/build
-.PHONY : editor/fast
+kscope/fast:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/build
+.PHONY : kscope/fast
 
 #=============================================================================
-# Target rules for targets named editor_automoc
+# Target rules for targets named kscope_automoc
 
 # Build rule for target.
-editor_automoc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 editor_automoc
-.PHONY : editor_automoc
+kscope_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 kscope_automoc
+.PHONY : kscope_automoc
 
 # fast build rule for target.
-editor_automoc/fast:
-	$(MAKE) -f CMakeFiles/editor_automoc.dir/build.make CMakeFiles/editor_automoc.dir/build
-.PHONY : editor_automoc/fast
+kscope_automoc/fast:
+	$(MAKE) -f CMakeFiles/kscope_automoc.dir/build.make CMakeFiles/kscope_automoc.dir/build
+.PHONY : kscope_automoc/fast
 
 #=============================================================================
 # Target rules for targets named uninstall
@@ -176,48 +176,48 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
-editor_automoc.o:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/editor_automoc.o
-.PHONY : editor_automoc.o
-
-# target to preprocess a source file
-editor_automoc.i:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/editor_automoc.i
-.PHONY : editor_automoc.i
-
-# target to generate assembly for a file
-editor_automoc.s:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/editor_automoc.s
-.PHONY : editor_automoc.s
-
-# target to build an object file
 kscope.o:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/kscope.o
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope.o
 .PHONY : kscope.o
 
 # target to preprocess a source file
 kscope.i:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/kscope.i
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope.i
 .PHONY : kscope.i
 
 # target to generate assembly for a file
 kscope.s:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/kscope.s
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope.s
 .PHONY : kscope.s
 
 # target to build an object file
+kscope_automoc.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope_automoc.o
+.PHONY : kscope_automoc.o
+
+# target to preprocess a source file
+kscope_automoc.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope_automoc.i
+.PHONY : kscope_automoc.i
+
+# target to generate assembly for a file
+kscope_automoc.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope_automoc.s
+.PHONY : kscope_automoc.s
+
+# target to build an object file
 main.o:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/main.o
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/main.o
 .PHONY : main.o
 
 # target to preprocess a source file
 main.i:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/main.i
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/main.i
 .PHONY : main.i
 
 # target to generate assembly for a file
 main.s:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/main.s
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/main.s
 .PHONY : main.s
 
 # Help Target
@@ -227,20 +227,20 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... editor"
-	@echo "... editor_automoc"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... kscope"
+	@echo "... kscope_automoc"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
-	@echo "... editor_automoc.o"
-	@echo "... editor_automoc.i"
-	@echo "... editor_automoc.s"
 	@echo "... kscope.o"
 	@echo "... kscope.i"
 	@echo "... kscope.s"
+	@echo "... kscope_automoc.o"
+	@echo "... kscope_automoc.i"
+	@echo "... kscope_automoc.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
