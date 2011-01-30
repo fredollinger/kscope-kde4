@@ -291,12 +291,19 @@ CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qobject.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qobjectdefs.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qregexp.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qscopedpointer.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qshareddata.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qsharedpointer.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qsharedpointer_impl.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qstring.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qstringbuilder.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qstringlist.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtCore/qstringmatcher.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtGui/qcolor.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtGui/qfont.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtGui/qmacdefines_mac.h
 CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtGui/qrgb.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtGui/qwindowdefs.h
+CMakeFiles/kscope.dir/kscopeconfig.o: /usr/include/qt4/QtGui/qwindowdefs_win.h
 
 CMakeFiles/kscope.dir/main.o: ../kscope.h
 CMakeFiles/kscope.dir/main.o: ../main.cpp

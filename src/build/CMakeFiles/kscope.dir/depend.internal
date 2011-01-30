@@ -292,12 +292,19 @@ CMakeFiles/kscope.dir/kscopeconfig.o
  /usr/include/qt4/QtCore/qobjectdefs.h
  /usr/include/qt4/QtCore/qregexp.h
  /usr/include/qt4/QtCore/qscopedpointer.h
+ /usr/include/qt4/QtCore/qshareddata.h
+ /usr/include/qt4/QtCore/qsharedpointer.h
+ /usr/include/qt4/QtCore/qsharedpointer_impl.h
  /usr/include/qt4/QtCore/qstring.h
  /usr/include/qt4/QtCore/qstringbuilder.h
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtGui/qcolor.h
+ /usr/include/qt4/QtGui/qfont.h
+ /usr/include/qt4/QtGui/qmacdefines_mac.h
  /usr/include/qt4/QtGui/qrgb.h
+ /usr/include/qt4/QtGui/qwindowdefs.h
+ /usr/include/qt4/QtGui/qwindowdefs_win.h
 CMakeFiles/kscope.dir/main.o
  /home/follinge/projects/kscope-kde4/src/kscope.h
  /home/follinge/projects/kscope-kde4/src/main.cpp

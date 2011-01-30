@@ -17,17 +17,26 @@ static const char *description =
         "Cscope");
 
 /*
-static KCmdLineOptions options[] =
-{
-        { "+[CSCOPE.OUT path]",
-                I18N_NOOP("Opens a cscope.out file in a temporary project"), 0
-},
-        { "+[CSCOPE.PROJ path | KScope project directory path]",
-                I18N_NOOP("Opens a KScope project"), 0 },
-        KCmdLineLastOption
-};
+   KCmdLineOptions &  add (const QByteArray &name, const KLocalizedString
+                      &description=KLocalizedString(), const QByteArray
+                      &defaultValue=QByteArray())
 */
 
+	//static KCmdLineOptions options; 
+	static KCmdLineOptions *options = new KCmdLineOptions();
+	//Kscope* window = new Kscope();
+	//options.add("+[CSCOPE.OUT path]",
+		//I18N_NOOP("Opens a cscope.out file in a temporary project"), 0);
+/*
+{
+        { "+[CSCOPE.OUT path]",
+                I18N_NOOP("Opens a cscope.out file in a temporary project"), "" 
+	}
+//, { "+[CSCOPE.PROJ path | KScope project directory path]",
+ //               I18N_NOOP("Opens a KScope project"), 0 }
+	//, KCmdLineLastOption
+};
+*/
 
 /**
  * Defines the programme's entry point.
@@ -45,12 +54,6 @@ int main(int argc, char *argv[])
 		KAboutData::License_GPL,
 		ki18n("Copyright (c) 2007-2007, Elad Lahav (elad_lahav@users.sf.net)") );
 
-/*
-	addCredit (const KLocalizedString &name, const
-   KLocalizedString &task=KLocalizedString(), const QByteArray
-   &emailAddress=QByteArray(), const QByteArray &webAddress=QByteArray())
-*/
-
 	aboutData.addCredit(ki18n("Fred Ollinger"), ki18n("Port to KDE4"),
                 "follinge@gmail.com", "http://fredollinger.com");
 
@@ -65,6 +68,7 @@ int main(int argc, char *argv[])
         // END Create the "About" dialogue
 
 	KCmdLineArgs::init( argc, argv, &aboutData );
+	// KCmdLineArgs::addCmdLineOptions(options);
 
 	// Create the "About" dialogue
 
