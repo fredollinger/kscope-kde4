@@ -11,7 +11,7 @@
 
 
 #include "kscope.h"
-//#include "mainwindow.h"
+#include "mainwindow.h"
 
 /**
  * Defines the programme's entry point.
@@ -43,7 +43,7 @@ KCmdLineArgs::init( argc, argv, &aboutData );
 
 	KApplication app;
 
-	Kscope* window = new Kscope();
+	MainWindow* window = new MainWindow();
 	window->show();
 
 	return app.exec();

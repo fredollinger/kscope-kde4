@@ -5,7 +5,7 @@ include_directories(${KDE4_INCLUDES})
 
 set(editor_SRCS
 main.cpp
-mainwindow.cpp
+kscope.cpp
 )
 
 kde4_add_executable(editor ${editor_SRCS})
