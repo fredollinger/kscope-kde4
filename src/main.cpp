@@ -9,34 +9,7 @@
 #include <KMessageBox>
 #include <KLocale>
 
-
 #include "kscope.h"
-
-static const char *description =
-        I18N_NOOP("KScope\nA source-editing environment for KDE, based on "
-        "Cscope");
-
-/*
-   KCmdLineOptions &  add (const QByteArray &name, const KLocalizedString
-                      &description=KLocalizedString(), const QByteArray
-                      &defaultValue=QByteArray())
-*/
-
-	//static KCmdLineOptions options; 
-	static KCmdLineOptions *options = new KCmdLineOptions();
-	//Kscope* window = new Kscope();
-	//options.add("+[CSCOPE.OUT path]",
-		//I18N_NOOP("Opens a cscope.out file in a temporary project"), 0);
-/*
-{
-        { "+[CSCOPE.OUT path]",
-                I18N_NOOP("Opens a cscope.out file in a temporary project"), "" 
-	}
-//, { "+[CSCOPE.PROJ path | KScope project directory path]",
- //               I18N_NOOP("Opens a KScope project"), 0 }
-	//, KCmdLineLastOption
-};
-*/
 
 /**
  * Defines the programme's entry point.
@@ -47,9 +20,12 @@ static const char *description =
  */
 int main(int argc, char *argv[])
 {
+
         // BEGIN Create the "About" dialogue
+//"KScope\nA source-editing environment for KDE, based on " "Cscope"
 	KAboutData aboutData( "kscope-kde4", 0,
-		ki18n("CScope Wrapper for KDE4"), "1.0",
+		ki18n("KScope\nA source-editing environment for KDE, based on Cscope ")
+		, "1.0",
 		ki18n("CScope Wrapper for KDE4"),
 		KAboutData::License_GPL,
 		ki18n("Copyright (c) 2007-2007, Elad Lahav (elad_lahav@users.sf.net)") );
@@ -68,13 +44,12 @@ int main(int argc, char *argv[])
         // END Create the "About" dialogue
 
         // BEGIN CMD LINE ARGS
-	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 	KCmdLineArgs::init( argc, argv, &aboutData );
-	//KCmdLineArgs::addCmdLineOptions(options);
-        // BEGIN CMD LINE ARGS
-
-	//KScope* window = new KScope();
-	//window->show();
+	KCmdLineOptions options;
+	options.add("+[CSCOPE.OUT path]", ki18n("Opens a cscope.out file in a temporary project"));
+	options.add("+[CSCOPE.PROJ path | KScope project directory path]",
+ki18n("Opens a KScope project"));
+        // END CMD LINE ARGS
 
 	KApplication app;
 
