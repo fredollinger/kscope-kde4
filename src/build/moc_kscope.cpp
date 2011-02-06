@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'kscope.h'
 **
-** Created: Sun Jan 30 17:14:42 2011
+** Created: Sun Feb 6 03:11:20 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_Kscope[] = {
+static const uint qt_meta_data_KScope[] = {
 
  // content:
        5,       // revision
@@ -37,34 +37,34 @@ static const uint qt_meta_data_Kscope[] = {
        0        // eod
 };
 
-static const char qt_meta_stringdata_Kscope[] = {
-    "Kscope\0\0clear()\0openFile()\0"
+static const char qt_meta_stringdata_KScope[] = {
+    "KScope\0\0clear()\0openFile()\0"
 };
 
-const QMetaObject Kscope::staticMetaObject = {
-    { &KParts::MainWindow::staticMetaObject, qt_meta_stringdata_Kscope,
-      qt_meta_data_Kscope, 0 }
+const QMetaObject KScope::staticMetaObject = {
+    { &KParts::MainWindow::staticMetaObject, qt_meta_stringdata_KScope,
+      qt_meta_data_KScope, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &Kscope::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &KScope::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *Kscope::metaObject() const
+const QMetaObject *KScope::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *Kscope::qt_metacast(const char *_clname)
+void *KScope::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Kscope))
-        return static_cast<void*>(const_cast< Kscope*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_KScope))
+        return static_cast<void*>(const_cast< KScope*>(this));
     typedef KParts::MainWindow QMocSuperClass;
     return QMocSuperClass::qt_metacast(_clname);
 }
 
-int Kscope::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int KScope::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     typedef KParts::MainWindow QMocSuperClass;
     _id = QMocSuperClass::qt_metacall(_c, _id, _a);

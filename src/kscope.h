@@ -69,12 +69,12 @@ namespace KTextEditor
 	class View;
 }
 
-class Kscope : public KParts::MainWindow
+class KScope : public KParts::MainWindow
 {
 Q_OBJECT
 
 public:
-	Kscope(QWidget *parent=0);
+	KScope(QWidget *parent=0);
 	// ~KScope();
 
 	void openProject(const QString&);

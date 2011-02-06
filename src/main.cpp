@@ -47,13 +47,12 @@ int main(int argc, char *argv[])
 	KCmdLineArgs::init( argc, argv, &aboutData );
 	KCmdLineOptions options;
 	options.add("+[CSCOPE.OUT path]", ki18n("Opens a cscope.out file in a temporary project"));
-	options.add("+[CSCOPE.PROJ path | KScope project directory path]",
-ki18n("Opens a KScope project"));
+	options.add("+[CSCOPE.PROJ path | KScope project directory path]", ki18n("Opens a KScope project"));
         // END CMD LINE ARGS
 
 	KApplication app;
 
-	Kscope* window = new Kscope();
+	KScope* window = new KScope();
 	window->show();
 
 	return app.exec();

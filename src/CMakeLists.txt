@@ -4,9 +4,9 @@ find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
 set(kscope_SRCS
+kscope.cpp
 main.cpp
 kscopeconfig.cpp
-kscope.cpp
 )
 
 kde4_add_executable(kscope ${kscope_SRCS})
