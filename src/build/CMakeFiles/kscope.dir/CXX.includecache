@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/follinge/projects/kscope-kde4/src/build/../kscope.h
+/home/follinge/projects/kscope-kde4/src/kscope4.h
 KParts/MainWindow
 -
 QtGui/QKeyEvent
@@ -17,41 +17,7 @@ kcmdlineargs.h
 -
 kparts/part.h
 -
-
-/home/follinge/projects/kscope-kde4/src/build/../kscopeconfig.h
-qobject.h
--
-qstringlist.h
--
-qcolor.h
--
-qfont.h
--
-
-/home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
-moc_kscope.cpp
-/home/follinge/projects/kscope-kde4/src/build/moc_kscope.cpp
-moc_kscopeconfig.cpp
-/home/follinge/projects/kscope-kde4/src/build/moc_kscopeconfig.cpp
-
-/home/follinge/projects/kscope-kde4/src/build/moc_kscope.cpp
-../kscope.h
-/home/follinge/projects/kscope-kde4/src/build/../kscope.h
-
-/home/follinge/projects/kscope-kde4/src/build/moc_kscopeconfig.cpp
-../kscopeconfig.h
-/home/follinge/projects/kscope-kde4/src/build/../kscopeconfig.h
-
-/home/follinge/projects/kscope-kde4/src/kscope.h
-KParts/MainWindow
--
-QtGui/QKeyEvent
--
-qtimer.h
--
-kcmdlineargs.h
--
-kparts/part.h
+k3dockwidget.h
 -
 
 /home/follinge/projects/kscope-kde4/src/main.cpp
@@ -71,8 +37,10 @@ KMessageBox
 -
 KLocale
 -
-kscope.h
-/home/follinge/projects/kscope-kde4/src/kscope.h
+k3dockwidget.h
+-
+kscope4.h
+/home/follinge/projects/kscope-kde4/src/kscope4.h
 
 /usr/include/KDE/../kaboutdata.h
 kdecore_export.h

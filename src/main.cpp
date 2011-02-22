@@ -9,7 +9,10 @@
 #include <KMessageBox>
 #include <KLocale>
 
-#include "kscope.h"
+// BEGIN KSCOPE OBJ
+#include<k3dockwidget.h>
+#include "kscope4.h"
+// END KSCOPE OBJ
 
 /**
  * Defines the programme's entry point.
@@ -21,8 +24,8 @@
 int main(int argc, char *argv[])
 {
 
-        // BEGIN Create the "About" dialogue
-//"KScope\nA source-editing environment for KDE, based on " "Cscope"
+       // BEGIN Create the "About" dialogue
+	//"KScope\nA source-editing environment for KDE, based on " "Cscope"
 	KAboutData aboutData( "kscope-kde4", 0,
 		ki18n("KScope\nA source-editing environment for KDE, based on Cscope ")
 		, "1.0",
@@ -52,6 +55,7 @@ int main(int argc, char *argv[])
 
 	KApplication app;
 
+	//K3DockMainWindow window = new K3DockMainWindow();
 	KScope* window = new KScope();
 	window->show();
 

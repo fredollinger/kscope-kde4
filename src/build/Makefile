@@ -176,19 +176,34 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
-kscope.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope.o
-.PHONY : kscope.o
+k3wrap.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.o
+.PHONY : k3wrap.o
 
 # target to preprocess a source file
-kscope.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope.i
-.PHONY : kscope.i
+k3wrap.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.i
+.PHONY : k3wrap.i
 
 # target to generate assembly for a file
-kscope.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope.s
-.PHONY : kscope.s
+k3wrap.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.s
+.PHONY : k3wrap.s
+
+# target to build an object file
+kscope4.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope4.o
+.PHONY : kscope4.o
+
+# target to preprocess a source file
+kscope4.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope4.i
+.PHONY : kscope4.i
+
+# target to generate assembly for a file
+kscope4.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscope4.s
+.PHONY : kscope4.s
 
 # target to build an object file
 kscope_automoc.o:
@@ -250,9 +265,12 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
-	@echo "... kscope.o"
-	@echo "... kscope.i"
-	@echo "... kscope.s"
+	@echo "... k3wrap.o"
+	@echo "... k3wrap.i"
+	@echo "... k3wrap.s"
+	@echo "... kscope4.o"
+	@echo "... kscope4.i"
+	@echo "... kscope4.s"
 	@echo "... kscope_automoc.o"
 	@echo "... kscope_automoc.i"
 	@echo "... kscope_automoc.s"
