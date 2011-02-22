@@ -1,0 +1,4 @@
+/home/follinge/projects/kscope-kde4/src/kscope4.cpp:52: error: definition of implicitly-declared 'virtual KScope::~KScope()'
+make[2]: *** [CMakeFiles/kscope.dir/kscope4.o] Error 1
+make[1]: *** [CMakeFiles/kscope.dir/all] Error 2
+make: *** [all] Error 2

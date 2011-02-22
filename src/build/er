@@ -1,0 +1,2 @@
+/home/follinge/projects/kscope-kde4/src/kscope.cpp: In member function 'void KScope::initMainWindow()':
+/home/follinge/projects/kscope-kde4/src/kscope.cpp:138: warning: unused variable 'pStatus'
