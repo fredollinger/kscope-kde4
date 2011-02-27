@@ -5,7 +5,7 @@
 #include <qtimer.h>
 #include <kcmdlineargs.h>
 #include <kparts/part.h>
-#include<k3dockwidget.h>
+// #include<k3dockwidget.h>
 
 class ProjectManager;
 class EditorTabs;
@@ -52,7 +52,13 @@ Q_OBJECT
 
 public:
 	KScope(QWidget *parent=0);
+	void openProject(const QString&);
 	// ~KScope();
+
+private:
+	void initMainWindow();
+	void setupActions();
+	KParts::ReadWritePart *m_part;
 };
 
 	/*
@@ -127,11 +133,13 @@ public:
 	void slotDropEvent(QDropEvent*);
 	void slotCscopeVerified(bool, uint);
 
-// private:
+private:
+	void initMainWindow();
 	void setupActions();
-	KTextEditor::View *m_view;
-	KTextEditor::Document *m_doc;
-	*/
+	//KTextEditor::View *m_view;
+	//KTextEditor::Document *m_doc;
+
+*/
 
 	/** A project manager used to load projects and read their properties. */
 	// ProjectManager* m_pProjMgr;

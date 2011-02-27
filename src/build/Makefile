@@ -176,6 +176,21 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
+editormanager.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.o
+.PHONY : editormanager.o
+
+# target to preprocess a source file
+editormanager.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.i
+.PHONY : editormanager.i
+
+# target to generate assembly for a file
+editormanager.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.s
+.PHONY : editormanager.s
+
+# target to build an object file
 k3wrap.o:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.o
 .PHONY : k3wrap.o
@@ -265,6 +280,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
+	@echo "... editormanager.o"
+	@echo "... editormanager.i"
+	@echo "... editormanager.s"
 	@echo "... k3wrap.o"
 	@echo "... k3wrap.i"
 	@echo "... k3wrap.s"

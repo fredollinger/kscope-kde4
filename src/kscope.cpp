@@ -25,6 +25,8 @@
  *
  ***************************************************************************/
 #include "kscope.h"
+
+/*
 #include <KApplication>
 #include <KAction>
 #include <KLocale>
@@ -40,6 +42,20 @@
 #include <KTextEditor/View>
 #include <KTextEditor/Editor>
 #include <KTextEditor/EditorChooser>
+
+#include <kaction.h>
+#include <kactioncollection.h>
+#include <kconfig.h>
+#include <kedittoolbar.h>
+#include <kfiledialog.h>
+#include <kshortcutsdialog.h>
+#include <klibloader.h>
+#include <kmessagebox.h>
+#include <kservice.h>
+#include <kstandardaction.h>
+#include <kstatusbar.h>
+#include <kurl.h>
+*/
 
 KScope::KScope(QWidget *)
 {

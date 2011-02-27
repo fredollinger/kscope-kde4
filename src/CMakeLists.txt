@@ -4,6 +4,7 @@ find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
 set(kscope_SRCS
+editormanager.cpp
 kscope4.cpp
 main.cpp
 k3wrap.cpp
