@@ -25,6 +25,7 @@
  *
  ***************************************************************************/
 #include "kscope.h"
+#include "editormanager.h"
 
 /*
 #include <KApplication>

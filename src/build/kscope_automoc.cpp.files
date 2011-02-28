@@ -1,5 +1,5 @@
 SOURCES:
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp;/home/follinge/projects/kscope-kde4/src/kscope4.cpp;/home/follinge/projects/kscope-kde4/src/main.cpp;/home/follinge/projects/kscope-kde4/src/k3wrap.cpp;/home/follinge/projects/kscope-kde4/src/kscopeconfig.cpp
+/home/follinge/projects/kscope-kde4/src/frontend.cpp;/home/follinge/projects/kscope-kde4/src/ctagsfrontend.cpp;/home/follinge/projects/kscope-kde4/src/ctagslist.cpp;/home/follinge/projects/kscope-kde4/src/editorpage.cpp;/home/follinge/projects/kscope-kde4/src/editormanager.cpp;/home/follinge/projects/kscope-kde4/src/kscope4.cpp;/home/follinge/projects/kscope-kde4/src/main.cpp;/home/follinge/projects/kscope-kde4/src/k3wrap.cpp;/home/follinge/projects/kscope-kde4/src/kscopeconfig.cpp
 MOC_COMPILE_DEFINITIONS:
 _BSD_SOURCE
 MOC_DEFINITIONS:

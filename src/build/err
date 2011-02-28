@@ -1,8 +1,10 @@
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp: In member function 'KTextEditor::Document* EditorManager::add()':
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp:64: error: no matching function for call to 'KTextEditor::Document::createView(EditorManager* const)'
-/usr/include/ktexteditor/document.h:149: note: candidates are: virtual KTextEditor::View* KTextEditor::Document::createView(QWidget*)
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp: In member function 'void EditorManager::applyPrefs()':
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp:89: error: 'Kate' has not been declared
-make[2]: *** [CMakeFiles/kscope.dir/editormanager.o] Error 1
+/home/follinge/projects/kscope-kde4/src/frontend.cpp:79: warning: unused parameter 'sName'
+/home/follinge/projects/kscope-kde4/src/frontend.cpp:79: warning: unused parameter 'bBlock'
+/home/follinge/projects/kscope-kde4/src/frontend.cpp:359: warning: unused parameter 'pBuffer'
+/home/follinge/projects/kscope-kde4/src/frontend.cpp:359: warning: unused parameter 'nSize'
+In file included from /home/follinge/projects/kscope-kde4/src/ctagsfrontend.cpp:32:
+/home/follinge/projects/kscope-kde4/src/ctagsfrontend.h:31: fatal error: frontend.h: No such file or directory
+compilation terminated.
+make[2]: *** [CMakeFiles/kscope.dir/ctagsfrontend.o] Error 1
 make[1]: *** [CMakeFiles/kscope.dir/all] Error 2
 make: *** [all] Error 2

@@ -176,6 +176,36 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
+ctagsfrontend.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagsfrontend.o
+.PHONY : ctagsfrontend.o
+
+# target to preprocess a source file
+ctagsfrontend.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagsfrontend.i
+.PHONY : ctagsfrontend.i
+
+# target to generate assembly for a file
+ctagsfrontend.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagsfrontend.s
+.PHONY : ctagsfrontend.s
+
+# target to build an object file
+ctagslist.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagslist.o
+.PHONY : ctagslist.o
+
+# target to preprocess a source file
+ctagslist.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagslist.i
+.PHONY : ctagslist.i
+
+# target to generate assembly for a file
+ctagslist.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagslist.s
+.PHONY : ctagslist.s
+
+# target to build an object file
 editormanager.o:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.o
 .PHONY : editormanager.o
@@ -189,6 +219,36 @@ editormanager.i:
 editormanager.s:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.s
 .PHONY : editormanager.s
+
+# target to build an object file
+editorpage.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage.o
+.PHONY : editorpage.o
+
+# target to preprocess a source file
+editorpage.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage.i
+.PHONY : editorpage.i
+
+# target to generate assembly for a file
+editorpage.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage.s
+.PHONY : editorpage.s
+
+# target to build an object file
+frontend.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.o
+.PHONY : frontend.o
+
+# target to preprocess a source file
+frontend.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.i
+.PHONY : frontend.i
+
+# target to generate assembly for a file
+frontend.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.s
+.PHONY : frontend.s
 
 # target to build an object file
 k3wrap.o:
@@ -280,9 +340,21 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
+	@echo "... ctagsfrontend.o"
+	@echo "... ctagsfrontend.i"
+	@echo "... ctagsfrontend.s"
+	@echo "... ctagslist.o"
+	@echo "... ctagslist.i"
+	@echo "... ctagslist.s"
 	@echo "... editormanager.o"
 	@echo "... editormanager.i"
 	@echo "... editormanager.s"
+	@echo "... editorpage.o"
+	@echo "... editorpage.i"
+	@echo "... editorpage.s"
+	@echo "... frontend.o"
+	@echo "... frontend.i"
+	@echo "... frontend.s"
 	@echo "... k3wrap.o"
 	@echo "... k3wrap.i"
 	@echo "... k3wrap.s"

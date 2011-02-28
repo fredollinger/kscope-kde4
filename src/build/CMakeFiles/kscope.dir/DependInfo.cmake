@@ -4,7 +4,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/follinge/projects/kscope-kde4/src/ctagsfrontend.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/ctagsfrontend.o"
+  "/home/follinge/projects/kscope-kde4/src/ctagslist.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/ctagslist.o"
   "/home/follinge/projects/kscope-kde4/src/editormanager.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/editormanager.o"
+  "/home/follinge/projects/kscope-kde4/src/editorpage.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/editorpage.o"
+  "/home/follinge/projects/kscope-kde4/src/frontend.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/frontend.o"
   "/home/follinge/projects/kscope-kde4/src/k3wrap.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/k3wrap.o"
   "/home/follinge/projects/kscope-kde4/src/kscope4.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/kscope4.o"
   "/home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/kscope_automoc.o"

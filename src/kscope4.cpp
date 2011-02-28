@@ -1,5 +1,6 @@
-#include "kscope4.h"
 #include <kparts/part.h>
+#include "kscope4.h"
+#include "editormanager.h"
 
 /*
 #include <KApplication>

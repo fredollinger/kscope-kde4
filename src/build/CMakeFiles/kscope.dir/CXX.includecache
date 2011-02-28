@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/follinge/projects/kscope-kde4/src/build/../ctagsfrontend.h
+frontend.h
+/home/follinge/projects/kscope-kde4/src/build/../frontend.h
+
 /home/follinge/projects/kscope-kde4/src/build/../editormanager.h
 qwidget.h
 -
@@ -14,6 +18,12 @@ kparts/partmanager.h
 klibloader.h
 -
 ktexteditor/document.h
+-
+
+/home/follinge/projects/kscope-kde4/src/build/../frontend.h
+qobject.h
+-
+kprocess.h
 -
 
 /home/follinge/projects/kscope-kde4/src/build/../kscope4.h
@@ -39,16 +49,28 @@ qfont.h
 -
 
 /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
+moc_frontend.cpp
+/home/follinge/projects/kscope-kde4/src/build/moc_frontend.cpp
 moc_kscopeconfig.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_kscopeconfig.cpp
 moc_editormanager.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_editormanager.cpp
 moc_kscope4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
+moc_ctagsfrontend.cpp
+/home/follinge/projects/kscope-kde4/src/build/moc_ctagsfrontend.cpp
+
+/home/follinge/projects/kscope-kde4/src/build/moc_ctagsfrontend.cpp
+../ctagsfrontend.h
+/home/follinge/projects/kscope-kde4/src/build/../ctagsfrontend.h
 
 /home/follinge/projects/kscope-kde4/src/build/moc_editormanager.cpp
 ../editormanager.h
 /home/follinge/projects/kscope-kde4/src/build/../editormanager.h
+
+/home/follinge/projects/kscope-kde4/src/build/moc_frontend.cpp
+../frontend.h
+/home/follinge/projects/kscope-kde4/src/build/../frontend.h
 
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
 ../kscope4.h
