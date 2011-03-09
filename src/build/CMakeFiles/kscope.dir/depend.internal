@@ -3,7 +3,6 @@
 
 CMakeFiles/kscope.dir/ctagsfrontend.o
  /home/follinge/projects/kscope-kde4/src/ctagsfrontend.cpp
- /home/follinge/projects/kscope-kde4/src/ctagsfrontend.h
  /home/follinge/projects/kscope-kde4/src/kscopeconfig.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
@@ -67,12 +66,9 @@ CMakeFiles/kscope.dir/ctagsfrontend.o
  /usr/include/qt4/QtGui/qwindowdefs_win.h
 CMakeFiles/kscope.dir/ctagslist.o
  /home/follinge/projects/kscope-kde4/src/ctagslist.cpp
- /home/follinge/projects/kscope-kde4/src/ctagslist.h
  /home/follinge/projects/kscope-kde4/src/kscopeconfig.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
- /usr/include/qt4/QtCore/QPoint
- /usr/include/qt4/QtCore/QPointF
  /usr/include/qt4/QtCore/qalgorithms.h
  /usr/include/qt4/QtCore/qatomic.h
  /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -106,61 +102,29 @@ CMakeFiles/kscope.dir/ctagslist.o
  /usr/include/qt4/QtCore/qdatastream.h
  /usr/include/qt4/QtCore/qfeatures.h
  /usr/include/qt4/QtCore/qglobal.h
- /usr/include/qt4/QtCore/qhash.h
  /usr/include/qt4/QtCore/qiodevice.h
  /usr/include/qt4/QtCore/qiterator.h
- /usr/include/qt4/QtCore/qline.h
  /usr/include/qt4/QtCore/qlinkedlist.h
  /usr/include/qt4/QtCore/qlist.h
  /usr/include/qt4/QtCore/qmap.h
- /usr/include/qt4/QtCore/qmargins.h
- /usr/include/qt4/QtCore/qmetatype.h
- /usr/include/qt4/QtCore/qmimedata.h
  /usr/include/qt4/QtCore/qnamespace.h
  /usr/include/qt4/QtCore/qobject.h
  /usr/include/qt4/QtCore/qobjectdefs.h
- /usr/include/qt4/QtCore/qpair.h
- /usr/include/qt4/QtCore/qpoint.h
- /usr/include/qt4/QtCore/qrect.h
  /usr/include/qt4/QtCore/qregexp.h
  /usr/include/qt4/QtCore/qscopedpointer.h
- /usr/include/qt4/QtCore/qset.h
  /usr/include/qt4/QtCore/qshareddata.h
  /usr/include/qt4/QtCore/qsharedpointer.h
  /usr/include/qt4/QtCore/qsharedpointer_impl.h
- /usr/include/qt4/QtCore/qsize.h
  /usr/include/qt4/QtCore/qstring.h
  /usr/include/qt4/QtCore/qstringbuilder.h
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
- /usr/include/qt4/QtCore/qvariant.h
- /usr/include/qt4/QtCore/qvector.h
- /usr/include/qt4/QtGui/qbrush.h
  /usr/include/qt4/QtGui/qcolor.h
- /usr/include/qt4/QtGui/qcursor.h
- /usr/include/qt4/QtGui/qdrag.h
- /usr/include/qt4/QtGui/qevent.h
  /usr/include/qt4/QtGui/qfont.h
- /usr/include/qt4/QtGui/qfontinfo.h
- /usr/include/qt4/QtGui/qfontmetrics.h
- /usr/include/qt4/QtGui/qimage.h
- /usr/include/qt4/QtGui/qkeysequence.h
  /usr/include/qt4/QtGui/qmacdefines_mac.h
- /usr/include/qt4/QtGui/qmatrix.h
- /usr/include/qt4/QtGui/qmime.h
- /usr/include/qt4/QtGui/qpaintdevice.h
- /usr/include/qt4/QtGui/qpainterpath.h
- /usr/include/qt4/QtGui/qpalette.h
- /usr/include/qt4/QtGui/qpixmap.h
- /usr/include/qt4/QtGui/qpolygon.h
- /usr/include/qt4/QtGui/qregion.h
  /usr/include/qt4/QtGui/qrgb.h
- /usr/include/qt4/QtGui/qsizepolicy.h
- /usr/include/qt4/QtGui/qtransform.h
- /usr/include/qt4/QtGui/qwidget.h
  /usr/include/qt4/QtGui/qwindowdefs.h
  /usr/include/qt4/QtGui/qwindowdefs_win.h
- /usr/include/qt4/QtGui/qwmatrix.h
 CMakeFiles/kscope.dir/editormanager.o
  /home/follinge/projects/kscope-kde4/src/editormanager.cpp
  /home/follinge/projects/kscope-kde4/src/editormanager.h
@@ -259,12 +223,9 @@ CMakeFiles/kscope.dir/editormanager.o
  /usr/include/qt4/QtGui/qwmatrix.h
 CMakeFiles/kscope.dir/editorpage.o
  /home/follinge/projects/kscope-kde4/src/editorpage.cpp
- /home/follinge/projects/kscope-kde4/src/editorpage.h
  /home/follinge/projects/kscope-kde4/src/kscopeconfig.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
- /usr/include/qt4/QtCore/QPoint
- /usr/include/qt4/QtCore/QPointF
  /usr/include/qt4/QtCore/qalgorithms.h
  /usr/include/qt4/QtCore/qatomic.h
  /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -300,68 +261,31 @@ CMakeFiles/kscope.dir/editorpage.o
  /usr/include/qt4/QtCore/qfile.h
  /usr/include/qt4/QtCore/qfileinfo.h
  /usr/include/qt4/QtCore/qglobal.h
- /usr/include/qt4/QtCore/qhash.h
  /usr/include/qt4/QtCore/qiodevice.h
  /usr/include/qt4/QtCore/qiterator.h
- /usr/include/qt4/QtCore/qline.h
  /usr/include/qt4/QtCore/qlinkedlist.h
  /usr/include/qt4/QtCore/qlist.h
  /usr/include/qt4/QtCore/qmap.h
- /usr/include/qt4/QtCore/qmargins.h
- /usr/include/qt4/QtCore/qmetatype.h
- /usr/include/qt4/QtCore/qmimedata.h
  /usr/include/qt4/QtCore/qnamespace.h
  /usr/include/qt4/QtCore/qobject.h
  /usr/include/qt4/QtCore/qobjectdefs.h
- /usr/include/qt4/QtCore/qpair.h
- /usr/include/qt4/QtCore/qpoint.h
- /usr/include/qt4/QtCore/qrect.h
  /usr/include/qt4/QtCore/qregexp.h
  /usr/include/qt4/QtCore/qscopedpointer.h
- /usr/include/qt4/QtCore/qset.h
  /usr/include/qt4/QtCore/qshareddata.h
  /usr/include/qt4/QtCore/qsharedpointer.h
  /usr/include/qt4/QtCore/qsharedpointer_impl.h
- /usr/include/qt4/QtCore/qsize.h
  /usr/include/qt4/QtCore/qstring.h
  /usr/include/qt4/QtCore/qstringbuilder.h
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
- /usr/include/qt4/QtCore/qvariant.h
- /usr/include/qt4/QtCore/qvector.h
- /usr/include/qt4/QtGui/qbrush.h
  /usr/include/qt4/QtGui/qcolor.h
- /usr/include/qt4/QtGui/qcursor.h
- /usr/include/qt4/QtGui/qdrag.h
- /usr/include/qt4/QtGui/qevent.h
  /usr/include/qt4/QtGui/qfont.h
- /usr/include/qt4/QtGui/qfontinfo.h
- /usr/include/qt4/QtGui/qfontmetrics.h
- /usr/include/qt4/QtGui/qframe.h
- /usr/include/qt4/QtGui/qicon.h
- /usr/include/qt4/QtGui/qimage.h
- /usr/include/qt4/QtGui/qkeysequence.h
  /usr/include/qt4/QtGui/qmacdefines_mac.h
- /usr/include/qt4/QtGui/qmatrix.h
- /usr/include/qt4/QtGui/qmime.h
- /usr/include/qt4/QtGui/qpaintdevice.h
- /usr/include/qt4/QtGui/qpainterpath.h
- /usr/include/qt4/QtGui/qpalette.h
- /usr/include/qt4/QtGui/qpixmap.h
- /usr/include/qt4/QtGui/qpolygon.h
- /usr/include/qt4/QtGui/qregion.h
  /usr/include/qt4/QtGui/qrgb.h
- /usr/include/qt4/QtGui/qsizepolicy.h
- /usr/include/qt4/QtGui/qsplitter.h
- /usr/include/qt4/QtGui/qtabwidget.h
- /usr/include/qt4/QtGui/qtransform.h
- /usr/include/qt4/QtGui/qwidget.h
  /usr/include/qt4/QtGui/qwindowdefs.h
  /usr/include/qt4/QtGui/qwindowdefs_win.h
- /usr/include/qt4/QtGui/qwmatrix.h
 CMakeFiles/kscope.dir/frontend.o
  /home/follinge/projects/kscope-kde4/src/frontend.cpp
- /home/follinge/projects/kscope-kde4/src/frontend.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/qalgorithms.h
@@ -418,6 +342,7 @@ CMakeFiles/kscope.dir/k3wrap.o
  /home/follinge/projects/kscope-kde4/src/k3wrap.cpp
  /home/follinge/projects/kscope-kde4/src/k3wrap.h
 CMakeFiles/kscope.dir/kscope4.o
+ /home/follinge/projects/kscope-kde4/src/editormanager.h
  /home/follinge/projects/kscope-kde4/src/kscope4.cpp
  /home/follinge/projects/kscope-kde4/src/kscope4.h
  /usr/include/KDE/../kaction.h
@@ -578,15 +503,11 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtGui/qwmatrix.h
  /usr/include/qt4/QtGui/qx11info_x11.h
 CMakeFiles/kscope.dir/kscope_automoc.o
- /home/follinge/projects/kscope-kde4/src/build/../ctagsfrontend.h
  /home/follinge/projects/kscope-kde4/src/build/../editormanager.h
- /home/follinge/projects/kscope-kde4/src/build/../frontend.h
  /home/follinge/projects/kscope-kde4/src/build/../kscope4.h
  /home/follinge/projects/kscope-kde4/src/build/../kscopeconfig.h
  /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
- /home/follinge/projects/kscope-kde4/src/build/moc_ctagsfrontend.cpp
  /home/follinge/projects/kscope-kde4/src/build/moc_editormanager.cpp
- /home/follinge/projects/kscope-kde4/src/build/moc_frontend.cpp
  /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
  /home/follinge/projects/kscope-kde4/src/build/moc_kscopeconfig.cpp
  /usr/include/KDE/KParts/../../kparts/mainwindow.h
