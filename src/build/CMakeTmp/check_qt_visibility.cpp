@@ -1,7 +1,9 @@
 #include <QtCore/QtGlobal>
  int main()
  {
- #ifndef QT_VISIBILITY_AVAILABLE 
- #error QT_VISIBILITY_AVAILABLE is not available
+ #ifdef QT_VISIBILITY_AVAILABLE 
+ return 0;
+ #else 
+ return 1; 
  #endif 
  }
