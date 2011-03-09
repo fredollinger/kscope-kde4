@@ -503,10 +503,12 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qwmatrix.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qx11info_x11.h
 
 CMakeFiles/kscope.dir/kscope_automoc.o: ../editormanager.h
+CMakeFiles/kscope.dir/kscope_automoc.o: ../frontend.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../kscope4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../kscopeconfig.h
 CMakeFiles/kscope.dir/kscope_automoc.o: kscope_automoc.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_editormanager.cpp
+CMakeFiles/kscope.dir/kscope_automoc.o: moc_frontend.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_kscope4.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_kscopeconfig.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: /usr/include/KDE/KParts/../../kparts/mainwindow.h
