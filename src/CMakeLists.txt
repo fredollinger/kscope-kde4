@@ -3,17 +3,16 @@ project(kscope)
 find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
-
+#frontend.cpp
+#ctagsfrontend.cpp
+#ctagslist.cpp
+#editormanager.cpp
+#k3wrap.cpp
+#kscopeconfig.cpp
 set(kscope_SRCS
-frontend.cpp
-ctagsfrontend.cpp
-ctagslist.cpp
 editorpage.cpp
-editormanager.cpp
 kscope4.cpp
 main.cpp
-k3wrap.cpp
-kscopeconfig.cpp
 )
 
 kde4_add_executable(kscope ${kscope_SRCS})

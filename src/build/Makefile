@@ -176,51 +176,6 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
-ctagsfrontend.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagsfrontend.o
-.PHONY : ctagsfrontend.o
-
-# target to preprocess a source file
-ctagsfrontend.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagsfrontend.i
-.PHONY : ctagsfrontend.i
-
-# target to generate assembly for a file
-ctagsfrontend.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagsfrontend.s
-.PHONY : ctagsfrontend.s
-
-# target to build an object file
-ctagslist.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagslist.o
-.PHONY : ctagslist.o
-
-# target to preprocess a source file
-ctagslist.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagslist.i
-.PHONY : ctagslist.i
-
-# target to generate assembly for a file
-ctagslist.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/ctagslist.s
-.PHONY : ctagslist.s
-
-# target to build an object file
-editormanager.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.o
-.PHONY : editormanager.o
-
-# target to preprocess a source file
-editormanager.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.i
-.PHONY : editormanager.i
-
-# target to generate assembly for a file
-editormanager.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.s
-.PHONY : editormanager.s
-
-# target to build an object file
 editorpage.o:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage.o
 .PHONY : editorpage.o
@@ -234,36 +189,6 @@ editorpage.i:
 editorpage.s:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage.s
 .PHONY : editorpage.s
-
-# target to build an object file
-frontend.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.o
-.PHONY : frontend.o
-
-# target to preprocess a source file
-frontend.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.i
-.PHONY : frontend.i
-
-# target to generate assembly for a file
-frontend.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.s
-.PHONY : frontend.s
-
-# target to build an object file
-k3wrap.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.o
-.PHONY : k3wrap.o
-
-# target to preprocess a source file
-k3wrap.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.i
-.PHONY : k3wrap.i
-
-# target to generate assembly for a file
-k3wrap.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/k3wrap.s
-.PHONY : k3wrap.s
 
 # target to build an object file
 kscope4.o:
@@ -296,21 +221,6 @@ kscope_automoc.s:
 .PHONY : kscope_automoc.s
 
 # target to build an object file
-kscopeconfig.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscopeconfig.o
-.PHONY : kscopeconfig.o
-
-# target to preprocess a source file
-kscopeconfig.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscopeconfig.i
-.PHONY : kscopeconfig.i
-
-# target to generate assembly for a file
-kscopeconfig.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/kscopeconfig.s
-.PHONY : kscopeconfig.s
-
-# target to build an object file
 main.o:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/main.o
 .PHONY : main.o
@@ -340,33 +250,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
-	@echo "... ctagsfrontend.o"
-	@echo "... ctagsfrontend.i"
-	@echo "... ctagsfrontend.s"
-	@echo "... ctagslist.o"
-	@echo "... ctagslist.i"
-	@echo "... ctagslist.s"
-	@echo "... editormanager.o"
-	@echo "... editormanager.i"
-	@echo "... editormanager.s"
 	@echo "... editorpage.o"
 	@echo "... editorpage.i"
 	@echo "... editorpage.s"
-	@echo "... frontend.o"
-	@echo "... frontend.i"
-	@echo "... frontend.s"
-	@echo "... k3wrap.o"
-	@echo "... k3wrap.i"
-	@echo "... k3wrap.s"
 	@echo "... kscope4.o"
 	@echo "... kscope4.i"
 	@echo "... kscope4.s"
 	@echo "... kscope_automoc.o"
 	@echo "... kscope_automoc.i"
 	@echo "... kscope_automoc.s"
-	@echo "... kscopeconfig.o"
-	@echo "... kscopeconfig.i"
-	@echo "... kscopeconfig.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

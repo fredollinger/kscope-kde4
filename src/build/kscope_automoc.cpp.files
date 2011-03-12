@@ -1,11 +1,11 @@
 SOURCES:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp;/home/follinge/projects/kscope-kde4/src/ctagsfrontend.cpp;/home/follinge/projects/kscope-kde4/src/ctagslist.cpp;/home/follinge/projects/kscope-kde4/src/editorpage.cpp;/home/follinge/projects/kscope-kde4/src/editormanager.cpp;/home/follinge/projects/kscope-kde4/src/kscope4.cpp;/home/follinge/projects/kscope-kde4/src/main.cpp;/home/follinge/projects/kscope-kde4/src/k3wrap.cpp;/home/follinge/projects/kscope-kde4/src/kscopeconfig.cpp
+/home/follinge/projects/kscope-kde4/src/editorpage.cpp;/home/follinge/projects/kscope-kde4/src/kscope4.cpp;/home/follinge/projects/kscope-kde4/src/main.cpp
 MOC_COMPILE_DEFINITIONS:
 _BSD_SOURCE
 MOC_DEFINITIONS:
  -D_BSD_SOURCE
 MOC_INCLUDES:
-/usr/include;/usr/include/KDE;/usr/include/qt4/phonon;/usr/include/qt4/QtXmlPatterns;/usr/include/qt4/QtXml;/usr/include/qt4/QtWebKit;/usr/include/qt4/QtUiTools;/usr/include/qt4/QtTest;/usr/include/qt4/QtSvg;/usr/include/qt4/QtSql;/usr/include/qt4/QtScriptTools;/usr/include/qt4/QtScript;/usr/include/qt4/QtOpenGL;/usr/include/qt4/QtNetwork;/usr/include/qt4/QtMultimedia;/usr/include/qt4/QtHelp;/usr/include/qt4/QtDesigner;/usr/include/qt4/QtDBus;/usr/include/qt4/QtAssistant;/usr/include/qt4/Qt3Support;/usr/include/qt4/QtGui;/usr/include/qt4/QtCore;/usr/include/qt4/Qt;/usr/share/qt4/mkspecs/default;/usr/include/qt4
+/usr/include;/usr/include/KDE;/usr/include/qt4/phonon;/usr/include/qt4/QtXmlPatterns;/usr/include/qt4/QtXml;/usr/include/qt4/QtWebKit;/usr/include/qt4/QtUiTools;/usr/include/qt4/QtTest;/usr/include/qt4/QtSvg;/usr/include/qt4/QtSql;/usr/include/qt4/QtScriptTools;/usr/include/qt4/QtScript;/usr/include/qt4/QtOpenGL;/usr/include/qt4/QtNetwork;/usr/include/qt4/QtMultimedia;/usr/include/qt4/QtHelp;/usr/include/qt4/QtDesigner;/usr/include/qt4/QtDeclarative;/usr/include/qt4/QtDBus;/usr/include/qt4/QtAssistant;/usr/include/qt4/Qt3Support;/usr/include/qt4/QtGui;/usr/include/qt4/QtCore;/usr/include/qt4/Qt;/usr/share/qt4/mkspecs/default;/usr/include/qt4
 CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE:
 
 CMAKE_BINARY_DIR:

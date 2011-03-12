@@ -26,6 +26,7 @@ SET(CMAKE_C_INCLUDE_PATH
   "/usr/include/qt4/QtMultimedia"
   "/usr/include/qt4/QtHelp"
   "/usr/include/qt4/QtDesigner"
+  "/usr/include/qt4/QtDeclarative"
   "/usr/include/qt4/QtDBus"
   "/usr/include/qt4/QtAssistant"
   "/usr/include/qt4/Qt3Support"

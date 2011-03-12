@@ -1,44 +1,8 @@
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:31:22: error: frontend.h: No such file or directory
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:39: error: ‘Frontend’ has not been declared
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:39: error: ISO C++ forbids declaration of ‘Frontend’ with no type
-/home/follinge/projects/kscope-kde4/src/frontend.cpp: In function ‘int Frontend(uint, bool)’:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:39: error: only constructors take base initializers
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:49: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:49: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:50: error: ‘connect’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:53: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:53: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:57: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:57: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:59: warning: no return statement in function returning non-void
-/home/follinge/projects/kscope-kde4/src/frontend.cpp: At global scope:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:64: error: expected constructor, destructor, or type conversion before ‘::’ token
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:79: error: ‘Frontend’ is not a class or namespace
-/home/follinge/projects/kscope-kde4/src/frontend.cpp: In function ‘bool run(const QString&, const QStringList&, const QString&, bool)’:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:83: error: ‘isRunning’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:84: error: ‘m_sError’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:90: error: ‘m_nRecords’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:91: error: ‘m_bKilled’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:94: error: ‘clearArguments’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:95: error: invalid use of ‘this’ in non-member function
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:99: error: ‘setWorkingDirectory’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:102: error: ‘KProcess’ has not been declared
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:102: error: ‘KProcess’ has not been declared
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:103: error: ‘KProcess’ has not been declared
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:103: error: ‘start’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:104: error: ‘m_sError’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:108: error: ‘m_sError’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp: At global scope:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:117: error: ‘Frontend’ is not a class or namespace
-/home/follinge/projects/kscope-kde4/src/frontend.cpp: In function ‘void kill()’:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:119: error: ‘m_bKilled’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:120: error: ‘KProcess’ has not been declared
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:122: error: ‘aborted’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp: At global scope:
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:129: error: ‘Frontend’ is not a class or namespace
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:129: error: variable or field ‘addToken’ declared void
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:129: error: ‘FrontendToken’ was not declared in this scope
-/home/follinge/projects/kscope-kde4/src/frontend.cpp:129: error: ‘pToken’ was not declared in this scope
-make[2]: *** [CMakeFiles/kscope.dir/frontend.o] Error 1
+In file included from /home/follinge/projects/kscope-kde4/src/build/../ctagslist.h:34,
+                 from /home/follinge/projects/kscope-kde4/src/build/moc_ctagslist.cpp:10,
+                 from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:7:
+/home/follinge/projects/kscope-kde4/src/build/../searchlist.h:32: fatal error: qvbox.h: No such file or directory
+compilation terminated.
+make[2]: *** [CMakeFiles/kscope.dir/kscope_automoc.o] Error 1
 make[1]: *** [CMakeFiles/kscope.dir/all] Error 2
 make: *** [all] Error 2
