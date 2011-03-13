@@ -59,6 +59,8 @@ private:
 	void initMainWindow();
 	void setupActions();
 	KParts::ReadWritePart *m_part;
+   	KTextEditor::View *m_view;
+	KTextEditor::Document *m_doc;
 };
 
 	/*

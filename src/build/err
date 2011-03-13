@@ -1,5 +1,0 @@
-/home/follinge/projects/kscope-kde4/src/editorpage.cpp:46: warning: unused parameter 'pMenu'
-/home/follinge/projects/kscope-kde4/src/editorpage.cpp:190: warning: unused parameter 'sFileName'
-/home/follinge/projects/kscope-kde4/src/editorpage.cpp:281: warning: unused parameter 'nLine'
-/home/follinge/projects/kscope-kde4/src/editorpage.cpp:342: warning: unused parameter 'pPosInWord'
-/home/follinge/projects/kscope-kde4/src/editorpage.cpp:453: warning: unused parameter 'nLine'
