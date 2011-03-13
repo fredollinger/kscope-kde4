@@ -27,13 +27,10 @@
 
 #include <qfileinfo.h>
 #include <kdeversion.h>
-// #include <ktexteditor/selectioninterface.h>
-//#include <ktexteditor/viewcursorinterface.h>
-// #include <ktexteditor/popupmenuinterface.h>
-//#include <ktexteditor/editinterface.h>
-// #include <kate/document.h>
 #include "editorpage.h"
 #include "kscopeconfig.h"
+#include <KParts/MainWindow>
+#include <QtGui/QKeyEvent>
 
 /**
  * Class constructor.
@@ -761,4 +758,23 @@ void EditorPage::slotCursorPosChange()
 */
 }
 
+void EditorPage::setupActions()
+{
+	KStandardAction::quit(kapp, SLOT(quit()), actionCollection());
+	KStandardAction::open(this, SLOT(openFile()), actionCollection());
+	KStandardAction::clear(this, SLOT(clear()), actionCollection());
+}
+
+void EditorPage::clear()
+{
+	m_pDoc->clear();
+}
+
+void EditorPage::openFile()
+{
+	m_pView->document()->openUrl(KFileDialog::getOpenFileName());
+}
+
 // #include "editorpage.moc"
+
+// Sun Mar 13 19:05:00 UTC 2011

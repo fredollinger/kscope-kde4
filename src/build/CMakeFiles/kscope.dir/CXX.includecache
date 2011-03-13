@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/follinge/projects/kscope-kde4/src/build/../editormanager.h
+qwidget.h
+-
+kparts/partmanager.h
+-
+klibloader.h
+-
+ktexteditor/document.h
+-
+
 /home/follinge/projects/kscope-kde4/src/build/../editorpage4.h
 QMenu
 -
@@ -47,8 +57,14 @@ qfont.h
 /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
 moc_editorpage4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_editorpage4.cpp
+moc_editormanager.cpp
+/home/follinge/projects/kscope-kde4/src/build/moc_editormanager.cpp
 moc_kscope4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
+
+/home/follinge/projects/kscope-kde4/src/build/moc_editormanager.cpp
+../editormanager.h
+/home/follinge/projects/kscope-kde4/src/build/../editormanager.h
 
 /home/follinge/projects/kscope-kde4/src/build/moc_editorpage4.cpp
 ../editorpage4.h
@@ -57,6 +73,18 @@ moc_kscope4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
 ../kscope4.h
 /home/follinge/projects/kscope-kde4/src/build/../kscope4.h
+
+/home/follinge/projects/kscope-kde4/src/editormanager.cpp
+ktexteditor/editorchooser.h
+-
+kparts/partmanager.h
+-
+ktexteditor/document.h
+-
+editormanager.h
+/home/follinge/projects/kscope-kde4/src/editormanager.h
+kscopeconfig.h
+/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
 
 /home/follinge/projects/kscope-kde4/src/editormanager.h
 qwidget.h

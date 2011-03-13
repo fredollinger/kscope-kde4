@@ -161,6 +161,7 @@ signals:
 	void fileClosed(const QString& sPath);
 
 private:
+	void setupActions();
 	/** The tab widget holding this page. */
 	// QTabWidget* m_pParentTab;
 	

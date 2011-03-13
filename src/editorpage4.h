@@ -29,20 +29,12 @@
 #define EDITORPAGE_H
 
 #include <QMenu>
-// #include <qwidget.h>
-//#include <qhbox.h>
 #include <QWidget>
 #include <qsplitter.h>
 #include <qtabwidget.h>
-//#include <qpopupmenu.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
-//#include <ktexteditor/markinterfaceextension.h>
-// #include "ctagsfrontend.h"
-// #include "ctagslist.h"
 #include "kscopeconfig.h"
-// #include "symbolcompletion.h"
-// #include "projectbase.h"
 
 /**
  * An editor window based on the system's current editing application.
@@ -52,7 +44,7 @@
  * The widget creates an instance of the editor application, and uses its 
  * document and view objects that allow KScope to control it. A page also
  * Each page is inserted in a separate tab in the EditorTabs widget.
- * @author Elad Lahav
+ * @author Elad Lahav and Fred Ollinger
  */
 
 // class EditorPage : public QHBox, SymbolCompletion::Interface

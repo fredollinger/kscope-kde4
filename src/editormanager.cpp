@@ -58,12 +58,15 @@ EditorManager::~EditorManager()
 KTextEditor::Document* EditorManager::add()
 {
 	KTextEditor::Document* pDoc;
+	/*
 	
 	// Create the document
-	//pDoc = KTextEditor::EditorChooser::createDocument(this);
-	pDoc = KTextEditor::Document::createView(this);
+	//pDoc = KTextEditor::EditorChooser::createDocument();
+	pDoc = KTextEditor::Document();
+	//pDoc = KTextEditor::Document::createView(this);
 	addPart(pDoc, TRUE);
 
+	*/
 	return pDoc;
 }
 
@@ -86,8 +89,8 @@ void EditorManager::remove(KTextEditor::Document* pDoc)
  */
 void EditorManager::applyPrefs()
 {
-	Kate::Document::setFileChangedDialogsActivated(
-		Config().getWarnModifiedOnDisk());
+//	Kate::Document::setFileChangedDialogsActivated(
+//		Config().getWarnModifiedOnDisk());
 }
 
 // #include "editormanager.moc"

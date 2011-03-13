@@ -7,35 +7,11 @@
 #include <KTextEditor/Editor>
 #include <KTextEditor/EditorChooser>
 
-/*
-#include <KApplication>
-#include <KAction>
-#include <KLocale>
-#include <KActionCollection>
-#include <KStandardAction>
-#include <KFileDialog>
-#include <KMessageBox>
-#include <KIO/NetAccess>
-#include <KSaveFile>
-#include <QTextStream>
-#include <KXMLGUIFactory>
-*/
-
-KScope::KScope(QWidget *)
-// KScope::KScope()
-{
+KScope::KScope(QWidget *){
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 	setCentralWidget(m_view);
-	//KParts::ReadWritePart *m_part;
-	// *m_part = new KParts::ReadWritePart();
-	// setCentralWidget(m_part->widget());
-	
-	// BEGIN KSCOPE ORIG
-	QString sPath;
-
-	// END KSCOPE ORIG
 }
 
 /*
@@ -43,4 +19,4 @@ KScope::~KScope()
 {}
 */
 
-// Sun Mar 13 05:05:50 UTC 2011
+// Sun Mar 13 18:31:33 UTC 2011

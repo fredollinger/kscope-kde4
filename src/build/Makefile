@@ -176,6 +176,21 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
+editormanager.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.o
+.PHONY : editormanager.o
+
+# target to preprocess a source file
+editormanager.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.i
+.PHONY : editormanager.i
+
+# target to generate assembly for a file
+editormanager.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager.s
+.PHONY : editormanager.s
+
+# target to build an object file
 editorpage4.o:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage4.o
 .PHONY : editorpage4.o
@@ -250,6 +265,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
+	@echo "... editormanager.o"
+	@echo "... editormanager.i"
+	@echo "... editormanager.s"
 	@echo "... editorpage4.o"
 	@echo "... editorpage4.i"
 	@echo "... editorpage4.s"
