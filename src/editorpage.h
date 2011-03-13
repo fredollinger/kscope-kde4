@@ -28,8 +28,10 @@
 #ifndef EDITORPAGE_H
 #define EDITORPAGE_H
 
-#include <qwidget.h>
+#include <QMenu>
+// #include <qwidget.h>
 //#include <qhbox.h>
+#include <QWidget>
 #include <qsplitter.h>
 #include <qtabwidget.h>
 //#include <qpopupmenu.h>
@@ -40,7 +42,7 @@
 // #include "ctagslist.h"
 #include "kscopeconfig.h"
 // #include "symbolcompletion.h"
-#include "projectbase.h"
+// #include "projectbase.h"
 
 /**
  * An editor window based on the system's current editing application.
@@ -53,13 +55,17 @@
  * @author Elad Lahav
  */
 
-class EditorPage : public QHBox, SymbolCompletion::Interface
+// class EditorPage : public QHBox, SymbolCompletion::Interface
+class EditorPage : public QWidget
 {
    Q_OBJECT
 
 public:
-	EditorPage(KTextEditor::Document*, QPopupMenu*, QTabWidget* pParent = 0,
-		const char* szName = 0);
+	EditorPage(KTextEditor::Document* pDoc, QMenu* pMenu,
+	QWidget* pParent); 
+
+	//EditorPage(KTextEditor::Document*, QMenu*, QTabWidget* pParent = 0,
+		//const char* szName = 0);
 	~EditorPage();
 
 	void open(const QString&);
@@ -70,7 +76,7 @@ public:
 	void setEditorFocus();
 	void setTagListFocus();
 	void addBookmark(uint);
-	void getBookmarks(FileLocationList&);
+	// void getBookmarks(FileLocationList&);
 	
 	KTextEditor::Document* getDocument();
 	KTextEditor::View* getView();
@@ -81,7 +87,7 @@ public:
 	QString getSelection();
 	QString getSuggestedText();
 	QString getLineContents(uint);
-	void setLayout(bool bShowTagList, const SPLIT_SIZES&);	
+	// void setLayout(bool bShowTagList, const SPLIT_SIZES&);	
 	bool getCursorPos(uint&, uint&);
 	bool setCursorPos(uint, uint nCol = 1);
 	void setTabWidth(uint);
@@ -156,17 +162,17 @@ signals:
 
 private:
 	/** The tab widget holding this page. */
-	QTabWidget* m_pParentTab;
+	// QTabWidget* m_pParentTab;
 	
 	/** A Ctags process to use on the edited source file. */
-	CtagsFrontend m_ctags;
+	// CtagsFrontend m_ctags;
 	
 	/** An adjustable splitter for separating the tag list from the editor
 		part. */
 	QSplitter* m_pSplit;
 	
 	/** A list view for displaying Ctags results. */
-	CtagsList* m_pCtagsList;
+	// CtagsList* m_pCtagsList;
 	
 	/** The document part of the editor. */
 	KTextEditor::Document* m_pDoc;
@@ -196,7 +202,7 @@ private:
 	uint m_nLine;
 	
 	/** Provides symbol completion. */
-	SymbolCompletion* m_pCompletion;
+	// SymbolCompletion* m_pCompletion;
 	
 	/** Determines whether size changes in the child widgets should be
 		stored in the global configuration file. 

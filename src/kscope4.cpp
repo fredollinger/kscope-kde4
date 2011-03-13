@@ -25,8 +25,8 @@ KScope::KScope(QWidget *)
 {
 
 	//KParts::ReadWritePart *m_part;
-	*m_part = new KParts::ReadWritePart();
-	setCentralWidget(m_part->widget());
+	// *m_part = new KParts::ReadWritePart();
+	// setCentralWidget(m_part->widget());
 	
 	// BEGIN KSCOPE ORIG
 	// QString sPath;
