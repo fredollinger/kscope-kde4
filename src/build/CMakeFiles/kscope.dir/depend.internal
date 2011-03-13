@@ -210,28 +210,8 @@ CMakeFiles/kscope.dir/kscope4.o
  /home/follinge/projects/kscope-kde4/src/kscope4.cpp
  /home/follinge/projects/kscope-kde4/src/kscope4.h
  /home/follinge/projects/kscope-kde4/src/kscopeconfig.h
- /usr/include/KDE/../kaction.h
- /usr/include/KDE/../kactioncollection.h
- /usr/include/KDE/../kapplication.h
- /usr/include/KDE/../kdeversion.h
- /usr/include/KDE/../kfiledialog.h
- /usr/include/KDE/../klocale.h
- /usr/include/KDE/../kmessagebox.h
- /usr/include/KDE/../ksavefile.h
- /usr/include/KDE/../kstandardaction.h
- /usr/include/KDE/../kxmlguifactory.h
- /usr/include/KDE/KAction
- /usr/include/KDE/KActionCollection
- /usr/include/KDE/KApplication
- /usr/include/KDE/KFileDialog
- /usr/include/KDE/KIO/../../kio/netaccess.h
- /usr/include/KDE/KIO/NetAccess
- /usr/include/KDE/KLocale
- /usr/include/KDE/KMessageBox
  /usr/include/KDE/KParts/../../kparts/mainwindow.h
  /usr/include/KDE/KParts/MainWindow
- /usr/include/KDE/KSaveFile
- /usr/include/KDE/KStandardAction
  /usr/include/KDE/KTextEditor/../../ktexteditor/document.h
  /usr/include/KDE/KTextEditor/../../ktexteditor/editor.h
  /usr/include/KDE/KTextEditor/../../ktexteditor/editorchooser.h
@@ -240,17 +220,13 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/KDE/KTextEditor/Editor
  /usr/include/KDE/KTextEditor/EditorChooser
  /usr/include/KDE/KTextEditor/View
- /usr/include/KDE/KXMLGUIFactory
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
- /usr/include/qt4/QtCore/QFile
  /usr/include/qt4/QtCore/QList
  /usr/include/qt4/QtCore/QMetaType
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
- /usr/include/qt4/QtCore/QString
- /usr/include/qt4/QtCore/QTextStream
  /usr/include/qt4/QtCore/qalgorithms.h
  /usr/include/qt4/QtCore/qatomic.h
  /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -278,16 +254,12 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtCore/qatomic_x86_64.h
  /usr/include/qt4/QtCore/qbasicatomic.h
  /usr/include/qt4/QtCore/qbasictimer.h
- /usr/include/qt4/QtCore/qbuffer.h
  /usr/include/qt4/QtCore/qbytearray.h
  /usr/include/qt4/QtCore/qchar.h
  /usr/include/qt4/QtCore/qconfig.h
- /usr/include/qt4/QtCore/qcoreapplication.h
  /usr/include/qt4/QtCore/qcoreevent.h
  /usr/include/qt4/QtCore/qdatastream.h
- /usr/include/qt4/QtCore/qeventloop.h
  /usr/include/qt4/QtCore/qfeatures.h
- /usr/include/qt4/QtCore/qfile.h
  /usr/include/qt4/QtCore/qglobal.h
  /usr/include/qt4/QtCore/qhash.h
  /usr/include/qt4/QtCore/qiodevice.h
@@ -295,7 +267,6 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtCore/qline.h
  /usr/include/qt4/QtCore/qlinkedlist.h
  /usr/include/qt4/QtCore/qlist.h
- /usr/include/qt4/QtCore/qlocale.h
  /usr/include/qt4/QtCore/qmap.h
  /usr/include/qt4/QtCore/qmargins.h
  /usr/include/qt4/QtCore/qmetatype.h
@@ -305,7 +276,6 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtCore/qobjectdefs.h
  /usr/include/qt4/QtCore/qpair.h
  /usr/include/qt4/QtCore/qpoint.h
- /usr/include/qt4/QtCore/qpointer.h
  /usr/include/qt4/QtCore/qrect.h
  /usr/include/qt4/QtCore/qregexp.h
  /usr/include/qt4/QtCore/qscopedpointer.h
@@ -318,28 +288,17 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtCore/qstringbuilder.h
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
- /usr/include/qt4/QtCore/qtextcodec.h
- /usr/include/qt4/QtCore/qtextstream.h
  /usr/include/qt4/QtCore/qtimer.h
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
- /usr/include/qt4/QtGui/QApplication
- /usr/include/qt4/QtGui/QIcon
  /usr/include/qt4/QtGui/QKeyEvent
  /usr/include/qt4/QtGui/QMenu
- /usr/include/qt4/QtGui/QMessageBox
- /usr/include/qt4/QtGui/QPixmap
  /usr/include/qt4/QtGui/QWidget
- /usr/include/qt4/QtGui/QWidgetAction
- /usr/include/qt4/QtGui/QX11Info
  /usr/include/qt4/QtGui/qaction.h
  /usr/include/qt4/QtGui/qactiongroup.h
- /usr/include/qt4/QtGui/qapplication.h
  /usr/include/qt4/QtGui/qbrush.h
  /usr/include/qt4/QtGui/qcolor.h
  /usr/include/qt4/QtGui/qcursor.h
- /usr/include/qt4/QtGui/qdesktopwidget.h
- /usr/include/qt4/QtGui/qdialog.h
  /usr/include/qt4/QtGui/qdrag.h
  /usr/include/qt4/QtGui/qevent.h
  /usr/include/qt4/QtGui/qfont.h
@@ -352,7 +311,6 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtGui/qmacdefines_mac.h
  /usr/include/qt4/QtGui/qmatrix.h
  /usr/include/qt4/QtGui/qmenu.h
- /usr/include/qt4/QtGui/qmessagebox.h
  /usr/include/qt4/QtGui/qmime.h
  /usr/include/qt4/QtGui/qpaintdevice.h
  /usr/include/qt4/QtGui/qpainterpath.h
@@ -365,13 +323,10 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtGui/qsplitter.h
  /usr/include/qt4/QtGui/qtabwidget.h
  /usr/include/qt4/QtGui/qtransform.h
- /usr/include/qt4/QtGui/qtransportauth_qws.h
  /usr/include/qt4/QtGui/qwidget.h
- /usr/include/qt4/QtGui/qwidgetaction.h
  /usr/include/qt4/QtGui/qwindowdefs.h
  /usr/include/qt4/QtGui/qwindowdefs_win.h
  /usr/include/qt4/QtGui/qwmatrix.h
- /usr/include/qt4/QtGui/qx11info_x11.h
 CMakeFiles/kscope.dir/kscope_automoc.o
  /home/follinge/projects/kscope-kde4/src/build/../editormanager.h
  /home/follinge/projects/kscope-kde4/src/build/../editorpage4.h

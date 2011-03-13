@@ -27,11 +27,6 @@
 
 #include <qfileinfo.h>
 #include <kdeversion.h>
-// #include <ktexteditor/selectioninterface.h>
-//#include <ktexteditor/viewcursorinterface.h>
-// #include <ktexteditor/popupmenuinterface.h>
-//#include <ktexteditor/editinterface.h>
-// #include <kate/document.h>
 #include "editorpage4.h"
 #include "kscopeconfig.h"
 
@@ -55,8 +50,6 @@ EditorPage::EditorPage(KTextEditor::Document* pDoc, QMenu* pMenu,
 	m_bSaveNewSizes(false)
 {
 	KTextEditor::View* pMenuIf;
-	// KTextEditor::PopupMenuInterface* pMenuIf;
-	// KTextEditor::ViewCursorInterface* pCursorIf;
 	
 	pMenuIf = dynamic_cast<KTextEditor::View*>(m_pView);
 

@@ -12,6 +12,10 @@ KScope::KScope(QWidget *){
 	m_doc = editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 	setCentralWidget(m_view);
+
+	// Create the initial GUI (no active part)
+	setXMLFile("kscopeui.rc");
+	createShellGUI();
 }
 
 /*
