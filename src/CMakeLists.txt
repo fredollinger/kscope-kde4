@@ -10,7 +10,7 @@ include_directories(${KDE4_INCLUDES})
 #k3wrap.cpp
 #kscopeconfig.cpp
 set(kscope_SRCS
-editorpage.cpp
+editorpage4.cpp
 kscope4.cpp
 main.cpp
 )

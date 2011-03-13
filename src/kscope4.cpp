@@ -1,6 +1,7 @@
 #include <kparts/part.h>
 #include "kscope4.h"
 #include "editormanager.h"
+#include "editorpage4.h"
 #include <KTextEditor/Document>
 #include <KTextEditor/View>
 #include <KTextEditor/Editor>
@@ -32,7 +33,7 @@ KScope::KScope(QWidget *)
 	// setCentralWidget(m_part->widget());
 	
 	// BEGIN KSCOPE ORIG
-	// QString sPath;
+	QString sPath;
 
 	// END KSCOPE ORIG
 }
@@ -42,5 +43,4 @@ KScope::~KScope()
 {}
 */
 
-// Sun Feb  6 03:14:42 UTC 2011
-
+// Sun Mar 13 05:05:50 UTC 2011

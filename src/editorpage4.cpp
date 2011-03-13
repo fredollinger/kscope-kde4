@@ -32,7 +32,7 @@
 // #include <ktexteditor/popupmenuinterface.h>
 //#include <ktexteditor/editinterface.h>
 // #include <kate/document.h>
-#include "editorpage.h"
+#include "editorpage4.h"
 #include "kscopeconfig.h"
 
 /**

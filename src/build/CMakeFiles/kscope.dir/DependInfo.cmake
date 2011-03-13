@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/follinge/projects/kscope-kde4/src/editorpage.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/editorpage.o"
+  "/home/follinge/projects/kscope-kde4/src/editorpage4.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/editorpage4.o"
   "/home/follinge/projects/kscope-kde4/src/kscope4.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/kscope4.o"
   "/home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/kscope_automoc.o"
   "/home/follinge/projects/kscope-kde4/src/main.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/main.o"

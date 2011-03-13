@@ -233,4 +233,5 @@ private:
 	friend class KScopeActions;
 	*/
 //};
+
 #endif

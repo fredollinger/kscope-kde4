@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/follinge/projects/kscope-kde4/src/build/../editorpage.h
+/home/follinge/projects/kscope-kde4/src/build/../editorpage4.h
 QMenu
 -
 QWidget
@@ -45,14 +45,14 @@ qfont.h
 -
 
 /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
-moc_editorpage.cpp
-/home/follinge/projects/kscope-kde4/src/build/moc_editorpage.cpp
+moc_editorpage4.cpp
+/home/follinge/projects/kscope-kde4/src/build/moc_editorpage4.cpp
 moc_kscope4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
 
-/home/follinge/projects/kscope-kde4/src/build/moc_editorpage.cpp
-../editorpage.h
-/home/follinge/projects/kscope-kde4/src/build/../editorpage.h
+/home/follinge/projects/kscope-kde4/src/build/moc_editorpage4.cpp
+../editorpage4.h
+/home/follinge/projects/kscope-kde4/src/build/../editorpage4.h
 
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
 ../kscope4.h
@@ -68,6 +68,32 @@ klibloader.h
 ktexteditor/document.h
 -
 
+/home/follinge/projects/kscope-kde4/src/editorpage4.cpp
+qfileinfo.h
+-
+kdeversion.h
+-
+editorpage4.h
+/home/follinge/projects/kscope-kde4/src/editorpage4.h
+kscopeconfig.h
+/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
+
+/home/follinge/projects/kscope-kde4/src/editorpage4.h
+QMenu
+-
+QWidget
+-
+qsplitter.h
+-
+qtabwidget.h
+-
+ktexteditor/document.h
+-
+ktexteditor/view.h
+-
+kscopeconfig.h
+/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
+
 /home/follinge/projects/kscope-kde4/src/kscope4.cpp
 kparts/part.h
 -
@@ -75,11 +101,15 @@ kscope4.h
 /home/follinge/projects/kscope-kde4/src/kscope4.h
 editormanager.h
 /home/follinge/projects/kscope-kde4/src/editormanager.h
+editorpage4.h
+/home/follinge/projects/kscope-kde4/src/editorpage4.h
 KTextEditor/Document
 -
 KTextEditor/View
 -
 KTextEditor/Editor
+-
+KTextEditor/EditorChooser
 -
 KApplication
 -
@@ -103,8 +133,6 @@ QTextStream
 -
 KXMLGUIFactory
 -
-KTextEditor/EditorChooser
--
 
 /home/follinge/projects/kscope-kde4/src/kscope4.h
 KParts/MainWindow
@@ -118,36 +146,14 @@ kcmdlineargs.h
 kparts/part.h
 -
 
-/home/follinge/projects/kscope-kde4/src/main.cpp
-KAboutData
+/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
+qobject.h
 -
-KCmdLineArgs
+qstringlist.h
 -
-kcmdlineargs.h
+qcolor.h
 -
-kaboutdata.h
--
-klocale.h
--
-KApplication
--
-KMessageBox
--
-KLocale
--
-k3dockwidget.h
--
-kscope4.h
-/home/follinge/projects/kscope-kde4/src/kscope4.h
-
-/usr/include/KDE/../kaboutdata.h
-kdecore_export.h
--
-klocale.h
--
-QtCore/QString
--
-QtCore/QSharedDataPointer
+qfont.h
 -
 
 /usr/include/KDE/../kaction.h
@@ -194,14 +200,6 @@ kcomponentdata.h
 kglobal.h
 -
 QtGui/QX11Info
--
-
-/usr/include/KDE/../kcmdlineargs.h
-kdecore_export.h
--
-QtCore/QBool
--
-klocale.h
 -
 
 /usr/include/KDE/../kdeversion.h
@@ -264,10 +262,6 @@ kcomponentdata.h
 QtCore/QObject
 -
 
-/usr/include/KDE/KAboutData
-../kaboutdata.h
-/usr/include/KDE/../kaboutdata.h
-
 /usr/include/KDE/KAction
 ../kaction.h
 /usr/include/KDE/../kaction.h
@@ -279,10 +273,6 @@ QtCore/QObject
 /usr/include/KDE/KApplication
 ../kapplication.h
 /usr/include/KDE/../kapplication.h
-
-/usr/include/KDE/KCmdLineArgs
-../kcmdlineargs.h
-/usr/include/KDE/../kcmdlineargs.h
 
 /usr/include/KDE/KFileDialog
 ../kfiledialog.h
@@ -414,10 +404,6 @@ iterator
 list
 -
 
-/usr/include/qt4/QtCore/QBool
-qglobal.h
-/usr/include/qt4/QtCore/qglobal.h
-
 /usr/include/qt4/QtCore/QFile
 qfile.h
 /usr/include/qt4/QtCore/qfile.h
@@ -441,10 +427,6 @@ qpoint.h
 /usr/include/qt4/QtCore/QPointF
 qpoint.h
 /usr/include/qt4/QtCore/qpoint.h
-
-/usr/include/qt4/QtCore/QSharedDataPointer
-qshareddata.h
-/usr/include/qt4/QtCore/qshareddata.h
 
 /usr/include/qt4/QtCore/QString
 qstring.h
@@ -658,6 +640,14 @@ QtCore/qiodevice.h
 QtCore/qstring.h
 -
 stdio.h
+-
+
+/usr/include/qt4/QtCore/qfileinfo.h
+QtCore/qfile.h
+-
+QtCore/qlist.h
+-
+QtCore/qscopedpointer.h
 -
 
 /usr/include/qt4/QtCore/qglobal.h

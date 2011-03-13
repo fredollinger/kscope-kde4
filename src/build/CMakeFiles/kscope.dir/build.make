@@ -70,29 +70,29 @@ CMakeFiles/kscope.dir/kscope_automoc.o.provides: CMakeFiles/kscope.dir/kscope_au
 CMakeFiles/kscope.dir/kscope_automoc.o.provides.build: CMakeFiles/kscope.dir/kscope_automoc.o
 .PHONY : CMakeFiles/kscope.dir/kscope_automoc.o.provides.build
 
-CMakeFiles/kscope.dir/editorpage.o: CMakeFiles/kscope.dir/flags.make
-CMakeFiles/kscope.dir/editorpage.o: ../editorpage.cpp
+CMakeFiles/kscope.dir/editorpage4.o: CMakeFiles/kscope.dir/flags.make
+CMakeFiles/kscope.dir/editorpage4.o: ../editorpage4.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/editorpage.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/editorpage.o -c /home/follinge/projects/kscope-kde4/src/editorpage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/editorpage4.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/editorpage4.o -c /home/follinge/projects/kscope-kde4/src/editorpage4.cpp
 
-CMakeFiles/kscope.dir/editorpage.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kscope.dir/editorpage.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/follinge/projects/kscope-kde4/src/editorpage.cpp > CMakeFiles/kscope.dir/editorpage.i
+CMakeFiles/kscope.dir/editorpage4.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kscope.dir/editorpage4.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/follinge/projects/kscope-kde4/src/editorpage4.cpp > CMakeFiles/kscope.dir/editorpage4.i
 
-CMakeFiles/kscope.dir/editorpage.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kscope.dir/editorpage.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/follinge/projects/kscope-kde4/src/editorpage.cpp -o CMakeFiles/kscope.dir/editorpage.s
+CMakeFiles/kscope.dir/editorpage4.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kscope.dir/editorpage4.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/follinge/projects/kscope-kde4/src/editorpage4.cpp -o CMakeFiles/kscope.dir/editorpage4.s
 
-CMakeFiles/kscope.dir/editorpage.o.requires:
-.PHONY : CMakeFiles/kscope.dir/editorpage.o.requires
+CMakeFiles/kscope.dir/editorpage4.o.requires:
+.PHONY : CMakeFiles/kscope.dir/editorpage4.o.requires
 
-CMakeFiles/kscope.dir/editorpage.o.provides: CMakeFiles/kscope.dir/editorpage.o.requires
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage.o.provides.build
-.PHONY : CMakeFiles/kscope.dir/editorpage.o.provides
+CMakeFiles/kscope.dir/editorpage4.o.provides: CMakeFiles/kscope.dir/editorpage4.o.requires
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editorpage4.o.provides.build
+.PHONY : CMakeFiles/kscope.dir/editorpage4.o.provides
 
-CMakeFiles/kscope.dir/editorpage.o.provides.build: CMakeFiles/kscope.dir/editorpage.o
-.PHONY : CMakeFiles/kscope.dir/editorpage.o.provides.build
+CMakeFiles/kscope.dir/editorpage4.o.provides.build: CMakeFiles/kscope.dir/editorpage4.o
+.PHONY : CMakeFiles/kscope.dir/editorpage4.o.provides.build
 
 CMakeFiles/kscope.dir/kscope4.o: CMakeFiles/kscope.dir/flags.make
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.cpp
@@ -145,7 +145,7 @@ CMakeFiles/kscope.dir/main.o.provides.build: CMakeFiles/kscope.dir/main.o
 # Object files for target kscope
 kscope_OBJECTS = \
 "CMakeFiles/kscope.dir/kscope_automoc.o" \
-"CMakeFiles/kscope.dir/editorpage.o" \
+"CMakeFiles/kscope.dir/editorpage4.o" \
 "CMakeFiles/kscope.dir/kscope4.o" \
 "CMakeFiles/kscope.dir/main.o"
 
@@ -153,7 +153,7 @@ kscope_OBJECTS = \
 kscope_EXTERNAL_OBJECTS =
 
 kscope: CMakeFiles/kscope.dir/kscope_automoc.o
-kscope: CMakeFiles/kscope.dir/editorpage.o
+kscope: CMakeFiles/kscope.dir/editorpage4.o
 kscope: CMakeFiles/kscope.dir/kscope4.o
 kscope: CMakeFiles/kscope.dir/main.o
 kscope: /usr/lib/libkdeui.so.5.5.0
@@ -184,7 +184,7 @@ CMakeFiles/kscope.dir/build: kscope
 .PHONY : CMakeFiles/kscope.dir/build
 
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/kscope_automoc.o.requires
-CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/editorpage.o.requires
+CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/editorpage4.o.requires
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/kscope4.o.requires
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/main.o.requires
 .PHONY : CMakeFiles/kscope.dir/requires
