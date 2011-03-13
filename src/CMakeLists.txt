@@ -8,9 +8,9 @@ include_directories(${KDE4_INCLUDES})
 #ctagslist.cpp
 #k3wrap.cpp
 #kscopeconfig.cpp
+#editormanager.cpp
+#editorpage4.cpp
 set(kscope_SRCS
-editormanager.cpp
-editorpage4.cpp
 kscope4.cpp
 main.cpp
 )

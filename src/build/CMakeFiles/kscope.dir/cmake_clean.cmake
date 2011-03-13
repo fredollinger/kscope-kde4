@@ -2,8 +2,6 @@ FILE(REMOVE_RECURSE
   "kscope_automoc.cpp"
   "kscope.shell"
   "CMakeFiles/kscope.dir/kscope_automoc.o"
-  "CMakeFiles/kscope.dir/editormanager.o"
-  "CMakeFiles/kscope.dir/editorpage4.o"
   "CMakeFiles/kscope.dir/kscope4.o"
   "CMakeFiles/kscope.dir/main.o"
   "kscope.pdb"

@@ -2,6 +2,7 @@
 <kpartgui name="kscope">
 <MenuBar>
 	<Menu name="file"><text>&amp;File</text>
+		<Action name="file_open"/>
 		<Merge/>
 	</Menu>
 	<Menu name="edit"><text>&amp;Edit</text>

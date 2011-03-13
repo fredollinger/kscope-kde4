@@ -763,6 +763,15 @@ void EditorPage::setupActions()
 	KStandardAction::quit(kapp, SLOT(quit()), actionCollection());
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
 	KStandardAction::clear(this, SLOT(clear()), actionCollection());
+
+  	KAction* openAction = new KAction(this);
+  	openAction->setText(i18n("&Open"));
+  	openAction->setIcon(KIcon("document-new"));
+  	openAction->setShortcut(Qt::CTRL + Qt::Key_O);
+  	actionCollection()->addAction("open", openAction);
+  	connect(openAction, SIGNAL(triggered(bool)),
+       	   textArea, SLOT(openFile()));
+
 }
 
 void EditorPage::clear()

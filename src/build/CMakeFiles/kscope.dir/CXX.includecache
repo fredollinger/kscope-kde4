@@ -6,51 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/follinge/projects/kscope-kde4/src/editormanager.h
-qwidget.h
--
-kparts/partmanager.h
--
-klibloader.h
--
-ktexteditor/document.h
--
-
-/home/follinge/projects/kscope-kde4/src/editorpage4.cpp
-qfileinfo.h
--
-kdeversion.h
--
-editorpage4.h
-/home/follinge/projects/kscope-kde4/src/editorpage4.h
-kscopeconfig.h
-/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
-
-/home/follinge/projects/kscope-kde4/src/editorpage4.h
-QMenu
--
-QWidget
--
-qsplitter.h
--
-qtabwidget.h
--
-ktexteditor/document.h
--
-ktexteditor/view.h
--
-kscopeconfig.h
-/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
-
 /home/follinge/projects/kscope-kde4/src/kscope4.cpp
 kparts/part.h
 -
 kscope4.h
 /home/follinge/projects/kscope-kde4/src/kscope4.h
-editormanager.h
-/home/follinge/projects/kscope-kde4/src/editormanager.h
-editorpage4.h
-/home/follinge/projects/kscope-kde4/src/editorpage4.h
+KStandardAction
+-
 KTextEditor/Document
 -
 KTextEditor/View
@@ -58,6 +20,8 @@ KTextEditor/View
 KTextEditor/Editor
 -
 KTextEditor/EditorChooser
+-
+KFileDialog
 -
 
 /home/follinge/projects/kscope-kde4/src/kscope4.h
@@ -72,15 +36,27 @@ kcmdlineargs.h
 kparts/part.h
 -
 
-/home/follinge/projects/kscope-kde4/src/kscopeconfig.h
-qobject.h
+/usr/include/KDE/../kfiledialog.h
+kdialog.h
 -
-qstringlist.h
+kfile.h
 -
-qcolor.h
+kurl.h
 -
-qfont.h
+kmimetype.h
 -
+
+/usr/include/KDE/../kstandardaction.h
+kdeui_export.h
+-
+kstandardshortcut.h
+-
+QtCore/QList
+-
+
+/usr/include/KDE/KFileDialog
+../kfiledialog.h
+/usr/include/KDE/../kfiledialog.h
 
 /usr/include/KDE/KParts/../../kparts/mainwindow.h
 kaction.h
@@ -93,6 +69,10 @@ kparts/part.h
 /usr/include/KDE/KParts/MainWindow
 ../../kparts/mainwindow.h
 /usr/include/KDE/KParts/../../kparts/mainwindow.h
+
+/usr/include/KDE/KStandardAction
+../kstandardaction.h
+/usr/include/KDE/../kstandardaction.h
 
 /usr/include/KDE/KTextEditor/../../ktexteditor/document.h
 ktexteditor/ktexteditor_export.h
@@ -368,22 +348,6 @@ QtCore/qglobal.h
 
 /usr/include/qt4/QtCore/qfeatures.h
 
-/usr/include/qt4/QtCore/qfile.h
-QtCore/qiodevice.h
--
-QtCore/qstring.h
--
-stdio.h
--
-
-/usr/include/qt4/QtCore/qfileinfo.h
-QtCore/qfile.h
--
-QtCore/qlist.h
--
-QtCore/qscopedpointer.h
--
-
 /usr/include/qt4/QtCore/qglobal.h
 stddef.h
 -
@@ -658,31 +622,9 @@ QtCore/QPoint
 qevent.h
 /usr/include/qt4/QtGui/qevent.h
 
-/usr/include/qt4/QtGui/QMenu
-qmenu.h
-/usr/include/qt4/QtGui/qmenu.h
-
 /usr/include/qt4/QtGui/QWidget
 qwidget.h
 /usr/include/qt4/QtGui/qwidget.h
-
-/usr/include/qt4/QtGui/qaction.h
-QtGui/qkeysequence.h
--
-QtCore/qstring.h
--
-QtGui/qwidget.h
--
-QtCore/qvariant.h
--
-QtGui/qicon.h
--
-QtGui/qactiongroup.h
--
-
-/usr/include/qt4/QtGui/qactiongroup.h
-QtGui/qaction.h
--
 
 /usr/include/qt4/QtGui/qbrush.h
 QtCore/qpair.h
@@ -770,20 +712,6 @@ QtCore/qsharedpointer.h
 QtCore/qrect.h
 -
 
-/usr/include/qt4/QtGui/qframe.h
-QtGui/qwidget.h
--
-
-/usr/include/qt4/QtGui/qicon.h
-QtCore/qglobal.h
--
-QtCore/qsize.h
--
-QtCore/qlist.h
--
-QtGui/qpixmap.h
--
-
 /usr/include/qt4/QtGui/qimage.h
 QtGui/qtransform.h
 -
@@ -824,18 +752,6 @@ QtCore/qpoint.h
 QtCore/qrect.h
 -
 QtGui/qwmatrix.h
--
-
-/usr/include/qt4/QtGui/qmenu.h
-QtGui/qwidget.h
--
-QtCore/qstring.h
--
-QtGui/qicon.h
--
-QtGui/qaction.h
--
-QtGui/qpixmap.h
 -
 
 /usr/include/qt4/QtGui/qmime.h
@@ -912,18 +828,6 @@ QtCore/qglobal.h
 
 /usr/include/qt4/QtGui/qsizepolicy.h
 QtCore/qobject.h
--
-
-/usr/include/qt4/QtGui/qsplitter.h
-QtGui/qframe.h
--
-QtGui/qsizepolicy.h
--
-
-/usr/include/qt4/QtGui/qtabwidget.h
-QtGui/qwidget.h
--
-QtGui/qicon.h
 -
 
 /usr/include/qt4/QtGui/qtransform.h

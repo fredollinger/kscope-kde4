@@ -1,7 +1,0 @@
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp: In member function 'KTextEditor::Document* EditorManager::add()':
-/home/follinge/projects/kscope-kde4/src/editormanager.cpp:70: warning: 'pDoc' is used uninitialized in this function
-/home/follinge/projects/kscope-kde4/src/editorpage4.cpp:45: warning: unused parameter 'pMenu'
-/home/follinge/projects/kscope-kde4/src/editorpage4.cpp:191: warning: unused parameter 'sFileName'
-/home/follinge/projects/kscope-kde4/src/editorpage4.cpp:282: warning: unused parameter 'nLine'
-/home/follinge/projects/kscope-kde4/src/editorpage4.cpp:343: warning: unused parameter 'pPosInWord'
-/home/follinge/projects/kscope-kde4/src/editorpage4.cpp:454: warning: unused parameter 'nLine'

@@ -56,7 +56,7 @@ CMAKE_BINARY_DIR = /home/follinge/projects/kscope-kde4/src/build
 CMakeFiles/kscope.dir/all: CMakeFiles/kscope_automoc.dir/all
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/depend
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles  1 2 3 4 5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles  1 2 3
 	@echo "Built target kscope"
 .PHONY : CMakeFiles/kscope.dir/all
 
@@ -66,7 +66,7 @@ all: CMakeFiles/kscope.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/kscope.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/kscope.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/follinge/projects/kscope-kde4/src/build/CMakeFiles 0
 .PHONY : CMakeFiles/kscope.dir/rule
