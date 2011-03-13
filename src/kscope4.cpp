@@ -6,6 +6,7 @@
 #include <KTextEditor/View>
 #include <KTextEditor/Editor>
 #include <KTextEditor/EditorChooser>
+#include <KXMLGUIFactory>
 #include <KFileDialog>
 
 KScope::KScope(QWidget *){
@@ -14,9 +15,12 @@ KScope::KScope(QWidget *){
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 	setCentralWidget(m_view);
 
+	setupActions();
+
 	// Create the initial GUI (no active part)
 	setXMLFile("kscopeui.rc");
 	createShellGUI();
+	guiFactory()->addClient(m_view);
 }
 
 void KScope::setupActions()
