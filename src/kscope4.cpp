@@ -26,16 +26,18 @@ KScope::KScope(QWidget *){
 void KScope::setupActions()
 {
 	// KStandardAction::quit(app, SLOT(quit()), actionCollection());
-	// KStandardAction::open(this, SLOT(open()), actionCollection());
+	KStandardAction::open(this, SLOT(openFile()), actionCollection());
 	// KStandardAction::clear(this, SLOT(clear()), actionCollection());
 
+	/*
   	KAction* openAction = new KAction(this);
   	openAction->setText(i18n("&Open"));
   	openAction->setIcon(KIcon("document-new"));
   	openAction->setShortcut(Qt::CTRL + Qt::Key_O);
   	actionCollection()->addAction("openFile", openAction);
   	connect(openAction, SIGNAL(triggered(bool)),
-       	   m_view, SLOT(openFile()));
+       	   this, SLOT(openFile()));
+	*/
 }
 
 void KScope::openFile()

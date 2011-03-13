@@ -4,8 +4,11 @@
 CMakeFiles/kscope.dir/kscope4.o
  /home/follinge/projects/kscope-kde4/src/kscope4.cpp
  /home/follinge/projects/kscope-kde4/src/kscope4.h
+ /usr/include/KDE/../kactioncollection.h
  /usr/include/KDE/../kfiledialog.h
  /usr/include/KDE/../kstandardaction.h
+ /usr/include/KDE/../kxmlguifactory.h
+ /usr/include/KDE/KActionCollection
  /usr/include/KDE/KFileDialog
  /usr/include/KDE/KParts/../../kparts/mainwindow.h
  /usr/include/KDE/KParts/MainWindow
@@ -18,6 +21,7 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/KDE/KTextEditor/Editor
  /usr/include/KDE/KTextEditor/EditorChooser
  /usr/include/KDE/KTextEditor/View
+ /usr/include/KDE/KXMLGUIFactory
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QList

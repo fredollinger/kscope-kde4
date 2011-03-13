@@ -3,8 +3,11 @@
 
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.cpp
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kactioncollection.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kfiledialog.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kstandardaction.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kxmlguifactory.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KActionCollection
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KFileDialog
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KParts/../../kparts/mainwindow.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KParts/MainWindow
@@ -17,6 +20,7 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/Document
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/Editor
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/EditorChooser
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/View
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KXMLGUIFactory
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/Qt3Support/q3cstring.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/QList
