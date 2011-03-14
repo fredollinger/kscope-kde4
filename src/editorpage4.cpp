@@ -1,6 +1,7 @@
 /***************************************************************************
  *
  * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
+ * Copyright (C) 2011 Elad Lahav (follinge@gmail.com)
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -29,6 +30,7 @@
 #include <kdeversion.h>
 #include "editorpage4.h"
 #include "kscopeconfig.h"
+#include <QTabWidget>
 
 /**
  * Class constructor.
@@ -38,8 +40,8 @@
  * @param	szName	The widget's name
  */
 EditorPage::EditorPage(KTextEditor::Document* pDoc, QMenu* pMenu,
-	QWidget* pParent) : QWidget(pParent),
-	//m_pParentTab(pParent),
+	QTabWidget* pParent) : QWidget(pParent),
+	// m_pParentTab(pParent),
 	m_pDoc(pDoc),
 	m_bOpen(false),
 	m_bNewFile(false),
@@ -62,13 +64,13 @@ EditorPage::EditorPage(KTextEditor::Document* pDoc, QMenu* pMenu,
 		m_pDoc->setReadWrite(false);
 	*/
 	
-	/*
 	// Create the child widgets
 	m_pSplit = new QSplitter(this);
+	m_pSplit->setResizeMode(m_pCtagsList, QSplitter::KeepSize);
 	// m_pCtagsList = new CtagsList(m_pSplit);
 	m_pView = m_pDoc->createView(m_pSplit);
-	// m_pSplit->setResizeMode(m_pCtagsList, QSplitter::KeepSize);
 	
+	/*
 	// Perform tasks only when the document has been loaded completely
 	connect(m_pDoc, SIGNAL(completed()), this, SLOT(slotFileOpened()));
 	

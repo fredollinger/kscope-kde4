@@ -1,6 +1,7 @@
 /***************************************************************************
  *
  * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
+ * Copyright (C) 2011 Fred Ollinger (follinge@gmail.com)
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -28,6 +29,7 @@
 #ifndef EDITORPAGE_H
 #define EDITORPAGE_H
 
+#include <QTabWidget>
 #include <QMenu>
 #include <QWidget>
 #include <qsplitter.h>
@@ -54,7 +56,7 @@ class EditorPage : public QWidget
 
 public:
 	EditorPage(KTextEditor::Document* pDoc, QMenu* pMenu,
-	QWidget* pParent); 
+	QTabWidget* pParent); 
 
 	//EditorPage(KTextEditor::Document*, QMenu*, QTabWidget* pParent = 0,
 		//const char* szName = 0);
@@ -154,7 +156,7 @@ signals:
 
 private:
 	/** The tab widget holding this page. */
-	// QTabWidget* m_pParentTab;
+	QTabWidget* m_pParentTab;
 	
 	/** A Ctags process to use on the edited source file. */
 	// CtagsFrontend m_ctags;

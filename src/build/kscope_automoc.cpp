@@ -2,3 +2,4 @@
 -D_BSD_SOURCE
 */
 #include "moc_kscope4.cpp"
+#include "moc_editormanager4.cpp"

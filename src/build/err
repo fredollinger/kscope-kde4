@@ -1,0 +1,8 @@
+In file included from /home/follinge/projects/kscope-kde4/src/build/moc_editormanager4.cpp:10,
+                 from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:5:
+/home/follinge/projects/kscope-kde4/src/build/../editormanager4.h:55: error: ISO C++ forbids declaration of 'EditorChooser' with no type
+/home/follinge/projects/kscope-kde4/src/build/../editormanager4.h:55: error: invalid use of '::'
+/home/follinge/projects/kscope-kde4/src/build/../editormanager4.h:55: error: expected ';' before '*' token
+make[2]: *** [CMakeFiles/kscope.dir/kscope_automoc.o] Error 1
+make[1]: *** [CMakeFiles/kscope.dir/all] Error 2
+make: *** [all] Error 2

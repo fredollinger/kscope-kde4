@@ -1,5 +1,5 @@
 #include <kparts/part.h>
-#include "kscope4.h"
+
 #include <KStandardAction>
 #include <KActionCollection>
 #include <KTextEditor/Document>
@@ -8,6 +8,9 @@
 #include <KTextEditor/EditorChooser>
 #include <KXMLGUIFactory>
 #include <KFileDialog>
+
+#include "editormanager4.h"
+#include "kscope4.h"
 
 KScope::KScope(QWidget *){
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
@@ -21,6 +24,11 @@ KScope::KScope(QWidget *){
 	setXMLFile("kscopeui.rc");
 	createShellGUI();
 	guiFactory()->addClient(m_view);
+
+	// Create control objects
+	// m_pProjMgr = new ProjectManager();
+	// m_pEditMgr = new EditorManager(this);
+	// m_pCallTreeMgr = new CallTreeManager(this);
 }
 
 void KScope::setupActions()
