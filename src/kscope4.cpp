@@ -33,19 +33,7 @@ KScope::KScope(QWidget *){
 
 void KScope::setupActions()
 {
-	// KStandardAction::quit(app, SLOT(quit()), actionCollection());
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
-	// KStandardAction::clear(this, SLOT(clear()), actionCollection());
-
-	/*
-  	KAction* openAction = new KAction(this);
-  	openAction->setText(i18n("&Open"));
-  	openAction->setIcon(KIcon("document-new"));
-  	openAction->setShortcut(Qt::CTRL + Qt::Key_O);
-  	actionCollection()->addAction("openFile", openAction);
-  	connect(openAction, SIGNAL(triggered(bool)),
-       	   this, SLOT(openFile()));
-	*/
 }
 
 void KScope::openFile()
@@ -53,9 +41,23 @@ void KScope::openFile()
 	m_view->document()->openUrl(KFileDialog::getOpenFileName());	
 }
 
+/**
+ * Starts a shell script to ensure that Cscope is properly installed and to
+ * extract the supported command-line arguments. 
+ */
 /*
-KScope::~KScope()
-{}
+void KScope::verifyCscope()
+{
+	CscopeVerifier* pVer;
+	
+	statusBar()->message(i18n("Verifying Cscope installation..."));
+	
+	pVer = new CscopeVerifier();
+	connect(pVer, SIGNAL(done(bool, uint)), this,
+		SLOT(slotCscopeVerified(bool, uint)));
+	
+	pVer->verify();
+}
 */
 
-// Sun Mar 13 18:31:33 UTC 2011
+// Sat Mar 19 23:50:42 UTC 2011

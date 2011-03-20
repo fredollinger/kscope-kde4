@@ -1,8 +1,11 @@
-In file included from /home/follinge/projects/kscope-kde4/src/build/moc_editormanager4.cpp:10,
-                 from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:5:
-/home/follinge/projects/kscope-kde4/src/build/../editormanager4.h:55: error: ISO C++ forbids declaration of 'EditorChooser' with no type
-/home/follinge/projects/kscope-kde4/src/build/../editormanager4.h:55: error: invalid use of '::'
-/home/follinge/projects/kscope-kde4/src/build/../editormanager4.h:55: error: expected ';' before '*' token
-make[2]: *** [CMakeFiles/kscope.dir/kscope_automoc.o] Error 1
-make[1]: *** [CMakeFiles/kscope.dir/all] Error 2
-make: *** [all] Error 2
+In file included from /home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:34:
+/home/follinge/projects/kscope-kde4/src/frontend.h:84: warning: 'virtual bool Frontend::run(const QString&, const QStringList&, const QString&, bool)' was hidden
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.h:129: warning:   by 'bool CscopeFrontend::run(const QStringList&)'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp: In member function 'virtual Frontend::ParseResult CscopeFrontend::parseStdout(QString&, Frontend::ParserDelim)':
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:202: warning: unused variable 'nFiles'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:202: warning: unused variable 'nTotal'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:202: warning: unused variable 'nRecords'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp: At global scope:
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:199: warning: unused parameter 'sToken'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:372: warning: unused parameter 'nType'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:372: warning: unused parameter 'sResult'

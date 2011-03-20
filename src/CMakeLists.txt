@@ -3,14 +3,15 @@ project(kscope)
 find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
-#frontend.cpp
 #ctagsfrontend.cpp
 #ctagslist.cpp
 #k3wrap.cpp
 #kscopeconfig.cpp
 #editorpage4.cpp
+#editormanager4.cpp
 set(kscope_SRCS
-editormanager4.cpp
+frontend.cpp
+cscopefrontend.cpp
 kscope4.cpp
 main.cpp
 )

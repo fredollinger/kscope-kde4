@@ -80,30 +80,33 @@ bool Frontend::run(const QString& sName, const QStringList& slArgs,
 	const QString& sWorkDir, bool bBlock)
 {
 	// Cannot start if another controlled process is currently running
+	/*
 	if (isRunning()) {
 		m_sError = i18n("Cannot restart while another process is still "
 			"running");
 		return false;
 	}
+	*/
 
 	// Reset variables
 	m_nRecords = 0;
 	m_bKilled = false;
 	
 	// Setup the command-line arguments
-	clearArguments();
+	// clearArguments();
 	*this << slArgs;
 	
 	// Set the working directory, if requested
 	if (!sWorkDir.isEmpty())
 		setWorkingDirectory(sWorkDir);
 
-	// Execute the child process
-	if (!start(bBlock ? KProcess::Block : KProcess::NotifyOnExit,
-		KProcess::All)) {
-		m_sError = sName + i18n(": Failed to start process");
+	/* Execute the child process
+	//if (!start(bBlock ? KProcess::Block : KProcess::NotifyOnExit,
+	//	KProcess::All)) {
+	m_sError = sName + i18n(": Failed to start process");
 		return false;
-	}
+	} */
+	start();
 	
 	m_sError = i18n("No error");
 	return true;
@@ -358,7 +361,7 @@ void Frontend::slotReadStderr(KProcess*, char* pBuffer, int nSize)
 	if (m_bKilled)
 		return;
 
-	sBuf.setLatin1(pBuffer, nSize);
+	// sBuf.setLatin1(pBuffer, nSize);
 	parseStderr(sBuf);
 }
 

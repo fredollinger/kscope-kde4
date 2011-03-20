@@ -57,6 +57,7 @@ public:
 	void open(const QString&);
 	void save();
 	bool close(bool bForce = false);
+	void verifyCscope();
 
 private:
 	void initMainWindow();

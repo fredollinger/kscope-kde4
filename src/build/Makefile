@@ -176,19 +176,34 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
-editormanager4.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager4.o
-.PHONY : editormanager4.o
+cscopefrontend.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend.o
+.PHONY : cscopefrontend.o
 
 # target to preprocess a source file
-editormanager4.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager4.i
-.PHONY : editormanager4.i
+cscopefrontend.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend.i
+.PHONY : cscopefrontend.i
 
 # target to generate assembly for a file
-editormanager4.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/editormanager4.s
-.PHONY : editormanager4.s
+cscopefrontend.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend.s
+.PHONY : cscopefrontend.s
+
+# target to build an object file
+frontend.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.o
+.PHONY : frontend.o
+
+# target to preprocess a source file
+frontend.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.i
+.PHONY : frontend.i
+
+# target to generate assembly for a file
+frontend.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.s
+.PHONY : frontend.s
 
 # target to build an object file
 kscope4.o:
@@ -250,9 +265,12 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
-	@echo "... editormanager4.o"
-	@echo "... editormanager4.i"
-	@echo "... editormanager4.s"
+	@echo "... cscopefrontend.o"
+	@echo "... cscopefrontend.i"
+	@echo "... cscopefrontend.s"
+	@echo "... frontend.o"
+	@echo "... frontend.i"
+	@echo "... frontend.s"
 	@echo "... kscope4.o"
 	@echo "... kscope4.i"
 	@echo "... kscope4.s"
