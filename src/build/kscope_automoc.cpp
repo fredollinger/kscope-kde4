@@ -3,4 +3,5 @@
 */
 #include "moc_frontend.cpp"
 #include "moc_cscopefrontend.cpp"
+#include "moc_preffrontend4.cpp"
 #include "moc_kscope4.cpp"

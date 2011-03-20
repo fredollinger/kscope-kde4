@@ -70,9 +70,33 @@ CMakeFiles/kscope.dir/kscope_automoc.o.provides: CMakeFiles/kscope.dir/kscope_au
 CMakeFiles/kscope.dir/kscope_automoc.o.provides.build: CMakeFiles/kscope.dir/kscope_automoc.o
 .PHONY : CMakeFiles/kscope.dir/kscope_automoc.o.provides.build
 
+CMakeFiles/kscope.dir/preffrontend4.o: CMakeFiles/kscope.dir/flags.make
+CMakeFiles/kscope.dir/preffrontend4.o: ../preffrontend4.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/preffrontend4.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/preffrontend4.o -c /home/follinge/projects/kscope-kde4/src/preffrontend4.cpp
+
+CMakeFiles/kscope.dir/preffrontend4.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kscope.dir/preffrontend4.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/follinge/projects/kscope-kde4/src/preffrontend4.cpp > CMakeFiles/kscope.dir/preffrontend4.i
+
+CMakeFiles/kscope.dir/preffrontend4.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kscope.dir/preffrontend4.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/follinge/projects/kscope-kde4/src/preffrontend4.cpp -o CMakeFiles/kscope.dir/preffrontend4.s
+
+CMakeFiles/kscope.dir/preffrontend4.o.requires:
+.PHONY : CMakeFiles/kscope.dir/preffrontend4.o.requires
+
+CMakeFiles/kscope.dir/preffrontend4.o.provides: CMakeFiles/kscope.dir/preffrontend4.o.requires
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/preffrontend4.o.provides.build
+.PHONY : CMakeFiles/kscope.dir/preffrontend4.o.provides
+
+CMakeFiles/kscope.dir/preffrontend4.o.provides.build: CMakeFiles/kscope.dir/preffrontend4.o
+.PHONY : CMakeFiles/kscope.dir/preffrontend4.o.provides.build
+
 CMakeFiles/kscope.dir/frontend.o: CMakeFiles/kscope.dir/flags.make
 CMakeFiles/kscope.dir/frontend.o: ../frontend.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/frontend.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/frontend.o -c /home/follinge/projects/kscope-kde4/src/frontend.cpp
 
@@ -96,7 +120,7 @@ CMakeFiles/kscope.dir/frontend.o.provides.build: CMakeFiles/kscope.dir/frontend.
 
 CMakeFiles/kscope.dir/cscopefrontend.o: CMakeFiles/kscope.dir/flags.make
 CMakeFiles/kscope.dir/cscopefrontend.o: ../cscopefrontend.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/cscopefrontend.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/cscopefrontend.o -c /home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp
 
@@ -120,7 +144,7 @@ CMakeFiles/kscope.dir/cscopefrontend.o.provides.build: CMakeFiles/kscope.dir/csc
 
 CMakeFiles/kscope.dir/kscope4.o: CMakeFiles/kscope.dir/flags.make
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/kscope4.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/kscope4.o -c /home/follinge/projects/kscope-kde4/src/kscope4.cpp
 
@@ -144,7 +168,7 @@ CMakeFiles/kscope.dir/kscope4.o.provides.build: CMakeFiles/kscope.dir/kscope4.o
 
 CMakeFiles/kscope.dir/main.o: CMakeFiles/kscope.dir/flags.make
 CMakeFiles/kscope.dir/main.o: ../main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/follinge/projects/kscope-kde4/src/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kscope.dir/main.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/kscope.dir/main.o -c /home/follinge/projects/kscope-kde4/src/main.cpp
 
@@ -169,6 +193,7 @@ CMakeFiles/kscope.dir/main.o.provides.build: CMakeFiles/kscope.dir/main.o
 # Object files for target kscope
 kscope_OBJECTS = \
 "CMakeFiles/kscope.dir/kscope_automoc.o" \
+"CMakeFiles/kscope.dir/preffrontend4.o" \
 "CMakeFiles/kscope.dir/frontend.o" \
 "CMakeFiles/kscope.dir/cscopefrontend.o" \
 "CMakeFiles/kscope.dir/kscope4.o" \
@@ -178,6 +203,7 @@ kscope_OBJECTS = \
 kscope_EXTERNAL_OBJECTS =
 
 kscope: CMakeFiles/kscope.dir/kscope_automoc.o
+kscope: CMakeFiles/kscope.dir/preffrontend4.o
 kscope: CMakeFiles/kscope.dir/frontend.o
 kscope: CMakeFiles/kscope.dir/cscopefrontend.o
 kscope: CMakeFiles/kscope.dir/kscope4.o
@@ -210,6 +236,7 @@ CMakeFiles/kscope.dir/build: kscope
 .PHONY : CMakeFiles/kscope.dir/build
 
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/kscope_automoc.o.requires
+CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/preffrontend4.o.requires
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/frontend.o.requires
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/cscopefrontend.o.requires
 CMakeFiles/kscope.dir/requires: CMakeFiles/kscope.dir/kscope4.o.requires

@@ -9,6 +9,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/follinge/projects/kscope-kde4/src/kscope4.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/kscope4.o"
   "/home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/kscope_automoc.o"
   "/home/follinge/projects/kscope-kde4/src/main.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/main.o"
+  "/home/follinge/projects/kscope-kde4/src/preffrontend4.cpp" "/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir/preffrontend4.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

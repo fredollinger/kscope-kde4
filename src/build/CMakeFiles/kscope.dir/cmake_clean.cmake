@@ -2,6 +2,7 @@ FILE(REMOVE_RECURSE
   "kscope_automoc.cpp"
   "kscope.shell"
   "CMakeFiles/kscope.dir/kscope_automoc.o"
+  "CMakeFiles/kscope.dir/preffrontend4.o"
   "CMakeFiles/kscope.dir/frontend.o"
   "CMakeFiles/kscope.dir/cscopefrontend.o"
   "CMakeFiles/kscope.dir/kscope4.o"

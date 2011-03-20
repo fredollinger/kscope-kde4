@@ -32,10 +32,10 @@
 #include <klocale.h>
 #include <kglobalsettings.h>
 #include "cscopefrontend.h"
+#include "configfrontend4.h"
 
 /*
 #include "kscopeconfig.h"
-#include "configfrontend.h"
 */
 
 #define BUILD_STR		"Building symbol database %d of %d"

@@ -250,6 +250,21 @@ main.s:
 	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/main.s
 .PHONY : main.s
 
+# target to build an object file
+preffrontend4.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/preffrontend4.o
+.PHONY : preffrontend4.o
+
+# target to preprocess a source file
+preffrontend4.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/preffrontend4.i
+.PHONY : preffrontend4.i
+
+# target to generate assembly for a file
+preffrontend4.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/preffrontend4.s
+.PHONY : preffrontend4.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -280,6 +295,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... preffrontend4.o"
+	@echo "... preffrontend4.i"
+	@echo "... preffrontend4.s"
 .PHONY : help
 
 

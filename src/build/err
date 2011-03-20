@@ -1,11 +1,38 @@
-In file included from /home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:34:
-/home/follinge/projects/kscope-kde4/src/frontend.h:84: warning: 'virtual bool Frontend::run(const QString&, const QStringList&, const QString&, bool)' was hidden
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.h:129: warning:   by 'bool CscopeFrontend::run(const QStringList&)'
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp: In member function 'virtual Frontend::ParseResult CscopeFrontend::parseStdout(QString&, Frontend::ParserDelim)':
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:202: warning: unused variable 'nFiles'
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:202: warning: unused variable 'nTotal'
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:202: warning: unused variable 'nRecords'
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp: At global scope:
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:199: warning: unused parameter 'sToken'
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:372: warning: unused parameter 'nType'
-/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp:372: warning: unused parameter 'sResult'
+In file included from /home/follinge/projects/kscope-kde4/src/build/moc_cscopefrontend.cpp:10,
+                 from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:5:
+/home/follinge/projects/kscope-kde4/src/build/../frontend.h:84: warning: 'virtual bool Frontend::run(const QString&, const QStringList&, const QString&, bool)' was hidden
+/home/follinge/projects/kscope-kde4/src/build/../cscopefrontend.h:129: warning:   by 'bool CscopeFrontend::run(const QStringList&)'
+In file included from /home/follinge/projects/kscope-kde4/src/build/../preffrontend4.h:33,
+                 from /home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:10,
+                 from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:6:
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:37: error: ISO C++ forbids declaration of 'KURLRequester' with no type
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:37: error: expected ';' before '*' token
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:38: error: ISO C++ forbids declaration of 'KURLRequester' with no type
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:38: error: expected ';' before '*' token
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:39: error: ISO C++ forbids declaration of 'KURLRequester' with no type
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:39: error: expected ';' before '*' token
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h: In member function 'void Ui_PrefFrontendLayout::setupUi(QWidget*)':
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:92: error: 'm_pCscopeURL' was not declared in this scope
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:92: error: expected type-specifier before 'KURLRequester'
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:92: error: expected ';' before 'KURLRequester'
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:102: error: 'm_pCtagsURL' was not declared in this scope
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:102: error: expected type-specifier before 'KURLRequester'
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:102: error: expected ';' before 'KURLRequester'
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:107: error: 'm_pDotURL' was not declared in this scope
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:107: error: expected type-specifier before 'KURLRequester'
+/home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h:107: error: expected ';' before 'KURLRequester'
+In file included from /home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:10,
+                 from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:6:
+/home/follinge/projects/kscope-kde4/src/build/../preffrontend4.h: At global scope:
+/home/follinge/projects/kscope-kde4/src/build/../preffrontend4.h:44: error: expected class-name before '{' token
+In file included from /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp:6:
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp: In member function 'virtual void* PrefFrontend::qt_metacast(const char*)':
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:71: error: expected type-specifier
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:71: error: expected '>'
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:71: error: expected '('
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:71: error: 'Ui_PrefFrontendLayout' is not a member of 'Ui'
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:71: error: expected primary-expression before '>' token
+/home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp:71: error: expected ')' before ';' token
+make[2]: *** [CMakeFiles/kscope.dir/kscope_automoc.o] Error 1
+make[1]: *** [CMakeFiles/kscope.dir/all] Error 2
+make: *** [all] Error 2
