@@ -24,6 +24,8 @@
 
 QT_BEGIN_NAMESPACE
 
+namespace Ui {
+
 class Ui_PrefFrontendLayout
 {
 public:
@@ -34,9 +36,9 @@ public:
     QLabel *textLabel2;
     QLabel *textLabel1_2;
     QVBoxLayout *vboxLayout2;
-    KURLRequester *m_pCscopeURL;
-    KURLRequester *m_pCtagsURL;
-    KURLRequester *m_pDotURL;
+    KUrlRequester *m_pCscopeURL;
+    KUrlRequester *m_pCtagsURL;
+    KUrlRequester *m_pDotURL;
     QFrame *line2;
     QHBoxLayout *hboxLayout1;
     QSpacerItem *spacer8;
@@ -89,7 +91,7 @@ public:
         vboxLayout2 = new QVBoxLayout();
         vboxLayout2->setSpacing(6);
         vboxLayout2->setObjectName(QString::fromUtf8("vboxLayout2"));
-        m_pCscopeURL = new KURLRequester(PrefFrontendLayout);
+        m_pCscopeURL = new KUrlRequester(PrefFrontendLayout);
         m_pCscopeURL->setObjectName(QString::fromUtf8("m_pCscopeURL"));
         QSizePolicy sizePolicy1(static_cast<QSizePolicy::Policy>(5), static_cast<QSizePolicy::Policy>(5));
         sizePolicy1.setHorizontalStretch(0);
@@ -99,12 +101,12 @@ public:
 
         vboxLayout2->addWidget(m_pCscopeURL);
 
-        m_pCtagsURL = new KURLRequester(PrefFrontendLayout);
+        m_pCtagsURL = new KUrlRequester(PrefFrontendLayout);
         m_pCtagsURL->setObjectName(QString::fromUtf8("m_pCtagsURL"));
 
         vboxLayout2->addWidget(m_pCtagsURL);
 
-        m_pDotURL = new KURLRequester(PrefFrontendLayout);
+        m_pDotURL = new KUrlRequester(PrefFrontendLayout);
         m_pDotURL->setObjectName(QString::fromUtf8("m_pDotURL"));
 
         vboxLayout2->addWidget(m_pDotURL);
@@ -179,5 +181,7 @@ protected slots:
     virtual void languageChange();
 
 };
+
+}
 
 #endif // PREFFRONTENDLAYOUT_H

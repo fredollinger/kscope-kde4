@@ -191,19 +191,19 @@ cscopefrontend.s:
 .PHONY : cscopefrontend.s
 
 # target to build an object file
-frontend.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.o
-.PHONY : frontend.o
+frontend4.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend4.o
+.PHONY : frontend4.o
 
 # target to preprocess a source file
-frontend.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.i
-.PHONY : frontend.i
+frontend4.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend4.i
+.PHONY : frontend4.i
 
 # target to generate assembly for a file
-frontend.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend.s
-.PHONY : frontend.s
+frontend4.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/frontend4.s
+.PHONY : frontend4.s
 
 # target to build an object file
 kscope4.o:
@@ -283,9 +283,9 @@ help:
 	@echo "... cscopefrontend.o"
 	@echo "... cscopefrontend.i"
 	@echo "... cscopefrontend.s"
-	@echo "... frontend.o"
-	@echo "... frontend.i"
-	@echo "... frontend.s"
+	@echo "... frontend4.o"
+	@echo "... frontend4.i"
+	@echo "... frontend4.s"
 	@echo "... kscope4.o"
 	@echo "... kscope4.i"
 	@echo "... kscope4.s"

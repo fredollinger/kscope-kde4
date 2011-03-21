@@ -39,8 +39,7 @@
  */
 
 // class PrefFrontend : public PrefFrontendLayout
-class PrefFrontend : 
-public QWidget, public Ui::Ui_PrefFrontendLayout
+class PrefFrontend : public QWidget, public Ui::Ui_PrefFrontendLayout
 {
    Q_OBJECT
 

@@ -81,7 +81,7 @@ public:
 	Frontend(uint, bool bAutoDelete = false);
 	~Frontend();
 
-	virtual bool run(const QString&, const QStringList&, 
+	bool run(const QString&, const QStringList&, 
 		const QString& sWorkDir = "", bool bBlock = false);
 	void kill();
 		

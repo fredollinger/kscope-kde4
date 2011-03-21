@@ -31,7 +31,7 @@
 #include <qstringlist.h>
 #include <qprogressbar.h>
 #include <qlabel.h>
-#include "frontend.h"
+#include "frontend4.h"
 
 #define CSCOPE_RECORD_SIZE 4
 

@@ -10,8 +10,8 @@ include_directories(${KDE4_INCLUDES})
 #editorpage4.cpp
 #editormanager4.cpp
 set(kscope_SRCS
+frontend4.cpp
 preffrontend4.cpp
-frontend.cpp
 cscopefrontend.cpp
 kscope4.cpp
 main.cpp

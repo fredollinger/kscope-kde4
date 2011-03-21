@@ -28,7 +28,7 @@
 #include <qfileinfo.h>
 #include <qdir.h>
 #include <klocale.h>
-#include "frontend.h"
+#include "frontend4.h"
 
 /**
  * Class constructor.
