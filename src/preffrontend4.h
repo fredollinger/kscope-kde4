@@ -44,7 +44,9 @@ class PrefFrontend : public QWidget, public Ui::Ui_PrefFrontendLayout
    Q_OBJECT
 
 public: 
-	PrefFrontend(QWidget* pParent = 0, const char* szName = 0);
+	PrefFrontend(QWidget* pParent = 0) : QWidget(pParent)
+        { setupUi(this); }
+
 	~PrefFrontend();
 
 	void load();

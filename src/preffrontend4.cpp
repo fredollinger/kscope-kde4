@@ -33,13 +33,14 @@
 #include <klocale.h>
 #include "preffrontend4.h"
 #include "kscopeconfig.h"
-#include "configfrontend.h"
+// #include "configfrontend4.h"
 
 /**
  * Class constructor.
  * @param	pParent	The parent widget
  * @param	szName	The widget's name
  */
+/*
 PrefFrontend::PrefFrontend(QWidget* pParent) : public QWidget, public Ui::Ui_PrefFrontendLayout
 
 {
@@ -60,7 +61,9 @@ PrefFrontend::PrefFrontend(QWidget* pParent) : public QWidget, public Ui::Ui_Pre
 		SIGNAL(modified()));
 	connect(m_pDotURL, SIGNAL(textChanged(const QString&)), this,
 		SIGNAL(modified()));
+
 }
+*/
 
 /**
  * Class destructor.
@@ -85,9 +88,11 @@ void PrefFrontend::load()
  */
 void PrefFrontend::apply()
 {
+	/*
 	Config().setCscopePath(m_pCscopeURL->url());
 	Config().setCtagsPath(m_pCtagsURL->url());
 	Config().setDotPath(m_pDotURL->url());
+	*/
 }
 
 /**
@@ -109,13 +114,13 @@ void PrefFrontend::slotChanged(const QString&)
  */
 void PrefFrontend::slotGuessPaths()
 {
-	ConfigFrontend* pConf;
-	
+	/*
+	// ConfigFrontend* pConf;
 	// Start with an empty results text widget
 	m_pScriptText->clear();
 	
 	// Create a frontend object for the script
-	pConf = new ConfigFrontend(true);
+	// pConf = new ConfigFrontend(true);
 	
 	// Show tests and results in the text widget
 	connect(pConf, SIGNAL(test(uint)), this,
@@ -126,6 +131,7 @@ void PrefFrontend::slotGuessPaths()
 	// Run the script
 	pConf->run(m_pCscopeURL->url(), m_pCtagsURL->url(),
 		m_pDotURL->url());
+	*/
 }
 
 /**
