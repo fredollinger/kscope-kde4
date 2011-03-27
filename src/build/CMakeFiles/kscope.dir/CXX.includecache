@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/follinge/projects/kscope-kde4/src/build/../cscopefrontend.h
+/home/follinge/projects/kscope-kde4/src/build/../configfrontend4.h
+frontend4.h
+/home/follinge/projects/kscope-kde4/src/build/../frontend4.h
+
+/home/follinge/projects/kscope-kde4/src/build/../cscopefrontend4.h
 qstringlist.h
 -
 qprogressbar.h
@@ -81,18 +85,24 @@ kurlrequester.h
 /home/follinge/projects/kscope-kde4/src/build/../kurlrequester.h
 
 /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
+moc_configfrontend4.cpp
+/home/follinge/projects/kscope-kde4/src/build/moc_configfrontend4.cpp
+moc_cscopefrontend4.cpp
+/home/follinge/projects/kscope-kde4/src/build/moc_cscopefrontend4.cpp
 moc_frontend4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_frontend4.cpp
-moc_cscopefrontend.cpp
-/home/follinge/projects/kscope-kde4/src/build/moc_cscopefrontend.cpp
 moc_preffrontend4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp
 moc_kscope4.cpp
 /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
 
-/home/follinge/projects/kscope-kde4/src/build/moc_cscopefrontend.cpp
-../cscopefrontend.h
-/home/follinge/projects/kscope-kde4/src/build/../cscopefrontend.h
+/home/follinge/projects/kscope-kde4/src/build/moc_configfrontend4.cpp
+../configfrontend4.h
+/home/follinge/projects/kscope-kde4/src/build/../configfrontend4.h
+
+/home/follinge/projects/kscope-kde4/src/build/moc_cscopefrontend4.cpp
+../cscopefrontend4.h
+/home/follinge/projects/kscope-kde4/src/build/../cscopefrontend4.h
 
 /home/follinge/projects/kscope-kde4/src/build/moc_frontend4.cpp
 ../frontend4.h

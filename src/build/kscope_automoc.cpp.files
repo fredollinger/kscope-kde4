@@ -1,5 +1,5 @@
 SOURCES:
-/home/follinge/projects/kscope-kde4/src/frontend4.cpp;/home/follinge/projects/kscope-kde4/src/preffrontend4.cpp;/home/follinge/projects/kscope-kde4/src/cscopefrontend.cpp;/home/follinge/projects/kscope-kde4/src/kscope4.cpp;/home/follinge/projects/kscope-kde4/src/main.cpp
+/home/follinge/projects/kscope-kde4/src/configfrontend4.cpp;/home/follinge/projects/kscope-kde4/src/preffrontend4.cpp;/home/follinge/projects/kscope-kde4/src/frontend4.cpp;/home/follinge/projects/kscope-kde4/src/cscopefrontend4.cpp;/home/follinge/projects/kscope-kde4/src/kscope4.cpp;/home/follinge/projects/kscope-kde4/src/main.cpp
 MOC_COMPILE_DEFINITIONS:
 _BSD_SOURCE
 MOC_DEFINITIONS:

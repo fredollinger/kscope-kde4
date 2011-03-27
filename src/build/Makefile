@@ -176,19 +176,34 @@ uninstall/fast:
 .PHONY : uninstall/fast
 
 # target to build an object file
-cscopefrontend.o:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend.o
-.PHONY : cscopefrontend.o
+configfrontend4.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/configfrontend4.o
+.PHONY : configfrontend4.o
 
 # target to preprocess a source file
-cscopefrontend.i:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend.i
-.PHONY : cscopefrontend.i
+configfrontend4.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/configfrontend4.i
+.PHONY : configfrontend4.i
 
 # target to generate assembly for a file
-cscopefrontend.s:
-	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend.s
-.PHONY : cscopefrontend.s
+configfrontend4.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/configfrontend4.s
+.PHONY : configfrontend4.s
+
+# target to build an object file
+cscopefrontend4.o:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend4.o
+.PHONY : cscopefrontend4.o
+
+# target to preprocess a source file
+cscopefrontend4.i:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend4.i
+.PHONY : cscopefrontend4.i
+
+# target to generate assembly for a file
+cscopefrontend4.s:
+	$(MAKE) -f CMakeFiles/kscope.dir/build.make CMakeFiles/kscope.dir/cscopefrontend4.s
+.PHONY : cscopefrontend4.s
 
 # target to build an object file
 frontend4.o:
@@ -280,9 +295,12 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... uninstall"
-	@echo "... cscopefrontend.o"
-	@echo "... cscopefrontend.i"
-	@echo "... cscopefrontend.s"
+	@echo "... configfrontend4.o"
+	@echo "... configfrontend4.i"
+	@echo "... configfrontend4.s"
+	@echo "... cscopefrontend4.o"
+	@echo "... cscopefrontend4.i"
+	@echo "... cscopefrontend4.s"
 	@echo "... frontend4.o"
 	@echo "... frontend4.i"
 	@echo "... frontend4.s"
