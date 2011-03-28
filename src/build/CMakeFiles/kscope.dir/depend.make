@@ -47,10 +47,10 @@ CMakeFiles/kscope.dir/configfrontend4.o: /usr/include/qt4/QtCore/qscopedpointer.
 CMakeFiles/kscope.dir/configfrontend4.o: /usr/include/qt4/QtCore/qstring.h
 CMakeFiles/kscope.dir/configfrontend4.o: /usr/include/qt4/QtCore/qstringbuilder.h
 
+CMakeFiles/kscope.dir/cscopefrontend4.o: ../configfrontend4.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: ../cscopefrontend4.cpp
 CMakeFiles/kscope.dir/cscopefrontend4.o: ../cscopefrontend4.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: ../frontend4.h
-CMakeFiles/kscope.dir/cscopefrontend4.o: ../kscopeconfig.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/Qt3Support/q3cstring.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/QPoint
@@ -206,18 +206,22 @@ CMakeFiles/kscope.dir/frontend4.o: /usr/include/qt4/QtCore/qstringbuilder.h
 CMakeFiles/kscope.dir/frontend4.o: /usr/include/qt4/QtCore/qstringlist.h
 CMakeFiles/kscope.dir/frontend4.o: /usr/include/qt4/QtCore/qstringmatcher.h
 
+CMakeFiles/kscope.dir/kscope4.o: ../cscopefrontend4.h
 CMakeFiles/kscope.dir/kscope4.o: ../editormanager4.h
+CMakeFiles/kscope.dir/kscope4.o: ../frontend4.h
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.cpp
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kactioncollection.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kfiledialog.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kstandardaction.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kstatusbar.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kxmlguifactory.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KActionCollection
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KFileDialog
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KParts/../../kparts/mainwindow.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KParts/MainWindow
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KStandardAction
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KStatusBar
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/../../ktexteditor/document.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/../../ktexteditor/editor.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KTextEditor/../../ktexteditor/editorchooser.h
@@ -299,6 +303,7 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/qtimer.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/qvariant.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/qvector.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QKeyEvent
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QStatusBar
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QWidget
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qbrush.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qcolor.h
@@ -308,8 +313,10 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qevent.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qfont.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qfontinfo.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qfontmetrics.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qframe.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qimage.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qkeysequence.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qlabel.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmacdefines_mac.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmatrix.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmime.h
@@ -318,9 +325,11 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qpainterpath.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qpalette.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qpixmap.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qpolygon.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qprogressbar.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qregion.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qrgb.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qsizepolicy.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qstatusbar.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qtransform.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qwidget.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qwindowdefs.h
@@ -331,6 +340,7 @@ CMakeFiles/kscope.dir/kscope_automoc.o: ../configfrontend4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../cscopefrontend4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../frontend4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../kscope4.h
+CMakeFiles/kscope.dir/kscope_automoc.o: ../kscopeconfig4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../preffrontend4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: ../preffrontendlayout4.h
 CMakeFiles/kscope.dir/kscope_automoc.o: kscope_automoc.cpp
@@ -338,6 +348,7 @@ CMakeFiles/kscope.dir/kscope_automoc.o: moc_configfrontend4.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_cscopefrontend4.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_frontend4.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_kscope4.cpp
+CMakeFiles/kscope.dir/kscope_automoc.o: moc_kscopeconfig4.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: moc_preffrontend4.cpp
 CMakeFiles/kscope.dir/kscope_automoc.o: /usr/include/KDE/KParts/../../kparts/mainwindow.h
 CMakeFiles/kscope.dir/kscope_automoc.o: /usr/include/KDE/KParts/MainWindow
@@ -493,6 +504,8 @@ CMakeFiles/kscope.dir/kscope_automoc.o: /usr/include/qt4/QtGui/qwindowdefs.h
 CMakeFiles/kscope.dir/kscope_automoc.o: /usr/include/qt4/QtGui/qwindowdefs_win.h
 CMakeFiles/kscope.dir/kscope_automoc.o: /usr/include/qt4/QtGui/qwmatrix.h
 
+CMakeFiles/kscope.dir/kscopeconfig4.o: ../kscopeconfig4.cpp
+
 CMakeFiles/kscope.dir/main.o: ../kscope4.h
 CMakeFiles/kscope.dir/main.o: ../main.cpp
 CMakeFiles/kscope.dir/main.o: /usr/include/KDE/../kaboutdata.h
@@ -624,7 +637,6 @@ CMakeFiles/kscope.dir/main.o: /usr/include/qt4/QtGui/qwindowdefs_win.h
 CMakeFiles/kscope.dir/main.o: /usr/include/qt4/QtGui/qwmatrix.h
 CMakeFiles/kscope.dir/main.o: /usr/include/qt4/QtGui/qx11info_x11.h
 
-CMakeFiles/kscope.dir/preffrontend4.o: ../kscopeconfig.h
 CMakeFiles/kscope.dir/preffrontend4.o: ../preffrontend4.cpp
 CMakeFiles/kscope.dir/preffrontend4.o: ../preffrontend4.h
 CMakeFiles/kscope.dir/preffrontend4.o: ../preffrontendlayout4.h

@@ -56,8 +56,13 @@ int main(int argc, char *argv[])
 	KApplication app;
 
 	//K3DockMainWindow window = new K3DockMainWindow();
-	KScope* window = new KScope();
-	window->show();
+	KScope* pKScope = new KScope();
+
+	pKScope->verifyCscope();
+
+	pKScope->show();
 
 	return app.exec();
 }
+
+// Mon Mar 28 00:05:40 UTC 2011

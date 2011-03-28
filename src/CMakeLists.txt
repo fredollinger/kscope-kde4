@@ -6,10 +6,10 @@ include_directories(${KDE4_INCLUDES})
 #ctagsfrontend.cpp
 #ctagslist.cpp
 #k3wrap.cpp
-#kscopeconfig.cpp
 #editorpage4.cpp
 #editormanager4.cpp
 set(kscope_SRCS
+kscopeconfig4.cpp
 configfrontend4.cpp
 preffrontend4.cpp
 frontend4.cpp

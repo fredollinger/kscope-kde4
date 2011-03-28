@@ -365,4 +365,4 @@ void Frontend::slotReadStderr(KProcess*, char* pBuffer, int nSize)
 	parseStderr(sBuf);
 }
 
-// #include "frontend.moc"
+// Mon Mar 28 00:45:12 UTC 2011

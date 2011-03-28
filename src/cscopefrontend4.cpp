@@ -32,11 +32,8 @@
 #include <klocale.h>
 #include <kglobalsettings.h>
 #include "cscopefrontend4.h"
-// #include "configfrontend4.h"
-
-/*
-#include "kscopeconfig.h"
-*/
+#include "configfrontend4.h"
+#include "kscopeconfig4.h"
 
 #define BUILD_STR		"Building symbol database %d of %d"
 #define SEARCH_STR		"Search %d of %d"
@@ -357,16 +354,16 @@ void CscopeProgress::slotShowLabel()
 
 void CscopeVerifier::verify()
 {
-	/*
 	ConfigFrontend* pConf;
 	 
 	pConf = new ConfigFrontend(true);
+	/*
 	connect(pConf, SIGNAL(result(uint, const QString&)), this,
 		SLOT(slotConfigResult(uint, const QString&)));
 	connect(pConf, SIGNAL(finished(uint)), this, SLOT(slotFinished()));
-	
 	pConf->run(Config().getCscopePath(), "", "", true);
 	*/
+	
 }
 
 void CscopeVerifier::slotConfigResult(uint nType, const QString& sResult)
@@ -395,4 +392,4 @@ void CscopeVerifier::slotFinished()
 	delete this;
 }
 
-// #include "cscopefrontend.moc"
+// Mon Mar 28 00:45:34 UTC 2011

@@ -5,7 +5,7 @@
 #include <kstandarddirs.h>
 #include <klocale.h>
 #include "preffrontend4.h"
-#include "kscopeconfig.h"
+#include "kscopeconfig4.h"
 
 PrefFrontend::~PrefFrontend()
 {

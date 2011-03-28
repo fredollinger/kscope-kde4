@@ -6,3 +6,4 @@
 #include "moc_frontend4.cpp"
 #include "moc_preffrontend4.cpp"
 #include "moc_kscope4.cpp"
+#include "moc_kscopeconfig4.cpp"

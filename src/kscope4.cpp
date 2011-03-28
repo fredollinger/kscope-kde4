@@ -10,6 +10,7 @@
 #include <KFileDialog>
 #include <KStatusBar>
 
+#include "cscopefrontend4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
 
@@ -52,16 +53,13 @@ void KScope::openFile()
 void KScope::verifyCscope()
 {
 	statusBar()->showMessage(i18n("Verifying Cscope installation..."), 0);
-	/*
 	CscopeVerifier* pVer;
-	
-	
 	pVer = new CscopeVerifier();
-	connect(pVer, SIGNAL(done(bool, uint)), this,
-		SLOT(slotCscopeVerified(bool, uint)));
-	
+
+	// connect(pVer, SIGNAL(done(bool, uint)), this,
+	//	SLOT(slotCscopeVerified(bool, uint)));
+
 	pVer->verify();
-	*/
 }
 
 void KScope::initMainWindow()

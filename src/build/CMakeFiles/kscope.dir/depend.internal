@@ -48,10 +48,10 @@ CMakeFiles/kscope.dir/configfrontend4.o
  /usr/include/qt4/QtCore/qstring.h
  /usr/include/qt4/QtCore/qstringbuilder.h
 CMakeFiles/kscope.dir/cscopefrontend4.o
+ /home/follinge/projects/kscope-kde4/src/configfrontend4.h
  /home/follinge/projects/kscope-kde4/src/cscopefrontend4.cpp
  /home/follinge/projects/kscope-kde4/src/cscopefrontend4.h
  /home/follinge/projects/kscope-kde4/src/frontend4.h
- /home/follinge/projects/kscope-kde4/src/kscopeconfig.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QPoint
@@ -207,18 +207,22 @@ CMakeFiles/kscope.dir/frontend4.o
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
 CMakeFiles/kscope.dir/kscope4.o
+ /home/follinge/projects/kscope-kde4/src/cscopefrontend4.h
  /home/follinge/projects/kscope-kde4/src/editormanager4.h
+ /home/follinge/projects/kscope-kde4/src/frontend4.h
  /home/follinge/projects/kscope-kde4/src/kscope4.cpp
  /home/follinge/projects/kscope-kde4/src/kscope4.h
  /usr/include/KDE/../kactioncollection.h
  /usr/include/KDE/../kfiledialog.h
  /usr/include/KDE/../kstandardaction.h
+ /usr/include/KDE/../kstatusbar.h
  /usr/include/KDE/../kxmlguifactory.h
  /usr/include/KDE/KActionCollection
  /usr/include/KDE/KFileDialog
  /usr/include/KDE/KParts/../../kparts/mainwindow.h
  /usr/include/KDE/KParts/MainWindow
  /usr/include/KDE/KStandardAction
+ /usr/include/KDE/KStatusBar
  /usr/include/KDE/KTextEditor/../../ktexteditor/document.h
  /usr/include/KDE/KTextEditor/../../ktexteditor/editor.h
  /usr/include/KDE/KTextEditor/../../ktexteditor/editorchooser.h
@@ -300,6 +304,7 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
  /usr/include/qt4/QtGui/QKeyEvent
+ /usr/include/qt4/QtGui/QStatusBar
  /usr/include/qt4/QtGui/QWidget
  /usr/include/qt4/QtGui/qbrush.h
  /usr/include/qt4/QtGui/qcolor.h
@@ -309,8 +314,10 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtGui/qfont.h
  /usr/include/qt4/QtGui/qfontinfo.h
  /usr/include/qt4/QtGui/qfontmetrics.h
+ /usr/include/qt4/QtGui/qframe.h
  /usr/include/qt4/QtGui/qimage.h
  /usr/include/qt4/QtGui/qkeysequence.h
+ /usr/include/qt4/QtGui/qlabel.h
  /usr/include/qt4/QtGui/qmacdefines_mac.h
  /usr/include/qt4/QtGui/qmatrix.h
  /usr/include/qt4/QtGui/qmime.h
@@ -319,9 +326,11 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtGui/qpalette.h
  /usr/include/qt4/QtGui/qpixmap.h
  /usr/include/qt4/QtGui/qpolygon.h
+ /usr/include/qt4/QtGui/qprogressbar.h
  /usr/include/qt4/QtGui/qregion.h
  /usr/include/qt4/QtGui/qrgb.h
  /usr/include/qt4/QtGui/qsizepolicy.h
+ /usr/include/qt4/QtGui/qstatusbar.h
  /usr/include/qt4/QtGui/qtransform.h
  /usr/include/qt4/QtGui/qwidget.h
  /usr/include/qt4/QtGui/qwindowdefs.h
@@ -332,6 +341,7 @@ CMakeFiles/kscope.dir/kscope_automoc.o
  /home/follinge/projects/kscope-kde4/src/build/../cscopefrontend4.h
  /home/follinge/projects/kscope-kde4/src/build/../frontend4.h
  /home/follinge/projects/kscope-kde4/src/build/../kscope4.h
+ /home/follinge/projects/kscope-kde4/src/build/../kscopeconfig4.h
  /home/follinge/projects/kscope-kde4/src/build/../preffrontend4.h
  /home/follinge/projects/kscope-kde4/src/build/../preffrontendlayout4.h
  /home/follinge/projects/kscope-kde4/src/build/kscope_automoc.cpp
@@ -339,6 +349,7 @@ CMakeFiles/kscope.dir/kscope_automoc.o
  /home/follinge/projects/kscope-kde4/src/build/moc_cscopefrontend4.cpp
  /home/follinge/projects/kscope-kde4/src/build/moc_frontend4.cpp
  /home/follinge/projects/kscope-kde4/src/build/moc_kscope4.cpp
+ /home/follinge/projects/kscope-kde4/src/build/moc_kscopeconfig4.cpp
  /home/follinge/projects/kscope-kde4/src/build/moc_preffrontend4.cpp
  /usr/include/KDE/KParts/../../kparts/mainwindow.h
  /usr/include/KDE/KParts/MainWindow
@@ -493,6 +504,8 @@ CMakeFiles/kscope.dir/kscope_automoc.o
  /usr/include/qt4/QtGui/qwindowdefs.h
  /usr/include/qt4/QtGui/qwindowdefs_win.h
  /usr/include/qt4/QtGui/qwmatrix.h
+CMakeFiles/kscope.dir/kscopeconfig4.o
+ /home/follinge/projects/kscope-kde4/src/kscopeconfig4.cpp
 CMakeFiles/kscope.dir/main.o
  /home/follinge/projects/kscope-kde4/src/kscope4.h
  /home/follinge/projects/kscope-kde4/src/main.cpp
@@ -625,7 +638,6 @@ CMakeFiles/kscope.dir/main.o
  /usr/include/qt4/QtGui/qwmatrix.h
  /usr/include/qt4/QtGui/qx11info_x11.h
 CMakeFiles/kscope.dir/preffrontend4.o
- /home/follinge/projects/kscope-kde4/src/kscopeconfig.h
  /home/follinge/projects/kscope-kde4/src/preffrontend4.cpp
  /home/follinge/projects/kscope-kde4/src/preffrontend4.h
  /home/follinge/projects/kscope-kde4/src/preffrontendlayout4.h
