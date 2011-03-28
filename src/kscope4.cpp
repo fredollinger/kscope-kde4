@@ -8,6 +8,7 @@
 #include <KTextEditor/EditorChooser>
 #include <KXMLGUIFactory>
 #include <KFileDialog>
+#include <KStatusBar>
 
 #include "editormanager4.h"
 #include "kscope4.h"
@@ -24,6 +25,9 @@ KScope::KScope(QWidget *){
 	setXMLFile("kscopeui.rc");
 	createShellGUI();
 	guiFactory()->addClient(m_view);
+
+	// Create all child widgets
+	initMainWindow();
 
 	// Create control objects
 	// m_pProjMgr = new ProjectManager();
@@ -45,19 +49,30 @@ void KScope::openFile()
  * Starts a shell script to ensure that Cscope is properly installed and to
  * extract the supported command-line arguments. 
  */
-/*
 void KScope::verifyCscope()
 {
+	statusBar()->showMessage(i18n("Verifying Cscope installation..."), 0);
+	/*
 	CscopeVerifier* pVer;
 	
-	statusBar()->message(i18n("Verifying Cscope installation..."));
 	
 	pVer = new CscopeVerifier();
 	connect(pVer, SIGNAL(done(bool, uint)), this,
 		SLOT(slotCscopeVerified(bool, uint)));
 	
 	pVer->verify();
+	*/
 }
-*/
+
+void KScope::initMainWindow()
+{
+	KStatusBar* pStatus;
+
+	// Create the status bar
+	pStatus = statusBar();
+	pStatus->insertItem(i18n(" Line: N/A Col: N/A "), 0, 0);
+
+	return;
+}
 
 // Sat Mar 19 23:50:42 UTC 2011
