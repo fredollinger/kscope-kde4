@@ -213,11 +213,13 @@ CMakeFiles/kscope.dir/kscope4.o: ../kscope4.cpp
 CMakeFiles/kscope.dir/kscope4.o: ../kscope4.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kactioncollection.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kfiledialog.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kmessagebox.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kstandardaction.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kstatusbar.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/../kxmlguifactory.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KActionCollection
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KFileDialog
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KMessageBox
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KParts/../../kparts/mainwindow.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KParts/MainWindow
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/KDE/KStandardAction
@@ -303,11 +305,13 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/qtimer.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/qvariant.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtCore/qvector.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QKeyEvent
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QMessageBox
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QStatusBar
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/QWidget
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qbrush.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qcolor.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qcursor.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qdialog.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qdrag.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qevent.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qfont.h
@@ -319,6 +323,7 @@ CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qkeysequence.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qlabel.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmacdefines_mac.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmatrix.h
+CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmessagebox.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qmime.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qpaintdevice.h
 CMakeFiles/kscope.dir/kscope4.o: /usr/include/qt4/QtGui/qpainterpath.h

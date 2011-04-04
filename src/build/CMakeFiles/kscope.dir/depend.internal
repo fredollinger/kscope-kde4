@@ -214,11 +214,13 @@ CMakeFiles/kscope.dir/kscope4.o
  /home/follinge/projects/kscope-kde4/src/kscope4.h
  /usr/include/KDE/../kactioncollection.h
  /usr/include/KDE/../kfiledialog.h
+ /usr/include/KDE/../kmessagebox.h
  /usr/include/KDE/../kstandardaction.h
  /usr/include/KDE/../kstatusbar.h
  /usr/include/KDE/../kxmlguifactory.h
  /usr/include/KDE/KActionCollection
  /usr/include/KDE/KFileDialog
+ /usr/include/KDE/KMessageBox
  /usr/include/KDE/KParts/../../kparts/mainwindow.h
  /usr/include/KDE/KParts/MainWindow
  /usr/include/KDE/KStandardAction
@@ -304,11 +306,13 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
  /usr/include/qt4/QtGui/QKeyEvent
+ /usr/include/qt4/QtGui/QMessageBox
  /usr/include/qt4/QtGui/QStatusBar
  /usr/include/qt4/QtGui/QWidget
  /usr/include/qt4/QtGui/qbrush.h
  /usr/include/qt4/QtGui/qcolor.h
  /usr/include/qt4/QtGui/qcursor.h
+ /usr/include/qt4/QtGui/qdialog.h
  /usr/include/qt4/QtGui/qdrag.h
  /usr/include/qt4/QtGui/qevent.h
  /usr/include/qt4/QtGui/qfont.h
@@ -320,6 +324,7 @@ CMakeFiles/kscope.dir/kscope4.o
  /usr/include/qt4/QtGui/qlabel.h
  /usr/include/qt4/QtGui/qmacdefines_mac.h
  /usr/include/qt4/QtGui/qmatrix.h
+ /usr/include/qt4/QtGui/qmessagebox.h
  /usr/include/qt4/QtGui/qmime.h
  /usr/include/qt4/QtGui/qpaintdevice.h
  /usr/include/qt4/QtGui/qpainterpath.h

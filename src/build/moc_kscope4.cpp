@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'kscope4.h'
 **
-** Created: Sun Mar 27 22:30:40 2011
+** Created: Mon Apr 4 03:40:07 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_KScope[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,12 +32,15 @@ static const uint qt_meta_data_KScope[] = {
 
  // slots: signature, parameters, type, tag, flags
        8,    7,    7,    7, 0x08,
+      19,    7,    7,    7, 0x08,
+      37,   35,    7,    7, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_KScope[] = {
-    "KScope\0\0openFile()\0"
+    "KScope\0\0openFile()\0slotConfigure()\0,\0"
+    "slotCscopeVerified(bool,uint)\0"
 };
 
 const QMetaObject KScope::staticMetaObject = {
@@ -72,9 +75,11 @@ int KScope::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: openFile(); break;
+        case 1: slotConfigure(); break;
+        case 2: slotCscopeVerified((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
         default: ;
         }
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }

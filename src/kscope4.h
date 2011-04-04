@@ -66,8 +66,24 @@ private:
    	KTextEditor::View *m_view;
 	KTextEditor::Document *m_doc;
 
+	/** Set to true after a shell script has verified that Cscope 
+		is installed
+		and correctly configured on this system.
+		No Cscope operations should be run if this flag is set to false. 	*/
+	bool m_bCscopeVerified;
+
+	/** A persistent dialog used to display error messages from Cscope. */
+	CscopeMsgDlg* m_pMsgDlg;
+
+	/** A progress dialogue that is displayed when building the database for
+		the first time. */
+	ProgressDlg* m_pProgressDlg;
+
+
 private slots:
 	void openFile();
+	void slotConfigure();
+	void slotCscopeVerified(bool, uint);
 
 //friend class KScopeActions;
 };
