@@ -25,6 +25,7 @@
  *
  ***************************************************************************/
 
+#include <qdebug.h>
 #include <kstandarddirs.h>
 #include "configfrontend4.h"
 
@@ -70,7 +71,11 @@ bool ConfigFrontend::run(const QString& sCscopePath,
 	// Find the configuration script
 	sScript = sd.findResource("data", "kscope/kscope_config");
 	if (sScript.isEmpty())
+	{
+		qDebug() << "ConfigFrontend::run script is empty. Bailing early. \n";
+		qDebug() << sd.findDirs("data", "kscope");
 		return false;
+	}
 		
 	// Set command line arguments
 	slArgs.append("sh");

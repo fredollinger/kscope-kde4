@@ -25,6 +25,7 @@
  *
  ***************************************************************************/
 
+#include <qdebug.h>
 #include <qfileinfo.h>
 #include <qdir.h>
 #include <klocale.h>
@@ -79,6 +80,7 @@ Frontend::~Frontend()
 bool Frontend::run(const QString& sName, const QStringList& slArgs, 
 	const QString& sWorkDir, bool bBlock)
 {
+	qDebug() << "BEGIN Frontend::run \n";
 	// Cannot start if another controlled process is currently running
 	/*
 	if (isRunning()) {
