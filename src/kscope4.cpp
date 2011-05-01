@@ -56,12 +56,13 @@ void KScope::openFile()
  */
 void KScope::verifyCscope()
 {
+	// qDebug() << "KScope::verifyCscope BEGIN\n";
 	statusBar()->showMessage(i18n("Verifying Cscope installation..."), 0);
 	CscopeVerifier* pVer;
 	pVer = new CscopeVerifier();
 
-	// connect(pVer, SIGNAL(done(bool, uint)), this,
-	//	SLOT(slotCscopeVerified(bool, uint)));
+	connect(pVer, SIGNAL(done(bool, uint)), this,
+		SLOT(slotCscopeVerified(bool, uint)));
 
 	pVer->verify();
 }
@@ -136,5 +137,6 @@ void KScope::slotConfigure()
 */
 	return;
 }
+
 
 // Mon Apr  4 02:12:18 UTC 2011

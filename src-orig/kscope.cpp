@@ -26,6 +26,7 @@
  ***************************************************************************/
 
 #include <qfile.h>
+#include <qdebug.h>
 #include <kfiledialog.h>
 #include <kmenubar.h>
 #include <klocale.h>

@@ -51,6 +51,7 @@ CMakeFiles/kscope.dir/cscopefrontend4.o: ../configfrontend4.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: ../cscopefrontend4.cpp
 CMakeFiles/kscope.dir/cscopefrontend4.o: ../cscopefrontend4.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: ../frontend4.h
+CMakeFiles/kscope.dir/cscopefrontend4.o: ../kscopeconfig4.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/Qt3Support/q3cstring.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/QPoint
@@ -85,8 +86,10 @@ CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qbasictimer.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qbytearray.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qchar.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qconfig.h
+CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qcontiguouscache.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qcoreevent.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qdatastream.h
+CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qdebug.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qfeatures.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qfile.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qfileinfo.h
@@ -97,6 +100,7 @@ CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qiterator.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qline.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qlinkedlist.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qlist.h
+CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qlocale.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qmap.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qmargins.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qmetatype.h
@@ -118,6 +122,8 @@ CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qstring.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qstringbuilder.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qstringlist.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qstringmatcher.h
+CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qtextcodec.h
+CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qtextstream.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qtimer.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qvariant.h
 CMakeFiles/kscope.dir/cscopefrontend4.o: /usr/include/qt4/QtCore/qvector.h

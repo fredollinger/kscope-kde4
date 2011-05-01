@@ -25,6 +25,7 @@
  *
  ***************************************************************************/
 
+#include <qdebug.h>
 #include <qfileinfo.h>
 #include <qtimer.h>
 #include <kconfig.h>
@@ -354,20 +355,22 @@ void CscopeProgress::slotShowLabel()
 
 void CscopeVerifier::verify()
 {
+	qDebug() << "BEGIN CscopeVerifier::verify\n";
 	ConfigFrontend* pConf;
 	 
 	pConf = new ConfigFrontend(true);
-	/*
+
 	connect(pConf, SIGNAL(result(uint, const QString&)), this,
 		SLOT(slotConfigResult(uint, const QString&)));
 	connect(pConf, SIGNAL(finished(uint)), this, SLOT(slotFinished()));
 	pConf->run(Config().getCscopePath(), "", "", true);
-	*/
 	
 }
 
 void CscopeVerifier::slotConfigResult(uint nType, const QString& sResult)
 {
+
+	qDebug() << "BEGIN CscopeVerifier::slotConfigResult\n";
 	/*
 	switch (nType) {
 	case ConfigFrontend::CscopeVerbose:
