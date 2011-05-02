@@ -85,9 +85,9 @@ bool ConfigFrontend::run(const QString& sCscopePath,
 		slArgs.append("-co");
 		
 	// Initialise environment
-	// setEnvironment("CSCOPE_PATH", sCscopePath);
-	// setEnvironment("CTAGS_PATH", sCtagsPath);
-	// setEnvironment("DOT_PATH", sDotPath);
+	setEnv("CSCOPE_PATH", sCscopePath);
+	setEnv("CTAGS_PATH", sCtagsPath);
+	setEnv("DOT_PATH", sDotPath);
 	
 	// Parser initialisation
 	m_delim = Newline;
@@ -109,6 +109,7 @@ bool ConfigFrontend::run(const QString& sCscopePath,
 Frontend::ParseResult ConfigFrontend::parseStdout(QString& sToken, 
 	ParserDelim)
 {
+	qDebug() << "BEGIN ConfigFrontend::parseStdout";
 	uint nResult;
 	
 	// Store the type of test for which the given token in the result
