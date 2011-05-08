@@ -47,11 +47,14 @@ Frontend::Frontend(uint nRecordSize, bool bAutoDelete) : KProcess(),
 	m_nRecordSize(nRecordSize)
 {
 	// Parse data on the standard output
-	connect(this, SIGNAL(receivedStdout(KProcess*, char*, int)), this,
+//	connect(this, SIGNAL(receivedStdout(KProcess*, char*, int)), this,
+//		SLOT(slotReadStdout(KProcess*, char*, int)));
+
+	connect(this, SIGNAL(readyReadStandardOutput(KProcess*, char*, int)), this,
 		SLOT(slotReadStdout(KProcess*, char*, int)));
 
 	// Parse data on the standard error
-	connect(this, SIGNAL(receivedStderr(KProcess*, char*, int)), this,
+	connect(this, SIGNAL(readyReadStandardOutput(KProcess*, char*, int)), this,
 		SLOT(slotReadStderr(KProcess*, char*, int)));
 		
 	// Delete the process object when the process exits

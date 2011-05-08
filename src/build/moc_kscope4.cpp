@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'kscope4.h'
 **
-** Created: Sun May 8 21:43:04 2011
+** Created: Sun May 8 23:21:23 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
