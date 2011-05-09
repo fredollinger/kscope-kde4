@@ -205,7 +205,8 @@ private:
 	bool tokenize(char**, int*, QString&, ParserDelim&);
 		
 private slots:
-	void slotReadStdout(KProcess*, char*, int);
+	// void slotReadStdout(KProcess*, char*, int);
+	void slotReadStdout();
 	void slotReadStderr(KProcess*, char*, int);
 };
 
