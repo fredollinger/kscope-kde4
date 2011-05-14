@@ -207,7 +207,7 @@ private:
 private slots:
 	// void slotReadStdout(KProcess*, char*, int);
 	void slotReadStdout();
-	void slotReadStderr(KProcess*, char*, int);
+	void slotReadStderr();
 };
 
 #endif

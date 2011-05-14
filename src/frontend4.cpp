@@ -50,16 +50,17 @@ Frontend::Frontend(uint nRecordSize, bool bAutoDelete) : KProcess(),
 //	connect(this, SIGNAL(receivedStdout(KProcess*, char*, int)), this,
 //		SLOT(slotReadStdout(KProcess*, char*, int)));
 
-	connect(this, SIGNAL(readyReadStandardOutput()), this,
-		SLOT(slotReadStdout() ));
+	connect(this, SIGNAL(readyReadStandardOutput() ), this,
+		SLOT(slotReadStdout() ) );
 
 	// Parse data on the standard error
-	connect(this, SIGNAL(readyReadStandardOutput(KProcess*, char*, int)), this,
-		SLOT(slotReadStderr(KProcess*, char*, int)));
+	connect(this, SIGNAL(readyReadStandardError()), this,
+		SLOT(slotReadSterr()));
 		
 	// Delete the process object when the process exits
-	connect(this, SIGNAL(processExited(KProcess*)), this,
-		SLOT(slotProcessExit(KProcess*)));
+	connect(this, SIGNAL(finished(int exitCode, 
+		QProcess::ExitStatus exitStatus )), this, 
+		SLOT(slotProcessExit()));
 }
 
 /**
@@ -365,10 +366,12 @@ void Frontend::slotReadStdout()
  * The method reads whatever data is queued, and sends it to be interpreted
  * by parseStderr().
  */
-void Frontend::slotReadStderr(KProcess*, char* pBuffer, int nSize)
+void Frontend::slotReadStderr()
 {
 	QString sBuf;
 	
+	qDebug() << "BEGIN Frontend::slotReadStderr \n";
+
 	// Do nothing if waiting for process to die
 	if (m_bKilled)
 		return;
