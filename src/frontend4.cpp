@@ -29,6 +29,7 @@
 #include <qfileinfo.h>
 #include <qdir.h>
 #include <klocale.h>
+#include <kprocess.h>
 #include "frontend4.h"
 
 /**
@@ -114,7 +115,8 @@ bool Frontend::run(const QString& sName, const QStringList& slArgs,
 		return false;
 	} */
 
-	// setOutputChannelMode=(KProcess::SeparateChannels);
+	//setOutputChannelMode(KProcess::ForwardedChannels);
+	setOutputChannelMode(KProcess::MergedChannels);
 	setProgram(sName, slArgs);
 
 	start();
@@ -315,6 +317,7 @@ void Frontend::slotReadStdout()
 	pLocalBuf = pBuffer;
 	
 	// Iterate over the given buffer
+	/*
 	while (nSize > 0) {
 		// Create a new token, if the last iteration has completed one
 		if (m_pCurToken == NULL)
@@ -362,6 +365,7 @@ void Frontend::slotReadStdout()
 
 		m_pCurToken = NULL;
 	}
+	*/
 }
 
 /**

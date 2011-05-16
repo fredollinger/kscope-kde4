@@ -347,15 +347,18 @@ void CscopeVerifier::verify()
 void CscopeVerifier::slotConfigResult(uint nType, const QString& sResult)
 {
 
-	qDebug() << "BEGIN CscopeVerifier::slotConfigResult\n";
-	/*
+	qDebug() << "BEGIN CscopeVerifier::slotConfigResult: " << sResult <<
+"\n";
 	switch (nType) {
 	case ConfigFrontend::CscopeVerbose:
+		qDebug() << "CscopeVerifier::slotConfigResult(): CscopeVerbose\n";
 		if (sResult == "Yes")
 			m_nArgs |= CscopeFrontend::VerboseOut;
 		break;
 	
 	case ConfigFrontend::CscopeSlowPath:
+		qDebug() << "CscopeVerifier::slotConfigResult(): CscopeSlowPath\n";
+		
 		if (sResult == "Yes")
 			m_nArgs |= CscopeFrontend::SlowPathDef;
 			
@@ -363,7 +366,6 @@ void CscopeVerifier::slotConfigResult(uint nType, const QString& sResult)
 		m_bResult = true;
 		break;
 	}
-	*/
 }
 
 void CscopeVerifier::slotFinished()

@@ -14,6 +14,7 @@
 #include "cscopefrontend4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
+#include <qdebug.h>
 
 KScope::KScope(QWidget *) :
 	m_bCscopeVerified(false),
@@ -85,6 +86,7 @@ void KScope::initMainWindow()
  */
 void KScope::slotCscopeVerified(bool bResult, uint nArgs)
 {
+	qDebug() << "BEGIN: KScope::slotCscopeVerified() \n";
 	// statusBar()->message(i18n("Verifying Cscope installation...Done"), 3000);
 	statusBar()->showMessage(i18n("Verifying Cscope installation...Done"),
 3000);
