@@ -132,24 +132,6 @@ moc_kscopeconfig4.cpp
 ../preffrontend4.h
 /home/follinge/projects/kscope-kde4/src/build/../preffrontend4.h
 
-/home/follinge/projects/kscope-kde4/src/configfrontend4.cpp
-qdebug.h
--
-kstandarddirs.h
--
-configfrontend4.h
-/home/follinge/projects/kscope-kde4/src/configfrontend4.h
-
-/home/follinge/projects/kscope-kde4/src/configfrontend4.h
-frontend4.h
-/home/follinge/projects/kscope-kde4/src/frontend4.h
-
-/home/follinge/projects/kscope-kde4/src/frontend4.h
-qobject.h
--
-kprocess.h
--
-
 /usr/include/KDE/KParts/../../kparts/mainwindow.h
 kaction.h
 -
@@ -418,14 +400,6 @@ QtCore/qglobal.h
 
 /usr/include/qt4/QtCore/qconfig.h
 
-/usr/include/qt4/QtCore/qcontiguouscache.h
-QtCore/qatomic.h
--
-limits.h
--
-new
--
-
 /usr/include/qt4/QtCore/qcoreapplication.h
 QtCore/qobject.h
 -
@@ -450,28 +424,6 @@ QtCore/qscopedpointer.h
 QtCore/qiodevice.h
 -
 QtCore/qglobal.h
--
-
-/usr/include/qt4/QtCore/qdebug.h
-QtCore/qalgorithms.h
--
-QtCore/qhash.h
--
-QtCore/qlist.h
--
-QtCore/qmap.h
--
-QtCore/qpair.h
--
-QtCore/qtextstream.h
--
-QtCore/qstring.h
--
-QtCore/qvector.h
--
-QtCore/qset.h
--
-QtCore/qcontiguouscache.h
 -
 
 /usr/include/qt4/QtCore/qeventloop.h
@@ -714,28 +666,6 @@ Qt3Support/q3valuelist.h
 
 /usr/include/qt4/QtCore/qstringmatcher.h
 QtCore/qstring.h
--
-
-/usr/include/qt4/QtCore/qtextcodec.h
-QtCore/qstring.h
--
-QtCore/qlist.h
--
-
-/usr/include/qt4/QtCore/qtextstream.h
-QtCore/qiodevice.h
--
-QtCore/qstring.h
--
-QtCore/qchar.h
--
-QtCore/qlocale.h
--
-QtCore/qscopedpointer.h
--
-QtCore/qtextcodec.h
--
-stdio.h
 -
 
 /usr/include/qt4/QtCore/qtimer.h

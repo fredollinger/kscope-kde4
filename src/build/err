@@ -1,1 +1,9 @@
-/home/follinge/projects/kscope-kde4/src/kscope4.cpp:85: warning: unused parameter 'nArgs'
+/home/follinge/projects/kscope-kde4/src/preffrontend4.cpp:58: warning: unused parameter 'nType'
+/home/follinge/projects/kscope-kde4/src/preffrontend4.cpp:69: warning: unused parameter 'nType'
+/home/follinge/projects/kscope-kde4/src/preffrontend4.cpp:69: warning: unused parameter 'sResult'
+/home/follinge/projects/kscope-kde4/src/frontend4.cpp:83: warning: unused parameter 'bBlock'
+/home/follinge/projects/kscope-kde4/src/frontend4.cpp: In member function 'void Frontend::slotReadStdout()':
+/home/follinge/projects/kscope-kde4/src/frontend4.cpp:315: warning: 'pBuffer' may be used uninitialized in this function
+/home/follinge/projects/kscope-kde4/src/cscopefrontend4.cpp:347: warning: unused parameter 'nType'
+/home/follinge/projects/kscope-kde4/src/cscopefrontend4.cpp:347: warning: unused parameter 'sResult'
+/home/follinge/projects/kscope-kde4/src/kscope4.cpp:86: warning: unused parameter 'nArgs'

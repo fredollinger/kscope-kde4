@@ -179,7 +179,8 @@ protected:
 	virtual void finalize() {}
 
 protected slots:
-	virtual void slotProcessExit(KProcess*);
+	//virtual void slotProcessExit(KProcess*);
+	virtual void slotProcessExit();
 	
 private:
 	/** Determines whether the object should be deleted once the process has
@@ -211,3 +212,5 @@ private slots:
 };
 
 #endif
+
+// Mon May 16 00:58:26 UTC 2011

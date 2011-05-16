@@ -55,11 +55,10 @@ Frontend::Frontend(uint nRecordSize, bool bAutoDelete) : KProcess(),
 
 	// Parse data on the standard error
 	connect(this, SIGNAL(readyReadStandardError()), this,
-		SLOT(slotReadSterr()));
-		
+		SLOT(slotReadStderr()));
+
 	// Delete the process object when the process exits
-	connect(this, SIGNAL(finished(int exitCode, 
-		QProcess::ExitStatus exitStatus )), this, 
+	connect(this, SIGNAL(finished(int, QProcess::ExitStatus)), this, 
 		SLOT(slotProcessExit()));
 }
 
@@ -85,6 +84,8 @@ bool Frontend::run(const QString& sName, const QStringList& slArgs,
 	const QString& sWorkDir, bool bBlock)
 {
 	qDebug() << "BEGIN Frontend::run \n";
+	qDebug() << sName;
+	qDebug() << "\n";
 	// Cannot start if another controlled process is currently running
 	/*
 	if (isRunning()) {
@@ -100,7 +101,7 @@ bool Frontend::run(const QString& sName, const QStringList& slArgs,
 	
 	// Setup the command-line arguments
 	// clearArguments();
-	*this << slArgs;
+	//*this << slArgs;
 	
 	// Set the working directory, if requested
 	if (!sWorkDir.isEmpty())
@@ -112,6 +113,10 @@ bool Frontend::run(const QString& sName, const QStringList& slArgs,
 	m_sError = sName + i18n(": Failed to start process");
 		return false;
 	} */
+
+	// setOutputChannelMode=(KProcess::SeparateChannels);
+	setProgram(sName, slArgs);
+
 	start();
 	
 	m_sError = i18n("No error");
@@ -267,8 +272,9 @@ void Frontend::parseStderr(const QString& sText)
 /**
  * Deletes the process object upon the process' exit.
  */
-void Frontend::slotProcessExit(KProcess*)
+void Frontend::slotProcessExit()
 {
+	qDebug() << "BEGIN Frontend::finished() \n";
 	// Allow specialised clean-up by inheriting classes
 	finalize();
 	
@@ -380,4 +386,4 @@ void Frontend::slotReadStderr()
 	parseStderr(sBuf);
 }
 
-// Mon Mar 28 00:45:12 UTC 2011
+// Mon May 16 00:58:50 UTC 2011

@@ -78,7 +78,9 @@ bool ConfigFrontend::run(const QString& sCscopePath,
 	}
 		
 	// Set command line arguments
-	slArgs.append("sh");
+	// slArgs.append("sh");
+	//slArgs.append("/bin/bash");
+
 	slArgs.append(sScript);
 	
 	if (bCscopeOptsOnly)
@@ -92,9 +94,16 @@ bool ConfigFrontend::run(const QString& sCscopePath,
 	// Parser initialisation
 	m_delim = Newline;
 	m_nNextResult = CscopePath;
+
+	qDebug() << "ConfigFrontend::run: ";
+	qDebug() << slArgs;
+	qDebug() << "\n";
 	
-	if (!Frontend::run("sh", slArgs))
-		return false;
+	//if (!Frontend::run("sh", slArgs))
+		//return false;
+
+	if (!Frontend::run("/bin/bash", slArgs))
+		//return false;
 		
 	emit test(CscopePath);
 	return true;
