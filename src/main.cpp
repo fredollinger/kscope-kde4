@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
 {
 
        // BEGIN Create the "About" dialogue
-	//"KScope\nA source-editing environment for KDE, based on " "Cscope"
 	KAboutData aboutData( "kscope-kde4", 0,
 		ki18n("KScope\nA source-editing environment for KDE, based on Cscope ")
 		, "1.0",
@@ -55,7 +54,6 @@ int main(int argc, char *argv[])
 
 	KApplication app;
 
-	//K3DockMainWindow window = new K3DockMainWindow();
 	KScope* pKScope = new KScope();
 
 	pKScope->verifyCscope();

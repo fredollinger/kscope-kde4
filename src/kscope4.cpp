@@ -44,6 +44,15 @@ KScope::KScope(QWidget *) :
 void KScope::setupActions()
 {
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
+
+	KAction* clearAction = new KAction(this);
+  	clearAction->setText(i18n("&Clear"));
+	clearAction->setIcon(KIcon("document-new"));
+	clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
+	actionCollection()->addAction("clear", clearAction);
+	connect(clearAction, SIGNAL(triggered(bool)),
+	textArea, SLOT(clear()));
+
 }
 
 void KScope::openFile()
@@ -140,5 +149,5 @@ void KScope::slotConfigure()
 	return;
 }
 
+// Sat May 21 16:47:02 UTC 2011
 
-// Mon Apr  4 02:12:18 UTC 2011

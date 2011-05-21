@@ -4,9 +4,6 @@
 <MenuBar>
 
 	<Menu name="cscope"><text>&amp;Cscope</text>
-		<Action name="openFile"/>
-	</Menu>
-	<Menu name="cscope"><text>&amp;Cscope</text>
 		<Action name="cscope_rebuild"/>
 		<Separator/>
 		<Action name="cscope_references"/>
