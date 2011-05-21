@@ -276,7 +276,7 @@ void Frontend::parseStderr(const QString& sText)
  */
 void Frontend::slotProcessExit()
 {
-	qDebug() << "BEGIN Frontend::finished() \n";
+	qDebug() << "BEGIN Frontend::slotProcessExit() \n";
 	// Allow specialised clean-up by inheriting classes
 	finalize();
 	
@@ -296,11 +296,16 @@ void Frontend::slotProcessExit()
  * The method reads whatever data is queued, and sends it to be interpreted
  * by parseStdout().
  */
+// void Frontend::slotReadStdout(KProcess*, char* pBuffer, int nSize)
 void Frontend::slotReadStdout()
 {
 	// BEGIN NEED TO GET THESE FROM KPROCESS
 	char* pBuffer; 
 	int nSize;
+	QByteArray qbaBuffer;
+	qint64 qiBytesAvail;
+	// FO: I don't know why this is here...
+	// pLocalBuf = pBuffer;
 	// END NEED TO GET THESE FROM KPROCESS
 
 	char* pLocalBuf;
@@ -309,12 +314,19 @@ void Frontend::slotReadStdout()
 	ParserDelim delim;
 
 	qDebug() << "BEGIN Frontend::slotReadStdout \n";
+
+	setReadChannel(QProcess::StandardOutput);
+	qiBytesAvail=bytesAvailable();
+	qbaBuffer=readAll();
+	pLocalBuf=qbaBuffer.data();
+
+	qDebug() << qiBytesAvail;
+	qDebug() << pLocalBuf;
+	qDebug() << "END Frontend::slotReadStdout \n";
 	
 	// Do nothing if waiting for process to die
 	if (m_bKilled)
 		return;
-	
-	pLocalBuf = pBuffer;
 	
 	// Iterate over the given buffer
 	/*
