@@ -132,17 +132,15 @@ moc_kscopeconfig4.cpp
 ../preffrontend4.h
 /home/follinge/projects/kscope-kde4/src/build/../preffrontend4.h
 
-/home/follinge/projects/kscope-kde4/src/frontend4.cpp
+/home/follinge/projects/kscope-kde4/src/configfrontend4.cpp
 qdebug.h
 -
-qfileinfo.h
+kstandarddirs.h
 -
-qdir.h
--
-klocale.h
--
-kprocess.h
--
+configfrontend4.h
+/home/follinge/projects/kscope-kde4/src/configfrontend4.h
+
+/home/follinge/projects/kscope-kde4/src/configfrontend4.h
 frontend4.h
 /home/follinge/projects/kscope-kde4/src/frontend4.h
 
@@ -476,37 +474,11 @@ QtCore/qset.h
 QtCore/qcontiguouscache.h
 -
 
-/usr/include/qt4/QtCore/qdir.h
-QtCore/qstring.h
--
-QtCore/qfileinfo.h
--
-QtCore/qstringlist.h
--
-QtCore/qscopedpointer.h
--
-
 /usr/include/qt4/QtCore/qeventloop.h
 QtCore/qobject.h
 -
 
 /usr/include/qt4/QtCore/qfeatures.h
-
-/usr/include/qt4/QtCore/qfile.h
-QtCore/qiodevice.h
--
-QtCore/qstring.h
--
-stdio.h
--
-
-/usr/include/qt4/QtCore/qfileinfo.h
-QtCore/qfile.h
--
-QtCore/qlist.h
--
-QtCore/qscopedpointer.h
--
 
 /usr/include/qt4/QtCore/qglobal.h
 stddef.h

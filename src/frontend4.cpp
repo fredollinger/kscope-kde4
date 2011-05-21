@@ -198,7 +198,8 @@ void Frontend::removeRecord()
  * @return	true if a token was extracted up to the given delimter(s), false
  *			if the buffer ended before a delimiter could be identified
  */
-bool Frontend::tokenize(char** ppBuf, int* pBufSize, QString& sResult,
+// bool Frontend::tokenize(char** ppBuf, int* pBufSize, QString& sResult,
+bool Frontend::tokenize(char** ppBuf, qint64* pBufSize, QString& sResult,
 	ParserDelim& delim)
 {
 	int nSize;
@@ -301,9 +302,8 @@ void Frontend::slotReadStdout()
 {
 	// BEGIN NEED TO GET THESE FROM KPROCESS
 	char* pBuffer; 
-	int nSize;
+	qint64 nSize;
 	QByteArray qbaBuffer;
-	qint64 qiBytesAvail;
 	// FO: I don't know why this is here...
 	// pLocalBuf = pBuffer;
 	// END NEED TO GET THESE FROM KPROCESS
@@ -316,11 +316,10 @@ void Frontend::slotReadStdout()
 	qDebug() << "BEGIN Frontend::slotReadStdout \n";
 
 	setReadChannel(QProcess::StandardOutput);
-	qiBytesAvail=bytesAvailable();
+	nSize=bytesAvailable();
 	qbaBuffer=readAll();
 	pLocalBuf=qbaBuffer.data();
 
-	qDebug() << qiBytesAvail;
 	qDebug() << pLocalBuf;
 	qDebug() << "END Frontend::slotReadStdout \n";
 	
@@ -329,7 +328,6 @@ void Frontend::slotReadStdout()
 		return;
 	
 	// Iterate over the given buffer
-	/*
 	while (nSize > 0) {
 		// Create a new token, if the last iteration has completed one
 		if (m_pCurToken == NULL)
@@ -377,7 +375,6 @@ void Frontend::slotReadStdout()
 
 		m_pCurToken = NULL;
 	}
-	*/
 }
 
 /**

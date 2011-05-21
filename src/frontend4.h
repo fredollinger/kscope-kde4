@@ -203,7 +203,7 @@ private:
 	void addToken(FrontendToken*);
 	void removeToken();
 	void removeRecord();
-	bool tokenize(char**, int*, QString&, ParserDelim&);
+	bool tokenize(char**, qint64*, QString&, ParserDelim&);
 		
 private slots:
 	// void slotReadStdout(KProcess*, char*, int);
