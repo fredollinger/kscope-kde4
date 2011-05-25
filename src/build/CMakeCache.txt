@@ -733,7 +733,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=2
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=8
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -854,13 +854,13 @@ CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Automoc4
-FIND_PACKAGE_MESSAGE_DETAILS_Automoc4:INTERNAL=[/usr/bin/automoc4][v]
+FIND_PACKAGE_MESSAGE_DETAILS_Automoc4:INTERNAL=[/usr/bin/automoc4]
 //Details about finding Perl
-FIND_PACKAGE_MESSAGE_DETAILS_Perl:INTERNAL=[/usr/bin/perl][v]
+FIND_PACKAGE_MESSAGE_DETAILS_Perl:INTERNAL=[/usr/bin/perl]
 //Details about finding Phonon
 FIND_PACKAGE_MESSAGE_DETAILS_Phonon:INTERNAL=[/usr/include][/usr/lib/libphonon.so][v]
 //Details about finding Threads
-FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v]
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE]
 //Test HAVE_FPIE_SUPPORT
 HAVE_FPIE_SUPPORT:INTERNAL=1
 //ADVANCED property for variable: PERL_EXECUTABLE
