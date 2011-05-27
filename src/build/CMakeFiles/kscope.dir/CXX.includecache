@@ -39,6 +39,8 @@ kparts/part.h
 -
 
 /home/follinge/projects/kscope-kde4/src/build/../kscopeconfig4.h
+KParts/MainWindow
+-
 qobject.h
 -
 qstringlist.h
