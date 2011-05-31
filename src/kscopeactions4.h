@@ -32,7 +32,7 @@
 
 class KScope;
 
-typedef QPtrList<KAction> ActionList;
+typedef QList<KAction> ActionList;
 
 /**
  * A helper class for managing KScope's menu commands.
@@ -51,14 +51,16 @@ public:
 	void initLayoutActions();
 	void enableExtEditor(bool);
 	
-	KToggleAction* getLockAction() { return m_pLockAction; }
+	// KToggleAction* getLockAction() { return m_pLockAction; }
 	
 public slots:
+	/*
 	void slotQueryDockToggled(bool);
 	void slotQueryDockClosed();
 	void slotFileViewDockClosed();
 	void slotEnableProjectActions(bool);
 	void slotEnableFileActions(bool);
+	*/
 	
 signals:
 	void toggleProject(bool bEnable);
@@ -66,7 +68,7 @@ signals:
 	
 private:
 	KScope* m_pWindow;
-	KActionCollection* m_pCollection;
+	// KActionCollection* m_pCollection;
 	
 	/** A list of actions that require an active project. */
 	ActionList m_lstProjActions;
@@ -75,24 +77,24 @@ private:
 	ActionList m_lstFileActions;
 	
 	/** A toggle menu item for locking/unlocking query pages. */
-	KToggleAction* m_pLockAction;
+	// KToggleAction* m_pLockAction;
 
 	/** The "Edit in External Editor" menu command. */
 	KAction* m_pExtEditAction;
 	
 	/** The "Show/Hide File View" menu command. */
-	KToggleAction* m_pToggleFileViewAction;
+	// KToggleAction* m_pToggleFileViewAction;
 	
 	/** The "Show/Hide Query Window" menu command. */
-	KToggleAction* m_pToggleQueryWindowAction;
+	// KToggleAction* m_pToggleQueryWindowAction;
 	
 	/** The "Show/Hide Tag List" menu command. */
-	KToggleAction* m_pToggleTagListAction;
+	// KToggleAction* m_pToggleTagListAction;
 	
 	KAction* addAction(const QString&, const char*, const char*, QWidget*,
 		const char*, const char*, const char*);
-	KToggleAction* addToggle(const QString&, const char*, const char*,
-		QWidget*, const char*, const char*, const char*);
+	// KToggleAction* addToggle(const QString&, const char*, const char*,
+		// QWidget*, const char*, const char*, const char*);
 };
 
 #endif

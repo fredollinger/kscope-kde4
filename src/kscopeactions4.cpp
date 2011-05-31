@@ -26,7 +26,7 @@
  ***************************************************************************/
 
 #include <klocale.h>
-#include "kscope$.h"
+#include "kscope4.h"
 #include "kscopeactions4.h"
 /*
 #include "kscopeconfig.h"
@@ -35,9 +35,15 @@
 #include "querywidget.h"
 */
 
+/*
 KScopeActions::KScopeActions(KScope* pWindow) : QObject(),
 		m_pWindow(pWindow),
 		m_pCollection(pWindow->actionCollection())
+{
+}
+*/
+KScopeActions::KScopeActions(KScope* pWindow) : QObject(),
+		m_pWindow(pWindow)
 {
 }
 

@@ -223,7 +223,7 @@ void KScopeConfig::load()
  */
 void KScopeConfig::loadDefault()
 {
-	m_cp = s_cpDef;
+	// m_cp = s_cpDef;
 }
 
 /**
@@ -412,13 +412,17 @@ const QStringList& KScopeConfig::getRecentProjects() const
  */
 void KScopeConfig::addRecentProject(const QString& sProjPath)
 {
+	qDebug() << "KScopeConfig::addRecentProject need replacement to QString.find() and remove() and not implemented \n";
+	/*
 	QStringList::Iterator itr;
+
 	
-	itr = m_slProjects.find(sProjPath);
+	// itr = m_slProjects.find(sProjPath);
 	if (itr != m_slProjects.end())
 		m_slProjects.remove(itr);
 			
 	m_slProjects.prepend(sProjPath);
+	*/
 }
 
 /**
@@ -427,7 +431,9 @@ void KScopeConfig::addRecentProject(const QString& sProjPath)
  */
 void KScopeConfig::removeRecentProject(const QString& sProjPath)
 {
-	m_slProjects.remove(sProjPath);
+
+	qDebug() << "KScopeConfig::removeRecentProject need replacement to QString.find() \n";
+	// m_slProjects.remove(sProjPath);
 }
 
 /**
@@ -450,19 +456,23 @@ void KScopeConfig::setShowTagList(bool bShowTagList)
  * @return	A list containing the widths of the Ctags list part and the
  * editor part in an editor page.
  */
+/*
 const SPLIT_SIZES& KScopeConfig::getEditorSizes() const
 {
 	return m_cp.siEditor;
 }
+*/
 
 /**
  * @param	siEditor	A list containing the widths of the Ctags list part
  * and the editor part in an editor page.
  */
+/*
 void KScopeConfig::setEditorSizes(const SPLIT_SIZES& siEditor)
 {
 	m_cp.siEditor = siEditor;
 }
+*/
 
 /**
  * Finds a colour to use for a GUI element.
@@ -499,10 +509,14 @@ void KScopeConfig::setColor(ColorElement ce, const QColor& clr)
  * @param	fe		Identifies the GUI element
  * @return	A reference to the font object to use
  */
+/*
 const QFont& KScopeConfig::getFont(FontElement fe) const
 {
-	return m_cp.fonts[fe];
+
+	qDebug() << "KScopeConfig::getFont not implemented! \n";
+	// return m_cp.fonts[fe];
 }
+*/
 
 /**
  * Returns the display name of a GUI element whose font can be configured.
@@ -521,8 +535,11 @@ QString KScopeConfig::getFontName(FontElement ce) const
  */ 
 void KScopeConfig::setFont(FontElement fe, const QFont& font)
 {
+	qDebug() << "KScopeConfig::setFont not implemented! \n";
+	/*
 	m_bFontsChanged = true;
 	m_cp.fonts[fe] = font;
+	*/
 }
 
 /**

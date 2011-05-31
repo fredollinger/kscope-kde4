@@ -50,8 +50,8 @@ void KScope::setupActions()
 	clearAction->setIcon(KIcon("document-new"));
 	clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
 	actionCollection()->addAction("clear", clearAction);
-	connect(clearAction, SIGNAL(triggered(bool)),
-	textArea, SLOT(clear()));
+	//connect(clearAction, SIGNAL(triggered(bool)),
+	// textArea, SLOT(clear()));
 
 }
 

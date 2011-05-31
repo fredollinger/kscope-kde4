@@ -34,7 +34,7 @@
 #include <qcolor.h>
 // #include <kdockwidget.h>
 
-typedef QList<int> SPLIT_SIZES;
+// typedef QList<int> SPLIT_SIZES;
 
 /**
  * Loads and stores global configuration parameters.
@@ -93,8 +93,8 @@ public:
 	void removeRecentProject(const QString&);
 	bool getShowTagList() const;
 	void setShowTagList(bool);
-	const SPLIT_SIZES& getEditorSizes() const;
-	void setEditorSizes(const SPLIT_SIZES&);
+	// const SPLIT_SIZES& getEditorSizes() const;
+	// void setEditorSizes(const SPLIT_SIZES&);
 	const QColor& getColor(ColorElement) const;
 	QString getColorName(ColorElement) const;
 	void setColor(ColorElement, const QColor&);
@@ -136,6 +136,7 @@ private:
 
 	/** Defines the list of all configurable parameters in KScope.
 		The use of a structure helps define default values (@see s_cpDef) */
+	
 	struct ConfParams {
 		/** The full path of the Cscope executable. */
 		QString sCscopePath;
@@ -151,7 +152,7 @@ private:
 		
 		/** The widths of the tag list and editor panes inside an editor
 			page. */
-		SPLIT_SIZES siEditor;
+		// SPLIT_SIZES siEditor;
 		
 		/** Colours for GUI elements. */
 		QColor clrs[LAST_COLOR + 1];
@@ -207,7 +208,7 @@ private:
 	ConfParams m_cp;
 
 	/** Holds default values for the configuration parameters */
-	static ConfParams s_cpDef;
+	// static ConfParams s_cpDef;
 	
 	/** Write font preferences only if modified by the user (keep default
 		setting otherwise) */
