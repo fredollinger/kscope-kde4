@@ -1,3 +1,0 @@
-/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope.dir
-/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/kscope_automoc.dir
-/home/follinge/projects/kscope-kde4/src/build/CMakeFiles/uninstall.dir
