@@ -79,6 +79,8 @@ private:
 		the first time. */
 	ProgressDlg* m_pProgressDlg;
 
+	// Manages menu and tool-bar commands.
+	// KScopeActions* m_pActions;
 
 private slots:
 	void openFile();

@@ -1,3 +1,4 @@
+
 #include <kparts/part.h>
 
 #include <KStandardAction>
@@ -39,10 +40,19 @@ KScope::KScope(QWidget *) :
 	// m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
 	// m_pCallTreeMgr = new CallTreeManager(this);
+
+
+	// BEGIN STUFF FROM KSCOPE
+	// Connect menu and toolbar items with the object's slots
+	// m_pActions = new KScopeActions(this);
+	// m_pActions->init();
+	//m_pActions->slotEnableProjectActions(false);
+	// END STUFF FROM KSCOPE
 }
 
 void KScope::setupActions()
 {
+
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
 
 	KAction* clearAction = new KAction(this);
@@ -50,8 +60,16 @@ void KScope::setupActions()
 	clearAction->setIcon(KIcon("document-new"));
 	clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
 	actionCollection()->addAction("clear", clearAction);
+
+	KAction* cscopeRebuild = new KAction(this);
+  	cscopeRebuild->setText(i18n("cscope rebuild"));
+	// clearAction->setIcon(KIcon("cscope"));
+	//clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
+	actionCollection()->addAction("cscope_rebuild", cscopeRebuild);
+
 	//connect(clearAction, SIGNAL(triggered(bool)),
 	// textArea, SLOT(clear()));
+
 
 }
 
