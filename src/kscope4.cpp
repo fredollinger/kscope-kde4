@@ -29,7 +29,7 @@ KScope::KScope(QWidget *) :
 	setupActions();
 
 	// Create the initial GUI (no active part)
-	setXMLFile("kscopeui.rc");
+	
 	createShellGUI();
 	guiFactory()->addClient(m_view);
 
@@ -66,11 +66,13 @@ void KScope::setupActions()
 	// clearAction->setIcon(KIcon("cscope"));
 	//clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
 	actionCollection()->addAction("cscope_rebuild", cscopeRebuild);
+// slotRebuildDB
+	connect(cscopeRebuild, SIGNAL(triggered(bool)),
+	this, SLOT(slotRebuildDB()));
 
-	//connect(clearAction, SIGNAL(triggered(bool)),
-	// textArea, SLOT(clear()));
-
-
+	qDebug() << "KScope::setXMLFile BEGIN\n";
+	setXMLFile("kscope-kde4.rc");
+	setupGUI(Default, "kscope-kde4.rc");
 }
 
 void KScope::openFile()
@@ -167,5 +169,14 @@ void KScope::slotConfigure()
 	return;
 }
 
-// Sat May 21 16:47:02 UTC 2011
+/**
+ * Handles the "Cscope->Rebuild Database..." command.
+ * Rebuilds Cscope's database for the current project.
+ */
+void KScope::slotRebuildDB()
+{
+	qDebug() << "KScope::slotRebuildDB(()\n";
+	return;
+}
 
+// Tue Jun 14 03:07:28 UTC 2011

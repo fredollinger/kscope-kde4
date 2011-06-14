@@ -26,4 +26,4 @@ ${KDE4_KDE3SUPPORT_LIBS}
 ${KDE4_KTEXTEDITOR_LIBS})
 
 install(TARGETS kscope DESTINATION ${BIN_INSTALL_DIR})
-install(FILES kscopeui.rc DESTINATION ${DATA_INSTALL_DIR}/kscope)
+install(FILES kscopeui.rc kscope-kde4.rc DESTINATION ${DATA_INSTALL_DIR}/kscope-kde4)

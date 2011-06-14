@@ -86,6 +86,7 @@ private slots:
 	void openFile();
 	void slotConfigure();
 	void slotCscopeVerified(bool, uint);
+	void slotRebuildDB();
 
 //friend class KScopeActions;
 };
