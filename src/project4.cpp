@@ -11,6 +11,7 @@
 
 /**
  */
+#ifdef KPROJECT
 Project::Project() : ProjectBase(),
 	m_pConf(NULL)
 {
@@ -20,10 +21,9 @@ Project::Project() : ProjectBase(),
  */
 Project::~Project()
 {
-	close();
+	// close();
 }
 
-#ifdef KPROJECT
 /**
  */
 bool Project::open(const QString& sPath)
