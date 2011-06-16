@@ -24,6 +24,19 @@
 		<Action name="cscope_call_tree"/>
 	</Menu>
 
+	<Menu name="project"><text>&amp;Project</text>
+		<Action name="project_new"/>
+		<Action name="project_open"/>
+		<Action name="project_cscope_out"/>
+		<Action name="project_add_rem_files"/>
+		<Action name="project_properties"/>
+		<Separator/>
+		<Action name="project_make"/>
+		<Action name="project_remake"/>
+		<Separator/>
+		<Action name="project_close"/>
+	</Menu>
+
 </MenuBar>
 
 </gui>

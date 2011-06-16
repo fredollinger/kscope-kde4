@@ -18,6 +18,7 @@
 		<Separator/>
 		<Merge/>
 	</Menu>
+
 	<Menu name="project"><text>&amp;Project</text>
 		<Action name="project_new"/>
 		<Action name="project_open"/>
@@ -30,6 +31,7 @@
 		<Separator/>
 		<Action name="project_close"/>
 	</Menu>
+
 	<Menu name="cscope"><text>&amp;Cscope</text>
 		<Action name="cscope_rebuild"/>
 		<Separator/>

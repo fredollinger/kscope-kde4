@@ -145,7 +145,7 @@ struct FileLocation
 /**
  * A list of file locations used for restoring a session.
  */
-typedef QPtrList<FileLocation> FileLocationList;
+// typedef QList<FileLocation> FileLocationList;
 
 class FileSemaphore;
 
@@ -233,7 +233,7 @@ public:
 	/**
 	 * @return	The full path of the project's directory
 	 */
-	QString getPath() const { return m_dir.absPath(); }
+	QString getPath() const { return m_dir.absolutePath(); }
 	
 	/**
 	 * @return	Command-line arguments to pass to a Cscope object, based on

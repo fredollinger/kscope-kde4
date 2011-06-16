@@ -1,30 +1,3 @@
-/***************************************************************************
- *
- * Copyright (C) 2007 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -35,41 +8,6 @@
 #include "cscopefrontend4.h"
 
 #define PROJECT_CONFIG_VER 2
-
-inline void flListFromStringList(FileLocationList& fll, const QStringList& sl)
-{
-	QStringList::ConstIterator itr;
-	QString sPath;
-	uint nLine, nCol;
-
-	// Transform the string into a list of file locations
-	for (itr = sl.begin(); itr != sl.end(); ++itr) {
-		sPath = (*itr).section(':', 0, 0);
-		nLine = (*itr).section(':', 1, 1).toUInt();
-		nCol = (*itr).section(':', 2, 2).toUInt();
-		fll.append(new FileLocation(sPath, nLine, nCol));
-	}
-}
-
-inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
-{
-	FileLocationList* pList;
-	FileLocation* pLoc;
-	QString sLoc;
-
-	// Nasty...
-	pList = (FileLocationList*)&fll;
-	sl.clear();
-	
-	// Turn the object list into a string list, so that it can be written in
-	// the configuration file
-	for (pLoc = pList->first(); pLoc != NULL; pLoc = pList->next()) {
-		sLoc = "";
-		QTextOStream(&sLoc) << pLoc->m_sPath << ":" << pLoc->m_nLine << ":" 
-				<< pLoc->m_nCol;
-		sl.append(sLoc);
-	}
-}
 
 /**
  */
@@ -85,6 +23,7 @@ Project::~Project()
 	close();
 }
 
+#ifdef KPROJECT
 /**
  */
 bool Project::open(const QString& sPath)
@@ -440,3 +379,4 @@ void Project::writeOptions(KConfig* pConf, const Options& opt)
 	pConf->writeEntry("Delay", opt.nACDelay);
 	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
+#endif // KPROJECT

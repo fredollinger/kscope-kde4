@@ -145,7 +145,7 @@ struct FileLocation
 /**
  * A list of file locations used for restoring a session.
  */
-typedef QPtrList<FileLocation> FileLocationList;
+typedef QList<FileLocation> FileLocationList;
 
 class FileSemaphore;
 

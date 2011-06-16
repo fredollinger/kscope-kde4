@@ -55,6 +55,7 @@ void KScope::setupActions()
 
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
 
+	// BEGIN KACTIONS
 	KAction* clearAction = new KAction(this);
   	clearAction->setText(i18n("&Clear"));
 	clearAction->setIcon(KIcon("document-new"));
@@ -63,12 +64,29 @@ void KScope::setupActions()
 
 	KAction* cscopeRebuild = new KAction(this);
   	cscopeRebuild->setText(i18n("cscope rebuild"));
-	// clearAction->setIcon(KIcon("cscope"));
-	//clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
 	actionCollection()->addAction("cscope_rebuild", cscopeRebuild);
-// slotRebuildDB
 	connect(cscopeRebuild, SIGNAL(triggered(bool)),
 	this, SLOT(slotRebuildDB()));
+
+	KAction* projectNew = new KAction(this);
+  	projectNew->setText(i18n("project_new"));
+	actionCollection()->addAction("cscope_rebuild", projectNew);
+	connect(projectNew, SIGNAL(triggered(bool)),
+	this, SLOT(slotCreateProject()));
+	
+	/* BEGIN OLD SCHOOL PROJECT
+	// Project menu
+	addAction(i18n("&New Project..."),
+		NULL,
+		NULL,
+		m_pWindow,
+		SLOT(slotCreateProject()),
+		"project_new",
+		NULL);
+		END OLD SCHOOL PROJECT
+	*/
+	
+	// END KACTIONS
 
 	qDebug() << "KScope::setXMLFile BEGIN\n";
 	setXMLFile("kscope-kde4.rc");
