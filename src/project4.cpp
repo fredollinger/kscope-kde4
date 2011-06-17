@@ -11,7 +11,6 @@
 
 /**
  */
-#ifdef KPROJECT
 Project::Project() : ProjectBase(),
 	m_pConf(NULL)
 {
@@ -23,6 +22,7 @@ Project::~Project()
 {
 	// close();
 }
+#ifdef KPROJECT
 
 /**
  */

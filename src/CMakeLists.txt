@@ -10,6 +10,7 @@ include_directories(${KDE4_INCLUDES})
 #editorpage4.cpp
 #editormanager4.cpp
 set(kscope_SRCS
+newprojectdlg4.cpp
 project4.cpp
 kscopeconfig4.cpp
 configfrontend4.cpp
