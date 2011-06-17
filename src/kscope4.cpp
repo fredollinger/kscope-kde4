@@ -70,7 +70,7 @@ void KScope::setupActions()
 
 	KAction* projectNew = new KAction(this);
   	projectNew->setText(i18n("project_new"));
-	actionCollection()->addAction("cscope_rebuild", projectNew);
+	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
 	
@@ -194,6 +194,17 @@ void KScope::slotConfigure()
 void KScope::slotRebuildDB()
 {
 	qDebug() << "KScope::slotRebuildDB(()\n";
+	return;
+}
+
+
+/**
+ * Handles the "Cscope->Rebuild Database..." command.
+ * Rebuilds Cscope's database for the current project.
+ */
+void KScope::slotCreateProject()
+{
+	qDebug() << "KScope::slotCreateProject(()\n";
 	return;
 }
 

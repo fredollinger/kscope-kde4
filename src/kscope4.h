@@ -83,10 +83,11 @@ private:
 	// KScopeActions* m_pActions;
 
 private slots:
-	void openFile();
-	void slotConfigure();
+	void openFile(void);
+	void slotConfigure(void);
 	void slotCscopeVerified(bool, uint);
-	void slotRebuildDB();
+	void slotRebuildDB(void);
+	void slotCreateProject(void);
 
 //friend class KScopeActions;
 };
