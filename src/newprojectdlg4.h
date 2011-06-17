@@ -30,7 +30,7 @@
 
 #include <qlineedit.h>
 #include <qcheckbox.h>
-#include <newprojectlayout.h>
+#include "newprojectlayout4.h"
 #include <autocompletionlayout.h>
 #include "projectbase.h"
 	
