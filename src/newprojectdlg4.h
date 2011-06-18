@@ -31,15 +31,15 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include "newprojectlayout4.h"
-#include <autocompletionlayout.h>
-#include "projectbase.h"
+#include "autocompletionlayout4.h"
+#include "projectbase4.h"
 	
 /**
  * A sub-dialogue of the New Project dialogue.
  * Allows the user to configure auto-completion parameters.
  * @author Elad Lahav
  */
-class AutoCompletionDlg : public AutoCompletionLayout
+class AutoCompletionDlg : public Ui_AutoCompletionLayout
 {
 	Q_OBJECT
 	
@@ -77,7 +77,7 @@ private:
  * @author Elad Lahav
  */
 
-class NewProjectDlg : public NewProjectLayout
+class NewProjectDlg : public Ui_NewProjectLayout
 {
 	Q_OBJECT
 	

@@ -25,6 +25,7 @@
  *
  ***************************************************************************/
 
+#include <QRegExp>
 #include <qregexp.h>
 #include <qpushbutton.h>
 #include <qspinbox.h>
@@ -75,7 +76,7 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	}
 	else {
 		// Give appropriate titles to the dialog and the accept button
-		setCaption(i18n("Project Properties"));
+		// setCaption(i18n("Project Properties"));
 		m_pCreateButton->setText(i18n("OK"));
 		
 		// Disable the non-relevant widgets
@@ -87,9 +88,11 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 /**
  * Class destructor.
  */
+/*
 NewProjectDlg::~NewProjectDlg()
 {
 }
+*/
 
 /**
  * Configures the dialog's widget to display the properties of the current
@@ -105,8 +108,8 @@ void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 	
 	// Set values for current project
 	m_pNameEdit->setText(sName);
-	m_pPathRequester->setURL(sPath);
-	m_pSrcRootRequester->setURL(opt.sSrcRootPath);
+	m_pPathRequester->setUrl(sPath);
+	m_pSrcRootRequester->setUrl(opt.sSrcRootPath);
 	m_pKernelCheck->setChecked(opt.bKernel);
 	m_pInvCheck->setChecked(opt.bInvIndex);
 	m_pNoCompCheck->setChecked(opt.bNoCompress);
@@ -155,6 +158,7 @@ QString NewProjectDlg::getName()
  * directory, created under it using the project's name.
  * @return	The full path of the parent directory for the new project
  */
+/*
 QString NewProjectDlg::getPath()
 {
 	if (m_pHiddenDirCheck->isChecked())
@@ -162,11 +166,13 @@ QString NewProjectDlg::getPath()
 	
 	return m_pPathRequester->url();
 }
+*/
 
 /**
  * Fills a structure with all user-configured project options.
  * @param	opt	The structure to fill
  */
+/*
 void NewProjectDlg::getOptions(ProjectBase::Options& opt)
 {
 	opt.sSrcRootPath = m_pSrcRootRequester->url();
@@ -193,10 +199,12 @@ void NewProjectDlg::getOptions(ProjectBase::Options& opt)
 	
 	opt.sCtagsCmd = m_pCtagsCmdEdit->text();
 }
+*/
 
 /**
  * Ends the dialog after the user has clicked the "OK" button.
  */
+/*
 void NewProjectDlg::accept()
 {
 	int i, nCount;
@@ -219,13 +227,14 @@ void NewProjectDlg::accept()
 	// Clean-up the source root
 	QDir dir(m_pSrcRootRequester->url());
 	if (dir.exists())
-		m_pSrcRootRequester->setURL(dir.absPath());
+		m_pSrcRootRequester->setUrl(dir.absPath());
 	else
-		m_pSrcRootRequester->setURL("/");
+		m_pSrcRootRequester->setUrl("/");
 		
 	// Close the dialog
 	QDialog::accept();
 }
+*/
 
 /**
  * Adds the the file type string in the edit-box to the list of project types.
@@ -237,7 +246,7 @@ void NewProjectDlg::slotAddType()
 		
 	// Try the custom type edit-box first.
 	sType = m_pTypesEdit->text();
-	sType.stripWhiteSpace();
+	sType.trimmed();
 	if (sType.isEmpty())
 		return;
 
@@ -249,10 +258,8 @@ void NewProjectDlg::slotAddType()
 	}
 
 	// Do not add an existing type.
-	if (m_pTypesList->findItem(sType, Qt::CaseSensitive | Qt::ExactMatch) != 
-		NULL) {
+	if (m_pTypesList->findItem(sType, Q3ListBox::CaseSensitive | Q3ListBox::ExactMatch) != NULL) 
 		return;
-	}
 
 	// Add the file type to the list
 	m_pTypesList->insertItem(sType);
@@ -278,7 +285,7 @@ void NewProjectDlg::slotRemoveType()
 	m_pTypesList->removeItem(nItem);
 	
 	// Add to the list of available types.
-	if (m_pAvailTypesList->findItem(sType, Qt::CaseSensitive | Qt::ExactMatch) 
+	if (m_pAvailTypesList->findItem(sType, Q3ListBox::CaseSensitive | Q3ListBox::ExactMatch) 
 		== NULL) {
 		m_pAvailTypesList->insertItem(sType);
 	}

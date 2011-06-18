@@ -1,8 +1,14 @@
-#ifndef AUTOCOMPLETIONLAYOUT_H
-#define AUTOCOMPLETIONLAYOUT_H
+/********************************************************************************
+** Form generated from reading UI file 'autocompletionlayout4.ui'
+**
+** Created: Sat Jun 18 01:46:08 2011
+**      by: Qt User Interface Compiler version 4.7.0
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
 
-#include <qvariant.h>
-
+#ifndef UI_AUTOCOMPLETIONLAYOUT4_H
+#define UI_AUTOCOMPLETIONLAYOUT4_H
 
 #include <Qt3Support/Q3MimeSourceFactory>
 #include <QtCore/QVariant>
@@ -24,20 +30,20 @@ class Ui_AutoCompletionLayout
 {
 public:
     QVBoxLayout *vboxLayout;
-    QHBoxLayout *hboxLayout;
+    QHBoxLayout *auto_qhbl5;
     QLabel *textLabel1;
     QSpacerItem *spacer15;
     QSpinBox *m_pMinCharsSpin;
-    QHBoxLayout *hboxLayout1;
+    QHBoxLayout *auto_qhbl2;
     QLabel *textLabel2;
     QSpacerItem *spacer16;
     QSpinBox *m_pDelaySpin;
-    QHBoxLayout *hboxLayout2;
+    QHBoxLayout *auto_qhbl3;
     QLabel *textLabel3;
     QSpacerItem *spacer17;
     QSpinBox *m_pMaxEntriesSpin;
     QSpacerItem *spacer19;
-    QHBoxLayout *hboxLayout3;
+    QHBoxLayout *auto_qhbl1;
     QSpacerItem *spacer18;
     QPushButton *m_pOKButton;
     QPushButton *m_pCancelButton;
@@ -51,96 +57,96 @@ public:
         vboxLayout->setSpacing(6);
         vboxLayout->setContentsMargins(11, 11, 11, 11);
         vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
-        hboxLayout = new QHBoxLayout();
-        hboxLayout->setSpacing(6);
-        hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
+        auto_qhbl5 = new QHBoxLayout();
+        auto_qhbl5->setSpacing(6);
+        auto_qhbl5->setObjectName(QString::fromUtf8("auto_qhbl5"));
         textLabel1 = new QLabel(AutoCompletionLayout);
         textLabel1->setObjectName(QString::fromUtf8("textLabel1"));
         textLabel1->setWordWrap(false);
 
-        hboxLayout->addWidget(textLabel1);
+        auto_qhbl5->addWidget(textLabel1);
 
         spacer15 = new QSpacerItem(71, 21, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        hboxLayout->addItem(spacer15);
+        auto_qhbl5->addItem(spacer15);
 
         m_pMinCharsSpin = new QSpinBox(AutoCompletionLayout);
         m_pMinCharsSpin->setObjectName(QString::fromUtf8("m_pMinCharsSpin"));
 
-        hboxLayout->addWidget(m_pMinCharsSpin);
+        auto_qhbl5->addWidget(m_pMinCharsSpin);
 
 
-        vboxLayout->addLayout(hboxLayout);
+        vboxLayout->addLayout(auto_qhbl5);
 
-        hboxLayout1 = new QHBoxLayout();
-        hboxLayout1->setSpacing(6);
-        hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+        auto_qhbl2 = new QHBoxLayout();
+        auto_qhbl2->setSpacing(6);
+        auto_qhbl2->setObjectName(QString::fromUtf8("auto_qhbl2"));
         textLabel2 = new QLabel(AutoCompletionLayout);
         textLabel2->setObjectName(QString::fromUtf8("textLabel2"));
         textLabel2->setWordWrap(false);
 
-        hboxLayout1->addWidget(textLabel2);
+        auto_qhbl2->addWidget(textLabel2);
 
         spacer16 = new QSpacerItem(101, 21, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        hboxLayout1->addItem(spacer16);
+        auto_qhbl2->addItem(spacer16);
 
         m_pDelaySpin = new QSpinBox(AutoCompletionLayout);
         m_pDelaySpin->setObjectName(QString::fromUtf8("m_pDelaySpin"));
         m_pDelaySpin->setMaximum(10000);
         m_pDelaySpin->setSingleStep(100);
 
-        hboxLayout1->addWidget(m_pDelaySpin);
+        auto_qhbl2->addWidget(m_pDelaySpin);
 
 
-        vboxLayout->addLayout(hboxLayout1);
+        vboxLayout->addLayout(auto_qhbl2);
 
-        hboxLayout2 = new QHBoxLayout();
-        hboxLayout2->setSpacing(6);
-        hboxLayout2->setObjectName(QString::fromUtf8("hboxLayout2"));
+        auto_qhbl3 = new QHBoxLayout();
+        auto_qhbl3->setSpacing(6);
+        auto_qhbl3->setObjectName(QString::fromUtf8("auto_qhbl3"));
         textLabel3 = new QLabel(AutoCompletionLayout);
         textLabel3->setObjectName(QString::fromUtf8("textLabel3"));
         textLabel3->setWordWrap(false);
 
-        hboxLayout2->addWidget(textLabel3);
+        auto_qhbl3->addWidget(textLabel3);
 
         spacer17 = new QSpacerItem(81, 21, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        hboxLayout2->addItem(spacer17);
+        auto_qhbl3->addItem(spacer17);
 
         m_pMaxEntriesSpin = new QSpinBox(AutoCompletionLayout);
         m_pMaxEntriesSpin->setObjectName(QString::fromUtf8("m_pMaxEntriesSpin"));
-        m_pMaxEntriesSpin->setMaximum(1000);
         m_pMaxEntriesSpin->setMinimum(1);
+        m_pMaxEntriesSpin->setMaximum(1000);
 
-        hboxLayout2->addWidget(m_pMaxEntriesSpin);
+        auto_qhbl3->addWidget(m_pMaxEntriesSpin);
 
 
-        vboxLayout->addLayout(hboxLayout2);
+        vboxLayout->addLayout(auto_qhbl3);
 
-        spacer19 = new QSpacerItem(20, 31, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        spacer19 = new QSpacerItem(20, 31, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         vboxLayout->addItem(spacer19);
 
-        hboxLayout3 = new QHBoxLayout();
-        hboxLayout3->setSpacing(6);
-        hboxLayout3->setObjectName(QString::fromUtf8("hboxLayout3"));
+        auto_qhbl1 = new QHBoxLayout();
+        auto_qhbl1->setSpacing(6);
+        auto_qhbl1->setObjectName(QString::fromUtf8("auto_qhbl1"));
         spacer18 = new QSpacerItem(111, 21, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        hboxLayout3->addItem(spacer18);
+        auto_qhbl1->addItem(spacer18);
 
         m_pOKButton = new QPushButton(AutoCompletionLayout);
         m_pOKButton->setObjectName(QString::fromUtf8("m_pOKButton"));
 
-        hboxLayout3->addWidget(m_pOKButton);
+        auto_qhbl1->addWidget(m_pOKButton);
 
         m_pCancelButton = new QPushButton(AutoCompletionLayout);
         m_pCancelButton->setObjectName(QString::fromUtf8("m_pCancelButton"));
 
-        hboxLayout3->addWidget(m_pCancelButton);
+        auto_qhbl1->addWidget(m_pCancelButton);
 
 
-        vboxLayout->addLayout(hboxLayout3);
+        vboxLayout->addLayout(auto_qhbl1);
 
 
         retranslateUi(AutoCompletionLayout);
@@ -166,17 +172,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-class AutoCompletionLayout : public QDialog, public Ui::AutoCompletionLayout
-{
-    Q_OBJECT
-
-public:
-    AutoCompletionLayout(QWidget* parent = 0, const char* name = 0, bool modal = false, Qt::WindowFlags fl = 0);
-    ~AutoCompletionLayout();
-
-protected slots:
-    virtual void languageChange();
-
-};
-
-#endif // AUTOCOMPLETIONLAYOUT_H
+#endif // UI_AUTOCOMPLETIONLAYOUT4_H
