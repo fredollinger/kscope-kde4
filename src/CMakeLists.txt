@@ -4,11 +4,12 @@ project(kscope)
 find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
-#ctagsfrontend.cpp
-#ctagslist.cpp
-#k3wrap.cpp
-#editorpage4.cpp
-#editormanager4.cpp
+kde4_add_ui_files(kscope_SRCS 
+preffrontendlayout.ui
+autocompletionlayout4.ui
+newprojectlayout4.ui
+)
+
 set(kscope_SRCS
 newprojectdlg4.cpp
 project4.cpp

@@ -1,16 +1,15 @@
 #ifndef K3WRAP_H
 #define K3WRAP_H
 
-class KDockWidget
+class  KURLRequester : KUrlRequester 
 {
 // Q_OBJECT
 
-public:
-	KDockWidget();  
+// public:
 
 // public slots:
 
-//protected:
+// protected:
 
 // private slots:
 

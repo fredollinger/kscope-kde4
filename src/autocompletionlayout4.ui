@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>287</width>
-    <height>183</height>
+    <width>466</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,9 @@
      </item>
      <item>
       <spacer name="spacer15">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
@@ -58,6 +61,9 @@
      </item>
      <item>
       <spacer name="spacer16">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
@@ -95,6 +101,9 @@
      </item>
      <item>
       <spacer name="spacer17">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
@@ -120,6 +129,9 @@
    </item>
    <item>
     <spacer name="spacer19">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
      <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
@@ -135,6 +147,9 @@
     <layout class="QHBoxLayout" name="auto_qhbl1">
      <item>
       <spacer name="spacer18">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>

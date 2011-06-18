@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget2">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab1">
       <attribute name="title">
@@ -55,7 +55,7 @@ The name must conform to the file system's naming conventions for directories (e
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="KURLRequester" name="m_pPathRequester" native="true">
+          <widget class="KUrlRequester" name="m_pPathRequester" native="true">
            <property name="whatsThis">
             <string>The path to hold this project.
 KScope will create a directory with the given name under this project, and populate it with the project configuration and database files.
@@ -88,7 +88,7 @@ This does not need to be the path in which the source files reside.</string>
           </widget>
          </item>
          <item>
-          <widget class="KURLRequester" name="m_pSrcRootRequester" native="true"/>
+          <widget class="KUrlRequester" name="m_pSrcRootRequester" native="true"/>
          </item>
         </layout>
        </item>
@@ -112,6 +112,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        </item>
        <item>
         <spacer name="spacer29">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
          </property>
@@ -150,6 +153,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
         <layout class="QVBoxLayout" name="qvbl1">
          <item>
           <spacer name="spacer7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
            </property>
@@ -189,6 +195,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          </item>
          <item>
           <spacer name="spacer2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
            </property>
@@ -292,6 +301,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        </item>
        <item>
         <spacer name="spacer8_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
          </property>
@@ -370,6 +382,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          </item>
          <item>
           <spacer name="spacer32">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
            </property>
@@ -423,6 +438,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          </item>
          <item>
           <spacer name="spacer33">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
            </property>
@@ -460,6 +478,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          </item>
          <item>
           <spacer name="spacer9">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
            </property>
@@ -482,6 +503,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        </item>
        <item>
         <spacer name="spacer31">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
          </property>
@@ -528,6 +552,9 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
     <layout class="QHBoxLayout" name="qbl1">
      <item>
       <spacer name="spacer8">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
@@ -586,7 +613,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <header>q3textedit.h</header>
   </customwidget>
   <customwidget>
-   <class>KURLRequester</class>
+   <class>KUrlRequester</class>
    <extends>QWidget</extends>
    <header>kurlrequester.h</header>
   </customwidget>
