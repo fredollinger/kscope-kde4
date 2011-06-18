@@ -1,0 +1,21 @@
+Log for qt3to4 on Sat Jun 18 01:14:29 2011. Number of log entries: 5
+In file /home/follinge/projects/kscope-kde4/src/autocompletionlayout.ui at line 43 column 40: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/autocompletionlayout.ui at line 83 column 40: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/autocompletionlayout.ui at line 129 column 40: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/autocompletionlayout.ui at line 159 column 30: Vertical -> Qt::Vertical
+In file /home/follinge/projects/kscope-kde4/src/autocompletionlayout.ui at line 184 column 40: Horizontal -> Qt::Horizontal
+
+Log for qt3to4 on Sat Jun 18 01:15:12 2011. Number of log entries: 12
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 129 column 42: WordBreak -> Qt::TextWordWrap
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 129 column 55: AlignVCenter -> Qt::AlignVCenter
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 137 column 42: Vertical -> Qt::Vertical
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 196 column 50: Vertical -> Qt::Vertical
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 241 column 50: Vertical -> Qt::Vertical
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 354 column 44: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 453 column 52: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 516 column 52: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 565 column 52: Horizontal -> Qt::Horizontal
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 592 column 42: Vertical -> Qt::Vertical
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 630 column 43: PlainText -> Qt::PlainText
+In file /home/follinge/projects/kscope-kde4/src/newprojectlayout4.ui at line 652 column 40: Horizontal -> Qt::Horizontal
+
