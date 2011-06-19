@@ -21,9 +21,9 @@
  * @param	argv	Command line arguments
  * @return	Programme's exit value
  */
+
 int main(int argc, char *argv[])
 {
-
        // BEGIN Create the "About" dialogue
 	KAboutData aboutData( "kscope-kde4", 0,
 		ki18n("KScope\nA source-editing environment for KDE, based on Cscope ")
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 
 	KApplication app;
 
-	KScope* pKScope = new KScope();
+	kscope4::KScope* pKScope = new kscope4::KScope();
 
 	pKScope->verifyCscope();
 

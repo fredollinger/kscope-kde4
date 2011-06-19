@@ -46,6 +46,7 @@ class AutoCompletionDlg : public AutoCompletionLayout
 public:
 	AutoCompletionDlg(QWidget* pParent, const char* szName = NULL);
 	~AutoCompletionDlg();
+	void getOptions(ProjectBase::Options&);
 
 public slots:		
 	int exec();

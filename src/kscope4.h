@@ -5,9 +5,10 @@
 #include <qtimer.h>
 #include <kcmdlineargs.h>
 #include <kparts/part.h>
-// #include<k3dockwidget.h>
+#include "projectbase4.h"
+#include "projectmanager4.h"
 
-class ProjectManager;
+// class ProjectManager;
 class EditorTabs;
 class FileView;
 class FileList;
@@ -44,6 +45,7 @@ namespace KTextEditor
 	class View;
 }
 
+namespace kscope4{
 //class KScope : public K3DockMainWindow
 class KScope : public KParts::MainWindow
 // class KScope 
@@ -52,6 +54,7 @@ Q_OBJECT
 
 public:
 	KScope(QWidget *parent=0);
+	~KScope();
 	void openProject(const QString&);
 	// ~KScope();
 	void open(const QString&);
@@ -82,7 +85,11 @@ private:
 	// Manages menu and tool-bar commands.
 	// KScopeActions* m_pActions;
 
+	/** A project manager used to load projects and read their properties. */
+	ProjectManager* m_pProjMgr;
+
 private slots:
+
 	void openFile(void);
 	void slotConfigure(void);
 	void slotCscopeVerified(bool, uint);
@@ -91,5 +98,6 @@ private slots:
 
 //friend class KScopeActions;
 };
+} // namespace kscope
 
-#endif
+#endif // KSCOPE4_H

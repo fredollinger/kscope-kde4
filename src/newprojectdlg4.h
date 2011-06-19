@@ -43,6 +43,11 @@ class NewProjectDlg : public QDialog
 public: 
 	NewProjectDlg(bool, QWidget* pParent = NULL, const char* szName = NULL);
 	virtual ~NewProjectDlg();
+
+	QString getName();
+	QString getPath();
+	void getOptions(ProjectBase::Options&);
+
 protected slots:
 
 private:

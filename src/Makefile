@@ -1,4 +1,5 @@
 all:
+	mkdir -p build
 	cd build && make 2>err
 setup:
 	mkdir build

@@ -17,8 +17,10 @@
 #include "kscope4.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
+#include "projectmanager4.h"
 #include <qdebug.h>
 
+namespace kscope4{
 KScope::KScope(QWidget *) :
 	m_bCscopeVerified(false),
 	m_pProgressDlg(NULL)
@@ -39,7 +41,7 @@ KScope::KScope(QWidget *) :
 	initMainWindow();
 
 	// Create control objects
-	// m_pProjMgr = new ProjectManager();
+	m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
 	// m_pCallTreeMgr = new CallTreeManager(this);
 
@@ -50,6 +52,26 @@ KScope::KScope(QWidget *) :
 	// m_pActions->init();
 	//m_pActions->slotEnableProjectActions(false);
 	// END STUFF FROM KSCOPE
+}
+
+/**
+ * Class destructor.
+ */
+KScope::~KScope()
+{
+	// Save configuration
+	// Config().store();
+	// Config().storeWorkspace(this);
+	
+	delete m_pProjMgr;
+	/*
+	delete m_pCallTreeMgr;
+	delete m_pEditMgr;
+	delete m_pCscopeBuild;
+	
+	if (m_pMakeDlg != NULL)
+		delete m_pMakeDlg;
+	*/
 }
 
 void KScope::setupActions()
@@ -75,19 +97,6 @@ void KScope::setupActions()
 	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
-	
-	/* BEGIN OLD SCHOOL PROJECT
-	// Project menu
-	addAction(i18n("&New Project..."),
-		NULL,
-		NULL,
-		m_pWindow,
-		SLOT(slotCreateProject()),
-		"project_new",
-		NULL);
-		END OLD SCHOOL PROJECT
-	*/
-	
 	// END KACTIONS
 
 	qDebug() << "KScope::setXMLFile BEGIN\n";
@@ -199,15 +208,44 @@ void KScope::slotRebuildDB()
 	return;
 }
 
-
 /**
- * Handles the "Cscope->Rebuild Database..." command.
- * Rebuilds Cscope's database for the current project.
+ * Handles the "Project->New..." command.
+ * Prompts the user for the name and folder for the project, and then creates
+ * the project.
  */
 void KScope::slotCreateProject()
 {
-	qDebug() << "KScope::slotCreateProject(()\n";
-	return;
+	NewProjectDlg dlg(true, this);
+	ProjectBase::Options opt;
+	QString sProjPath;
+	
+	// Prompt the user to close any active projects
+	if (m_pProjMgr->curProject()) {
+		if (KMessageBox::questionYesNo(0, 
+			i18n("The current project needs to be closed before a new one is"
+			" created.\nWould you like to close it now?")) != 
+			KMessageBox::Yes) {
+			return;
+		}
+		
+		// Try to close the project.
+		/*
+		if (!slotCloseProject())
+			return;
+		*/
+	}
+	
+	// Display the "New Project" dialog
+	if (dlg.exec() != QDialog::Accepted)
+		return;
+
+	// Create and open the new project
+	dlg.getOptions(opt);
+	/*
+	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
+		openProject(sProjPath);
+	*/
 }
 
+} // namespace kscope4
 // Tue Jun 14 03:07:28 UTC 2011
