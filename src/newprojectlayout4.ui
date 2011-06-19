@@ -55,7 +55,7 @@ The name must conform to the file system's naming conventions for directories (e
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="KUrlRequester" name="m_pPathRequester" native="true">
+          <widget class="KUrlRequester" name="m_pPathRequester">
            <property name="whatsThis">
             <string>The path to hold this project.
 KScope will create a directory with the given name under this project, and populate it with the project configuration and database files.
@@ -88,7 +88,7 @@ This does not need to be the path in which the source files reside.</string>
           </widget>
          </item>
          <item>
-          <widget class="KUrlRequester" name="m_pSrcRootRequester" native="true"/>
+          <widget class="KUrlRequester" name="m_pSrcRootRequester"/>
          </item>
         </layout>
        </item>
@@ -591,6 +591,11 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>KUrlRequester</class>
+   <extends>QFrame</extends>
+   <header>kurlrequester.h</header>
+  </customwidget>
+  <customwidget>
    <class>Q3GroupBox</class>
    <extends>QGroupBox</extends>
    <header>Qt3Support/Q3GroupBox</header>
@@ -611,11 +616,6 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <class>Q3TextEdit</class>
    <extends>Q3Frame</extends>
    <header>q3textedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KUrlRequester</class>
-   <extends>QWidget</extends>
-   <header>kurlrequester.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -654,38 +654,6 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
  <resources/>
  <connections>
   <connection>
-   <sender>m_pAddButton</sender>
-   <signal>clicked()</signal>
-   <receiver>NewProjectLayout</receiver>
-   <slot>slotAddType()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_pRemoveButton</sender>
-   <signal>clicked()</signal>
-   <receiver>NewProjectLayout</receiver>
-   <slot>slotRemoveType()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>m_pAutoRebuildCheck</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_pAutoRebuildSpin</receiver>
@@ -706,22 +674,6 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <signal>toggled(bool)</signal>
    <receiver>m_pACButton</receiver>
    <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_pAvailTypesList</sender>
-   <signal>highlighted(QString)</signal>
-   <receiver>NewProjectLayout</receiver>
-   <slot>slotAvailTypesChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>20</x>
