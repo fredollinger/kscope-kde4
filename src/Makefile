@@ -8,3 +8,9 @@ err:
 	vim build/err
 clean:
 	cd build && make clean
+build/kscope:
+	make all
+install: build/kscope
+	cd build && su -c "make install"
+test:
+	/usr/local/bin/kscope
