@@ -49,6 +49,11 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	const char* szName) :
 	m_bNewProj(bNewProj)
 {
+	QDialog *dialog = new QDialog( this );
+ 
+	// create the user interface, the parent widget is "widget"
+	ui.setupUi(dialog); // this is the important part
+ 	
 	ProjectBase::Options opt;
 }
 

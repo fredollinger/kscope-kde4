@@ -51,7 +51,10 @@ public:
 protected slots:
 
 private:
+	Ui::NewProjectLayout ui;	
 	bool m_bNewProj;
 };
 
 #endif
+
+// Sun Jun 19 19:47:13 UTC 2011
