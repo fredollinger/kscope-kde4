@@ -36,12 +36,13 @@ private:
  * @author Elad Lahav
  */
 
-class NewProjectDlg : public QDialog
+class NewProjectDlg : public QDialog, public Ui::NewProjectLayout
 {
 	Q_OBJECT
 	
 public: 
 	NewProjectDlg(bool, QWidget* pParent = NULL, const char* szName = NULL);
+	// NewProjectDlg(void);
 	virtual ~NewProjectDlg();
 
 	QString getName();
@@ -54,10 +55,7 @@ protected slots:
 	void slotAvailTypesChanged(QString);
 
 private:
-	Ui::NewProjectLayout ui;	
 	bool m_bNewProj;
-
-
 };
 
 #endif

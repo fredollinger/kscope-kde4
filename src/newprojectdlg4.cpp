@@ -48,34 +48,20 @@
  */
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
+	Ui::NewProjectLayout(),
 	m_bNewProj(bNewProj)
 {
+	/*
 	QDialog *dialog = new QDialog( this );
  
 	// create the user interface, the parent widget is "widget"
 	ui.setupUi(dialog); // this is the important part
- 	
+	*/
+
 	ProjectBase::Options opt;
 }
 
 NewProjectDlg::~NewProjectDlg()
-{
-}
-
-/**
- * Class constructor.
- * @param	pParent		The parent widget
- * @param	szName		The widget's name
- */
-AutoCompletionDlg::AutoCompletionDlg(QWidget* pParent,
-	const char* szName ) 
-{
-}
-
-/**
- * Class destructor.
- */
-AutoCompletionDlg::~AutoCompletionDlg()
 {
 }
 
@@ -157,6 +143,23 @@ void NewProjectDlg::slotAvailTypesChanged(QString qstr)
 void NewProjectDlg::slotRemoveType()
 {
 	qDebug() << "NewProjectDlg::slotRemoveType stub\n";
+}
+
+/**
+ * Class constructor.
+ * @param	pParent		The parent widget
+ * @param	szName		The widget's name
+ */
+AutoCompletionDlg::AutoCompletionDlg(QWidget* pParent,
+	const char* szName ) 
+{
+}
+
+/**
+ * Class destructor.
+ */
+AutoCompletionDlg::~AutoCompletionDlg()
+{
 }
 
 
