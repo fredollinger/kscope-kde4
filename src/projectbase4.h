@@ -200,6 +200,7 @@ protected:
 	
 	/** A list of symbols previously queried. */
 	QStringList m_slSymHistory;
+
 };
 
 #endif

@@ -5,3 +5,5 @@ setup:
 	cd build && cmake ..
 err:
 	vim build/err
+clean:
+	cd build && make clean

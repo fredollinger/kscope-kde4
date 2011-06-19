@@ -48,7 +48,7 @@ public:
 		QString sMakeCmd;
 		QString sMakeRoot;
 	};
-	
+	/*	
 	virtual bool open(const QString&);
 	virtual bool loadFileList(FileListTarget*);
 	virtual bool storeFileList(FileListSource*);
@@ -64,15 +64,18 @@ public:
 	virtual void getSymHistory(QStringList&) const;
 	virtual void setSymHistory(QStringList&);
 	virtual void getMakeParams(QString&, QString&) const;
+	*/
 
 	/**
 	 * Determines whether a project is based on a Cscope.out file, and is
 	 * therefore considered as a temporary project.
 	 * @return	true if this is a temporary project, false otherwise
 	 */
+	/*
 	virtual bool isTemporary() { return false; }
 	
 	static bool create(const QString&, const QString&, const Options&);
+	*/
 	
 private:
 	/** The configuration file ("cscope.proj") */

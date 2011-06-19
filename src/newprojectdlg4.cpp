@@ -51,6 +51,10 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 {
 }
 
+NewProjectDlg::~NewProjectDlg()
+{
+}
+
 /**
  * Class constructor.
  * @param	pParent		The parent widget

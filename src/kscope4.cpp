@@ -15,6 +15,8 @@
 #include "cscopefrontend4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
+#include "newprojectdlg4.h"
+#include "projectbase4.h"
 #include <qdebug.h>
 
 KScope::KScope(QWidget *) :

@@ -11,8 +11,9 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
-newprojectdlg4.cpp
+projectbase4.cpp
 project4.cpp
+newprojectdlg4.cpp
 kscopeconfig4.cpp
 configfrontend4.cpp
 preffrontend4.cpp
