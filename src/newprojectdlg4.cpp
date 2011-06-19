@@ -25,6 +25,7 @@
  *
  ***************************************************************************/
 
+#include <qdebug.h>
 #include <QRegExp>
 #include <qregexp.h>
 #include <qpushbutton.h>
@@ -140,5 +141,23 @@ QString NewProjectDlg::getPath()
 	return m_pPathRequester->url();
 }
 */
+
+void NewProjectDlg::slotAddType()
+{
+	qDebug() << "NewProjectDlg::slotAddType stub\n";
+}
+
+
+void NewProjectDlg::slotAvailTypesChanged(QString qstr)
+{
+	qDebug() << "NewProjectDlg::slotAvailTypesChanged stub\n";
+}
+
+
+void NewProjectDlg::slotRemoveType()
+{
+	qDebug() << "NewProjectDlg::slotRemoveType stub\n";
+}
+
 
 // Sun Jun 19 18:51:52 UTC 2011

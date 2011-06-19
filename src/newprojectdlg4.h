@@ -49,10 +49,15 @@ public:
 	void getOptions(ProjectBase::Options&);
 
 protected slots:
+	void slotAddType();
+	void slotRemoveType();
+	void slotAvailTypesChanged(QString);
 
 private:
 	Ui::NewProjectLayout ui;	
 	bool m_bNewProj;
+
+
 };
 
 #endif

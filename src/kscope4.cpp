@@ -220,6 +220,7 @@ void KScope::slotCreateProject()
 	QString sProjPath;
 	
 	// Prompt the user to close any active projects
+	/*
 	if (m_pProjMgr->curProject()) {
 		if (KMessageBox::questionYesNo(0, 
 			i18n("The current project needs to be closed before a new one is"
@@ -229,11 +230,10 @@ void KScope::slotCreateProject()
 		}
 		
 		// Try to close the project.
-		/*
 		if (!slotCloseProject())
 			return;
-		*/
 	}
+	*/
 	
 	// Display the "New Project" dialog
 	if (dlg.exec() != QDialog::Accepted)
