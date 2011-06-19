@@ -58,6 +58,8 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	ui.setupUi(dialog); // this is the important part
 	*/
 
+	setupUi(this);
+
 	ProjectBase::Options opt;
 }
 
