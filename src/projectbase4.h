@@ -69,7 +69,13 @@ public:
 	/**
 	 * Class destructor.
 	 */
-	~FileListTarget() {}
+	virtual ~FileListTarget() {}
+
+	/**
+	 * Appends a file to the list.
+	 * @param	sFilePath	The full path of the file to add
+	 */
+	virtual void addItem(const QString& sFilePath) = 0;
 };
 
 /**
@@ -93,7 +99,21 @@ public:
 	/**
 	 * Class destructor.
 	 */
-	~FileListSource() {}
+	virtual ~FileListSource() {}
+
+	/**
+	 * Returns the first file in the list, and initiates a new iteration.
+	 * @param	sFilePath	Holds the path of the first file, upon return
+	 * @return	true if there are more files, false otherwise
+	 */
+	virtual bool firstItem(QString& sFilePath) = 0;
+
+	/**
+	 * Returns the next file in the list.
+	 * @param	sFilePath	Holds the path of the file, upon return
+	 * @return	true if there are more files, false otherwise
+	 */
+	virtual bool nextItem(QString& sFilePath) = 0;
 };
 
 /**
@@ -125,7 +145,7 @@ struct FileLocation
 /**
  * A list of file locations used for restoring a session.
  */
-// typedef QList<FileLocation> FileLocationList;
+typedef QList<FileLocation> FileLocationList;
 
 class FileSemaphore;
 
@@ -136,7 +156,7 @@ class ProjectBase
 {
 public:
 	ProjectBase();
-	~ProjectBase();
+	virtual ~ProjectBase();
 
 	/**
 	 * Configurable project options.
@@ -184,6 +204,58 @@ public:
 		QString sCtagsCmd;
 	};
 	
+	virtual bool open(const QString&);
+	virtual bool loadFileList(FileListTarget*);
+	virtual bool storeFileList(FileListSource*) { return false; }
+	virtual bool isEmpty() { return false; }
+	bool dbExists();
+	virtual void close() {}
+	
+	virtual QString getFileTypes() const { return QString::null; }
+	virtual void getOptions(Options&) const;
+	virtual void setOptions(const Options&) {}
+	virtual void getSymHistory(QStringList&) const {}
+	virtual void setSymHistory(QStringList&) {}
+	virtual void getMakeParams(QString&, QString&) const;
+
+	/**
+	 * Determines whether a project is based on a Cscope.out file, and is
+	 * therefore considered as a temporary project.
+	 * @return	true if this is a temporary project, false otherwise
+	 */
+	virtual bool isTemporary() { return true; }
+
+	/**
+	 * @return	The name of the current project
+	 */
+	QString getName() const { return m_sName; }
+	
+	/**
+	 * @return	The full path of the project's directory
+	 */
+	QString getPath() const { return m_dir.absolutePath(); }
+	
+	/**
+	 * @return	Command-line arguments to pass to a Cscope object, based on
+	 * 			project's options
+	 */
+	uint getArgs() const { return m_nArgs; }
+	
+	const QString& getSourceRoot() const { return m_opt.sSrcRootPath; }
+	
+	/**
+	 * @return	The time, in seconds, to wait before rebuilding the
+	 *			cross-refernce database.
+	 */
+	int getAutoRebuildTime() const { return m_opt.nAutoRebuildTime; }
+	
+	/**
+	 * @return	The tab width to use (0 to use the editor's default)
+	 */
+	uint getTabWidth() const { return m_opt.nTabWidth; }
+	
+	static void getDefOptions(Options&);
+	
 protected:
 	/** The name of the project, as written in the configuration file */
 	QString m_sName;
@@ -200,7 +272,10 @@ protected:
 	
 	/** A list of symbols previously queried. */
 	QStringList m_slSymHistory;
-
+	
+	void initOptions();
+	
+	static bool isCscopeOut(const QString&);
 };
 
 #endif

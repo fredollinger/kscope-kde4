@@ -12,6 +12,23 @@
 #include "newprojectdlg4.h"
 #include "autocompletionlayout4.h"
 
+/**
+ * Class constructor.
+ * @param	pParent		The parent widget
+ * @param	szName		The widget's name
+ */
+AutoCompletionDlg::AutoCompletionDlg(QWidget* pParent,
+	const char* szName ) 
+{
+}
+
+/**
+ * Class destructor.
+ */
+AutoCompletionDlg::~AutoCompletionDlg()
+{
+}
+
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
 	Ui::NewProjectLayout(),
@@ -28,9 +45,10 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	// m_pAutoCompDlg = new AutoCompletionDlg(this);
 	
 	// Restrict the path requester to existing directories.
-	/*
 	m_pPathRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 		KFile::LocalOnly);
+
+	/*
 	m_pSrcRootRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 			KFile::LocalOnly);
 	*/
@@ -47,12 +65,12 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	// FIXME:
 	// Perform actions specific to the type of dialog (new project or
 	// project properties)
-	/*
 	if (bNewProj) {
 		// Set default project properties
 		ProjectBase::getDefOptions(opt);
 		setProperties("", "", opt);
 	}
+	/*
 	else {
 		// Give appropriate titles to the dialog and the accept button
 		setCaption(i18n("Project Properties"));
@@ -160,20 +178,53 @@ void NewProjectDlg::accept()
 }
 
 /**
- * Class constructor.
- * @param	pParent		The parent widget
- * @param	szName		The widget's name
+ * Configures the dialog's widget to display the properties of the current
+ * project.
+ * @param	sName	The project's name
+ * @param	sPath	The project's path
+ * @param	opt		Project parameters configurable in this dialogue
  */
-AutoCompletionDlg::AutoCompletionDlg(QWidget* pParent,
-	const char* szName ) 
+void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
+	const ProjectBase::Options& opt)
 {
-}
+	qDebug() << "NewProjectDlg::setProperties(): stub\n";
+	/*
+	QStringList::ConstIterator itr;
+	
+	// Set values for current project
+	m_pNameEdit->setText(sName);
+	m_pPathRequester->setURL(sPath);
+	m_pSrcRootRequester->setURL(opt.sSrcRootPath);
+	m_pKernelCheck->setChecked(opt.bKernel);
+	m_pInvCheck->setChecked(opt.bInvIndex);
+	m_pNoCompCheck->setChecked(opt.bNoCompress);
+	m_pSlowPathCheck->setChecked(opt.bSlowPathDef);
+	
+	if (opt.nAutoRebuildTime >= 0) {
+		m_pAutoRebuildCheck->setChecked(true);
+		m_pAutoRebuildSpin->setValue(opt.nAutoRebuildTime);
+	}
 
-/**
- * Class destructor.
- */
-AutoCompletionDlg::~AutoCompletionDlg()
-{
+	if (opt.bACEnabled) {
+		m_pACCheck->setChecked(true);
+	}
+	
+	if (opt.nTabWidth > 0) {
+		m_pTabWidthCheck->setChecked(true);
+		m_pTabWidthSpin->setValue(opt.nTabWidth);
+	}
+	
+	// Initialise the auto-completion sub-dialogue
+	m_pAutoCompDlg->m_nMinChars = opt.nACMinChars;
+	m_pAutoCompDlg->m_nDelay = opt.nACDelay;
+	m_pAutoCompDlg->m_nMaxEntries = opt.nACMaxEntries;
+	
+	// Add type strings to the types list box
+	for (itr = opt.slFileTypes.begin(); itr != opt.slFileTypes.end(); ++itr)
+		m_pTypesList->insertItem(*itr);
+	
+	m_pCtagsCmdEdit->setText(opt.sCtagsCmd);
+	*/
 }
 
 // Mon Jun 20 19:44:33 UTC 2011
