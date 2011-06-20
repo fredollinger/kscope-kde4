@@ -99,7 +99,6 @@ void KScope::setupActions()
 	this, SLOT(slotCreateProject()));
 	// END KACTIONS
 
-	qDebug() << "KScope::setXMLFile BEGIN\n";
 	setXMLFile("kscope-kde4.rc");
 	setupGUI(Default, "kscope-kde4.rc");
 }
@@ -115,7 +114,6 @@ void KScope::openFile()
  */
 void KScope::verifyCscope()
 {
-	// qDebug() << "KScope::verifyCscope BEGIN\n";
 	statusBar()->showMessage(i18n("Verifying Cscope installation..."), 0);
 	CscopeVerifier* pVer;
 	pVer = new CscopeVerifier();
@@ -144,7 +142,6 @@ void KScope::initMainWindow()
  */
 void KScope::slotCscopeVerified(bool bResult, uint nArgs)
 {
-	qDebug() << "BEGIN: KScope::slotCscopeVerified() \n";
 	// statusBar()->message(i18n("Verifying Cscope installation...Done"), 3000);
 	statusBar()->showMessage(i18n("Verifying Cscope installation...Done"),
 3000);
@@ -204,7 +201,7 @@ void KScope::slotConfigure()
  */
 void KScope::slotRebuildDB()
 {
-	qDebug() << "KScope::slotRebuildDB(()\n";
+	qDebug() << "KScope::slotRebuildDB() stub \n";
 	return;
 }
 

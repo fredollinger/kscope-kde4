@@ -277,7 +277,6 @@ void Frontend::parseStderr(const QString& sText)
  */
 void Frontend::slotProcessExit()
 {
-	qDebug() << "BEGIN Frontend::slotProcessExit() \n";
 	// Allow specialised clean-up by inheriting classes
 	finalize();
 	
@@ -313,16 +312,11 @@ void Frontend::slotReadStdout()
 	bool bTokenEnded;
 	ParserDelim delim;
 
-	qDebug() << "BEGIN Frontend::slotReadStdout \n";
-
 	setReadChannel(QProcess::StandardOutput);
 	nSize=bytesAvailable();
 	qbaBuffer=readAll();
 	pLocalBuf=qbaBuffer.data();
 
-	qDebug() << pLocalBuf;
-	qDebug() << "END Frontend::slotReadStdout \n";
-	
 	// Do nothing if waiting for process to die
 	if (m_bKilled)
 		return;
@@ -389,8 +383,6 @@ void Frontend::slotReadStderr()
 {
 	QString sBuf;
 	
-	qDebug() << "BEGIN Frontend::slotReadStderr \n";
-
 	// Do nothing if waiting for process to die
 	if (m_bKilled)
 		return;

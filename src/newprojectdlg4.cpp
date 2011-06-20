@@ -172,11 +172,6 @@ void NewProjectDlg::slotRemoveType()
 	qDebug() << "NewProjectDlg::slotRemoveType stub\n";
 }
 
-void NewProjectDlg::accept()
-{
-	qDebug() << "NewProjectDlg::accept stub\n";
-}
-
 /**
  * Configures the dialog's widget to display the properties of the current
  * project.
@@ -193,8 +188,8 @@ void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 	
 	// Set values for current project
 	m_pNameEdit->setText(sName);
-	m_pPathRequester->setURL(sPath);
-	m_pSrcRootRequester->setURL(opt.sSrcRootPath);
+	m_pPathRequester->setText(sPath);
+	m_pSrcRootRequester->setText(opt.sSrcRootPath);
 	m_pKernelCheck->setChecked(opt.bKernel);
 	m_pInvCheck->setChecked(opt.bInvIndex);
 	m_pNoCompCheck->setChecked(opt.bNoCompress);
@@ -225,6 +220,39 @@ void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 	
 	m_pCtagsCmdEdit->setText(opt.sCtagsCmd);
 	*/
+}
+
+/**
+ * Ends the dialog after the user has clicked the "OK" button.
+ */
+void NewProjectDlg::accept()
+{
+	int i, nCount;
+	
+	// Validate the name of a new project
+	if (m_bNewProj) {
+		QRegExp re("[^ \\t\\n]+");
+		if (!re.exactMatch(m_pNameEdit->text())) {
+			KMessageBox::error(0, i18n("Project names must not contain "
+				"whitespace."));
+			return;
+		}
+	}
+	
+	// Fill the string list with all file types
+	nCount = (int)m_pTypesList->count();
+	for (i = 0; i < nCount; i++)
+		m_slTypes.append(m_pTypesList->text(i));
+
+	// Clean-up the source root
+	QDir dir(m_pSrcRootRequester->url());
+	if (dir.exists())
+		m_pSrcRootRequester->setText(dir.absolutePath());
+	else
+		m_pSrcRootRequester->setText("/");
+		
+	// Close the dialog
+	QDialog::accept();
 }
 
 // Mon Jun 20 19:44:33 UTC 2011
