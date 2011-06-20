@@ -1,30 +1,3 @@
-/***************************************************************************
- *
- * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
 #include <qdebug.h>
 #include <QRegExp>
 #include <qregexp.h>
@@ -39,28 +12,54 @@
 #include "newprojectdlg4.h"
 #include "autocompletionlayout4.h"
 
-/**
- * Class constructor.
- * @param	bNewProj	true to create a new project dialog, false to display
- *						the properties of an existing project
- * @param	pParent		The parent widget
- * @param	szName		The widget's name
- */
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
 	Ui::NewProjectLayout(),
 	m_bNewProj(bNewProj)
 {
+	// BEGIN OLD STUFF
+	ProjectBase::Options opt;
+
+	// FIXME:
+	// Create the auto-completion sub-dialogue
+	// m_pAutoCompDlg = new AutoCompletionDlg(this);
+	
+	// Restrict the path requester to existing directories.
+	m_pPathRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
+		KFile::LocalOnly);
+	m_pSrcRootRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
+			KFile::LocalOnly);
+	
+	// Set up the Create/Cancel buttons	
+	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+
+	// FIXME:
+	// Show the auto-completion properties dialogue
+	// connect(m_pACButton, SIGNAL(clicked()), m_pAutoCompDlg, SLOT(exec()));	
+		
+	// FIXME:
+	// Perform actions specific to the type of dialog (new project or
+	// project properties)
 	/*
-	QDialog *dialog = new QDialog( this );
- 
-	// create the user interface, the parent widget is "widget"
-	ui.setupUi(dialog); // this is the important part
+	if (bNewProj) {
+		// Set default project properties
+		ProjectBase::getDefOptions(opt);
+		setProperties("", "", opt);
+	}
+	else {
+		// Give appropriate titles to the dialog and the accept button
+		setCaption(i18n("Project Properties"));
+		m_pCreateButton->setText(i18n("OK"));
+		
+		// Disable the non-relevant widgets
+		m_pNameEdit->setEnabled(false);
+		m_pPathRequester->setEnabled(false);
+	}
 	*/
 
+	// END OLD STUFF
 	setupUi(this);
-
-	ProjectBase::Options opt;
 }
 
 NewProjectDlg::~NewProjectDlg()
@@ -135,16 +134,29 @@ void NewProjectDlg::slotAddType()
 	qDebug() << "NewProjectDlg::slotAddType stub\n";
 }
 
-
-void NewProjectDlg::slotAvailTypesChanged(QString qstr)
+/*
+/home/follinge/projects/kscope-kde4/src/newprojectdlg4.cpp:137: error: prototype for 'void NewProjectDlg::slotAvailTypesChanged(QString&)' does not match any in class 'NewProjectDlg'
+/home/follinge/projects/kscope-kde4/src/newprojectdlg4.h:60: error: candidate is: void NewProjectDlg::slotAvailTypesChanged(const QString&)
+/
+*/
+void NewProjectDlg::slotAvailTypesChanged(const QString &qstr)
 {
 	qDebug() << "NewProjectDlg::slotAvailTypesChanged stub\n";
 }
 
-
 void NewProjectDlg::slotRemoveType()
 {
 	qDebug() << "NewProjectDlg::slotRemoveType stub\n";
+}
+
+void NewProjectDlg::accept()
+{
+	qDebug() << "NewProjectDlg::accept stub\n";
+}
+
+void NewProjectDlg::reject()
+{
+	qDebug() << "NewProjectDlg::reject stub\n";
 }
 
 /**
@@ -164,5 +176,4 @@ AutoCompletionDlg::~AutoCompletionDlg()
 {
 }
 
-
-// Sun Jun 19 18:51:52 UTC 2011
+// Mon Jun 20 19:44:33 UTC 2011

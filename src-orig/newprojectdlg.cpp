@@ -48,6 +48,7 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	NewProjectLayout(pParent, szName),
 	m_bNewProj(bNewProj)
 {
+
 	ProjectBase::Options opt;
 
 	// Create the auto-completion sub-dialogue
@@ -82,6 +83,7 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 		m_pNameEdit->setEnabled(false);
 		m_pPathRequester->setEnabled(false);
 	}
+
 }
 
 /**

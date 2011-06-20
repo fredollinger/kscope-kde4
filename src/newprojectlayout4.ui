@@ -16,6 +16,9 @@
   <layout class="QVBoxLayout">
    <item>
     <widget class="QTabWidget" name="tabWidget2">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Detai&amp;ls</string>
@@ -52,7 +55,7 @@ The name must conform to the file system's naming conventions for directories (e
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="KURLRequester" name="m_pPathRequester" native="true">
+          <widget class="KUrlRequester" name="m_pPathRequester">
            <property name="whatsThis">
             <string>The path to hold this project.
 KScope will create a directory with the given name under this project, and populate it with the project configuration and database files.
@@ -85,7 +88,7 @@ This does not need to be the path in which the source files reside.</string>
           </widget>
          </item>
          <item>
-          <widget class="KURLRequester" name="m_pSrcRootRequester" native="true"/>
+          <widget class="KUrlRequester" name="m_pSrcRootRequester"/>
          </item>
         </layout>
        </item>
@@ -588,6 +591,11 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>KUrlRequester</class>
+   <extends>QFrame</extends>
+   <header>kurlrequester.h</header>
+  </customwidget>
+  <customwidget>
    <class>Q3GroupBox</class>
    <extends>QGroupBox</extends>
    <header>Qt3Support/Q3GroupBox</header>
@@ -608,11 +616,6 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <class>Q3TextEdit</class>
    <extends>Q3Frame</extends>
    <header>q3textedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KURLRequester</class>
-   <extends>QWidget</extends>
-   <header>kurlrequester.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -657,8 +660,8 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>slotAddType()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>161</x>
+     <y>167</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -673,8 +676,8 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>slotRemoveType()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>161</x>
+     <y>198</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -689,12 +692,12 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>32</x>
+     <y>128</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>487</x>
+     <y>126</y>
     </hint>
    </hints>
   </connection>
@@ -705,12 +708,12 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>32</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>452</x>
+     <y>155</y>
     </hint>
    </hints>
   </connection>
@@ -721,8 +724,8 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>slotAvailTypesChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>254</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -737,12 +740,12 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>32</x>
+     <y>195</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>487</x>
+     <y>193</y>
     </hint>
    </hints>
   </connection>
@@ -753,12 +756,12 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>32</x>
+     <y>128</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>440</x>
+     <y>126</y>
     </hint>
    </hints>
   </connection>
@@ -769,12 +772,12 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>31</x>
+     <y>89</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
+     <x>62</x>
+     <y>74</y>
     </hint>
    </hints>
   </connection>
