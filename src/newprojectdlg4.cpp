@@ -17,6 +17,7 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	Ui::NewProjectLayout(),
 	m_bNewProj(bNewProj)
 {
+	// Must do this _before_ we connect signals and slots
 	setupUi(this);
 
 	// BEGIN OLD STUFF
@@ -35,8 +36,9 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	*/
 	
 	// Set up the Create/Cancel buttons	
-	// connect(this->m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(Ui::NewProjectLayout::m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+	 //connect(Ui::NewProjectLayout::m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
+	 connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
 	// FIXME:
 	// Show the auto-completion properties dialogue
