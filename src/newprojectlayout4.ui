@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1209</width>
+    <width>539</width>
     <height>383</height>
    </rect>
   </property>
@@ -16,10 +16,7 @@
   <layout class="QVBoxLayout">
    <item>
     <widget class="QTabWidget" name="tabWidget2">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab1">
+     <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Detai&amp;ls</string>
       </attribute>
@@ -55,7 +52,7 @@ The name must conform to the file system's naming conventions for directories (e
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="KUrlRequester" name="m_pPathRequester">
+          <widget class="KURLRequester" name="m_pPathRequester" native="true">
            <property name="whatsThis">
             <string>The path to hold this project.
 KScope will create a directory with the given name under this project, and populate it with the project configuration and database files.
@@ -76,7 +73,7 @@ This does not need to be the path in which the source files reside.</string>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="qbl3">
+        <layout class="QHBoxLayout" name="qhbl2">
          <item>
           <widget class="QLabel" name="textLabel1_2">
            <property name="text">
@@ -88,7 +85,7 @@ This does not need to be the path in which the source files reside.</string>
           </widget>
          </item>
          <item>
-          <widget class="KUrlRequester" name="m_pSrcRootRequester"/>
+          <widget class="KURLRequester" name="m_pSrcRootRequester" native="true"/>
          </item>
         </layout>
        </item>
@@ -106,7 +103,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
           <set>Qt::AlignVCenter</set>
          </property>
          <property name="wordWrap">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -128,7 +125,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab2">
+     <widget class="QWidget" name="tab1">
       <attribute name="title">
        <string>File T&amp;ypes</string>
       </attribute>
@@ -150,7 +147,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="qvbl1">
+        <layout class="QVBoxLayout" name="qvbl2">
          <item>
           <spacer name="spacer7">
            <property name="orientation">
@@ -302,7 +299,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        <item>
         <spacer name="spacer8_2">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
@@ -317,7 +314,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage2">
+     <widget class="QWidget" name="TabPage1">
       <attribute name="title">
        <string>&amp;Options</string>
       </attribute>
@@ -366,7 +363,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="qhbl1">
+        <layout class="QHBoxLayout" name="qhbl3">
          <item>
           <widget class="QCheckBox" name="m_pAutoRebuildCheck">
            <property name="whatsThis">
@@ -383,7 +380,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          <item>
           <spacer name="spacer32">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
@@ -422,7 +419,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="qhbl4">
+        <layout class="QHBoxLayout" name="qhbl4_2">
          <item>
           <widget class="QCheckBox" name="m_pACCheck">
            <property name="whatsThis">
@@ -439,7 +436,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          <item>
           <spacer name="spacer33">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
@@ -465,7 +462,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="qhbl3">
+        <layout class="QHBoxLayout" name="qhbl4">
          <item>
           <widget class="QCheckBox" name="m_pTabWidthCheck">
            <property name="toolTip">
@@ -479,7 +476,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
          <item>
           <spacer name="spacer9">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
             <enum>QSizePolicy::Expanding</enum>
@@ -519,7 +516,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage3">
+     <widget class="QWidget" name="TabPage2">
       <attribute name="title">
        <string>&amp;Advanced</string>
       </attribute>
@@ -549,11 +546,11 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="qbl1">
+    <layout class="QHBoxLayout" name="qhbl1">
      <item>
       <spacer name="spacer8">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
@@ -591,11 +588,6 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>KUrlRequester</class>
-   <extends>QFrame</extends>
-   <header>kurlrequester.h</header>
-  </customwidget>
-  <customwidget>
    <class>Q3GroupBox</class>
    <extends>QGroupBox</extends>
    <header>Qt3Support/Q3GroupBox</header>
@@ -616,6 +608,11 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <class>Q3TextEdit</class>
    <extends>Q3Frame</extends>
    <header>q3textedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KURLRequester</class>
+   <extends>QWidget</extends>
+   <header>kurlrequester.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -654,6 +651,38 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
  <resources/>
  <connections>
   <connection>
+   <sender>m_pAddButton</sender>
+   <signal>clicked()</signal>
+   <receiver>NewProjectLayout</receiver>
+   <slot>slotAddType()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pRemoveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>NewProjectLayout</receiver>
+   <slot>slotRemoveType()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>m_pAutoRebuildCheck</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_pAutoRebuildSpin</receiver>
@@ -674,6 +703,22 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <signal>toggled(bool)</signal>
    <receiver>m_pACButton</receiver>
    <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pAvailTypesList</sender>
+   <signal>highlighted(QString)</signal>
+   <receiver>NewProjectLayout</receiver>
+   <slot>slotAvailTypesChanged(QString)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>20</x>
