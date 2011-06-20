@@ -17,6 +17,8 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	Ui::NewProjectLayout(),
 	m_bNewProj(bNewProj)
 {
+	setupUi(this);
+
 	// BEGIN OLD STUFF
 	ProjectBase::Options opt;
 
@@ -25,14 +27,16 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	// m_pAutoCompDlg = new AutoCompletionDlg(this);
 	
 	// Restrict the path requester to existing directories.
+	/*
 	m_pPathRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 		KFile::LocalOnly);
 	m_pSrcRootRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 			KFile::LocalOnly);
+	*/
 	
 	// Set up the Create/Cancel buttons	
-	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+	// connect(this->m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(Ui::NewProjectLayout::m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
 	// FIXME:
 	// Show the auto-completion properties dialogue
@@ -59,7 +63,6 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	*/
 
 	// END OLD STUFF
-	setupUi(this);
 }
 
 NewProjectDlg::~NewProjectDlg()
@@ -152,11 +155,6 @@ void NewProjectDlg::slotRemoveType()
 void NewProjectDlg::accept()
 {
 	qDebug() << "NewProjectDlg::accept stub\n";
-}
-
-void NewProjectDlg::reject()
-{
-	qDebug() << "NewProjectDlg::reject stub\n";
 }
 
 /**

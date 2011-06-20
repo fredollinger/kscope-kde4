@@ -54,7 +54,6 @@ public:
 
 protected slots:
 	void accept();
-	void reject();
 	void slotAddType();
 	void slotRemoveType();
 	void slotAvailTypesChanged(const QString&);
