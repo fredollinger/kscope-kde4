@@ -245,7 +245,7 @@ void NewProjectDlg::accept()
 		m_slTypes.append(m_pTypesList->text(i));
 
 	// Clean-up the source root
-	QDir dir(m_pSrcRootRequester->url());
+	QDir dir(m_pSrcRootRequester->text());
 	if (dir.exists())
 		m_pSrcRootRequester->setText(dir.absolutePath());
 	else
