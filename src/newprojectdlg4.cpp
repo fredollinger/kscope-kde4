@@ -12,6 +12,7 @@
 #include "newprojectdlg4.h"
 #include "autocompletionlayout4.h"
 
+// BEGIN AutoCompletionDlg
 /**
  * Class constructor.
  * @param	pParent		The parent widget
@@ -29,6 +30,40 @@ AutoCompletionDlg::~AutoCompletionDlg()
 {
 }
 
+/**
+ * Stores the values set by the user in the dialogue widgets, and terminates
+ * the dialogue.
+ * This slot is connected to the clicked() signal of the "OK" button.
+ */
+void AutoCompletionDlg::accept()
+{
+	// Store widget values
+	m_nMinChars = m_pMinCharsSpin->value();
+	m_nDelay = m_pDelaySpin->value();
+	m_nMaxEntries = m_pMaxEntriesSpin->value();
+	
+	// Close the dialogue, indicating acceptance
+	QDialog::accept();
+}
+
+/**
+ * Displays the dialogue, and waits for either the "OK" or "Cancel" button to
+ * be clicked.
+ * Before the dialogue is displayed, the stored values are set to the widgets.
+ * @return	The dialogue's termination code
+ */
+int AutoCompletionDlg::exec()
+{
+	// Set current values
+	m_pMinCharsSpin->setValue(m_nMinChars);
+	m_pDelaySpin->setValue(m_nDelay);
+	m_pMaxEntriesSpin->setValue(m_nMaxEntries);
+
+	// Show the dialogue
+	return QDialog::exec();
+}
+// END AutoCompletionDlg
+
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
 	Ui::NewProjectLayout(),
@@ -42,7 +77,7 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 
 	// FIXME:
 	// Create the auto-completion sub-dialogue
-	// m_pAutoCompDlg = new AutoCompletionDlg(this);
+	m_pAutoCompDlg = new AutoCompletionDlg(this);
 	
 	// Restrict the path requester to existing directories.
 	m_pPathRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
@@ -54,13 +89,11 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	*/
 	
 	// Set up the Create/Cancel buttons	
-	 //connect(Ui::NewProjectLayout::m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
-	 connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
-	// FIXME:
 	// Show the auto-completion properties dialogue
-	// connect(m_pACButton, SIGNAL(clicked()), m_pAutoCompDlg, SLOT(exec()));	
+	connect(m_pACButton, SIGNAL(clicked()), m_pAutoCompDlg, SLOT(exec()));	
 		
 	// FIXME:
 	// Perform actions specific to the type of dialog (new project or
@@ -70,18 +103,15 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 		ProjectBase::getDefOptions(opt);
 		setProperties("", "", opt);
 	}
-	/*
 	else {
 		// Give appropriate titles to the dialog and the accept button
-		setCaption(i18n("Project Properties"));
+		setWindowTitle(i18n("Project Properties"));
 		m_pCreateButton->setText(i18n("OK"));
 		
 		// Disable the non-relevant widgets
 		m_pNameEdit->setEnabled(false);
 		m_pPathRequester->setEnabled(false);
 	}
-	*/
-
 	// END OLD STUFF
 }
 
@@ -128,12 +158,10 @@ void NewProjectDlg::getOptions(ProjectBase::Options& opt)
  * box.
  * @return	The name of the new project
  */
-/*
 QString NewProjectDlg::getName()
 {
 	return m_pNameEdit->text();
 }
-*/
 
 /**
  * Retrieves the text entered by the user in the dialog's "Project Path" edit
@@ -142,26 +170,19 @@ QString NewProjectDlg::getName()
  * directory, created under it using the project's name.
  * @return	The full path of the parent directory for the new project
  */
-/*
 QString NewProjectDlg::getPath()
 {
 	if (m_pHiddenDirCheck->isChecked())
-		return QString(m_pSrcRootRequester->url()) + "/.cscope";
+		return QString(m_pSrcRootRequester->text()) + "/.cscope";
 	
-	return m_pPathRequester->url();
+	return m_pPathRequester->text();
 }
-*/
 
 void NewProjectDlg::slotAddType()
 {
 	qDebug() << "NewProjectDlg::slotAddType stub\n";
 }
 
-/*
-/home/follinge/projects/kscope-kde4/src/newprojectdlg4.cpp:137: error: prototype for 'void NewProjectDlg::slotAvailTypesChanged(QString&)' does not match any in class 'NewProjectDlg'
-/home/follinge/projects/kscope-kde4/src/newprojectdlg4.h:60: error: candidate is: void NewProjectDlg::slotAvailTypesChanged(const QString&)
-/
-*/
 void NewProjectDlg::slotAvailTypesChanged(const QString &qstr)
 {
 	qDebug() << "NewProjectDlg::slotAvailTypesChanged stub\n";
@@ -183,7 +204,6 @@ void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 	const ProjectBase::Options& opt)
 {
 	qDebug() << "NewProjectDlg::setProperties(): stub\n";
-	/*
 	QStringList::ConstIterator itr;
 	
 	// Set values for current project
@@ -219,7 +239,6 @@ void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 		m_pTypesList->insertItem(*itr);
 	
 	m_pCtagsCmdEdit->setText(opt.sCtagsCmd);
-	*/
 }
 
 /**

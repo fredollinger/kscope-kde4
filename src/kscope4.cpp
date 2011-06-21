@@ -22,8 +22,8 @@
 
 namespace kscope4{
 KScope::KScope(QWidget *) :
-	m_bCscopeVerified(false),
-	m_pProgressDlg(NULL)
+	m_bCscopeVerified(false) //,
+	// m_pProgressDlg(NULL)
 {
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
@@ -196,16 +196,6 @@ void KScope::slotConfigure()
 }
 
 /**
- * Handles the "Cscope->Rebuild Database..." command.
- * Rebuilds Cscope's database for the current project.
- */
-void KScope::slotRebuildDB()
-{
-	qDebug() << "KScope::slotRebuildDB() stub \n";
-	return;
-}
-
-/**
  * Handles the "Project->New..." command.
  * Prompts the user for the name and folder for the project, and then creates
  * the project.
@@ -216,6 +206,7 @@ void KScope::slotCreateProject()
 	ProjectBase::Options opt;
 	QString sProjPath;
 	
+	qDebug() << "KScope::slotCreateProject() stub \n";
 	// Prompt the user to close any active projects
 	/*
 	if (m_pProjMgr->curProject()) {
@@ -241,6 +232,32 @@ void KScope::slotCreateProject()
 	/*
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
 		openProject(sProjPath);
+	*/
+}
+
+/**
+ * Handles the "Cscope->Rebuild Database..." command.
+ * Rebuilds Cscope's database for the current project.
+ */
+void KScope::slotRebuildDB()
+{
+	ProjectBase* pProj;
+	
+	qDebug() << "KScope::slotRebuildDB() FIXME: rebuild \n";
+
+	/*
+	pProj = m_pProjMgr->curProject();
+	if (!pProj)
+		return;
+	
+	if (!pProj->dbExists()) {
+		m_pProgressDlg = new ProgressDlg(i18n("KScope"), i18n("Please wait "
+			"while KScope builds the database"), this);
+		m_pProgressDlg->setAllowCancel(false);
+		m_pProgressDlg->setValue(0);
+	}
+	
+	m_pCscopeBuild->rebuild();
 	*/
 }
 

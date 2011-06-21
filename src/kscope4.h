@@ -16,7 +16,7 @@ class QueryWidget;
 class EditorManager;
 class CscopeFrontend;
 class EditorPage;
-class ProgressDlg;
+// class ProgressDlg;
 class CscopeMsgDlg;
 class MakeDlg;
 class CallTreeManager;
@@ -80,7 +80,7 @@ private:
 
 	/** A progress dialogue that is displayed when building the database for
 		the first time. */
-	ProgressDlg* m_pProgressDlg;
+	// ProgressDlg* m_pProgressDlg;
 
 	// Manages menu and tool-bar commands.
 	// KScopeActions* m_pActions;

@@ -5,7 +5,7 @@ find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
 kde4_add_ui_files(kscope_SRCS 
-preffrontendlayout.ui
+preffrontendlayout4.ui
 autocompletionlayout4.ui
 newprojectlayout4.ui
 )

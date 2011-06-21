@@ -12,18 +12,34 @@
  * Allows the user to configure auto-completion parameters.
  * @author Elad Lahav
  */
-class AutoCompletionDlg : public QDialog
+class AutoCompletionDlg : public QDialog, public Ui::AutoCompletionLayout
 {
 	Q_OBJECT
 	
 public:
 	AutoCompletionDlg(QWidget* pParent, const char* szName = NULL);
-	virtual ~AutoCompletionDlg();
+	~AutoCompletionDlg();
+	void getOptions(ProjectBase::Options&);
 
 public slots:		
+	int exec();
+	
 protected slots:
+	virtual void accept();
 
 private:
+
+	/** The minimum number of characters in a symbol required for automatic
+		completion. */
+	uint m_nMinChars;
+	
+	/** The time, in seconds, to wait before automatic completion is
+		attempted. */
+	uint m_nDelay;
+	
+	/** The maximal number of results. */
+	uint m_nMaxEntries;
+
 	friend class NewProjectDlg;
 };
 
@@ -61,6 +77,9 @@ protected slots:
 private:
 	/** The file MIME-types associated with the new project. */
 	QStringList m_slTypes;
+
+	/** A sub-dialogue for configuring symbol auto-completion parameters. */
+	AutoCompletionDlg* m_pAutoCompDlg;
 
 	bool m_bNewProj;
 };
