@@ -95,6 +95,7 @@ private slots:
 	void slotCscopeVerified(bool, uint);
 	void slotRebuildDB(void);
 	void slotCreateProject(void);
+	bool slotCloseProject(void);
 
 //friend class KScopeActions;
 };

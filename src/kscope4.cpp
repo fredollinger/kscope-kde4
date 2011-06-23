@@ -18,6 +18,7 @@
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
 #include "projectmanager4.h"
+#include "project4.h"
 #include <qdebug.h>
 
 namespace kscope4{
@@ -208,7 +209,6 @@ void KScope::slotCreateProject()
 	
 	qDebug() << "KScope::slotCreateProject() stub \n";
 	// Prompt the user to close any active projects
-	/*
 	if (m_pProjMgr->curProject()) {
 		if (KMessageBox::questionYesNo(0, 
 			i18n("The current project needs to be closed before a new one is"
@@ -221,7 +221,6 @@ void KScope::slotCreateProject()
 		if (!slotCloseProject())
 			return;
 	}
-	*/
 	
 	// Display the "New Project" dialog
 	if (dlg.exec() != QDialog::Accepted)
@@ -229,24 +228,113 @@ void KScope::slotCreateProject()
 
 	// Create and open the new project
 	dlg.getOptions(opt);
-	/*
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
 		openProject(sProjPath);
-	*/
 }
+
+/**
+ * Closes the active project.
+ * Closing a project involves closing all of the editor windows (prompting
+ * the user for unsaved changes); terminating the Cscope process; and further
+ * clean-up of the project's data.
+ */
+bool KScope::slotCloseProject()
+{
+	ProjectBase* pProj;
+	Project::Session sess;
+
+	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
+	
+	/*
+	// Do nothing if no project is open
+	pProj = m_pProjMgr->curProject();
+	if (!pProj)
+		return true;
+	
+	// Make sure all FileLocation objects are deleted
+	sess.fllOpenFiles.setAutoDelete(true);
+	sess.fllBookmarks.setAutoDelete(true);
+	
+	// Close all open editor pages
+	if (m_pEditTabs->count() > 0) {
+		// Save session information for persistent projects
+		if (!pProj->isTemporary()) {
+			sess.sLastFile = m_pEditTabs->getCurrentPage()->getFilePath();
+			m_pEditTabs->getOpenFiles(sess.fllOpenFiles);
+			m_pEditTabs->getBookmarks(sess.fllBookmarks);
+		}
+		
+		if (!m_pEditTabs->removeAllPages())
+			return false;
+	}
+	
+	// Disable project-related actions
+	m_pActions->slotEnableProjectActions(false);
+	
+	// Destroy the make dialogue
+	if (m_pMakeDlg != NULL) {
+		// Save session information for persistent projects
+		if (!pProj->isTemporary()) {
+			sess.sMakeCmd = m_pMakeDlg->getCommand();
+			sess.sMakeRoot = m_pMakeDlg->getDir();
+		}
+		
+		delete m_pMakeDlg;
+		m_pMakeDlg = NULL;
+	}
+	
+	// Save session information for persistent projects
+	if (!pProj->isTemporary()) {
+		m_pQueryWidget->savePages(pProj->getPath(), sess.slQueryFiles);
+		m_pCallTreeMgr->saveOpenDialogs(pProj->getPath(), sess.slCallTreeFiles);
+	}
+		
+	// Close all query pages and call trees
+	m_pQueryWidget->slotCloseAll();
+	m_pCallTreeMgr->closeAll();
+	
+	// Store session information for persistent projects
+	if (!pProj->isTemporary())
+		((Project*)pProj)->storeSession(sess);
+	
+	// Close the project in the project manager, and terminate the Cscope
+	// process
+	m_pProjMgr->close();
+	delete m_pCscopeBuild;
+	m_pCscopeBuild = NULL;
+	setCaption(QString::null);
+
+	// Clear the contents of the file list
+	m_pFileView->clear();
+
+	// Reset queried symbols history
+	SymbolDlg::resetHistory();
+	
+    // Remove any remaining status bar messages
+    statusBar()->message("");
+	*/
+    
+	return true;
+}
+
+} // namespace kscope4
+
 
 /**
  * Handles the "Cscope->Rebuild Database..." command.
  * Rebuilds Cscope's database for the current project.
  */
+/*
 void KScope::slotRebuildDB()
 {
 	ProjectBase* pProj;
 	
 	qDebug() << "KScope::slotRebuildDB() FIXME: rebuild \n";
 
-	/*
 	pProj = m_pProjMgr->curProject();
+}
+*/
+	/*
 	if (!pProj)
 		return;
 	
@@ -259,7 +347,6 @@ void KScope::slotRebuildDB()
 	
 	m_pCscopeBuild->rebuild();
 	*/
-}
 
-} // namespace kscope4
+// } // namespace kscope4
 // Tue Jun 14 03:07:28 UTC 2011
