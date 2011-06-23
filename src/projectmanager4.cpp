@@ -68,7 +68,7 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
 	
 	// Handle requests for a hidden .cscope directory
 	if (dir.dirName() == ".cscope") {
-		sParentPath = QDir::cleanDirPath(dir.absPath());
+		sParentPath = QDir::cleanDirPath(dir.absolutePath());
 		sParentPath = sParentPath.section('/', 0, -2);
 		dir.cd(sParentPath);
 		sDirName = ".cscope";
