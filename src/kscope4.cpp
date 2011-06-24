@@ -245,12 +245,12 @@ bool KScope::slotCloseProject()
 
 	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
 	
-	/*
 	// Do nothing if no project is open
 	pProj = m_pProjMgr->curProject();
 	if (!pProj)
 		return true;
 	
+	/*
 	// Make sure all FileLocation objects are deleted
 	sess.fllOpenFiles.setAutoDelete(true);
 	sess.fllBookmarks.setAutoDelete(true);

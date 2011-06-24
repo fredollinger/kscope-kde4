@@ -68,7 +68,7 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
 	
 	// Handle requests for a hidden .cscope directory
 	if (dir.dirName() == ".cscope") {
-		sParentPath = QDir::cleanDirPath(dir.absolutePath());
+		sParentPath = QDir::cleanPath(dir.absolutePath());
 		sParentPath = sParentPath.section('/', 0, -2);
 		dir.cd(sParentPath);
 		sDirName = ".cscope";
@@ -91,14 +91,15 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
 	}
 
 	// Try to create the projcet's directory
-	if (!dir.mkdir(sDirName, false) || !dir.cd(sDirName, false)) {
+//	if (!dir.mkdir(sDirName, false) || !dir.cd(sDirName, false)) {
+	if (!dir.mkdir(sDirName) || !dir.cd(sDirName)) {
 		sMsg = i18n("Failed to create the project directory (%1/%2)").
 			arg(dir.canonicalPath()).arg(sDirName);
 		KMessageBox::error(0, sMsg);
 		return false;
 	}
 	
-	if (!Project::create(sName, dir.absPath(), opt))
+	if (!Project::create(sName, dir.absolutePath(), opt))
 		return false;
 	
 	sProjDir = dir.path();

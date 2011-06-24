@@ -71,11 +71,8 @@ public:
 	 * therefore considered as a temporary project.
 	 * @return	true if this is a temporary project, false otherwise
 	 */
-	/*
 	virtual bool isTemporary() { return false; }
-	
 	static bool create(const QString&, const QString&, const Options&);
-	*/
 	
 private:
 	/** The configuration file ("cscope.proj") */
