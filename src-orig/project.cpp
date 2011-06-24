@@ -440,3 +440,4 @@ void Project::writeOptions(KConfig* pConf, const Options& opt)
 	pConf->writeEntry("Delay", opt.nACDelay);
 	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
+
