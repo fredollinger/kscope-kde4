@@ -29,8 +29,8 @@
 #define FILELIST_H
 
 #include <qwidget.h>
-#include "searchlist.h"
-#include "projectmanager.h"
+// #include "searchlist4.h"
+#include "projectmanager4.h"
 
 /**
  * Implements a searchable list of files.

@@ -11,6 +11,7 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
+filelist4.cpp
 projectbase4.cpp
 projectmanager4.cpp
 project4.cpp

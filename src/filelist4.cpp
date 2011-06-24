@@ -28,9 +28,9 @@
 #include <qlineedit.h>
 #include <qfileinfo.h>
 #include <klocale.h>
-#include "filelist.h"
-#include "kscope.h"
-#include "kscopeconfig.h"
+#include "filelist4.h"
+#include "kscope4.h"
+#include "kscopeconfig4.h"
 
 /**
  * Class constructor.
@@ -194,4 +194,4 @@ bool FileList::getTip(QListViewItem* pItem, QString& sTip)
 	return true;
 }
 
-#include "filelist.moc"
+// #include "filelist.moc"
