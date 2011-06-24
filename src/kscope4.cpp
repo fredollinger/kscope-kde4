@@ -317,14 +317,12 @@ bool KScope::slotCloseProject()
 	return true;
 }
 
-} // namespace kscope4
 
 
 /**
  * Handles the "Cscope->Rebuild Database..." command.
  * Rebuilds Cscope's database for the current project.
  */
-/*
 void KScope::slotRebuildDB()
 {
 	ProjectBase* pProj;
@@ -333,7 +331,6 @@ void KScope::slotRebuildDB()
 
 	pProj = m_pProjMgr->curProject();
 }
-*/
 	/*
 	if (!pProj)
 		return;
@@ -348,5 +345,81 @@ void KScope::slotRebuildDB()
 	m_pCscopeBuild->rebuild();
 	*/
 
-// } // namespace kscope4
+
+
+/**
+ * Opens a project.
+ * If another project is currently active, it is closed first.
+ * @param	sDir	The directory of the project to open.
+ */
+void KScope::openProject(const QString& sDir)
+{
+	QString sProjDir;
+	ProjectBase* pProj;
+	QStringList slQueryFiles;
+	QStringList slCallTreeFiles;
+	QStringList slArgs;
+	ProjectBase::Options opt;
+	
+	// Close the current project (may return false if the user clicks on the
+	// "Cancel" button while prompted to save a file)
+	if (!slotCloseProject())
+		return;
+
+	// Open the project in the project manager
+	sProjDir = QDir::cleanDirPath(sDir);
+	if (!m_pProjMgr->open(sProjDir))
+		return;
+	
+	// Change main window title
+	pProj = m_pProjMgr->curProject();
+	setCaption(pProj->getName());
+
+	// Set the root of the file tree
+	m_pFileView->setRoot(pProj->getSourceRoot());
+	
+	// Initialise Cscope and create a builder object
+	initCscope();
+	
+	// Set auto-completion parameters
+	pProj->getOptions(opt);
+	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
+		opt.nACDelay, opt.nACMaxEntries);
+	
+	// Set per-project command-line arguments for Ctags
+	CtagsFrontend::setExtraArgs(opt.sCtagsCmd);
+	
+	// Create an initial query page
+	m_pQueryWidget->addQueryPage();
+	
+	// Enable project-related actions
+	m_pActions->slotEnableProjectActions(true);
+	
+	// If this is a new project (i.e., no source files are yet included), 
+	// display the project files dialogue
+	if (pProj->isEmpty()) {
+		slotProjectFiles();
+		return;
+	}
+	
+	// Fill the file list with all files in the project. 
+	m_pFileList->setUpdatesEnabled(false);
+	pProj->loadFileList(m_pFileList);
+	m_pFileList->setUpdatesEnabled(true);
+	
+	// Restore the last session
+	restoreSession();
+	
+	// Rebuild the cross-reference database
+	if (isAutoRebuildEnabled()) {
+		// If Cscope installation was not yet verified, postpone the build
+		// process
+		if (m_bCscopeVerified)
+		slotRebuildDB();
+		else
+			m_bRebuildDB = true;
+	}
+}
+
+} // namespace kscope4
 // Tue Jun 14 03:07:28 UTC 2011
