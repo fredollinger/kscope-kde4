@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <kmessagebox.h>
 #include <klocale.h>
+#include <kconfigbase.h>
 #include "project4.h"
 #include "projectbase4.h"
 #include "kscopeconfig4.h"
@@ -36,19 +37,21 @@ bool Project::create(const QString& sName, const QString& sPath,
 {
 	// Prepare the project's files
 	KConfig conf(sPath + "/cscope.proj");
+	KConfigGroup confProject(conf, "Project");
 
 	// Write the configuration file version
-	conf.setGroup("");
+	// conf.setGroup("");
 	conf.writeEntry("Version", PROJECT_CONFIG_VER);
 	
 	// Write project properties in the configuration file
-	conf.setGroup("Project");
-	conf.writeEntry("Name", sName);
-	writeOptions(&conf, opt);
+	// conf.setGroup("Project");
+	confGroup.writeEntry("Name", sName);
+	writeOptions(&conf, opt); // check this
 	
 	// Flush the config file data, so the project is created even if KScope
 	// crashes...
 	conf.sync();
+	confGroup.sync();
 
 	return true;
 }
