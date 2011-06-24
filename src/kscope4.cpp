@@ -367,7 +367,7 @@ void KScope::openProject(const QString& sDir)
 		return;
 
 	// Open the project in the project manager
-	sProjDir = QDir::cleanDirPath(sDir);
+	sProjDir = QDir::cleanPath(sDir);
 	if (!m_pProjMgr->open(sProjDir))
 		return;
 	

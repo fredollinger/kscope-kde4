@@ -69,14 +69,29 @@ private:
    	KTextEditor::View *m_view;
 	KTextEditor::Document *m_doc;
 
+	/** A persistent dialog used to display error messages from Cscope. */
+	CscopeMsgDlg* m_pMsgDlg;
+
 	/** Set to true after a shell script has verified that Cscope 
 		is installed
 		and correctly configured on this system.
 		No Cscope operations should be run if this flag is set to false. 	*/
 	bool m_bCscopeVerified;
 
-	/** A persistent dialog used to display error messages from Cscope. */
-	CscopeMsgDlg* m_pMsgDlg;
+	/**
+	 * Used to postpone rebuilding of the database, until Cscope is ready.
+	 */
+	bool m_bRebuildDB;
+
+	/** A project manager used to load projects and read their properties. */
+	ProjectManager* m_pProjMgr;
+
+	/** The file selection widget (project file list and OS file system
+		tree.) */
+	FileView* m_pFileView;
+	
+	/** Pointer to the file list part of the FileView widget. */
+	FileList* m_pFileList;
 
 	/** A progress dialogue that is displayed when building the database for
 		the first time. */
@@ -85,8 +100,6 @@ private:
 	// Manages menu and tool-bar commands.
 	// KScopeActions* m_pActions;
 
-	/** A project manager used to load projects and read their properties. */
-	ProjectManager* m_pProjMgr;
 
 private slots:
 
