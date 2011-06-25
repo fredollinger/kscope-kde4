@@ -267,4 +267,4 @@ void SearchList::slotKeyPressed(QKeyEvent* pKey)
 	}
 }
 
-#include "searchlist.moc"
+// #include "searchlist.moc"
