@@ -29,10 +29,10 @@
 #define SEARCHLIST_H
 
 #include <qwidget.h>
-#include <qvbox.h>
 #include <qlineedit.h>
 #include <qlistview.h>
 #include <qtooltip.h>
+#include <Q3ListViewItem>
 
 class SearchList;
 
@@ -88,7 +88,7 @@ private:
  * set to point to the first item that matches the new text.
  * @author Elad Lahav
  */
-class SearchList : public QVBox
+class SearchList : public QWidget
 {
    Q_OBJECT
 
@@ -107,7 +107,7 @@ public:
 	 * @param	sTip	The constructed tip string (on return)
 	 * @return	True to display the tip, false otherwise
 	 */
-	virtual bool getTip(QListViewItem* pItem, QString& sTip) = 0;
+	virtual bool getTip(Q3ListViewItem* pItem, QString& sTip) = 0;
 
 public slots:
 	void slotSetFocus();
@@ -124,11 +124,11 @@ protected:
 	 * clicking it, or by highlighting the item and pressing the ENTER key.
 	 * @param	pItem	The selected list item
 	 */
-	virtual void processItemSelected(QListViewItem* pItem) = 0;
+	virtual void processItemSelected(Q3ListViewItem* pItem) = 0;
 	
 protected slots:
 	void slotFindItem(const QString&);
-	void slotItemSelected(QListViewItem*);
+	void slotItemSelected(Q3ListViewItem*);
 	void slotItemSelected();
 	void slotKeyPressed(QKeyEvent*);
 	
