@@ -218,7 +218,7 @@ void KScope::slotCreateProject()
 			KMessageBox::Yes) {
 			return;
 		}
-		
+
 		// Try to close the project.
 		if (!slotCloseProject())
 			return;
@@ -236,6 +236,8 @@ void KScope::slotCreateProject()
 	qDebug() << "KScope::slotCreateProject(): create\n";
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
 		openProject(sProjPath);
+
+	qDebug() << "KScope::slotCreateProject() END \n";
 }
 
 /**
@@ -370,11 +372,15 @@ void KScope::openProject(const QString& sDir)
 	QStringList slArgs;
 	ProjectBase::Options opt;
 	
+	qDebug() << "KScope::slotOpenProject() BEGIN \n";
+
 	// Close the current project (may return false if the user clicks on the
 	// "Cancel" button while prompted to save a file)
 	if (!slotCloseProject())
 		return;
 
+	// FIXME:
+	qDebug() << "KScope::slotOpenProject() crashing... \n";
 	// Open the project in the project manager
 	sProjDir = QDir::cleanPath(sDir);
 	/*
