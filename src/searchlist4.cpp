@@ -1,31 +1,3 @@
-/***************************************************************************
- *
- * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
-#include <qheader.h>
 #include "searchlist4.h"
 
 /**
@@ -34,6 +6,7 @@
  */
 void SearchLineEdit::keyPressEvent(QKeyEvent* pKey) 
 {
+	/*
 	switch(pKey->key()) {
 	case Qt::Key_Up:
 	case Qt::Key_Down:
@@ -46,54 +19,7 @@ void SearchLineEdit::keyPressEvent(QKeyEvent* pKey)
 		QLineEdit::keyPressEvent(pKey);
 		break;
 	}
-}
-	
-/**
- * Class constructor.
- * @param	pParent	Owner list view widget
- */
-ListToolTip::ListToolTip(SearchList* pParent) : 
-	QToolTip(pParent->getList()->viewport()), 
-	m_pList(pParent)
-{
-}
-
-/**
- * Displays a tool-tip according to the current location of the mouse
- * pointer.
- * @param	pt	The mouse pointer coordinates
- */
-void ListToolTip::maybeTip(const QPoint& pt)
-{
-	QString str;
-	QListView* pList;
-	QListViewItem* pItem;
-	
-	// Get the item at the given point
-	pList = m_pList->getList();
-	pItem = pList->itemAt(pt);
-	if (pItem == NULL)
-		return;
-
-	// Get the tip string for this item
-	if (!m_pList->getTip(pItem, str))
-		return;
-
-	// Get the bounding rectangle of the item
-	const QRect rcItem = pList->itemRect(pItem);
-	if (!rcItem.isValid())
-		return;
-
-	// Get the header coordinates
-	const QRect rcHead = pList->header()->rect();
-	if (!rcHead.isValid())
-		return;
-
-	// Calculate the tool-tip rectangle
-	QRect rcCell(rcHead.left(), rcItem.top(), rcItem.width(), rcItem.height());
-
-	// Display the tool-tip
-	tip(rcCell, str);
+	*/
 }
 
 /**
@@ -103,7 +29,7 @@ void ListToolTip::maybeTip(const QPoint& pt)
  * @param	szName		The widget's name
  */
 SearchList::SearchList(int nSearchCol, QWidget* pParent, const char* szName) :
-	QVBox(pParent, szName),
+	QWidget(pParent),
 	m_nSearchCol(nSearchCol)
 {
 	// Create the child widgets
@@ -111,15 +37,15 @@ SearchList::SearchList(int nSearchCol, QWidget* pParent, const char* szName) :
 	m_pList = new QListView(this);
 	
 	// Set up the tooltip generator
-	QToolTip::remove(m_pList);
-	m_pToolTip = new ListToolTip(this);
+	// QToolTip::remove(m_pList);
+	// m_pToolTip = new ListToolTip(this);
 	
 	connect(m_pEdit, SIGNAL(textChanged(const QString&)), this,
 		SLOT(slotFindItem(const QString&)));
-	connect(m_pList, SIGNAL(doubleClicked(QListViewItem*)), this,
-		SLOT(slotItemSelected(QListViewItem*)));
-	connect(m_pList, SIGNAL(returnPressed(QListViewItem*)), this,
-		SLOT(slotItemSelected(QListViewItem*)));
+	connect(m_pList, SIGNAL(doubleClicked(QListWidgetItem*)), this,
+		SLOT(slotItemSelected(QListWidgetItem*)));
+	connect(m_pList, SIGNAL(returnPressed(QListWidgetItem*)), this,
+		SLOT(slotItemSelected(QListWidgetItem*)));
 	connect(m_pEdit, SIGNAL(returnPressed()), this,
 		SLOT(slotItemSelected()));
 	connect(m_pEdit, SIGNAL(keyPressed(QKeyEvent*)), this,
@@ -131,7 +57,7 @@ SearchList::SearchList(int nSearchCol, QWidget* pParent, const char* szName) :
  */
 SearchList::~SearchList()
 {
-	delete m_pToolTip;
+	// delete m_pToolTip;
 }
 
 /**
@@ -150,20 +76,24 @@ void SearchList::slotSetFocus()
  */
 void SearchList::slotFindItem(const QString& sText)
 {
-	QListViewItem* pItem;
+	QListWidgetItem* pItem;
 	
 	// Try to find an item that contains this text
 	// Priority to exactly matched, 
 	// then try to find line begins with the text,
 	// and if not found, then try to find the line contains the text
+	/*
 	pItem = m_pList->findItem(sText, m_nSearchCol, 
 		ExactMatch | BeginsWith | Contains);
+	*/
 
 	// Select this item
+	/*
 	if (pItem != 0) {
 		m_pList->setSelected(pItem, true);
 		m_pList->ensureItemVisible(pItem);
 	}
+	*/
 }
 
 /**
@@ -172,9 +102,9 @@ void SearchList::slotFindItem(const QString& sText)
  * This slot is connected to the doubleClicked() and returnPressed()
  * signals of the list widget.
  */
-void SearchList::slotItemSelected(QListViewItem* pItem)
+void SearchList::slotItemSelected(QListWidgetItem* pItem)
 {
-	processItemSelected(pItem);
+	// processItemSelected(pItem);
 	m_pEdit->setText("");
 }
 
@@ -185,14 +115,16 @@ void SearchList::slotItemSelected(QListViewItem* pItem)
  */
 void SearchList::slotItemSelected()
 {
-	QListViewItem* pItem;
+	QListWidgetItem* pItem;
 
+	/*
 	if ((pItem = m_pList->selectedItem()) != NULL) {
 		m_pEdit->setText(pItem->text(m_nSearchCol));
-		processItemSelected(pItem);
+		// processItemSelected(pItem);
 	}
+	*/
 	
-	m_pEdit->setText("");
+// 	m_pEdit->setText("");
 }
 
 #define SEARCH_MATCH(pItem) \
@@ -205,7 +137,8 @@ void SearchList::slotItemSelected()
  */
 void SearchList::slotKeyPressed(QKeyEvent* pKey)
 {
-	QListViewItem* pItem, * pNewItem;
+	/*
+	QListWidgetItem* pItem, * pNewItem;
 	int nPageSize, nPos;
 
 	// Select the current item, or the first one if there is no current item
@@ -265,6 +198,7 @@ void SearchList::slotKeyPressed(QKeyEvent* pKey)
 		m_pList->setSelected(pItem, true);
 		m_pList->ensureItemVisible(pItem);
 	}
+	*/
 }
 
 // #include "searchlist.moc"

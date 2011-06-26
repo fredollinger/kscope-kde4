@@ -10,8 +10,8 @@
 
 // class ProjectManager;
 class EditorTabs;
-class FileView;
-class FileList;
+// class FileView;
+// class FileList;
 class QueryWidget;
 class EditorManager;
 class CscopeFrontend;
@@ -88,10 +88,10 @@ private:
 
 	/** The file selection widget (project file list and OS file system
 		tree.) */
-	FileView* m_pFileView;
+	// FileView* m_pFileView;
 	
 	/** Pointer to the file list part of the FileView widget. */
-	FileList* m_pFileList;
+	// FileList* m_pFileList;
 
 	/** A progress dialogue that is displayed when building the database for
 		the first time. */

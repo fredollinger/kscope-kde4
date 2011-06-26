@@ -368,49 +368,54 @@ void KScope::openProject(const QString& sDir)
 
 	// Open the project in the project manager
 	sProjDir = QDir::cleanPath(sDir);
+	/*
 	if (!m_pProjMgr->open(sProjDir))
 		return;
+	*/
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
 	setCaption(pProj->getName());
 
 	// Set the root of the file tree
-	m_pFileView->setRoot(pProj->getSourceRoot());
+	// m_pFileView->setRoot(pProj->getSourceRoot());
 	
 	// Initialise Cscope and create a builder object
-	initCscope();
+	// initCscope();
 	
 	// Set auto-completion parameters
 	pProj->getOptions(opt);
-	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
-		opt.nACDelay, opt.nACMaxEntries);
+	// SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
+		//opt.nACDelay, opt.nACMaxEntries);
 	
 	// Set per-project command-line arguments for Ctags
-	CtagsFrontend::setExtraArgs(opt.sCtagsCmd);
+	// CtagsFrontend::setExtraArgs(opt.sCtagsCmd);
 	
 	// Create an initial query page
-	m_pQueryWidget->addQueryPage();
+	// m_pQueryWidget->addQueryPage();
 	
 	// Enable project-related actions
-	m_pActions->slotEnableProjectActions(true);
+	// m_pActions->slotEnableProjectActions(true);
 	
 	// If this is a new project (i.e., no source files are yet included), 
 	// display the project files dialogue
+	/*
 	if (pProj->isEmpty()) {
 		slotProjectFiles();
 		return;
 	}
+	*/
 	
 	// Fill the file list with all files in the project. 
-	m_pFileList->setUpdatesEnabled(false);
-	pProj->loadFileList(m_pFileList);
-	m_pFileList->setUpdatesEnabled(true);
+	// m_pFileList->setUpdatesEnabled(false);
+	// pProj->loadFileList(m_pFileList);
+	// m_pFileList->setUpdatesEnabled(true);
 	
 	// Restore the last session
-	restoreSession();
+	// restoreSession();
 	
 	// Rebuild the cross-reference database
+	/*
 	if (isAutoRebuildEnabled()) {
 		// If Cscope installation was not yet verified, postpone the build
 		// process
@@ -419,6 +424,7 @@ void KScope::openProject(const QString& sDir)
 		else
 			m_bRebuildDB = true;
 	}
+	*/
 }
 
 } // namespace kscope4

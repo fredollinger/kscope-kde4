@@ -2,8 +2,9 @@
 #define LISTVIEW_H
 
 #include "listviewitem4.h"
+#include <QListWidgetItem>
 
-class ListViewItem 
+class ListViewItem : public QListWidgetItem
 {
 public:
 	ListViewItem();

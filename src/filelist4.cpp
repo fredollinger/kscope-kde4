@@ -1,30 +1,3 @@
-/***************************************************************************
- *
- * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
 #include <qlineedit.h>
 #include <qfileinfo.h>
 #include <klocale.h>
@@ -42,6 +15,7 @@ FileList::FileList(QWidget* pParent, const char* szName) :
 	m_sRoot("/")
 {
 	// Set the list's columns
+	/*
 	m_pList->addColumn("");
 	m_pList->addColumn(i18n("File"));
 	m_pList->addColumn(i18n("Path"));
@@ -56,6 +30,7 @@ FileList::FileList(QWidget* pParent, const char* szName) :
 	
 	// Set colours and font
 	applyPrefs();
+	*/
 }
 
 /**
@@ -80,11 +55,11 @@ void FileList::addItem(const QString& sFilePath)
 	int nTypePos;
 
     // Extract the file name
-    sFileName = sFilePath.mid(sFilePath.findRev('/') + 1);
+    // sFileName = sFilePath.mid(sFilePath.findRev('/') + 1);
 		
 	// Get the file's extension (empty string for file names without an
 	// extension)
-	nTypePos = sFileName.findRev('.');
+	// nTypePos = sFileName.findRev('.');
 	if (nTypePos > -1)
 		sFileType = sFileName.mid(nTypePos + 1);
 	
@@ -95,7 +70,7 @@ void FileList::addItem(const QString& sFilePath)
 		sPath.replace(m_sRoot, "$");
 	
 	// Create the list item
-	new QListViewItem(m_pList, sFileType, sFileName, sPath);
+	// new QListWidgetItem(m_pList, sFileType, sFileName, sPath);
 }
 
 /**
@@ -110,7 +85,8 @@ bool FileList::findFile(const QString& sPath)
 	if (m_sRoot != "/")
 		sFindPath.replace(m_sRoot, "$");
 	
-	return (m_pList->findItem(sFindPath, 2) != NULL);
+	return true;
+	// return (m_pList->findItem(sFindPath, 2) != NULL);
 }
 
 /**
@@ -118,7 +94,7 @@ bool FileList::findFile(const QString& sPath)
  */
 void FileList::clear()
 {
-	m_pList->clear();
+	// m_pList->clear();
 	m_pEdit->setText("");
 }
 
@@ -126,7 +102,8 @@ void FileList::clear()
  * Opens a file for editing when its entry is clicked in the file list.
  * @param	pItem	The clicked list item
  */
-void FileList::processItemSelected(QListViewItem* pItem)
+/*
+void FileList::processItemSelected(QListWidgetItem* pItem)
 {
 	QString sPath;
 
@@ -138,6 +115,7 @@ void FileList::processItemSelected(QListViewItem* pItem)
 	// Submit a request to open the file for editing
 	emit fileRequested(sPath, 0);
 }
+*/
 
 /**
  * Sets the list's colours and font, according the user's preferences.
@@ -145,11 +123,11 @@ void FileList::processItemSelected(QListViewItem* pItem)
 void FileList::applyPrefs()
 {
 	// Apply colour settings
-	m_pList->setPaletteBackgroundColor(Config().getColor(
-		KScopeConfig::FileListBack));
-	m_pList->setPaletteForegroundColor(Config().getColor(
-		KScopeConfig::FileListFore));
-	m_pList->setFont(Config().getFont(KScopeConfig::FileList));
+	// m_pList->setPaletteBackgroundColor(Config().getColor(
+		//KScopeConfig::FileListBack));
+	// m_pList->setPaletteForegroundColor(Config().getColor(
+		//KScopeConfig::FileListFore));
+	// m_pList->setFont(Config().getFont(KScopeConfig::FileList));
 }
 
 /**
@@ -160,10 +138,11 @@ void FileList::applyPrefs()
  */
 void FileList::setRoot(const QString& sRoot)
 {
-	QListViewItem* pItem;
+	QListWidgetItem* pItem;
 	QString sPath;
 	
 	// Update all items in the list
+	/*
 	for (pItem = m_pList->firstChild(); pItem != NULL; 
 		pItem = pItem->nextSibling()) {
 		sPath = pItem->text(2);
@@ -177,21 +156,10 @@ void FileList::setRoot(const QString& sRoot)
 		
 		pItem->setText(2, sPath);
 	}
+	*/
 	
 	// Store the new root
 	m_sRoot = sRoot;
-}
-
-/**
- * Constructs a tool-tip for the given item.
- * @param	pItem	The item for which a tip is required
- * @param	sTip	The constructed tip string (on return)
- * @return	Always true
- */
-bool FileList::getTip(QListViewItem* pItem, QString& sTip)
-{
-	sTip = pItem->text(2);
-	return true;
 }
 
 // #include "filelist.moc"

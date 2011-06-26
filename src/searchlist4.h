@@ -4,8 +4,8 @@
 #include <qwidget.h>
 #include <qlineedit.h>
 #include <qlistview.h>
-#include <qtooltip.h>
-#include "listviewitem.h"
+#include <QListWidgetItem>
+// #include "listviewitem4.h"
 
 class SearchList;
 
@@ -32,25 +32,6 @@ signals:
 	
 private:
 	virtual void keyPressEvent(QKeyEvent*);
-};
-
-/**
- * A tool-tip class for the search list.
- * Enables sub-classes of the list to provide a customised tool-tip for each 
- * list item.
- * @author Gabor Fekete
- */
-class ListToolTip : public QToolTip
-{
-public:
-	ListToolTip(SearchList* pParent);
-
-protected:
-	virtual void maybeTip(const QPoint& pt);
-	
-private:
-	/** The owner widget. */
-	SearchList* m_pList;
 };
 
 
@@ -80,7 +61,7 @@ public:
 	 * @param	sTip	The constructed tip string (on return)
 	 * @return	True to display the tip, false otherwise
 	 */
-	virtual bool getTip(Q3ListViewItem* pItem, QString& sTip) = 0;
+	// virtual bool getTip(QListViewItem* pItem, QString& sTip) = 0;
 
 public slots:
 	void slotSetFocus();
@@ -97,11 +78,11 @@ protected:
 	 * clicking it, or by highlighting the item and pressing the ENTER key.
 	 * @param	pItem	The selected list item
 	 */
-	virtual void processItemSelected(Q3ListViewItem* pItem) = 0;
+	// virtual void processItemSelected(QListWidgetItem* pItem) = 0;
 	
 protected slots:
 	void slotFindItem(const QString&);
-	void slotItemSelected(Q3ListViewItem*);
+	void slotItemSelected(QListWidgetItem*);
 	void slotItemSelected();
 	void slotKeyPressed(QKeyEvent*);
 	
@@ -111,7 +92,7 @@ private:
 	int m_nSearchCol;
 	
 	/** A tool-tip for the list entries. */
-	ListToolTip* m_pToolTip;
+	// ListToolTip* m_pToolTip;
 };
 
 #endif

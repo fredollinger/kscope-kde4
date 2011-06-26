@@ -1,7 +1,6 @@
 #ifndef FILELIST_H
 #define FILELIST_H
 
-#include "listviewitem4.h"
 #include <qwidget.h>
 #include "searchlist4.h"
 #include "projectmanager4.h"
@@ -27,7 +26,7 @@ public:
 	void clear();
 	void applyPrefs();
 	void setRoot(const QString&);
-	virtual bool getTip(ListViewItem*, QString&);
+	// virtual bool getTip(ListViewItem*, QString&);
 	
 signals:
 	/**
@@ -39,7 +38,7 @@ signals:
 	void fileRequested(const QString& sPath, uint nLine);
 
 protected:
-	virtual void processItemSelected(ListViewItem*);
+	// virtual void processItemSelected(QListWidgetItem*);
 	
 private:
 	/** A common root path for all items in the list. */
