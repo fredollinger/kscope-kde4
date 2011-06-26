@@ -160,6 +160,7 @@ void NewProjectDlg::getOptions(ProjectBase::Options& opt)
  */
 QString NewProjectDlg::getName()
 {
+	qDebug() << "NewProjectDlg::getName\n";
 	return m_pNameEdit->text();
 }
 
@@ -172,6 +173,7 @@ QString NewProjectDlg::getName()
  */
 QString NewProjectDlg::getPath()
 {
+	qDebug() << "NewProjectDlg::getPath\n";
 	if (m_pHiddenDirCheck->isChecked())
 		return QString(m_pSrcRootRequester->text()) + "/.cscope";
 	

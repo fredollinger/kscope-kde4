@@ -224,13 +224,16 @@ void KScope::slotCreateProject()
 			return;
 	}
 	
+	qDebug() << "KScope::slotCreateProject() Display the New Project dialog \n";
 	// Display the "New Project" dialog
 	if (dlg.exec() != QDialog::Accepted)
 		return;
 
+	qDebug() << "KScope::slotCreateProject(): Create and open the new project\n";
 	// Create and open the new project
 	dlg.getOptions(opt);
 
+	qDebug() << "KScope::slotCreateProject(): create\n";
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
 		openProject(sProjPath);
 }
