@@ -207,9 +207,11 @@ void KScope::slotCreateProject()
 	ProjectBase::Options opt;
 	QString sProjPath;
 	
-	qDebug() << "KScope::slotCreateProject() stub \n";
+	qDebug() << "KScope::slotCreateProject() BEGIN \n";
+
 	// Prompt the user to close any active projects
 	if (m_pProjMgr->curProject()) {
+		qDebug() << "KScope::slotCreateProject() Prompt the user to close any active projects \n";
 		if (KMessageBox::questionYesNo(0, 
 			i18n("The current project needs to be closed before a new one is"
 			" created.\nWould you like to close it now?")) != 
@@ -240,10 +242,13 @@ void KScope::slotCreateProject()
  */
 bool KScope::slotCloseProject()
 {
+
+	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
+	return true;
+
 	ProjectBase* pProj;
 	Project::Session sess;
 
-	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
 	
 	// Do nothing if no project is open
 	pProj = m_pProjMgr->curProject();

@@ -203,7 +203,7 @@ void NewProjectDlg::slotRemoveType()
 void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 	const ProjectBase::Options& opt)
 {
-	qDebug() << "NewProjectDlg::setProperties(): stub\n";
+	qDebug() << "NewProjectDlg::setProperties(): \n";
 	QStringList::ConstIterator itr;
 	
 	// Set values for current project
@@ -247,6 +247,8 @@ void NewProjectDlg::setProperties(const QString& sName, const QString& sPath,
 void NewProjectDlg::accept()
 {
 	int i, nCount;
+
+	qDebug() << "NewProjectDlg::accept() BEGIN\n";
 	
 	// Validate the name of a new project
 	if (m_bNewProj) {

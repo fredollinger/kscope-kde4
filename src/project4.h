@@ -40,11 +40,11 @@ public:
 	virtual ~Project();
 	
 	struct Session {
-		//FileLocationList fllOpenFiles;
+		FileLocationList fllOpenFiles;
 		QString sLastFile;
 		QStringList slQueryFiles;
 		QStringList slCallTreeFiles;
-		// FileLocationList fllBookmarks;
+		FileLocationList fllBookmarks;
 		QString sMakeCmd;
 		QString sMakeRoot;
 	};
