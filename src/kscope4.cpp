@@ -230,6 +230,7 @@ void KScope::slotCreateProject()
 
 	// Create and open the new project
 	dlg.getOptions(opt);
+
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
 		openProject(sProjPath);
 }
