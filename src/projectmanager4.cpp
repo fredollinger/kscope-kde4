@@ -83,4 +83,43 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
 	return true;
 }
 
+/**
+ * Opens a project and makes it the current one.
+ * @param	sPath	The directory containing the project's files
+ * @return	true if successful, false otherwise
+ */
+bool ProjectManager::open(const QString& sPath)
+{
+	Project* pProj;
+	
+	// Close the current project
+	close();
+	
+	// Try to open the new project
+	pProj = new Project();
+	if (!pProj->open(sPath)) {
+		delete pProj;
+		return false;
+	}
+	
+	// Add to the list of recently opened projects
+	Config().addRecentProject(sPath);
+	
+	// Project opened successfully
+	m_pCurProj = pProj;
+	return true;
+}
+
+/**
+ * Performs clean-up on the project's variables, and detaches the associated
+ * directory.
+ */
+void ProjectManager::close()
+{
+	if (m_pCurProj) {
+		delete m_pCurProj;
+		m_pCurProj = NULL;
+	}
+}
+
 // Sun Jun 26 20:08:46 UTC 2011

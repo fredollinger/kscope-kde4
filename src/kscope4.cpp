@@ -380,13 +380,12 @@ void KScope::openProject(const QString& sDir)
 		return;
 
 	// FIXME:
-	qDebug() << "KScope::slotOpenProject() crashing... \n";
+	qDebug() << "KScope::slotOpenProject() crashing?? \n";
 	// Open the project in the project manager
 	sProjDir = QDir::cleanPath(sDir);
-	/*
 	if (!m_pProjMgr->open(sProjDir))
 		return;
-	*/
+	return;
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
