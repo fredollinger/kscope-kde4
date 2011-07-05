@@ -11,6 +11,8 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
+kscopepixmaps4.cpp
+fileview4.cpp
 searchlist4.cpp
 filelist4.cpp
 projectbase4.cpp

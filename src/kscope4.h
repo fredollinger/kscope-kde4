@@ -7,6 +7,7 @@
 #include <kparts/part.h>
 #include "projectbase4.h"
 #include "projectmanager4.h"
+#include "fileview4.h"
 
 // class ProjectManager;
 class EditorTabs;
@@ -88,7 +89,7 @@ private:
 
 	/** The file selection widget (project file list and OS file system
 		tree.) */
-	// FileView* m_pFileView;
+	FileView* m_pFileView;
 	
 	/** Pointer to the file list part of the FileView widget. */
 	// FileList* m_pFileList;

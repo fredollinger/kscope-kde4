@@ -19,6 +19,7 @@
 #include "projectbase4.h"
 #include "projectmanager4.h"
 #include "project4.h"
+#include "fileview4.h"
 #include <qdebug.h>
 
 namespace kscope4{
@@ -45,6 +46,7 @@ KScope::KScope(QWidget *) :
 	m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
 	// m_pCallTreeMgr = new CallTreeManager(this);
+	m_pFileView = new FileView(this);
 
 
 	// BEGIN STUFF FROM KSCOPE
@@ -385,14 +387,14 @@ void KScope::openProject(const QString& sDir)
 	sProjDir = QDir::cleanPath(sDir);
 	if (!m_pProjMgr->open(sProjDir))
 		return;
-	return;
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
 	setCaption(pProj->getName());
 
 	// Set the root of the file tree
-	// m_pFileView->setRoot(pProj->getSourceRoot());
+	m_pFileView->setRoot(pProj->getSourceRoot());
+	return;
 	
 	// Initialise Cscope and create a builder object
 	// initCscope();
