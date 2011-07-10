@@ -1,33 +1,8 @@
-/***************************************************************************
- *
- * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
 #include <kglobal.h>
 #include <kiconloader.h>
 #include "kscopepixmaps4.h"
+#include <kicon.h>
+#include <kiconloader.h>
 
 static const char* XPM_FUNC[] = {
 	"12 12 2 1",
@@ -295,71 +270,71 @@ QPixmap KScopePixmaps::getPixmap(LoadPixName name)
 {
 	switch (name) {
 	case TabUnlocked:
-		return m_loader.loadIcon("query_unlocked", KIcon::Small, 0,
+		return m_loader.loadIcon("query_unlocked", KIconLoader::Small, 0,
 			false);
 
 	case TabLocked:
-		return m_loader.loadIcon("query_locked", KIcon::Small, 0,
+		return m_loader.loadIcon("query_locked", KIconLoader::Small, 0,
 			false);
 
 	case TabBookmark:
-		return m_loader.loadIcon("bookmark", KIcon::Small, 0,
+		return m_loader.loadIcon("bookmark", KIconLoader::Small, 0,
 			false);
 
 	case TabRW:
-		return m_loader.loadIcon("file_rw", KIcon::Small, 0,
+		return m_loader.loadIcon("file_rw", KIconLoader::Small, 0,
 			false);
 
 	case TabRO:
-		return m_loader.loadIcon("file_ro", KIcon::Small, 0,
+		return m_loader.loadIcon("file_ro", KIconLoader::Small, 0,
 			false);
 
 	case TabSave:
-		return m_loader.loadIcon("file_save", KIcon::Small, 0,
+		return m_loader.loadIcon("file_save", KIconLoader::Small, 0,
 			false);
 	
 	case TabFileList:
-		return m_loader.loadIcon("view_detailed", KIcon::Small, 0,
+		return m_loader.loadIcon("view_detailed", KIconLoader::Small, 0,
 			false);
 
 	case TabFileTree:
-		return m_loader.loadIcon("view_tree", KIcon::Small, 0,
+		return m_loader.loadIcon("view_tree", KIconLoader::Small, 0,
 			false);
 			
 	case TabList:
-		return m_loader.loadIcon("tab_list", KIcon::Small, 0,
+		return m_loader.loadIcon("tab_list", KIconLoader::Small, 0,
 			false);
 		
 	case ButtonSaveAs:
-		return m_loader.loadIcon("filesaveas", KIcon::Toolbar, 
+		return m_loader.loadIcon("filesaveas", KIconLoader::Toolbar, 
 			0, false);
 		
 	case ButtonZoomIn:
-		return m_loader.loadIcon("viewmag+", KIcon::Toolbar, 
+		return m_loader.loadIcon("viewmag+", KIconLoader::Toolbar, 
 			0, false);
 		
 	case ButtonZoomOut:
-		return m_loader.loadIcon("viewmag-", KIcon::Toolbar, 
+		return m_loader.loadIcon("viewmag-", KIconLoader::Toolbar, 
 			0, false);
 		
 	case ButtonRotate:
-		return m_loader.loadIcon("rotate", KIcon::Toolbar, 
+		return m_loader.loadIcon("rotate", KIconLoader::Toolbar, 
 			0, false);
 		
 	case ButtonPref:
-		return m_loader.loadIcon("configure", KIcon::Toolbar, 
+		return m_loader.loadIcon("configure", KIconLoader::Toolbar, 
 			0, false);
 	
 	case CalledTree:
-		return m_loader.loadIcon("called_tree", KIcon::Toolbar, 
+		return m_loader.loadIcon("called_tree", KIconLoader::Toolbar, 
 			0, false);
 	
 	case CallingTree:
-		return m_loader.loadIcon("calling_tree", KIcon::Toolbar, 
+		return m_loader.loadIcon("calling_tree", KIconLoader::Toolbar, 
 			0, false);
 			
 	case CallGraph:
-		return m_loader.loadIcon("call_graph", KIcon::Toolbar, 
+		return m_loader.loadIcon("call_graph", KIconLoader::Toolbar, 
 			0, false);
 	}
 

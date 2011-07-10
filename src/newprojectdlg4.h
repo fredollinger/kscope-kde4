@@ -1,6 +1,7 @@
 #ifndef NEWPROJECTDLG_H
 #define NEWPROJECTDLG_H
 
+#include <QtGui/QDialog>
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include "newprojectlayout4.h"
