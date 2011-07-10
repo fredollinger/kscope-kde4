@@ -1,10 +1,17 @@
-#include <qpushbutton.h>
 #include <qfileinfo.h>
+#include <qpushbutton.h>
 #include <qtabwidget.h>
+#include <QTreeWidgetItem>
+#include <QtGui/QDialog>
+
 #include <kfiledialog.h>
+#include <kfiletreeview.h>
+#include <kfiletreebranch.h>
+
 #include "fileview4.h"
 #include "filelist4.h"
 #include "kscopepixmaps4.h"
+
 
 /**
  * Class constructor.
@@ -92,16 +99,16 @@ void FileView::clear()
  * of the KFileTreeView object.
  * @param	pItem	The selected tree item
  */
-/*
-void FileView::slotTreeItemSelected(QListViewItem* pItem)
+void FileView::slotTreeItemSelected(QTreeWidgetItem* pItem)
 {
-	KFileTreeViewItem* pTreeItem;
+	QTreeWidgetItem * pTreeItem;
 	 
-	pTreeItem = (KFileTreeViewItem*)pItem;
-	if (pTreeItem && !pTreeItem->isDir())
-		emit fileRequested(pTreeItem->path(), 0);
+	pTreeItem = (QTreeWidgetItem*)pItem;
+	// if (pTreeItem && !pTreeItem->isDir())
+		//emit fileRequested(pTreeItem->path(), 0);
+
+	return;
 }
-*/
 
 // #include "fileview.moc"
 // Sun Jul 10 21:04:31 UTC 2011
