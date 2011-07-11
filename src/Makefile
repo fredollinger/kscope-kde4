@@ -8,13 +8,13 @@ err:
 	vim build/err
 clean:
 	cd build && make clean
-	rmdir bob* 
 	rmdir joe* 
+	rmdir bob* 
 build/kscope:
 	make all
 install: build/kscope
-	#cd build && su -c "make install"
-	cd build && sudo make install
+	cd build && su -c "make install"
+	#cd build && sudo make install
 test:
-	make install
+	#make install
 	/usr/local/bin/kscope
