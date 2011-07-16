@@ -1,6 +1,8 @@
 #ifndef OPENPROJECTDLG_H
 #define OPENPROJECTDLG_H
 
+#include <Q3ListBoxItem>
+#include <Q3ListBox>
 #include <qwidget.h>
 #include "openprojectlayout4.h"
 
@@ -11,7 +13,7 @@
  * @author Elad Lahav
  */
 
-class OpenProjectDlg : public OpenProjectLayout
+class OpenProjectDlg : public QDialog, public Ui::OpenProjectLayout
 {
 	Q_OBJECT
 
@@ -24,8 +26,8 @@ public:
 protected slots:
 	virtual void slotProjectSelected(const QString&);
 	virtual void slotRemoveRecent();
-	virtual void slotSelectRecent(QListBoxItem*);
-	virtual void slotOpenRecent(QListBoxItem*);
+	virtual void slotSelectRecent(Q3ListBoxItem*);
+	virtual void slotOpenRecent(Q3ListBoxItem*);
 
 private:
 	void loadRecent();

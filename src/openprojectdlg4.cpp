@@ -1,6 +1,6 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
-#include <qlistbox.h>
+#include <Q3ListBoxItem>
 #include <kurlrequester.h>
 #include "openprojectdlg4.h"
 #include "kscopeconfig4.h"
@@ -11,7 +11,7 @@
  * @param	szName	The widget's name
  */
 OpenProjectDlg::OpenProjectDlg(QWidget* pParent, const char* szName) :
-	OpenProjectLayout(pParent, szName)
+	Ui::OpenProjectLayout()
 {
 	loadRecent();
 	m_pProjPathRequester->setFilter("cscope.proj");
@@ -29,7 +29,8 @@ OpenProjectDlg::~OpenProjectDlg()
  */
 QString OpenProjectDlg::getPath() const
 {
-	return m_pProjPathRequester->url();
+	//return m_pProjPathRequester->url();
+	return m_pProjPathRequester->text();
 }
 
 /**
@@ -40,7 +41,7 @@ QString OpenProjectDlg::getPath() const
 void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
 {
 	QFileInfo fi(sProjPath);
-	m_pProjPathRequester->setURL(fi.dirPath(true));
+	m_pProjPathRequester->setUrl(fi.absolutePath());
 }
 
 /**
@@ -49,7 +50,7 @@ void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
  */
 void OpenProjectDlg::slotRemoveRecent()
 {
-	QListBoxItem* pItem;
+	Q3ListBoxItem *pItem;
 
 	// Remove the selected item, if any
 	pItem = m_pRecentList->selectedItem();
@@ -66,10 +67,10 @@ void OpenProjectDlg::slotRemoveRecent()
  * list box.
  * @param	pItem	The selected project item
  */
-void OpenProjectDlg::slotSelectRecent(QListBoxItem* pItem)
+void OpenProjectDlg::slotSelectRecent(Q3ListBoxItem *pItem)
 {
 	if (pItem != NULL)
-		m_pProjPathRequester->setURL(pItem->text());
+		m_pProjPathRequester->setUrl(pItem->text());
 }
 
 /**
@@ -79,10 +80,10 @@ void OpenProjectDlg::slotSelectRecent(QListBoxItem* pItem)
  * projects list box.
  * @param	pItem	The selected project item
  */
-void OpenProjectDlg::slotOpenRecent(QListBoxItem* pItem)
+void OpenProjectDlg::slotOpenRecent(Q3ListBoxItem* pItem)
 {
 	if (pItem != NULL) {
-		m_pProjPathRequester->setURL(pItem->text());
+		m_pProjPathRequester->setUrl(pItem->text());
 		accept();
 	}
 }

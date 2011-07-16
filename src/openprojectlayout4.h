@@ -37,7 +37,7 @@ public:
     QVBoxLayout *vboxLayout;
     Q3ButtonGroup *buttonGroup5;
     QHBoxLayout *hboxLayout;
-    KURLRequester *m_pProjPathRequester;
+    KUrlRequester *m_pProjPathRequester;
     Q3ButtonGroup *buttonGroup6;
     QVBoxLayout *vboxLayout1;
     Q3ListBox *m_pRecentList;
@@ -69,7 +69,7 @@ public:
             boxlayout->addLayout(hboxLayout);
         hboxLayout->setAlignment(Qt::AlignTop);
         hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
-        m_pProjPathRequester = new KURLRequester(buttonGroup5);
+        m_pProjPathRequester = new KUrlRequester(buttonGroup5);
         m_pProjPathRequester->setObjectName(QString::fromUtf8("m_pProjPathRequester"));
 
         hboxLayout->addWidget(m_pProjPathRequester);

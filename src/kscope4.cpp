@@ -12,6 +12,7 @@
 #include <KStatusBar>
 #include <KMessageBox>
 
+#include "openprojectdlg4.h"
 #include "cscopefrontend4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
@@ -20,6 +21,7 @@
 #include "projectmanager4.h"
 #include "project4.h"
 #include "fileview4.h"
+#include "symbolcompletion4.h"
 #include <qdebug.h>
 
 namespace kscope4{
@@ -475,7 +477,7 @@ void KScope::openProject(const QString& sDir)
 		return;
 
 	// Open the project in the project manager
-	sProjDir = QDir::cleanDirPath(sDir);
+	sProjDir = QDir::cleanPath(sDir);
 	if (!m_pProjMgr->open(sProjDir))
 		return;
 	
@@ -527,6 +529,82 @@ void KScope::openProject(const QString& sDir)
 		else
 			m_bRebuildDB = true;
 	}
+}
+
+/**
+ * Opens a temporary project for a Cscope.out file.
+ * @param	sFilePath	The full path of the Cscope.out file
+ * @return	true if successful, false otherwise
+ */
+bool KScope::openCscopeOut(const QString& sFilePath)
+{
+	ProjectBase* pProj;
+	
+	// Close the current project (may return false if the user clicks on the
+	// "Cancel" button while prompted to save a file)
+	if (!slotCloseProject())
+		return false;
+
+	// Open a temporary project for this cscope.out file
+	if (!m_pProjMgr->openCscopeOut(sFilePath))
+		return false;
+	
+	// Change main window title
+	pProj = m_pProjMgr->curProject();
+	setCaption(pProj->getName());
+	
+	// Set the root folder in the file tree
+	m_pFileView->setRoot(pProj->getSourceRoot());
+	
+	// Initialise Cscope and create a builder object
+	initCscope();
+	
+	// Create an initial query page
+	m_pQueryWidget->addQueryPage();
+	
+	// Enable project-related actions
+	m_pActions->slotEnableProjectActions(true);
+	
+	// Fill the file list with all files in the project. 
+	m_pFileList->setUpdatesEnabled(false);
+	pProj->loadFileList(m_pFileList);
+	m_pFileList->setUpdatesEnabled(true);
+	
+	return true;
+}
+
+/**
+ * Initialises the CscopeFrontend class with the current project arguments,
+ * and creates an object used for rebuilding the symbol database.
+ */
+void KScope::initCscope()
+{
+	ProjectBase* pProj;
+	
+	// Delete the current object, if one exists
+	if (m_pCscopeBuild)
+		delete m_pCscopeBuild;
+
+	// Initialise CscopeFrontend
+	pProj = m_pProjMgr->curProject();
+	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
+
+	// Create a persistent Cscope process
+	m_pCscopeBuild = new CscopeFrontend();
+
+	// Show build progress information in the main status bar
+	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
+		SLOT(slotBuildProgress(int, int)));
+	connect(m_pCscopeBuild, SIGNAL(buildInvIndex()), this,
+		SLOT(slotBuildInvIndex()));
+	connect(m_pCscopeBuild, SIGNAL(finished(uint)), this,
+		SLOT(slotBuildFinished(uint)));
+	connect(m_pCscopeBuild, SIGNAL(aborted()), this,
+		SLOT(slotBuildAborted()));
+
+	// Show errors in a modeless dialogue
+	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
+		SLOT(slotCscopeError(const QString&)));
 }
 
 } // namespace kscope4

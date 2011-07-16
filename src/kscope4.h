@@ -66,6 +66,7 @@ public:
 private:
 	void initMainWindow();
 	void setupActions();
+	bool openCscopeOut(const QString&);
 	KParts::ReadWritePart *m_part;
    	KTextEditor::View *m_view;
 	KTextEditor::Document *m_doc;
