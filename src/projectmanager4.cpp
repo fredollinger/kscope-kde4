@@ -17,7 +17,7 @@ ProjectManager::ProjectManager() : m_pCurProj(NULL)
  */
 ProjectManager::~ProjectManager()
 {
-// 	close();
+ 	close();
 }
 
 /**

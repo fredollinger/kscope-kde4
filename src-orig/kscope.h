@@ -178,6 +178,7 @@ private:
 	friend class KScopeActions;
 	
 private slots:
+
 	// Menu actions
 	void slotNewFile();
 	void slotOpenFile();

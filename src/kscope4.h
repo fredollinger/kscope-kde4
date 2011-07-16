@@ -103,13 +103,70 @@ private:
 
 
 private slots:
+	// Menu actions
+	void slotNewFile();
+	void slotOpenFile();
 
+	void slotCloseEditor();
+	void slotCreateProject();
+	void slotOpenProject();
+	void slotProjectFiles();
+	void slotProjectProps();
+	void slotProjectCscopeOut();
+	bool slotCloseProject();
+	void slotQueryReference();
+	void slotQueryDefinition();
+	void slotQueryCalled();
+	void slotQueryCalling();
+	void slotQueryText();
+	void slotQueryPattern();
+	void slotQueryFile();
+	void slotQueryIncluding();
+	void slotQueryQuickDef();
+	void slotCallTree();
+	void slotRebuildDB();
+	void slotHistoryShow();
+	void slotShortcuts();
+	void slotConfigure();
+	void slotCloseAllWindows();
+	void slotExtEdit();
+	void slotCompleteSymbol();
+	void slotShowWelcome();
+	void slotGotoTag();
+	void slotProjectMake();
+	void slotProjectRemake();
+	void slotShowBookmarks();
+	
+	// Other slots
+	void slotProjectFilesChanged();
+	void slotFilesAdded(const QStringList&);
+	void slotQuery(uint, bool);
+	void slotDeleteEditor(EditorPage*);
+	void slotChangeEditor(EditorPage*, EditorPage*);
+	void slotShowEditor(const QString&, uint);
+	void slotFileOpened(EditorPage*, const QString&);
+	void slotFileSaved(const QString&, bool);
+	void slotCscopeError(const QString&);
+	void slotBuildProgress(int, int);
+	void slotBuildInvIndex();
+	void slotBuildFinished(uint);
+	void slotBuildAborted();
+	void slotApplyPref();
+	void slotShowCursorPos(uint, uint);
+	void slotQueryShowEditor(const QString&, uint);
+	void slotDropEvent(QDropEvent*);
+	void slotCscopeVerified(bool, uint);
 	void openFile(void);
+
+	/* BEGIN OLD JUNK
+	void slotOpenProject();
 	void slotConfigure(void);
 	void slotCscopeVerified(bool, uint);
 	void slotRebuildDB(void);
 	void slotCreateProject(void);
 	bool slotCloseProject(void);
+	END OLD JUNK
+	*/
 
 //friend class KScopeActions;
 };

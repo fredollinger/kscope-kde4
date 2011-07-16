@@ -11,6 +11,8 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
+openprojectdlg4.cpp
+kscope4.cpp
 kscopepixmaps4.cpp
 fileview4.cpp
 searchlist4.cpp
@@ -24,7 +26,6 @@ configfrontend4.cpp
 preffrontend4.cpp
 frontend4.cpp
 cscopefrontend4.cpp
-kscope4.cpp
 main.cpp
 )
 

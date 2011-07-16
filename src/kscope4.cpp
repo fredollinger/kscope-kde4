@@ -321,6 +321,7 @@ void KScope::slotRebuildDB()
  * If another project is currently active, it is closed first.
  * @param	sDir	The directory of the project to open.
  */
+/*
 void KScope::openProject(const QString& sDir)
 {
 	QString sProjDir;
@@ -371,12 +372,10 @@ void KScope::openProject(const QString& sDir)
 	
 	// If this is a new project (i.e., no source files are yet included), 
 	// display the project files dialogue
-	/*
 	if (pProj->isEmpty()) {
 		slotProjectFiles();
 		return;
 	}
-	*/
 	
 	// Fill the file list with all files in the project. 
 	// m_pFileList->setUpdatesEnabled(false);
@@ -387,7 +386,6 @@ void KScope::openProject(const QString& sDir)
 	// restoreSession();
 	
 	// Rebuild the cross-reference database
-	/*
 	if (isAutoRebuildEnabled()) {
 		// If Cscope installation was not yet verified, postpone the build
 		// process
@@ -396,8 +394,8 @@ void KScope::openProject(const QString& sDir)
 		else
 			m_bRebuildDB = true;
 	}
-	*/
 }
+*/
 
 /**
  * Handles the "Project->New..." command.
@@ -432,6 +430,103 @@ void KScope::slotCreateProject()
 	dlg.getOptions(opt);
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
 		openProject(sProjPath);
+}
+
+
+/**
+ * Handles the "Project->Open..." command.
+ * Prompts the user for a project file ("cscope.proj"), and opens the
+ * selected project.
+ */
+void KScope::slotOpenProject()
+{
+	OpenProjectDlg dlg;
+	QString sPath;
+	
+	if (dlg.exec() == QDialog::Rejected)
+		return;
+
+	sPath = dlg.getPath();
+	
+	// Check if the path refers to a permanent or temporary project
+	if (QFileInfo(sPath).isDir())
+		openProject(sPath);
+	else
+		openCscopeOut(sPath);
+}
+
+/**
+ * Opens a project.
+ * If another project is currently active, it is closed first.
+ * @param	sDir	The directory of the project to open.
+ */
+void KScope::openProject(const QString& sDir)
+{
+	QString sProjDir;
+	ProjectBase* pProj;
+	QStringList slQueryFiles;
+	QStringList slCallTreeFiles;
+	QStringList slArgs;
+	ProjectBase::Options opt;
+	
+	// Close the current project (may return false if the user clicks on the
+	// "Cancel" button while prompted to save a file)
+	if (!slotCloseProject())
+		return;
+
+	// Open the project in the project manager
+	sProjDir = QDir::cleanDirPath(sDir);
+	if (!m_pProjMgr->open(sProjDir))
+		return;
+	
+	// Change main window title
+	pProj = m_pProjMgr->curProject();
+	setCaption(pProj->getName());
+
+	// Set the root of the file tree
+	m_pFileView->setRoot(pProj->getSourceRoot());
+	
+	// Initialise Cscope and create a builder object
+	initCscope();
+	
+	// Set auto-completion parameters
+	pProj->getOptions(opt);
+	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
+		opt.nACDelay, opt.nACMaxEntries);
+	
+	// Set per-project command-line arguments for Ctags
+	CtagsFrontend::setExtraArgs(opt.sCtagsCmd);
+	
+	// Create an initial query page
+	m_pQueryWidget->addQueryPage();
+	
+	// Enable project-related actions
+	m_pActions->slotEnableProjectActions(true);
+	
+	// If this is a new project (i.e., no source files are yet included), 
+	// display the project files dialogue
+	if (pProj->isEmpty()) {
+		slotProjectFiles();
+		return;
+	}
+	
+	// Fill the file list with all files in the project. 
+	m_pFileList->setUpdatesEnabled(false);
+	pProj->loadFileList(m_pFileList);
+	m_pFileList->setUpdatesEnabled(true);
+	
+	// Restore the last session
+	restoreSession();
+	
+	// Rebuild the cross-reference database
+	if (isAutoRebuildEnabled()) {
+		// If Cscope installation was not yet verified, postpone the build
+		// process
+		if (m_bCscopeVerified)
+		slotRebuildDB();
+		else
+			m_bRebuildDB = true;
+	}
 }
 
 } // namespace kscope4
