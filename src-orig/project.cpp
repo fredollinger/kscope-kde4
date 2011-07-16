@@ -398,6 +398,7 @@ void Project::getMakeParams(QString& sCmd, QString& sDir) const
  * @param	sPath	The full path of the project's directory
  * @param	opt		Project options
  */
+
 bool Project::create(const QString& sName, const QString& sPath,
 	const Options& opt)
 {
