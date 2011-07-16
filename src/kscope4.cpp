@@ -199,50 +199,6 @@ void KScope::slotConfigure()
 }
 
 /**
- * Handles the "Project->New..." command.
- * Prompts the user for the name and folder for the project, and then creates
- * the project.
- */
-void KScope::slotCreateProject()
-{
-	NewProjectDlg dlg(true, this);
-	ProjectBase::Options opt;
-	QString sProjPath;
-	
-	qDebug() << "KScope::slotCreateProject() BEGIN \n";
-
-	// Prompt the user to close any active projects
-	if (m_pProjMgr->curProject()) {
-		qDebug() << "KScope::slotCreateProject() Prompt the user to close any active projects \n";
-		if (KMessageBox::questionYesNo(0, 
-			i18n("The current project needs to be closed before a new one is"
-			" created.\nWould you like to close it now?")) != 
-			KMessageBox::Yes) {
-			return;
-		}
-
-		// Try to close the project.
-		if (!slotCloseProject())
-			return;
-	}
-	
-	qDebug() << "KScope::slotCreateProject() Display the New Project dialog \n";
-	// Display the "New Project" dialog
-	if (dlg.exec() != QDialog::Accepted)
-		return;
-
-	qDebug() << "KScope::slotCreateProject(): Create and open the new project\n";
-	// Create and open the new project
-	dlg.getOptions(opt);
-
-	qDebug() << "KScope::slotCreateProject(): create\n";
-	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
-		openProject(sProjPath);
-
-	qDebug() << "KScope::slotCreateProject() END \n";
-}
-
-/**
  * Closes the active project.
  * Closing a project involves closing all of the editor windows (prompting
  * the user for unsaved changes); terminating the Cscope process; and further
@@ -443,5 +399,40 @@ void KScope::openProject(const QString& sDir)
 	*/
 }
 
+/**
+ * Handles the "Project->New..." command.
+ * Prompts the user for the name and folder for the project, and then creates
+ * the project.
+ */
+void KScope::slotCreateProject()
+{
+	NewProjectDlg dlg(true, this);
+	ProjectBase::Options opt;
+	QString sProjPath;
+	
+	// Prompt the user to close any active projects
+	if (m_pProjMgr->curProject()) {
+		if (KMessageBox::questionYesNo(0, 
+			i18n("The current project needs to be closed before a new one is"
+			" created.\nWould you like to close it now?")) != 
+			KMessageBox::Yes) {
+			return;
+		}
+		
+		// Try to close the project.
+		if (!slotCloseProject())
+			return;
+	}
+	
+	// Display the "New Project" dialog
+	if (dlg.exec() != QDialog::Accepted)
+		return;
+
+	// Create and open the new project
+	dlg.getOptions(opt);
+	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
+		openProject(sProjPath);
+}
+
 } // namespace kscope4
-// Tue Jun 14 03:07:28 UTC 2011
+// Sat Jul 16 18:23:16 UTC 2011
