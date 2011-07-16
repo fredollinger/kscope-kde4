@@ -28,60 +28,24 @@ Project::~Project()
 	// close();
 }
 
-/**
- * Creates a project by writing a configuration file inside the given
- * directory.
- * @param	sName	The project's name
- * @param	sPath	The full path of the project's directory
- * @param	opt		Project options
- */
-/*
-bool Project::create(const QString& sName, const QString& sPath,
-	const Options& opt)
-{
-	//KConfig::KConfig  	(  	const QString &   	 fileName = QString::null,
-//		bool  	bReadOnly = false,
-//		bool  	bUseKDEGlobals = true,
-//		const char *  	resType = "config"	 
-//	)	
-	// Prepare the project's files
-	KConfig conf(sPath + "/cscope.proj");
-	// KConfigGroup confProject(&conf, "Project");
-
-	// Write the configuration file version
-	// conf.setGroup("");
-	conf->writeEntry("Version", PROJECT_CONFIG_VER);
-	
-	// Write project properties in the configuration file
-	// conf.setGroup("Project");
-	confGroup.writeEntry("Name", sName);
-	writeOptions(&conf, opt); // check this
-	
-	// Flush the config file data, so the project is created even if KScope
-	// crashes...
-	conf.sync();
-	confGroup.sync();
-
-	return true;
-}
-*/
-
 void Project::writeOptions(KConfig* pConf, const Options& opt)
 {
 	qDebug() << "Project::writeOptions() stub \n";
-	/*
-	pConf->setGroup("Project");
-	pConf->writeEntry("RootPath", opt.sSrcRootPath);
-	pConf->writeEntry("FileTypes", opt.slFileTypes.join(" "));
-	pConf->writeEntry("Kernel", opt.bKernel);
-	pConf->writeEntry("InvIndex", opt.bInvIndex);		
-	pConf->writeEntry("NoCompress", opt.bNoCompress);		
-	pConf->writeEntry("SlowPathDef", opt.bSlowPathDef);		
-	pConf->writeEntry("AutoRebuildTime", opt.nAutoRebuildTime);
-	pConf->writeEntry("TabWidth", opt.nTabWidth);
-	pConf->writeEntry("CtagsCommand", opt.sCtagsCmd);
+	// ORIG: pConf->setGroup("Project");
+	KConfigGroup gp(pConf, "Project");
+
+	gp.writeEntry("RootPath", opt.sSrcRootPath);
+	gp.writeEntry("FileTypes", opt.slFileTypes.join(" "));
+	gp.writeEntry("Kernel", opt.bKernel);
+	gp.writeEntry("InvIndex", opt.bInvIndex);		
+	gp.writeEntry("NoCompress", opt.bNoCompress);		
+	gp.writeEntry("SlowPathDef", opt.bSlowPathDef);		
+	gp.writeEntry("AutoRebuildTime", opt.nAutoRebuildTime);
+	gp.writeEntry("TabWidth", opt.nTabWidth);
+	gp.writeEntry("CtagsCommand", opt.sCtagsCmd);
 	
 	// Set auto-completion options
+	/*
 	pConf->setGroup("AutoCompletion");
 	pConf->writeEntry("Enabled", opt.bACEnabled);
 	pConf->writeEntry("MinChars", opt.nACMinChars);
@@ -91,6 +55,13 @@ void Project::writeOptions(KConfig* pConf, const Options& opt)
 	return;
 }
 
+/**
+ * Creates a project by writing a configuration file inside the given
+ * directory.
+ * @param	sName	The project's name
+ * @param	sPath	The full path of the project's directory
+ * @param	opt		Project options
+ */
 bool Project::create(const QString& sName, const QString& sPath,
 	const Options& opt)
 {
@@ -116,4 +87,4 @@ bool Project::create(const QString& sName, const QString& sPath,
 	return true;
 }
 
-// Fri Jun 24 13:47:06 PDT 2011
+// Sat Jul 16 17:36:26 UTC 2011
