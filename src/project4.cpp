@@ -45,13 +45,12 @@ void Project::writeOptions(KConfig* pConf, const Options& opt)
 	gp.writeEntry("CtagsCommand", opt.sCtagsCmd);
 	
 	// Set auto-completion options
-	/*
-	pConf->setGroup("AutoCompletion");
-	pConf->writeEntry("Enabled", opt.bACEnabled);
-	pConf->writeEntry("MinChars", opt.nACMinChars);
-	pConf->writeEntry("Delay", opt.nACDelay);
-	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
-	*/
+	// ORIG: pConf->setGroup("AutoCompletion");
+	KConfigGroup ac(pConf, "AutoCompletion");
+	ac.writeEntry("Enabled", opt.bACEnabled);
+	ac.writeEntry("MinChars", opt.nACMinChars);
+	ac.writeEntry("Delay", opt.nACDelay);
+	ac.writeEntry("MaxEntries", opt.nACMaxEntries);
 	return;
 }
 
