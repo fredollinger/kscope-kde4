@@ -1,4 +1,4 @@
-#ifndef KSCOPE4_H
+ #ifndef KSCOPE4_H
 #define KSCOPE4_H
 #include <KParts/MainWindow>
 #include <QtGui/QKeyEvent>
@@ -106,6 +106,7 @@ private:
 
 private slots:
 	// Menu actions
+	/*
 	void slotNewFile();
 	void slotOpenFile();
 
@@ -158,17 +159,15 @@ private slots:
 	void slotQueryShowEditor(const QString&, uint);
 	void slotDropEvent(QDropEvent*);
 	void slotCscopeVerified(bool, uint);
-	void openFile(void);
+	*/
 
-	/* BEGIN OLD JUNK
+	void openFile(void);
 	void slotOpenProject();
 	void slotConfigure(void);
 	void slotCscopeVerified(bool, uint);
 	void slotRebuildDB(void);
 	void slotCreateProject(void);
 	bool slotCloseProject(void);
-	END OLD JUNK
-	*/
 
 //friend class KScopeActions;
 };
