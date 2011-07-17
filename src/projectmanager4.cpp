@@ -123,4 +123,31 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
 	return true;
 }
 
+/**
+ * Opens a Cscope.out file as a temporary project.
+ * @param	sFilePath	The full path of the Cscope.out file
+ * @return	true if successful, false otherwise
+ */
+bool ProjectManager::openCscopeOut(const QString& sFilePath)
+{
+	ProjectBase* pProj;
+	
+	// Close the current project
+	close();
+	
+	// Try to open the new project
+	pProj = new ProjectBase();
+	if (!pProj->open(sFilePath)) {
+		delete pProj;
+		return false;
+	}
+	
+	// Add to the list of recently opened projects
+	Config().addRecentProject(sFilePath);
+	
+	// Project opened successfully
+	m_pCurProj = pProj;
+	return true;	
+}
+
 // Mon Jul 11 00:01:49 UTC 2011

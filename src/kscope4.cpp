@@ -548,10 +548,8 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 		return false;
 
 	// Open a temporary project for this cscope.out file
-	/*
 	if (!m_pProjMgr->openCscopeOut(sFilePath))
 		return false;
-	*/
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
