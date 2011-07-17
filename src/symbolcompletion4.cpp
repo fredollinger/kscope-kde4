@@ -1,6 +1,8 @@
 #include <qtimer.h> 
 #include <klocale.h>
 #include "symbolcompletion4.h"
+#include <KTextEditor/CodeCompletionModel>
+
 
 bool SymbolCompletion::s_bACEnabled;
 uint SymbolCompletion::s_nACMinChars;
@@ -15,9 +17,10 @@ uint SymbolCompletion::s_nACMaxEntries;
  */
 SymbolCompletion::SymbolCompletion(SymbolCompletion::Interface* pEditor, 
 	QObject* pParent, const char* szName) :
- 	QObject(pParent, szName),
-	m_pEditor(pEditor),
-	m_pCCObject(NULL)
+ 	QObject()//,
+ 	//QObject(pParent, szName),
+	//m_pEditor(pEditor) ,
+	//m_pCCObject(NULL)
 {
 	// Initialise member objects
 	m_pCscope = new CscopeFrontend();
@@ -51,8 +54,10 @@ SymbolCompletion::~SymbolCompletion()
  */
 void SymbolCompletion::abort()
 {
+	/*
 	if (m_pCscope->isRunning())
 		m_pCscope->kill();
+	*/
 		
 	m_pAutoCompTimer->stop();
 }
@@ -101,8 +106,10 @@ void SymbolCompletion::slotComplete()
  */
 void SymbolCompletion::slotAutoComplete()
 {
+	/*
 	if (s_bACEnabled)
 		m_pAutoCompTimer->start(s_nACDelay, true);
+	*/
 }
 
 /**
@@ -146,12 +153,14 @@ void SymbolCompletion::filterEntries()
 	EntryList::Iterator itr;
 	
 	// Iterate over the list and check each entry against the current RE
+	/*
 	for (itr = m_elEntries.begin(); itr != m_elEntries.end();) {
 		if (m_reSymbol.search((*itr).text) == -1)
 			itr = m_elEntries.erase(itr);
 		else
 			++itr;
 	}
+	*/
 }
 
 /**
@@ -161,6 +170,7 @@ void SymbolCompletion::filterEntries()
  */
 void SymbolCompletion::makeErrMsg(const QString& sMsg)
 {
+	/*
 	Entry entry;
 	
 	// Clear the current list
@@ -173,7 +183,9 @@ void SymbolCompletion::makeErrMsg(const QString& sMsg)
 	
 	// Make sure a new completion request will start a new query
 	m_sPrefix = "";
+*/
 }
+
 
 /**
  * Creates a new entry in the list when a query record is available.
@@ -183,6 +195,7 @@ void SymbolCompletion::makeErrMsg(const QString& sMsg)
  */
 void SymbolCompletion::slotAddEntry(FrontendToken* pToken)
 {
+	/*
 	Entry entry;
 	QString sText;
 	
@@ -204,6 +217,7 @@ void SymbolCompletion::slotAddEntry(FrontendToken* pToken)
 	entry.comment = sText;
 	
 	m_elEntries.append(entry);
+	*/
 }
 
 /**
@@ -212,6 +226,7 @@ void SymbolCompletion::slotAddEntry(FrontendToken* pToken)
  */
 void SymbolCompletion::slotQueryFinished(uint /* nRecords */)
 {
+	/*
 	KTextEditor::CodeCompletionInterface* pCCI;
 	uint nEntryCount;
 	EntryList::Iterator itr;
@@ -267,6 +282,7 @@ void SymbolCompletion::slotQueryFinished(uint /* nRecords */)
 	
 	// Display the completion list
 	pCCI->showCompletionBox(m_elEntries);
+	*/
 }
 
 /**
@@ -275,6 +291,7 @@ void SymbolCompletion::slotQueryFinished(uint /* nRecords */)
  * @param	pEntry			Points to the selected entry
  * @param	pTextToInsert	Contains the string to insert, upon return
  */
+	/*
 void SymbolCompletion::slotFilterInsert(KTextEditor::CompletionEntry* pEntry, 
 	QString* pTextToInsert)
 {
@@ -288,6 +305,7 @@ void SymbolCompletion::slotFilterInsert(KTextEditor::CompletionEntry* pEntry,
 	disconnect(m_pCCObject, 0, this, 0);
 	m_pCCObject = NULL;
 }
+	*/
 
 /**
  * Checks if the current symbol is eligible for auto-completion, and if so,

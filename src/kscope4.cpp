@@ -489,6 +489,7 @@ void KScope::openProject(const QString& sDir)
 	m_pFileView->setRoot(pProj->getSourceRoot());
 	
 	// Initialise Cscope and create a builder object
+	/*
 	initCscope();
 	
 	// Set auto-completion parameters
@@ -529,6 +530,7 @@ void KScope::openProject(const QString& sDir)
 		else
 			m_bRebuildDB = true;
 	}
+	*/
 }
 
 /**
@@ -557,6 +559,7 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 	m_pFileView->setRoot(pProj->getSourceRoot());
 	
 	// Initialise Cscope and create a builder object
+	/*
 	initCscope();
 	
 	// Create an initial query page
@@ -569,6 +572,7 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 	m_pFileList->setUpdatesEnabled(false);
 	pProj->loadFileList(m_pFileList);
 	m_pFileList->setUpdatesEnabled(true);
+	*/
 	
 	return true;
 }
@@ -582,6 +586,7 @@ void KScope::initCscope()
 	ProjectBase* pProj;
 	
 	// Delete the current object, if one exists
+	/*
 	if (m_pCscopeBuild)
 		delete m_pCscopeBuild;
 
@@ -605,6 +610,8 @@ void KScope::initCscope()
 	// Show errors in a modeless dialogue
 	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
 		SLOT(slotCscopeError(const QString&)));
+
+	*/
 }
 
 } // namespace kscope4

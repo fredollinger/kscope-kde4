@@ -64,6 +64,7 @@ public:
 	void verifyCscope();
 
 private:
+	void initCscope();
 	void initMainWindow();
 	void setupActions();
 	bool openCscopeOut(const QString&);

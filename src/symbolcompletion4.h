@@ -3,15 +3,17 @@
 
 #include <qobject.h>
 #include <qregexp.h>
-#include <ktexteditor/codecompletioninterface.h>
-#include <ktexteditor/view.h>
+//#include <ktexteditor/view.h>
 #include "cscopefrontend4.h"
+#include <KTextEditor/CodeCompletionModel>
+#include <Q3ValueList>
 
+/*
 namespace KTextEditor
 {
-	class Entry;
-	class EntryList;
+	CodeCompletionModel;
 }
+*/
 
 /**
  * This class executes symbol definition queries based on symbol prefixes.
@@ -74,7 +76,8 @@ private:
 	 * Implements operators required for sorting the completion list.
 	 * @author Albert Yosher
 	 */
-	class Entry : public KTextEditor::CompletionEntry
+	//class Entry : public KTextEditor::CodeCompletionModel
+	class Entry 
 	{
 	public:
 		/**
@@ -83,7 +86,8 @@ private:
 		 * @return	true if the given entry is smaller, false otherwise
 		 */
 		bool operator < (const SymbolCompletion::Entry& entry) const {
-			return (text < entry.text);
+			return true;
+			//return (text < entry.text);
 		}
 			
 		/**
@@ -92,7 +96,8 @@ private:
 		 * @return	true if the given entry equals this one, false otherwise
 		 */
 		bool operator == (const SymbolCompletion::Entry& entry) const {
-			return (text == entry.text);
+			//return (text == entry.text);
+			return true;
 		}
 	};
 	
@@ -100,20 +105,23 @@ private:
 	 * A sortable version of the value list used by CodeCompletionInterface.
 	 * @author Albert Yosher
 	 */
-	class EntryList : public QValueList<Entry>
+	class EntryList : public Q3ValueList<Entry>
 	{
 	public:
 		/** 
 		 * Sorts completion list.
 		 */
-		void sort() { qHeapSort(*this); }
+		//void sort() { qHeapSort(*this); }
+		void sort() { return; }
 		 
 		 /**
 		  * Type casting support required for calling showCompletionBox().
 		  * @return	A casted reference to this object
 		  */
-		 operator QValueList<KTextEditor::CompletionEntry>() 
-		 	{ return *(QValueList<KTextEditor::CompletionEntry>*)this; }
+		/*
+		 operator Q3ValueList<KTextEditor::CodeCompletionModel>() 
+		 	{ return *(Q3ValueList<KTextEditor::CodeCompletionModel>*)this; }
+	*/
 	};
 	
 	/** Editor object for which symbol completion is provided. */
@@ -168,7 +176,7 @@ private slots:
 	void slotAutoCompleteTimeout();
 	void slotAddEntry(FrontendToken*);
 	void slotQueryFinished(uint);
-	void slotFilterInsert(KTextEditor::CompletionEntry*, QString*);
+	void slotFilterInsert(KTextEditor::CodeCompletionModel*, QString*);
 };
 
 #endif
