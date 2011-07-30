@@ -1,0 +1,5 @@
+On debian or ubuntu you can do:
+
+apt-get install  git libkde4-dev cmake g++ kdelibs4-dev cmake g++ kdelibs-bin kdelibs5 cmake-data kdelibs-bin kdelibs5-dev
+
+to install the dependencies needed to start kscope-kde4 development.
