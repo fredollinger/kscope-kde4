@@ -58,9 +58,9 @@ int main(int argc, char *argv[])
 
 	// pKMVC->test();
 
-	// pKScope->show();
+	pKMVC->show();
 
-	// return app.exec();
+	return app.exec();
 }
 
 // Sat Jul 30 09:56:59 PDT 2011
