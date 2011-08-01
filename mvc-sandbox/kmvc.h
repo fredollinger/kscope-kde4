@@ -5,9 +5,6 @@
 #include <qtimer.h>
 #include <kcmdlineargs.h>
 #include <kparts/part.h>
-#include "projectbase4.h"
-#include "projectmanager4.h"
-#include "fileview4.h"
 
 /*
 // class ProjectManager;
@@ -48,18 +45,17 @@ namespace KTextEditor
 	class View;
 }
 
-namespace kscope4{
+namespace kmvc{
 //class KScope : public K3DockMainWindow
-class KScope : public KParts::MainWindow
+class kmvc : public KParts::MainWindow
 // class KScope 
 {
 Q_OBJECT
 
 public:
-	KScope(QWidget *parent=0);
-	~KScope();
+	kmvc(QWidget *parent=0);
+	// ~kmvc();
 	void openProject(const QString&);
-	// ~KScope();
 	void open(const QString&);
 	void save();
 	bool close(bool bForce = false);
@@ -75,7 +71,7 @@ private:
 	KTextEditor::Document *m_doc;
 
 	/** A persistent dialog used to display error messages from Cscope. */
-	CscopeMsgDlg* m_pMsgDlg;
+	// CscopeMsgDlg* m_pMsgDlg;
 
 	/** Set to true after a shell script has verified that Cscope 
 		is installed
@@ -89,11 +85,11 @@ private:
 	bool m_bRebuildDB;
 
 	/** A project manager used to load projects and read their properties. */
-	ProjectManager* m_pProjMgr;
+	// ProjectManager* m_pProjMgr;
 
 	/** The file selection widget (project file list and OS file system
 		tree.) */
-	FileView* m_pFileView;
+	// FileView* m_pFileView;
 	
 	/** Pointer to the file list part of the FileView widget. */
 	// FileList* m_pFileList;

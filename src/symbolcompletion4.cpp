@@ -291,7 +291,6 @@ void SymbolCompletion::slotQueryFinished(uint /* nRecords */)
  * @param	pEntry			Points to the selected entry
  * @param	pTextToInsert	Contains the string to insert, upon return
  */
-	/*
 void SymbolCompletion::slotFilterInsert(KTextEditor::CompletionEntry* pEntry, 
 	QString* pTextToInsert)
 {
@@ -305,7 +304,6 @@ void SymbolCompletion::slotFilterInsert(KTextEditor::CompletionEntry* pEntry,
 	disconnect(m_pCCObject, 0, this, 0);
 	m_pCCObject = NULL;
 }
-	*/
 
 /**
  * Checks if the current symbol is eligible for auto-completion, and if so,

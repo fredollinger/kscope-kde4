@@ -54,9 +54,9 @@ int main(int argc, char *argv[])
 
 	KApplication app;
 
-	kmvc::KMVC* pKMVC = new kmvc::KMVC();
+	kmvc::kmvc* pKMVC = new kmvc::kmvc();
 
-	pKMVC->test();
+	// pKMVC->test();
 
 	// pKScope->show();
 

@@ -11,8 +11,8 @@ newprojectlayout4.ui
 )
 
 set(kmvc_SRCS
-symbolcompletion4.cpp
 main.cpp
+kmvc.cpp
 )
 
 kde4_add_executable(kmvc ${kmvc_SRCS})

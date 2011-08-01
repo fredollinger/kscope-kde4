@@ -8,12 +8,10 @@
 #include <KTextEditor/CodeCompletionModel>
 #include <Q3ValueList>
 
-/*
 namespace KTextEditor
 {
 	CodeCompletionModel;
 }
-*/
 
 /**
  * This class executes symbol definition queries based on symbol prefixes.
