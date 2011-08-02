@@ -9,6 +9,11 @@
 #include <KMessageBox>
 #include <KLocale>
 
+// BEGIN MVC INCLUDES
+#include <QStringListModel>
+#include <QStringList>
+// END MVC INCLUDES
+
 // BEGIN KSCOPE OBJ
 #include<k3dockwidget.h>
 #include "kmvc.h"
@@ -55,6 +60,13 @@ int main(int argc, char *argv[])
 	KApplication app;
 
 	kmvc::kmvc* pKMVC = new kmvc::kmvc();
+
+     QStringListModel *model = new QStringListModel();
+     QStringList list;
+     list << "a" << "b" << "c";
+     model->setStringList(list);
+
+	model->show();
 
 	// pKMVC->test();
 
