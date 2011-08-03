@@ -54,13 +54,13 @@ int main(int argc, char *argv[])
 
 	KApplication app;
 
-	kmvc::KMVC* pKMVC = new kmvc::KMVC();
+	kmvc::kmvc* pKMVC = new kmvc::kmvc();
 
-	pKMVC->test();
+	// pKMVC->test();
 
-	// pKScope->show();
+	pKMVC->show();
 
-	// return app.exec();
+	return app.exec();
 }
 
 // Sat Jul 30 09:56:59 PDT 2011

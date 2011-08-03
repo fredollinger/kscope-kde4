@@ -11,7 +11,7 @@ newprojectlayout4.ui
 )
 
 set(kmvc_SRCS
-symbolcompletion4.cpp
+kmvc.cpp
 main.cpp
 )
 
