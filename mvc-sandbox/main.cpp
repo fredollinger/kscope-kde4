@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
 	KApplication app;
 
 	kmvc::kmvc* pKMVC = new kmvc::kmvc();
+<<<<<<< HEAD
 
      QStringListModel *model = new QStringListModel();
      QStringList list;
@@ -67,6 +68,8 @@ int main(int argc, char *argv[])
      model->setStringList(list);
 
 	model->show();
+=======
+>>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 
 	// pKMVC->test();
 

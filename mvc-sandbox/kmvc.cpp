@@ -1,6 +1,4 @@
-
 #include <kparts/part.h>
-
 #include <KStandardAction>
 #include <KActionCollection>
 #include <KTextEditor/Document>
@@ -12,7 +10,11 @@
 #include <KStatusBar>
 #include <KMessageBox>
 #include <qdebug.h>
+#include "kmvc.h"
+#include <QStringList>
+#include <QStringListModel>
 
+<<<<<<< HEAD
 #include "kmvc.h"
 
 namespace kmvc{
@@ -50,6 +52,14 @@ kmvc::kmvc(QWidget *)
 	// END STUFF FROM KSCOPE
 	*/
 	return;
+=======
+namespace kmvc{
+kmvc::kmvc(QWidget *)
+{
+	m_view = new QStringListModel();
+	setCentralWidget(m_view);
+	// initMainWindow();
+>>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 }
 
 /**
@@ -58,6 +68,7 @@ kmvc::kmvc(QWidget *)
 /*
 kmvc::~KMVC()
 {
+<<<<<<< HEAD
 	// Save configuration
 	// Config().store();
 	// Config().storeWorkspace(this);
@@ -74,3 +85,25 @@ kmvc::~KMVC()
 
 } // namespace kscope4
 // Sat Jul 16 18:23:16 UTC 2011
+=======
+}
+*/
+
+void kmvc::setupActions()
+{
+}
+
+void kmvc::initMainWindow()
+{
+	KStatusBar* pStatus;
+
+	// Create the status bar
+	pStatus = statusBar();
+	pStatus->insertItem(i18n(" Line: N/A Col: N/A "), 0, 0);
+
+	return;
+}
+} // namespace kmvc
+
+// Sun Jul 31 08:48:30 PDT 2011
+>>>>>>> 3ce318e587682508c5d46725347362b0ff043643

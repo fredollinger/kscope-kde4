@@ -5,6 +5,7 @@
 #include <qtimer.h>
 #include <kcmdlineargs.h>
 #include <kparts/part.h>
+<<<<<<< HEAD
 
 /*
 // class ProjectManager;
@@ -49,6 +50,13 @@ namespace kmvc{
 //class KScope : public K3DockMainWindow
 class kmvc : public KParts::MainWindow
 // class KScope 
+=======
+#include <QStringList>
+#include <QStringListModel>
+
+namespace kmvc{
+class kmvc : public KParts::MainWindow
+>>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 {
 Q_OBJECT
 
@@ -56,6 +64,10 @@ public:
 	kmvc(QWidget *parent=0);
 	// ~kmvc();
 	void openProject(const QString&);
+<<<<<<< HEAD
+=======
+	// ~kmvc();
+>>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 	void open(const QString&);
 	void save();
 	bool close(bool bForce = false);
@@ -66,6 +78,7 @@ private:
 	void initMainWindow();
 	void setupActions();
 	bool openCscopeOut(const QString&);
+<<<<<<< HEAD
 	KParts::ReadWritePart *m_part;
    	KTextEditor::View *m_view;
 	KTextEditor::Document *m_doc;
@@ -100,67 +113,14 @@ private:
 
 	// Manages menu and tool-bar commands.
 	// KScopeActions* m_pActions;
+=======
+>>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 
+   	QStringListModel *m_view;
 
 private slots:
-	// Menu actions
-	/*
-	void slotNewFile();
-	void slotOpenFile();
 
-	void slotCloseEditor();
-	void slotCreateProject();
-	void slotOpenProject();
-	void slotProjectFiles();
-	void slotProjectProps();
-	void slotProjectCscopeOut();
-	bool slotCloseProject();
-	void slotQueryReference();
-	void slotQueryDefinition();
-	void slotQueryCalled();
-	void slotQueryCalling();
-	void slotQueryText();
-	void slotQueryPattern();
-	void slotQueryFile();
-	void slotQueryIncluding();
-	void slotQueryQuickDef();
-	void slotCallTree();
-	void slotRebuildDB();
-	void slotHistoryShow();
-	void slotShortcuts();
-	void slotConfigure();
-	void slotCloseAllWindows();
-	void slotExtEdit();
-	void slotCompleteSymbol();
-	void slotShowWelcome();
-	void slotGotoTag();
-	void slotProjectMake();
-	void slotProjectRemake();
-	void slotShowBookmarks();
-	
-	// Other slots
-	void slotProjectFilesChanged();
-	void slotFilesAdded(const QStringList&);
-	void slotQuery(uint, bool);
-	void slotDeleteEditor(EditorPage*);
-	void slotChangeEditor(EditorPage*, EditorPage*);
-	void slotShowEditor(const QString&, uint);
-	void slotFileOpened(EditorPage*, const QString&);
-	void slotFileSaved(const QString&, bool);
-	void slotCscopeError(const QString&);
-	void slotBuildProgress(int, int);
-	void slotBuildInvIndex();
-	void slotBuildFinished(uint);
-	void slotBuildAborted();
-	void slotApplyPref();
-	void slotShowCursorPos(uint, uint);
-	void slotQueryShowEditor(const QString&, uint);
-	void slotDropEvent(QDropEvent*);
-	void slotCscopeVerified(bool, uint);
-	*/
-
-//friend class KScopeActions;
 };
-} // namespace kscope
+} // namespace kmvc
 
 #endif // KMVC
