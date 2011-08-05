@@ -11,12 +11,8 @@ newprojectlayout4.ui
 )
 
 set(kmvc_SRCS
-<<<<<<< HEAD
-=======
 kmvc.cpp
->>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 main.cpp
-kmvc.cpp
 )
 
 kde4_add_executable(kmvc ${kmvc_SRCS})

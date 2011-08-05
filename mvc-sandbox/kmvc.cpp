@@ -14,13 +14,12 @@
 #include <QStringList>
 #include <QStringListModel>
 
-<<<<<<< HEAD
 #include "kmvc.h"
 
 namespace kmvc{
 kmvc::kmvc(QWidget *) 
-	// m_pProgressDlg(NULL)
 {
+
 	/*
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
@@ -39,10 +38,6 @@ kmvc::kmvc(QWidget *)
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
-	// m_pEditMgr = new EditorManager(this);
-	// m_pCallTreeMgr = new CallTreeManager(this);
-	m_pFileView = new FileView(this);
-
 
 	// BEGIN STUFF FROM KSCOPE
 	// Connect menu and toolbar items with the object's slots
@@ -52,14 +47,6 @@ kmvc::kmvc(QWidget *)
 	// END STUFF FROM KSCOPE
 	*/
 	return;
-=======
-namespace kmvc{
-kmvc::kmvc(QWidget *)
-{
-	m_view = new QStringListModel();
-	setCentralWidget(m_view);
-	// initMainWindow();
->>>>>>> 3ce318e587682508c5d46725347362b0ff043643
 }
 
 /**
@@ -83,12 +70,6 @@ kmvc::~KMVC()
 }
 	*/
 
-} // namespace kscope4
-// Sat Jul 16 18:23:16 UTC 2011
-=======
-}
-*/
-
 void kmvc::setupActions()
 {
 }
@@ -98,12 +79,12 @@ void kmvc::initMainWindow()
 	KStatusBar* pStatus;
 
 	// Create the status bar
-	pStatus = statusBar();
-	pStatus->insertItem(i18n(" Line: N/A Col: N/A "), 0, 0);
+	// pStatus = statusBar();
+	// pStatus->insertItem(i18n(" Line: N/A Col: N/A "), 0, 0);
 
 	return;
 }
+
 } // namespace kmvc
 
-// Sun Jul 31 08:48:30 PDT 2011
->>>>>>> 3ce318e587682508c5d46725347362b0ff043643
+// Fri Aug  5 11:13:49 PDT 2011
