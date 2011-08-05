@@ -8,8 +8,6 @@ err:
 	vim build/err
 clean:
 	cd build && make clean
-	rmdir joe* 
-	rmdir bob* 
 build/kscope:
 	make all
 install: build/kscope
@@ -17,4 +15,5 @@ install: build/kscope
 	#cd build && sudo make install
 test:
 	#make install
-	/usr/local/bin/kscope
+	#/usr/local/bin/kscope
+	build/kmvc

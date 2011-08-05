@@ -19,35 +19,18 @@
 #include "kmvc.h"
 // END KSCOPE OBJ
 
-/**
- * Defines the programme's entry point.
- * Creates KScope's main window, and starts the event loop.
- * @param	argc	Number of command line arguments
- * @param	argv	Command line arguments
- * @return	Programme's exit value
- */
-
 int main(int argc, char *argv[])
 {
        // BEGIN Create the "About" dialogue
 	KAboutData aboutData( "kscope-kde4", 0,
-		ki18n("KScope\nA source-editing environment for KDE, based on Cscope ")
+		ki18n("KMVC: An MVC Sandbox\n")
 		, "1.0",
-		ki18n("CScope Wrapper for KDE4"),
+		ki18n("MVC Sandbox"),
 		KAboutData::License_GPL,
-		ki18n("Copyright (c) 2007-2007, Elad Lahav (elad_lahav@users.sf.net)") );
+		ki18n("Copyright (c) 2011, Fred Ollinger (follinge@gmail.com)") );
 
-	aboutData.addCredit(ki18n("Fred Ollinger"), ki18n("Port to KDE4"),
+		aboutData.addCredit(ki18n("Fred Ollinger"), ki18n("Lead Developer"),
                 "follinge@gmail.com", "http://fredollinger.com");
-
-	aboutData.addAuthor(ki18n("Elad Lahav"), ki18n("Developer"),
-		"elad_lahav@users.sf.net", "");
-
-   	aboutData.addCredit(ki18n("Albert Yosher"),
-                ki18n("Code completion, patches and bug fixes"),
-		"ayosher@users.sf.net", "");
-
-	aboutData.addCredit(ki18n("Gabor Fekete"), ki18n("Bug fixes and patches"), "feketgai@index.hu", "");
         // END Create the "About" dialogue
 
         // BEGIN CMD LINE ARGS
