@@ -29,6 +29,7 @@ public:
 	void setupActions(void);
 
 private:
+  	QStringListModel m_slm;
 	void initCscope(void);
 	void initMainWindow(void);
 	bool openCscopeOut(const QString&);

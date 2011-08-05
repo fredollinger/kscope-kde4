@@ -12,13 +12,21 @@
 #include <qdebug.h>
 #include "kmvc.h"
 #include <QStringList>
+#include <QListWidget>
 #include <QStringListModel>
 
 #include "kmvc.h"
 
 namespace kmvc{
 kmvc::kmvc(QWidget *) 
+// kmvc::kmvc( QWidget *parent, char *name ) : QVBox( parent, name )
 {
+  // m_listBox = new QListBox( this );
+  
+  // QHBox *hb = new QHBox( this );
+  // m_lineEdit = new QLineEdit( hb );
+  // QPushButton *pbAdd = new QPushButton( "Add", hb );
+  // QPushButton *pbClear = new QPushButton( "Clear", hb );
 
 	/*
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
