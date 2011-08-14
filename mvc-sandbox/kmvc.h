@@ -7,6 +7,8 @@
 #include <kparts/part.h>
 #include <QStringList>
 #include <QStringListModel>
+#include <QVBoxLayout>
+#include <kvbox.h>
 
 namespace KTextEditor
 {
@@ -29,6 +31,9 @@ public:
 	void setupActions(void);
 
 private:
+  	QStringListModel *model;
+  	QStringList list;
+	KVBox *vbox;
   	QStringListModel m_slm;
 	void initCscope(void);
 	void initMainWindow(void);

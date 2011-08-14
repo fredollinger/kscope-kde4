@@ -14,13 +14,22 @@
 #include <QStringList>
 #include <QListWidget>
 #include <QStringListModel>
+#include <QVBoxLayout>
+#include <kvbox.h>
 
 #include "kmvc.h"
 
 namespace kmvc{
 kmvc::kmvc(QWidget *) 
-// kmvc::kmvc( QWidget *parent, char *name ) : QVBox( parent, name )
 {
+  KVBox *m_vbox = new KVBox( this );
+
+  QStringListModel *model = new QStringListModel(m_vbox);
+  QStringList list;
+  list << "a" << "b" << "c";
+  model->setStringList(list);
+
+
   // m_listBox = new QListBox( this );
   
   // QHBox *hb = new QHBox( this );
@@ -84,7 +93,7 @@ void kmvc::setupActions()
 
 void kmvc::initMainWindow()
 {
-	KStatusBar* pStatus;
+	// KStatusBar* pStatus;
 
 	// Create the status bar
 	// pStatus = statusBar();
