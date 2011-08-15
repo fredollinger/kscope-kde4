@@ -44,15 +44,6 @@ int main(int argc, char *argv[])
 
 	kmvc::kmvc* pKMVC = new kmvc::kmvc();
 
-    QStringListModel *model = new QStringListModel();
-    QStringList list;
-    list << "a" << "b" << "c";
-    model->setStringList(list);
-
-	// model->show();
-
-	// pKMVC->test();
-
 	pKMVC->show();
 
 	return app.exec();

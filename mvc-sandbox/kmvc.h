@@ -9,6 +9,7 @@
 #include <QStringListModel>
 #include <QVBoxLayout>
 #include <kvbox.h>
+#include <QListView>
 
 namespace KTextEditor
 {
@@ -31,7 +32,9 @@ public:
 	void setupActions(void);
 
 private:
-  	QStringListModel *model;
+  	KVBox *m_vbox;
+  	QStringListModel *m_model;
+  	QListView *m_view;
   	QStringList list;
 	KVBox *vbox;
   	QStringListModel m_slm;
@@ -39,8 +42,7 @@ private:
 	void initMainWindow(void);
 	bool openCscopeOut(const QString&);
 	KParts::ReadWritePart *m_part;
-   	KTextEditor::View *m_view;
-	KTextEditor::Document *m_doc;
+	// KTextEditor::Document *m_doc;
 
 
 	/** A persistent dialog used to display error messages from Cscope. */
