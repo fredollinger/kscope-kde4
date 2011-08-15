@@ -67,3 +67,5 @@ private slots:
 } // namespace kmvc
 
 #endif // KMVC
+
+// Sun Aug 14 18:45:14 PDT 2011
