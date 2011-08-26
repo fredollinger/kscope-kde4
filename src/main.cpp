@@ -8,6 +8,7 @@
 #include <KApplication>
 #include <KMessageBox>
 #include <KLocale>
+#include <qdebug.h>
 
 // BEGIN KSCOPE OBJ
 #include<k3dockwidget.h>
@@ -59,6 +60,10 @@ int main(int argc, char *argv[])
 	pKScope->verifyCscope();
 
 	pKScope->show();
+
+	qDebug() << argv[1];	
+
+	// QString qfn = new QString(argv[1]);
 
 	return app.exec();
 }
