@@ -176,7 +176,7 @@ private slots:
 	void slotAutoCompleteTimeout();
 	void slotAddEntry(FrontendToken*);
 	void slotQueryFinished(uint);
-	void slotFilterInsert(KTextEditor::CodeCompletionModel*, QString*);
+	// void slotFilterInsert(KTextEditor::CodeCompletionModel*, QString*);
 };
 
 #endif
