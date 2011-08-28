@@ -12,7 +12,7 @@
 
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
-	NewProjectLayout(pParent, szName),
+	Ui::NewProjectLayout(pParent, szName),
 	m_bNewProj(bNewProj)
 {
 

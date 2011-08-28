@@ -23,6 +23,7 @@
 #include "project4.h"
 #include "fileview4.h"
 #include "symbolcompletion4.h"
+#include "symboldlg4.h"
 #include <qdebug.h>
 
 namespace kscope4{
