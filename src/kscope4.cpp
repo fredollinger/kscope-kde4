@@ -11,6 +11,7 @@
 #include <KFileDialog>
 #include <KStatusBar>
 #include <KMessageBox>
+#include <QFile>
 
 #include "openprojectdlg4.h"
 #include "cscopefrontend4.h"
@@ -115,9 +116,17 @@ void KScope::openFile()
 
 void KScope::openFileNamed(QString name)
 {
-	qDebug() << name;
-	KUrl ku = KUrl(name);
-	m_view->document()->openUrl(ku);	
+	QFile *file = new QFile(name);
+
+	if (!file->open(QIODevice::ReadOnly | QIODevice::Text)){
+		qDebug() << file << " does not exist! \n";
+        	return;
+	}
+
+
+	QByteArray *ba = new QByteArray(file->readAll());
+	QString qs = QString(ba->data());
+	m_view->document()->setText(qs);	
 }
 
 /**

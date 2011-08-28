@@ -68,7 +68,6 @@ int main(int argc, char *argv[])
 	KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
  	for(int i = 0; i < args->count(); i++) // Counting start at 0!
      	{
-		qDebug() << args->arg(i);
         	pKScope->openFileNamed( args->arg(i));
 
      	}
