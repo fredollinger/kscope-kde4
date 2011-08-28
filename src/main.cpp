@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 
         // BEGIN CMD LINE ARGS
 	KCmdLineArgs::init( argc, argv, &aboutData );
-	KCmdLineOptions options;
+	// KCmdLineOptions options;
 	// options.add("+[CSCOPE.OUT path]", ki18n("Opens a cscope.out file in a temporary project"));
 	// options.add("+[CSCOPE.PROJ path | KScope project directory path]", ki18n("Opens a KScope project"));
 
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
  	for(int i = 0; i < args->count(); i++) // Counting start at 0!
      	{
 		qDebug() << args->arg(i);
-        	pKScope->openFileNamed( args->arg(i));
+        	// pKScope->openFileNamed( args->arg(i));
 
      	}
 
