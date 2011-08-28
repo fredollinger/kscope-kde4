@@ -116,8 +116,8 @@ void KScope::openFile()
 void KScope::openFileNamed(QString name)
 {
 	qDebug() << name;
-	//KUrl ku = KUrl(name);
-	//m_view->document()->openUrl(ku);	
+	KUrl ku = KUrl(name);
+	m_view->document()->openUrl(ku);	
 }
 
 /**
