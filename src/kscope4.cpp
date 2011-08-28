@@ -113,6 +113,12 @@ void KScope::openFile()
 	m_view->document()->openUrl(KFileDialog::getOpenFileName());	
 }
 
+void KScope::openFileNamed(QString name)
+{
+	KUrl ku = KUrl(name);
+	m_view->document()->openUrl(ku);	
+}
+
 /**
  * Starts a shell script to ensure that Cscope is properly installed and to
  * extract the supported command-line arguments. 

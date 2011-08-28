@@ -62,6 +62,7 @@ public:
 	void save();
 	bool close(bool bForce = false);
 	void verifyCscope();
+	void openFileNamed(QString);
 
 private:
 	void initCscope();
