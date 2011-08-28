@@ -17,4 +17,4 @@ install: build/kscope
 	#cd build && sudo make install
 test:
 	#make install
-	/usr/local/bin/kscope
+	/usr/local/bin/kscope bob
