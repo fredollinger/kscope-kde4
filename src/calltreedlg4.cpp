@@ -87,6 +87,7 @@ void CallTreeDlg::setRoot(const QString& sFunc)
 /**
  * Displays the dialogue.
  */
+/*
 void CallTreeDlg::show()
 {
 	// Set the default view.
@@ -96,6 +97,7 @@ void CallTreeDlg::show()
 	
 	// CallTreeLayout::show();
 }
+*/
 
 /**
  * Informs the call tree manager that this object should be removed from the
@@ -126,16 +128,19 @@ extern int yyparse();
  */
 bool CallTreeDlg::load(const QString& sProjPath, const QString& sFileName)
 {
+	/*
 	QString sPath;
 	FILE* pFile;
 	int nVersion, nView, nResult;
+	const QChar *qc;
 	// Encoder enc;
 	
 	// Create the full path name
 	sPath = sProjPath + "/" + sFileName;
 	
 	// Open the file for reading
-	pFile = fopen(sPath.unicode(), "r");
+	qc=sPath.unicode();
+	pFile = fopen(qc->toLatin1(), "r");
 	if (pFile == NULL)
 		return false;
 		
@@ -170,143 +175,9 @@ bool CallTreeDlg::load(const QString& sProjPath, const QString& sFileName)
 	
 	// Draw the graph
 	m_pGraphWidget->draw();
+	*/
+
 	return true;
-}
-
-/**
- * Writes the contents of the call tree dialog to a call tree file.
- * This method is called for call trees before the owner project is
- * closed.
- * @param	sProjPath	The full path of the project directory
- */
-void CallTreeDlg::store(const QString& sProjPath)
-{
-	QString sPath;
-	FILE* pFile;
-	
-	// Create the full file path
-	sPath = sProjPath + "/" + m_sFileName;
-	m_sFilePath = sPath;
-	
-	// Open a file for writing (create if necessary)
-	pFile = fopen(sPath.latin1(), "w+");
-	if (pFile == NULL)
-		return;
-		
-	// Write header
-	fprintf(pFile, "VERSION=%d\n", FILE_VERSION);
-	fprintf(pFile, "View=%d\n", m_pViewGroup->selectedId());
-	
-	// Save the contents of all widgets
-	m_pCalledWidget->save(pFile);
-	m_pCallingWidget->save(pFile);
-	m_pGraphWidget->save(pFile);
-	
-	// Close the file
-	fclose(pFile);
-}
-
-/**
- * Saves the graph to a dot file.
- * The user is prompted for a name to use for the file, and then graph
- * widget writes its information to this file (using the dot language).
- * This slot is connected to the clicked() signal of the "Save As..." button.
- */
-void CallTreeDlg::slotSaveClicked()
-{
-	QString sFile;
-	
-	// Prompt the user for a file name
-	sFile = KFileDialog::getSaveFileName(":kscope");
-	
-	// Save the graph to a file (unless the user did not give a file name)
-	if (!sFile.isEmpty())
-		m_pGraphWidget->save(sFile);
-}
-
-/**
- * Increases the zoom factor of the graph.
- * This slot is connected to the clicked() signal of the "Zoom In" button.
- */
-void CallTreeDlg::slotZoomInClicked()
-{
-	m_pGraphWidget->zoom(true);
-	m_pGraphWidget->draw();
-}
-
-/**
- * Decreases the zoom factor of the graph.
- * This slot is connected to the clicked() signal of the "Zoom Out" button.
- */
-void CallTreeDlg::slotZoomOutClicked()
-{
-	m_pGraphWidget->zoom(false);
-	m_pGraphWidget->draw();
-}
-
-/**
- * Changes the graph's layout direction.
- * This slot is connected to the clicked() signal of the "Rotate" button.
- */
-void CallTreeDlg::slotRotateClicked()
-{
-	m_pGraphWidget->rotate();
-	m_pGraphWidget->draw();
-}
-
-/**
- * Opens the call graph preferences dialogue.
- * This slot is connected to the clicked() signal of the "Preferences" button.
- */
-void CallTreeDlg::slotPrefClicked()
-{
-	GraphPrefDlg dlg(this);
-	int nMaxNodeDegree;
-	
-	if (dlg.exec() == QDialog::Accepted) {
-		nMaxNodeDegree = dlg.getMaxNodeDegree();
-		Config().setGraphMaxNodeDegree(nMaxNodeDegree);
-		m_pGraphWidget->setMaxNodeDegree(nMaxNodeDegree);
-	}
-}
-
-/**
- * Prepares the selected view.
- * This slot is called when the user chooses a different view through the
- * toggle buttons in the dialogue's toolbar.
- * @param	nView	Identifies the selected view
- */
-void CallTreeDlg::slotViewChanged(int nView)
-{
-	switch (nView) {
-	case 0:
-		// Call graph
-		setCaption(i18n("Call Graph"));
-		m_pGraphGroup->setEnabled(true);
-		m_pHelpLabel->setText(i18n("Right-click a function node or an arrow "
-			"head for more options."));
-		break;
-		
-	case 1:
-		// Called functions tree
-		setCaption(i18n("Called Functions Tree"));
-		m_pGraphGroup->setEnabled(false);
-		m_pHelpLabel->setText(i18n("Right-click a tree item for more "
-			"options."));
-		m_pCalledWidget->queryRoot();
-		break;
-		
-	case 2:
-		// Calling functions tree
-		setCaption(i18n("Calling Functions Tree"));
-		m_pGraphGroup->setEnabled(false);
-		m_pHelpLabel->setText(i18n("Right-click a tree item for more "
-			"options."));
-		m_pCallingWidget->queryRoot();
-		break;
-	}
-	
-	Config().setDefGraphView(nView);
 }
 
 // #include "calltreedlg.moc"

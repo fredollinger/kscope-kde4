@@ -640,6 +640,7 @@ void KScope::initCscope()
 void KScope::slotQuery(uint nType, bool bPrompt)
 {
 	QString sSymbol;
+	/*
 	CallTreeDlg* pCallTreeDlg;
 	bool bCase;
 	
@@ -661,6 +662,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		// Ensure Query Window is visible
 		toggleQueryWindow(true);	
 	}
+	*/
 }
 
 } // namespace kscope4

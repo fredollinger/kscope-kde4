@@ -32,7 +32,7 @@ public:
 	QString getFileName() { return m_sFileName; }
 
 public slots:
-	virtual void show();
+	// virtual void show();
 
 signals:
 	/**
@@ -54,12 +54,14 @@ protected:
 	virtual void closeEvent(QCloseEvent*);
 
 protected slots:
+	/*
 	virtual void slotSaveClicked();
 	virtual void slotZoomInClicked();
 	virtual void slotZoomOutClicked();
 	virtual void slotRotateClicked();
 	virtual void slotPrefClicked();
 	virtual void slotViewChanged(int);
+	*/
 	
 private:
 	/** The root function. */
