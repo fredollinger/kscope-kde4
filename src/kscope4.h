@@ -106,6 +106,7 @@ private:
 
 
 private slots:
+	void slotQuery(uint, bool);
 	// Menu actions
 	/*
 	void slotNewFile();
@@ -144,7 +145,6 @@ private slots:
 	// Other slots
 	void slotProjectFilesChanged();
 	void slotFilesAdded(const QStringList&);
-	void slotQuery(uint, bool);
 	void slotDeleteEditor(EditorPage*);
 	void slotChangeEditor(EditorPage*, EditorPage*);
 	void slotShowEditor(const QString&, uint);

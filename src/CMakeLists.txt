@@ -11,6 +11,7 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
+calltreedlg4.cpp
 symboldlg4.cpp
 symbolcompletion4.cpp
 openprojectdlg4.cpp

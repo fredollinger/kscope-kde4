@@ -631,5 +631,37 @@ void KScope::initCscope()
 	*/
 }
 
+/**
+ * Promts the user for a symbol, an starts a new Cscope query.
+ * @param	nType	The numeric query type code
+ * @param	bPrompt	true to always prompt for a symbol, false to try to
+ * 					obtain the symbol automatically
+ */
+void KScope::slotQuery(uint nType, bool bPrompt)
+{
+	QString sSymbol;
+	CallTreeDlg* pCallTreeDlg;
+	bool bCase;
+	
+	// Get the requested symbol and query type
+	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
+		return;
+		
+	if (nType == SymbolDlg::CallTree) {
+		// Create and display a call tree dialogue
+		pCallTreeDlg = m_pCallTreeMgr->addDialog();
+		pCallTreeDlg->setRoot(sSymbol);
+		pCallTreeDlg->show();
+	}
+	else {
+		// Run the requested query
+		nType = SymbolDlg::getQueryType(nType);
+		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+		
+		// Ensure Query Window is visible
+		toggleQueryWindow(true);	
+	}
+}
+
 } // namespace kscope4
 // Sat Jul 16 18:23:16 UTC 2011
