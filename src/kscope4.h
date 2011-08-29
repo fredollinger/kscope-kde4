@@ -107,6 +107,7 @@ private:
 
 private slots:
 	void slotQuery(uint, bool);
+	void slotQueryPattern();
 	// Menu actions
 	/*
 	void slotNewFile();
@@ -124,7 +125,6 @@ private slots:
 	void slotQueryCalled();
 	void slotQueryCalling();
 	void slotQueryText();
-	void slotQueryPattern();
 	void slotQueryFile();
 	void slotQueryIncluding();
 	void slotQueryQuickDef();

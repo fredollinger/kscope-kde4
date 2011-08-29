@@ -104,6 +104,12 @@ void KScope::setupActions()
 	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
+
+	KAction* findEgrepPattern = new KAction(this);
+  	projectNew->setText(i18n("Find &EGrep Pattern..."));
+	actionCollection()->addAction("find_egrep_pattern", findEgrepPattern);
+	connect(findEgrepPattern, SIGNAL(triggered(bool)),
+	this, SLOT(slotQueryPattern()));
 	// END KACTIONS
 
 	setXMLFile("kscope-kde4.rc");
@@ -664,6 +670,18 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	}
 	*/
 }
+
+/**
+ * Handles the "Cscope->Find EGrep Pattern..." menu command.
+ * Prompts the user for a regular expression, and initiates a query to find 
+ * all strings matching that pattern.
+ */
+void KScope::slotQueryPattern()
+{
+	qDebug() << "slotQueryPattern() STUB \n";
+	// slotQuery(SymbolDlg::Pattern, true);
+}
+
 
 } // namespace kscope4
 // Sat Jul 16 18:23:16 UTC 2011
