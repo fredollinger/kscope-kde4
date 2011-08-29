@@ -1,42 +1,12 @@
-/***************************************************************************
- *
- * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
 #include <qfile.h>
 #include <qtoolbutton.h>
 #include <qbuttongroup.h>
-#include <qwidgetstack.h>
 #include <klocale.h>
 #include <kfiledialog.h>
-#include "calltreedlg.h"
-#include "graphwidget.h"
-#include "treewidget.h"
+#include "calltreedlg4.h"
+#include "calltreelayout4.h"
 #include "kscopepixmaps4.h"
 #include "kscopeconfig4.h"
-#include "graphprefdlg4.h"
 
 /** The currently supported version of saved call-tree files. */
 #define FILE_VERSION		5
@@ -57,27 +27,31 @@ int CallTreeDlg::s_nFileNameIndex = 0;
  * @param	szName	The widget's name
  */
 CallTreeDlg::CallTreeDlg(QWidget* pParent, const char* szName) :
-	CallTreeLayout(pParent, szName, CALL_TREE_W_FLAGS)
+	CallTreeLayout()
 {
+	/*
 	// Set button pixmaps
-	m_pCalledButton->setPixmap(GET_PIXMAP(CalledTree));
-	m_pCallingButton->setPixmap(GET_PIXMAP(CallingTree));
-	m_pGraphButton->setPixmap(GET_PIXMAP(CallGraph));
+	// m_pCalledButton->setPixmap(GET_PIXMAP(CalledTree));
+	// m_pCallingButton->setPixmap(GET_PIXMAP(CallingTree));
+	// m_pGraphButton->setPixmap(GET_PIXMAP(CallGraph));
 	m_pSaveButton->setPixmap(GET_PIXMAP(ButtonSaveAs));
 	m_pZoomInButton->setPixmap(GET_PIXMAP(ButtonZoomIn));
 	m_pZoomOutButton->setPixmap(GET_PIXMAP(ButtonZoomOut));
 	m_pRotateButton->setPixmap(GET_PIXMAP(ButtonRotate));
 	m_pPrefButton->setPixmap(GET_PIXMAP(ButtonPref));
+	*/
 	
 	// Open the location of a call
-	connect(m_pGraphWidget, SIGNAL(lineRequested(const QString&, uint)),
-		this, SIGNAL(lineRequested(const QString&, uint)));
+	/*
+	// connect(m_pGraphWidget, SIGNAL(lineRequested(const QString&, uint)),
+		// this, SIGNAL(lineRequested(const QString&, uint)));
 	connect(m_pCalledWidget, SIGNAL(lineRequested(const QString&, uint)),
 		this, SIGNAL(lineRequested(const QString&, uint)));
 	connect(m_pCallingWidget, SIGNAL(lineRequested(const QString&, uint)),
 		this, SIGNAL(lineRequested(const QString&, uint)));
+	*/
 	
-	m_pCallingWidget->setMode(TreeWidget::Calling);
+	// m_pCallingWidget->setMode(TreeWidget::Calling);
 	
 	// Get the default view from KScope's configuration
 	m_nDefView = Config().getDefGraphView();
@@ -103,9 +77,11 @@ void CallTreeDlg::setRoot(const QString& sFunc)
 	m_sFileName += QString::number(++s_nFileNameIndex);
 	
 	// Set the root item in all views
-	m_pGraphWidget->setRoot(sFunc);
+	/*
+	// m_pGraphWidget->setRoot(sFunc);
 	m_pCalledWidget->setRoot(sFunc);
 	m_pCallingWidget->setRoot(sFunc);
+	*/
 }
 
 /**
@@ -118,7 +94,7 @@ void CallTreeDlg::show()
 	m_pStack->raiseWidget(m_nDefView);
 	slotViewChanged(m_nDefView);
 	
-	CallTreeLayout::show();
+	// CallTreeLayout::show();
 }
 
 /**
@@ -138,7 +114,7 @@ void CallTreeDlg::closeEvent(QCloseEvent* pEvent)
 	QWidget::closeEvent(pEvent);
 }
 
-extern void yyinit(CallTreeDlg*, FILE*, Encoder*);
+// extern void yyinit(CallTreeDlg*, FILE*, Encoder*);
 extern int yyparse();
 
 /**
@@ -153,13 +129,13 @@ bool CallTreeDlg::load(const QString& sProjPath, const QString& sFileName)
 	QString sPath;
 	FILE* pFile;
 	int nVersion, nView, nResult;
-	Encoder enc;
+	// Encoder enc;
 	
 	// Create the full path name
 	sPath = sProjPath + "/" + sFileName;
 	
 	// Open the file for reading
-	pFile = fopen(sPath.latin1(), "r");
+	pFile = fopen(sPath.unicode(), "r");
 	if (pFile == NULL)
 		return false;
 		
