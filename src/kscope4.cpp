@@ -101,10 +101,10 @@ void KScope::setupActions()
 	connect(cscopeRebuild, SIGNAL(triggered(bool)),
 	this, SLOT(slotRebuildDB()));
 
-	KAction* findEgrepPattern = new KAction(this);
-  	findEgrepPattern->setText(i18n("Find &EGrep Pattern..."));
-	actionCollection()->addAction("find_egrep_pattern", findEgrepPattern);
-	connect(findEgrepPattern, SIGNAL(triggered(bool)),
+	KAction* cscopeText = new KAction(this);
+  	cscopeText->setText(i18n("Find &EGrep Pattern..."));
+	actionCollection()->addAction("cscope_text", cscopeText);
+	connect(cscopeText, SIGNAL(triggered(bool)),
 	this, SLOT(slotQueryPattern()));
 
 	KAction* projectNew = new KAction(this);
@@ -641,6 +641,17 @@ void KScope::initCscope()
 }
 
 /**
+ * Handles the "Cscope->Find EGrep Pattern..." menu command.
+ * Prompts the user for a regular expression, and initiates a query to find 
+ * all strings matching that pattern.
+ */
+void KScope::slotQueryPattern()
+{
+	qDebug() << "slotQueryPattern() STUB \n";
+	slotQuery(SymbolDlg::Pattern, true);
+}
+
+/**
  * Promts the user for a symbol, an starts a new Cscope query.
  * @param	nType	The numeric query type code
  * @param	bPrompt	true to always prompt for a symbol, false to try to
@@ -676,17 +687,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	}
 	*/
 }
-
-/**
- * Handles the "Cscope->Find EGrep Pattern..." menu command.
- * Prompts the user for a regular expression, and initiates a query to find 
- * all strings matching that pattern.
- */
-void KScope::slotQueryPattern()
-{
-	qDebug() << "slotQueryPattern() STUB \n";
-	slotQuery(SymbolDlg::Pattern, true);
-}
+// END slotQuery()
 
 
 } // namespace kscope4

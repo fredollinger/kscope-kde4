@@ -8,8 +8,6 @@ err:
 	vim build/err
 clean:
 	cd build && make clean
-	rmdir joe* 
-	rmdir bob* 
 build/kscope:
 	make all
 install: build/kscope
