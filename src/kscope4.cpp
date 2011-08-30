@@ -1,29 +1,31 @@
-
 #include <kparts/part.h>
 
-#include <KStandardAction>
 #include <KActionCollection>
+#include <KStandardAction>
 #include <KTextEditor/Document>
 #include <KTextEditor/View>
 #include <KTextEditor/Editor>
 #include <KTextEditor/EditorChooser>
-#include <KXMLGUIFactory>
 #include <KFileDialog>
 #include <KStatusBar>
 #include <KMessageBox>
+#include <KXMLGUIFactory>
+
 #include <QFile>
 
-#include "openprojectdlg4.h"
+#include "calltreedlg4.h"
+#include "fileview4.h"
 #include "cscopefrontend4.h"
+#include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
 #include "projectmanager4.h"
 #include "project4.h"
-#include "fileview4.h"
 #include "symbolcompletion4.h"
 #include "symboldlg4.h"
+
 #include <qdebug.h>
 
 namespace kscope4{
@@ -99,17 +101,18 @@ void KScope::setupActions()
 	connect(cscopeRebuild, SIGNAL(triggered(bool)),
 	this, SLOT(slotRebuildDB()));
 
+	KAction* findEgrepPattern = new KAction(this);
+  	findEgrepPattern->setText(i18n("Find &EGrep Pattern..."));
+	actionCollection()->addAction("find_egrep_pattern", findEgrepPattern);
+	connect(findEgrepPattern, SIGNAL(triggered(bool)),
+	this, SLOT(slotQueryPattern()));
+
 	KAction* projectNew = new KAction(this);
   	projectNew->setText(i18n("project_new"));
 	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
 
-	KAction* findEgrepPattern = new KAction(this);
-  	projectNew->setText(i18n("Find &EGrep Pattern..."));
-	actionCollection()->addAction("find_egrep_pattern", findEgrepPattern);
-	connect(findEgrepPattern, SIGNAL(triggered(bool)),
-	this, SLOT(slotQueryPattern()));
 	// END KACTIONS
 
 	setXMLFile("kscope-kde4.rc");
@@ -645,10 +648,13 @@ void KScope::initCscope()
  */
 void KScope::slotQuery(uint nType, bool bPrompt)
 {
+	qDebug() << "slotQuery() FIXME: Not done \n";
+
 	QString sSymbol;
-	/*
-	CallTreeDlg* pCallTreeDlg;
 	bool bCase;
+	CallTreeDlg* pCallTreeDlg;
+
+	/*
 	
 	// Get the requested symbol and query type
 	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
@@ -679,7 +685,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 void KScope::slotQueryPattern()
 {
 	qDebug() << "slotQueryPattern() STUB \n";
-	// slotQuery(SymbolDlg::Pattern, true);
+	slotQuery(SymbolDlg::Pattern, true);
 }
 
 
