@@ -51,7 +51,7 @@ KScope::KScope(QWidget *) :
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
-	// m_pCallTreeMgr = new CallTreeManager(this);
+	m_pCallTreeMgr = new CallTreeManager(this);
 	m_pFileView = new FileView(this);
 
 
@@ -665,8 +665,6 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	bool bCase;
 	CallTreeDlg* pCallTreeDlg;
 
-	/*
-	
 	// Get the requested symbol and query type
 	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
 		return;
@@ -685,9 +683,47 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		// Ensure Query Window is visible
 		toggleQueryWindow(true);	
 	}
-	*/
 }
 // END slotQuery()
+
+/**
+ * Prompts the user for a symbol to query.
+ * Shows a dialog with a line edit widget, where the user can enter a symbol
+ * on which to query Cscope. The meaning of the symbol depends on the type of
+ * query.
+ * @param	nType	The requested type of query (may be changed in the
+ *					dialogue)
+ * @param	sSymbol	Holds the requested symbol, upon successful return
+ * @param	bPrompt	If false, the user is prompted only if a symbol cannot be
+ *					determined automatically
+ * @return	true if the user hs enetered a symbol, false otherwise
+ */
+bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
+	bool bPrompt)
+{
+	EditorPage* pPage;
+	QString sSuggested;
+	
+	// Set the currently selected text, if any
+	if ((pPage = m_pEditTabs->getCurrentPage()) != NULL)
+		sSuggested = pPage->getSuggestedText();
+
+	// Return if a symbol was found, and prompting is turned off
+	if (!sSuggested.isEmpty() && !bPrompt) {
+		sSymbol = sSuggested;
+		return true;
+	}
+	
+	// Show the symbol dialogue
+	sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
+
+	// Cannot accept empty strings
+	if (sSymbol.isEmpty())
+		return false;
+	
+	return true;
+}
+// END getSymbol()
 
 
 } // namespace kscope4

@@ -65,6 +65,11 @@ public:
 	void openFileNamed(QString);
 
 private:
+
+	/** Creates and maintains call tree dialogues. */
+	CallTreeManager* m_pCallTreeMgr;
+
+	bool getSymbol(uint&, QString&, bool&, bool bPrompt = true);
 	void initCscope();
 	void initMainWindow();
 	void setupActions();
