@@ -14,6 +14,7 @@
 #include <QFile>
 
 #include "calltreedlg4.h"
+#include "calltreemanager4.h"
 #include "fileview4.h"
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"

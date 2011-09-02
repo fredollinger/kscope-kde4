@@ -1,33 +1,7 @@
-/***************************************************************************
- *
- * Copyright (C) 2005 Elad Lahav (elad_lahav@users.sourceforge.net)
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ***************************************************************************/
-
-#include "calltreemanager.h"
-#include "calltreedlg.h"
-#include "projectmanager.h"
+#include "calltreemanager4.h"
+#include "calltreedlg4.h"
+#include "projectmanager4.h"
+#include <qdebug.h>
 
 /**
  * Class constructor.
@@ -37,7 +11,8 @@
 CallTreeManager::CallTreeManager(QWidget* pParent) : QObject(pParent)
 {
 	// Delete dialogue objects when they are removed from the list
-	m_lstDialogs.setAutoDelete(true);
+	// m_lstDialogs.setAutoDelete(true);
+	qDebug() << "CallTreeManager::CallTreeManager FIXME: We need to delete all when the list is deleted!\n";
 }
 
 /**
@@ -45,6 +20,8 @@ CallTreeManager::CallTreeManager(QWidget* pParent) : QObject(pParent)
  */
 CallTreeManager::~CallTreeManager()
 {
+	// delete all the items in the list when we are destroyed...
+	// qDeleteAll();
 }
 
 /** 
@@ -58,8 +35,16 @@ void CallTreeManager::saveOpenDialogs(const QString& sProjPath,
 	CallTreeDlg *pDlg;
 	
 	// Iterate over the open dialogues
+	/*
 	for (pDlg = m_lstDialogs.first(); pDlg != NULL; 
 		pDlg = m_lstDialogs.next()) {
+		pDlg->store(sProjPath);
+		slFiles += pDlg->getFileName();
+	}
+	I REIMPLEMENT THIS SO:
+	*/
+	for (int i = 0; i < m_lstDialogs.size(); ++i) {
+		pDlg = m_lstDialogs.at(i);
 		pDlg->store(sProjPath);
 		slFiles += pDlg->getFileName();
 	}
@@ -76,13 +61,16 @@ void CallTreeManager::loadOpenDialogs(const QString& sProjPath,
 	QStringList::ConstIterator itr;
 	CallTreeDlg *pDlg;
 	
+	int i=-1;
 	for (itr = slFiles.begin(); itr != slFiles.end(); ++itr) {
+		i++;
 		// Create a new dialogue for this file
 		pDlg = addDialog();
 		
 		// Try to load the graph from the file
 		if (!pDlg->load(sProjPath, *itr)) {
-			m_lstDialogs.remove(pDlg);
+			// m_lstDialogs.remove(pDlg);
+			m_lstDialogs.removeAt(i);
 			continue;
 		}
 		
@@ -129,8 +117,10 @@ void CallTreeManager::closeAll()
  */
 void CallTreeManager::slotRemoveDialog(const CallTreeDlg* pDlg) 
 {
-	m_lstDialogs.remove(pDlg);
+	qDebug() << "CallTreeManager::slotRemoveDialog: FIXME: IMPLEMENT!\n";
+	// m_lstDialogs.remove(pDlg);
 }
 
-#include "calltreemanager.moc"
+// #include "calltreemanager.moc"
 
+// Thu Sep  1 16:40:13 PDT 2011
