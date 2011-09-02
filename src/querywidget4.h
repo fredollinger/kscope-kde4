@@ -7,7 +7,7 @@
 // #include "querywidgetlayout4.h"
 #include "tabwidget4.h"
 #include "querypage4.h"
-#include "historypage4.h"
+// #include "historypage4.h"
 #include "projectmanager4.h"
 
 /**
