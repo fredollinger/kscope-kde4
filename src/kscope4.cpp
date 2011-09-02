@@ -48,6 +48,7 @@ KScope::KScope(QWidget *) :
 
 	// Create all child widgets
 	initMainWindow();
+	m_pQueryWidget = new QueryWidget(this);
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();

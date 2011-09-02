@@ -65,6 +65,8 @@ public:
 	void openFileNamed(QString);
 
 private:
+	/** The query results tabbed window. */
+	QueryWidget* m_pQueryWidget;
 
 	/** Creates and maintains call tree dialogues. */
 	CallTreeManager* m_pCallTreeMgr;

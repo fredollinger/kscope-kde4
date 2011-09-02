@@ -11,6 +11,8 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
+tabwidget4.cpp
+querywidget4.cpp
 calltreemanager4.cpp
 calltreedlg4.cpp
 symboldlg4.cpp
