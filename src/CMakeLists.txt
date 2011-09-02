@@ -11,6 +11,7 @@ newprojectlayout4.ui
 )
 
 set(kscope_SRCS
+querypagebase4.cpp
 querypage4.cpp
 tabwidget4.cpp
 querywidget4.cpp
