@@ -1,7 +1,8 @@
 #include <qfile.h>
 #include "querypagebase4.h"
-#include "queryview4.h"
+// #include "queryview4.h"
 #include "kscopeconfig4.h"
+#include <QWidget>
 
 #define FILE_VERSION	"VERSION=2"
 
@@ -10,8 +11,8 @@
  * @param	pParent	The parent widget
  * @param	szName	The widget's name
  */
-QueryPageBase::QueryPageBase(QWidget* pParent, const char* szName) :
-	QHBox(pParent, szName),
+QueryPageBase::QueryPageBase() :
+	QWidget(),
 	m_bLocked(false)
 {
 }
@@ -28,12 +29,14 @@ QueryPageBase::~QueryPageBase()
  */
 void QueryPageBase::applyPrefs()
 {
+/*
 	// Apply colour settings
 	m_pView->setPaletteBackgroundColor(Config().getColor(
 		KScopeConfig::QueryWindowBack));
 	m_pView->setPaletteForegroundColor(Config().getColor(
 		KScopeConfig::QueryWindowFore));
 	m_pView->setFont(Config().getFont(KScopeConfig::QueryWindow));
+*/
 }
 
 /**
@@ -45,18 +48,20 @@ void QueryPageBase::applyPrefs()
  */
 bool QueryPageBase::load(const QString& sProjPath, const QString& sFileName)
 {
+/*
 	QString sTemp, sFile, sFunc, sLine, sText;
 	int nState;
 	
 	// Try to open the query file for reading
 	QFile file(sProjPath + "/" + sFileName);
-	if (!file.open(IO_ReadOnly))
-		return false;
+
+//	if (!file.open(IO_ReadOnly))
+//		return false;
 	
 	{
 		// Use a new scope for the QTextStream object, to ensure its 
 		// destruction before the file is deleted
-		QTextStream str(&file);
+		// QTextStream str(&file);
 		
 		// Make sure the file's version is correct
 		sTemp = str.readLine();
@@ -103,6 +108,7 @@ bool QueryPageBase::load(const QString& sProjPath, const QString& sFileName)
 	
 	// Delete the query file
 	file.remove();
+*/
 	
 	return true;
 }
@@ -118,7 +124,7 @@ bool QueryPageBase::load(const QString& sProjPath, const QString& sFileName)
  */
 bool QueryPageBase::save(const QString& sProjPath, QString& sFileName)
 {
-	QListViewItemIterator itr(m_pView);
+	/* QListViewItemIterator itr(m_pView);
 
 	// Get the file name to use
 	sFileName = getFileName(sProjPath);
@@ -130,7 +136,7 @@ bool QueryPageBase::save(const QString& sProjPath, QString& sFileName)
 	if (!file.open(IO_WriteOnly))
 		return false;
 	
-	QTextStream str(&file);
+	// QTextStream str(&file);
 	
 	// Write the version string
 	str << FILE_VERSION << "\n";
@@ -144,6 +150,7 @@ bool QueryPageBase::save(const QString& sProjPath, QString& sFileName)
 			<< itr.current()->text(2) << "\n"
 			<< itr.current()->text(3) << "\n";
 	}
+	*/
 	
 	return true;
 }
@@ -153,7 +160,7 @@ bool QueryPageBase::save(const QString& sProjPath, QString& sFileName)
  */
 void QueryPageBase::selectNext()
 {
-	m_pView->selectNext();
+	// m_pView->selectNext();
 }
 
 /**
@@ -161,7 +168,7 @@ void QueryPageBase::selectNext()
  */
 void QueryPageBase::selectPrev()
 {
-	m_pView->selectPrev();
+	// m_pView->selectPrev();
 }
 
 // #include "querypagebase.moc"

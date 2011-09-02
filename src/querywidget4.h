@@ -1,10 +1,11 @@
 #ifndef QUERYWIDGET_H
 #define QUERYWIDGET_H
 
+#include <QMenu>
 #include <qlistview.h>
 // #include <qpopupmenu.h>
 #include <kaction.h>
-// #include "querywidgetlayout4.h"
+#include "querywidgetlayout4.h"
 #include "tabwidget4.h"
 #include "querypage4.h"
 // #include "historypage4.h"
@@ -15,7 +16,7 @@
  * @author Elad Lahav
  */
 
-class QueryWidget : public QueryWidgetLayout
+class QueryWidget : public QDialog : public Ui::QueryWidgetLayout
 {
    Q_OBJECT
 
@@ -30,7 +31,7 @@ public:
 	void savePages(const QString&, QStringList&);
 	void addHistoryRecord(const QString&, uint, const QString&);
 	void selectActiveHistory();
-	void setPageMenu(QPopupMenu*, KToggleAction*);
+	// void setPageMenu(QMenu*, KToggleAction*);
 	void getBookmarks(FileLocationList&);
 	
 	/**
@@ -69,13 +70,13 @@ signals:
 private:
 	/** A popup menu with query page commands (new query, lock/unlock, close
 		query, etc.). */
-	QPopupMenu* m_pPageMenu;
+	QMenu* m_pPageMenu;
 	
 	/** A toggle-like action for changing the locked state of a query. */
-	KToggleAction* m_pLockAction;
+	// KToggleAction* m_pLockAction;
 	
 	/** The active history page. */
-	HistoryPage* m_pHistPage;
+	// HistoryPage* m_pHistPage;
 	
 	/** Determines whether history items should be added to the active
 		history page. */
@@ -85,41 +86,15 @@ private:
 	int m_nQueryPages;
 	
 	void setPageCaption(QueryPageBase*);
-	
-	/**
-	 * @return	The active page in the tab widget
-	 */
-	inline QueryPageBase* currentPage()	{ 
-		return (QueryPageBase*)m_pQueryTabs->currentPage();
-	}
-	
-	/**
-	 * @param	pWidget	A query page to set as the current one
-	 */
-	inline void setCurrentPage(QWidget* pWidget) {
-		if (pWidget)
-			m_pQueryTabs->setCurrentPage(m_pQueryTabs->indexOf(pWidget));
-	}
-		
-	/**
-	 * Determines if a page is a history page.
-	 * @param	pPage	The page to check
-	 * @return	true if the given page is a history page
-	 */
-	inline bool isHistoryPage(QWidget* pPage) {
-		return (dynamic_cast<HistoryPage*>(pPage) != NULL);
-	}
-	
-	void setPageLocked(QueryPageBase*, bool);
-	void findQueryPage();
-	void findHistoryPage();
-		
+
+/*
 private slots:
 	void slotRequestLine(const QString&, uint);
 	void slotCurrentChanged(QWidget*);
 	void slotClosePage(QWidget*);
 	void slotContextMenu(const QPoint&);
 	void slotContextMenu(QWidget*, const QPoint&);
+*/
 };
 
 #endif

@@ -2,6 +2,7 @@
 #define QUERYPAGEBASE_H
 
 // #include <qhbox.h>
+#include <QWidget>
 
 class QueryView;
 
@@ -15,11 +16,12 @@ class QueryView;
  * of widget is defined by the different page classes.
  * @author Elad Lahav
  */
-class QueryPageBase : public QHBox
+class QueryPageBase : public QWidget
 {
 Q_OBJECT
 public:
-    QueryPageBase(QWidget* pParent = 0, const char* szName = 0);
+    // QueryPageBase(QWidget* pParent = 0, const char* szName = 0);
+    QueryPageBase();
     ~QueryPageBase();
 
 	void applyPrefs();
@@ -108,14 +110,14 @@ protected:
 	 * @return	true if the header was read successfully and contains the
 	 *			expected information, false otherwise
 	 */
-	virtual bool readHeader(QTextStream& str) = 0;
+	// virtual bool readHeader(QTextStream& str) = 0;
 	
 	/**
 	 * Writes a header to a page's file.
 	 * The contents of the header differ among inheriting classes.
 	 * @param	str	A text stream initialised to the open page file
 	 */
-	virtual void writeHeader(QTextStream& str) = 0;
+	// virtual void writeHeader(QTextStream& str) = 0;
 };
 
 #endif

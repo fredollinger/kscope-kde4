@@ -11,8 +11,7 @@
  * @param	pParent	The parent widget
  * @param	szName	The widget's name
  */
-QueryWidget::QueryWidget(QWidget* pParent, const char* szName) :
-	QueryWidgetLayout(pParent, szName),
+QueryWidget::QueryWidget(QWidget* pParent, const char* szName) : Ui::QueryWidgetLayout(),
 	m_pPageMenu(NULL),
 	m_pLockAction(NULL),
 	m_pHistPage(NULL),

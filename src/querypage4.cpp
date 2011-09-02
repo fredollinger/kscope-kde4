@@ -23,14 +23,14 @@ const char* QUERY_TYPES[][2] = {
  * @param	szName	The widget's name
  */
 QueryPage::QueryPage(QWidget* pParent, const char * szName) :
-	QueryPageBase(pParent, szName),
+	QueryPageBase(),
 	m_nType(CscopeFrontend::None)
 {
-	m_pView = new QueryView(this);
-	m_pDriver = new QueryViewDriver(m_pView, this);
+	// m_pView = new QueryView(this);
+	// m_pDriver = new QueryViewDriver(m_pView, this);
 	
-	connect(m_pView, SIGNAL(lineRequested(const QString&, uint)), this,
-		SIGNAL(lineRequested(const QString&, uint)));
+	// connect(m_pView, SIGNAL(lineRequested(const QString&, uint)), this,
+		// SIGNAL(lineRequested(const QString&, uint)));
 	
 	// Set colours and font
 	applyPrefs();
@@ -56,7 +56,7 @@ void QueryPage::query(uint nType, const QString& sText, bool bCase)
 	m_bCase = bCase;
 	m_sName = getCaption();
 	
-	m_pDriver->query(nType, sText, bCase);
+	// m_pDriver->query(nType, sText, bCase);
 }
 
 /**
@@ -64,9 +64,9 @@ void QueryPage::query(uint nType, const QString& sText, bool bCase)
  */
 void QueryPage::refresh()
 {
-	m_pView->clear();
+	// m_pView->clear();
 	if (!m_sText.isEmpty())
-		m_pDriver->query(m_nType, m_sText, m_bCase);
+		// m_pDriver->query(m_nType, m_sText, m_bCase);
 }
 
 /**
@@ -74,7 +74,7 @@ void QueryPage::refresh()
  */
 void QueryPage::clear()
 {
-	m_pView->clear();
+	// m_pView->clear();
 	m_nType = CscopeFrontend::None;
 	m_sText = QString();
 	m_sName = QString();
@@ -85,7 +85,7 @@ void QueryPage::clear()
  */
 bool QueryPage::isRunning()
 {
-	return m_pDriver->isRunning();
+	// return m_pDriver->isRunning();
 }
 
 /** 
@@ -109,7 +109,7 @@ QString QueryPage::getCaption(bool bBrief) const
 void QueryPage::addRecord(const QString& sFile, const QString& sFunc,
 	const QString& sLine, const QString& sText)
 {
-	new QListViewItem(m_pView, sFile, sFunc, sLine, sText);
+	// new QListViewItem(m_pView, sFile, sFunc, sLine, sText);
 }
 
 /**
