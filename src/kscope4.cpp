@@ -13,8 +13,8 @@
 
 #include <QFile>
 
-#include "calltreedlg4.h"
-#include "calltreemanager4.h"
+// #include "calltreedlg4.h"
+// #include "calltreemanager4.h"
 #include "fileview4.h"
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"
@@ -607,42 +607,6 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 }
 
 /**
- * Initialises the CscopeFrontend class with the current project arguments,
- * and creates an object used for rebuilding the symbol database.
- */
-void KScope::initCscope()
-{
-	ProjectBase* pProj;
-
-	qDebug() << "initCscope() \n";
-	
-	// Delete the current object, if one exists
-	if (m_pCscopeBuild)
-		delete m_pCscopeBuild;
-
-	// Initialise CscopeFrontend
-	pProj = m_pProjMgr->curProject();
-	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
-
-	// Create a persistent Cscope process
-	m_pCscopeBuild = new CscopeFrontend();
-
-	// Show build progress information in the main status bar
-	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
-		SLOT(slotBuildProgress(int, int)));
-	connect(m_pCscopeBuild, SIGNAL(buildInvIndex()), this,
-		SLOT(slotBuildInvIndex()));
-	connect(m_pCscopeBuild, SIGNAL(finished(uint)), this,
-		SLOT(slotBuildFinished(uint)));
-	connect(m_pCscopeBuild, SIGNAL(aborted()), this,
-		SLOT(slotBuildAborted()));
-
-	// Show errors in a modeless dialogue
-	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
-		SLOT(slotCscopeError(const QString&)));
-}
-
-/**
  * Handles the "Cscope->Find EGrep Pattern..." menu command.
  * Prompts the user for a regular expression, and initiates a query to find 
  * all strings matching that pattern.
@@ -664,26 +628,29 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 
 	QString sSymbol;
 	bool bCase;
-	CallTreeDlg* pCallTreeDlg;
+	// CallTreeDlg* pCallTreeDlg;
 
 	// Get the requested symbol and query type
 	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
 		return;
 		
+	/*
 	if (nType == SymbolDlg::CallTree) {
 		// Create and display a call tree dialogue
 		// pCallTreeDlg = m_pCallTreeMgr->addDialog();
 		// pCallTreeDlg->setRoot(sSymbol);
 		// pCallTreeDlg->show();
 	}
-	else {
-		// Run the requested query
-		// nType = SymbolDlg::getQueryType(nType);
-		// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+	else { */
+	// Run the requested query
+	nType = SymbolDlg::getQueryType(nType);
+
+	// /home/follinge/projects/kscope-kde4/src/kscope4.cpp:646: undefined reference to `SymbolDlg::getQueryType(unsigned int)'
+	// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
-		// Ensure Query Window is visible
-		// toggleQueryWindow(true);	
-	}
+	// Ensure Query Window is visible
+	// toggleQueryWindow(true);	
+	// }
 }
 // END slotQuery()
 
@@ -826,6 +793,40 @@ void KScope::slotCscopeError(const QString& sMsg)
 {
 	qDebug() << "KScope::slotCscopeError() \n";
 	// m_pMsgDlg->addText(sMsg);
+}
+
+/**
+ * Initialises the CscopeFrontend class with the current project arguments,
+ * and creates an object used for rebuilding the symbol database.
+ */
+void KScope::initCscope()
+{
+	ProjectBase* pProj;
+	
+	// Delete the current object, if one exists
+	if (m_pCscopeBuild)
+		delete m_pCscopeBuild;
+
+	// Initialise CscopeFrontend
+	pProj = m_pProjMgr->curProject();
+	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
+
+	// Create a persistent Cscope process
+	m_pCscopeBuild = new CscopeFrontend();
+
+	// Show build progress information in the main status bar
+	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
+		SLOT(slotBuildProgress(int, int)));
+	connect(m_pCscopeBuild, SIGNAL(buildInvIndex()), this,
+		SLOT(slotBuildInvIndex()));
+	connect(m_pCscopeBuild, SIGNAL(finished(uint)), this,
+		SLOT(slotBuildFinished(uint)));
+	connect(m_pCscopeBuild, SIGNAL(aborted()), this,
+		SLOT(slotBuildAborted()));
+
+	// Show errors in a modeless dialogue
+	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
+		SLOT(slotCscopeError(const QString&)));
 }
 
 } // namespace kscope4

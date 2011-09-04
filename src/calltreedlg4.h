@@ -1,6 +1,7 @@
 #ifndef CALLTREEDLG_H
 #define CALLTREEDLG_H
 
+#include <QDialog>
 #include <qwidget.h>
 #include <qlistview.h>
 #include "calltreelayout4.h"
@@ -16,7 +17,7 @@
  * minimised.
  * @author Elad Lahav
  */
-class CallTreeDlg : public QWidget, public Ui::CallTreeLayout
+class CallTreeDlg : public QDialog, public Ui::CallTreeLayout
 {
    Q_OBJECT
    
@@ -32,7 +33,7 @@ public:
 	QString getFileName() { return m_sFileName; }
 
 public slots:
-	// virtual void show();
+	virtual void show();
 
 signals:
 	/**
@@ -54,14 +55,12 @@ protected:
 	virtual void closeEvent(QCloseEvent*);
 
 protected slots:
-	/*
 	virtual void slotSaveClicked();
 	virtual void slotZoomInClicked();
 	virtual void slotZoomOutClicked();
 	virtual void slotRotateClicked();
 	virtual void slotPrefClicked();
 	virtual void slotViewChanged(int);
-	*/
 	
 private:
 	/** The root function. */

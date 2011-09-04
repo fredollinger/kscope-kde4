@@ -133,5 +133,21 @@ QString SymbolDlg::getSymbol() const
 	return sResult;
 }
 
+/**
+ * Translates a symbol dialogue type into a Cscope query type.
+ * @param	nType	The type to translate
+ * @return	A query type matching the symbol dialogue type
+ */
+uint SymbolDlg::getQueryType(uint nType)
+{
+//	if (nType == CallTree)
+//		return CscopeFrontend::None;
+		
+	if (nType <= Text)
+		return nType;
+		
+	return nType + 1;
+}
+
 // #include "symboldlg.moc"
 // Sat Sep  3 18:43:35 PDT 2011
