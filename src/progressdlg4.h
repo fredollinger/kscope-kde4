@@ -3,7 +3,7 @@
 
 #include <qwidget.h>
 #include <qtimer.h>
-#include "kprogress4.h"
+#include <kprogressdialog.h>
 
 namespace kscope4{
 /**

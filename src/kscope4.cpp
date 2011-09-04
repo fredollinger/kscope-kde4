@@ -32,8 +32,8 @@
 namespace kscope4{
 KScope::KScope(QWidget *) :
 	m_bCscopeVerified(false),
-	m_pCscopeBuild(NULL)
-	m_pProgressDlg(NULL),
+	m_pCscopeBuild(NULL),
+	m_pProgressDlg(NULL)
 {
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
@@ -311,8 +311,8 @@ bool KScope::slotCloseProject()
 	SymbolDlg::resetHistory();
 	
     // Remove any remaining status bar messages
-    statusBar()->message("");
 	*/
+    statusBar()->clearMessage();
     
 	return true;
 }
@@ -749,7 +749,7 @@ void KScope::slotBuildProgress(int nFiles, int nTotal)
 	// Show progress information
 	sMsg = i18n("Rebuilding the cross reference database...") + " " +
 		QString::number((nFiles * 100) / nTotal) + "%";
-	statusBar()->message(sMsg);
+	statusBar()->showMessage(sMsg);
 }
 
 
@@ -761,13 +761,13 @@ void KScope::slotBuildProgress(int nFiles, int nTotal)
 void KScope::slotBuildInvIndex()
 {
 	if (m_pProgressDlg) {
-		m_pProgressDlg->setLabel(i18n("Please wait while KScope builds the "
+		m_pProgressDlg->setLabelText(i18n("Please wait while KScope builds the "
 			"inverted index"));
 		m_pProgressDlg->setIdle();
 		return;
 	}
 	
-	statusBar()->message(i18n("Rebuilding inverted index..."));
+	statusBar()->showMessage(i18n("Rebuilding inverted index..."));
 }
 
 
@@ -786,7 +786,7 @@ void KScope::slotBuildFinished(uint)
 	}
 	
 	// Show a message in the status bar
-	statusBar()->message(i18n("Rebuilding the cross reference database..."
+	statusBar()->showMessage(i18n("Rebuilding the cross reference database..."
 		"Done!"), 3000);
 }
 
@@ -813,7 +813,7 @@ void KScope::slotBuildAborted()
 	}
 	
 	// Show a message in the status bar
-	statusBar()->message(i18n("Rebuilding the cross reference database..."
+	statusBar()->showMessage(i18n("Rebuilding the cross reference database..."
 		"Failed"), 3000);	
 }
 

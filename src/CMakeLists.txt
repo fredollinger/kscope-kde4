@@ -12,7 +12,6 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
-kprogress4.cpp
 progressdlg4.cpp
 querywidget4.cpp
 symboldlg4.cpp

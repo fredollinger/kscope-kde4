@@ -8,6 +8,7 @@
 #include "projectbase4.h"
 #include "projectmanager4.h"
 #include "fileview4.h"
+#include "progressdlg4.h"
 
 // class ProjectManager;
 class EditorTabs;
