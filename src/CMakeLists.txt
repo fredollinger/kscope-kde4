@@ -10,13 +10,9 @@ autocompletionlayout4.ui
 newprojectlayout4.ui
 )
 
+
 set(kscope_SRCS
-querypagebase4.cpp
-querypage4.cpp
-tabwidget4.cpp
 querywidget4.cpp
-calltreemanager4.cpp
-calltreedlg4.cpp
 symboldlg4.cpp
 symbolcompletion4.cpp
 openprojectdlg4.cpp

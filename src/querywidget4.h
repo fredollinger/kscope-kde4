@@ -6,17 +6,18 @@
 // #include <qpopupmenu.h>
 #include <kaction.h>
 #include "querywidgetlayout4.h"
-#include "tabwidget4.h"
-#include "querypage4.h"
+// #include "tabwidget4.h"
+// #include "querypage4.h"
 // #include "historypage4.h"
-#include "projectmanager4.h"
+// #include "projectmanager4.h"
+#include <QDialog>
 
 /**
  * A tabbed-window holding Cscope query results pages.
  * @author Elad Lahav
- */
+*/
 
-class QueryWidget : public QDialog : public Ui::QueryWidgetLayout
+class QueryWidget : public QDialog , public Ui::QueryWidgetLayout
 {
    Q_OBJECT
 
@@ -32,7 +33,7 @@ public:
 	void addHistoryRecord(const QString&, uint, const QString&);
 	void selectActiveHistory();
 	// void setPageMenu(QMenu*, KToggleAction*);
-	void getBookmarks(FileLocationList&);
+	// void getBookmarks(FileLocationList&);
 	
 	/**
 	 * Enables/disables new history items.
@@ -41,6 +42,7 @@ public:
 	 */
 	void setHistoryEnabled(bool bEnabled) { m_bHistEnabled = bEnabled; }
 
+/*
 public slots:
 	void slotNewQueryPage();
 	void slotLockCurrent(bool);
@@ -52,6 +54,7 @@ public slots:
 	void slotCloseAll();
 	void slotHistoryPrev();
 	void slotHistoryNext();
+*/
 	
 signals:
 	/**
@@ -85,7 +88,7 @@ private:
 	/** The number of query pages currently open. */
 	int m_nQueryPages;
 	
-	void setPageCaption(QueryPageBase*);
+	// void setPageCaption(QueryPageBase*);
 
 /*
 private slots:

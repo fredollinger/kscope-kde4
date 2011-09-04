@@ -1,3 +1,4 @@
+#include <ktabwidget.h>
 #include <qtooltip.h>
 #include <klocale.h>
 #include "tabwidget4.h"
@@ -9,7 +10,7 @@
  * @param	szName	Optional widget name
  */
 TabWidget::TabWidget(QWidget* pParent, const char* szName) :
-	KTabWidget(pParent, szName)
+	KTabWidget()
 {
 	// Create a popup menu
 	m_pMenu = new QMenu(this);
@@ -19,10 +20,10 @@ TabWidget::TabWidget(QWidget* pParent, const char* szName) :
 	
 	// Create a button at the top-right corner of the tab widget
 	m_pButton = new QToolButton(this);
-	m_pButton->setIconSet(Pixmaps().getPixmap(KScopePixmaps::TabList));
-	QToolTip::add(m_pButton, i18n("Shows a list of all open tabs"));
+	// m_pButton->setIconSet(Pixmaps().getPixmap(KScopePixmaps::TabList));
+	// QToolTip::add(m_pButton, i18n("Shows a list of all open tabs"));
 	m_pButton->adjustSize();
-	setCornerWidget(m_pButton, TopRight);
+	// setCornerWidget(m_pButton, TopRight);
 	
 	// Show the popup-menu when the button is clicked
 	connect(m_pButton, SIGNAL(clicked()), this, SLOT(slotShowTabList()));
@@ -47,8 +48,10 @@ void TabWidget::slotShowTabList()
 	m_pMenu->clear();
 
 	// Create and populate the menu	
+	/*
 	for (i = 0; i < count(); i++)
 		m_pMenu->insertItem(label(i), i);
+	*/
 		
 	// Show the menu
 	m_pMenu->popup(mapToGlobal(m_pButton->pos()));

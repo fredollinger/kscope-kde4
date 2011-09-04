@@ -65,7 +65,7 @@ void QueryPage::query(uint nType, const QString& sText, bool bCase)
 void QueryPage::refresh()
 {
 	// m_pView->clear();
-	if (!m_sText.isEmpty())
+	// if (!m_sText.isEmpty())
 		// m_pDriver->query(m_nType, m_sText, m_bCase);
 }
 
@@ -86,6 +86,7 @@ void QueryPage::clear()
 bool QueryPage::isRunning()
 {
 	// return m_pDriver->isRunning();
+	return true;
 }
 
 /** 
@@ -146,6 +147,7 @@ bool QueryPage::readHeader(QTextStream& str)
 {
 	QString sTemp;
 	
+	/*
 	// Read the query name
 	m_sName = str.readLine();
 	if (m_sName == QString::null || m_sName.isEmpty())
@@ -167,6 +169,7 @@ bool QueryPage::readHeader(QTextStream& str)
 	m_sText = str.readLine();
 	if (m_sText == QString::null || m_sText.isEmpty())
 		return false;
+	*/
 
 	return true;
 }
@@ -178,7 +181,7 @@ bool QueryPage::readHeader(QTextStream& str)
  */
 void QueryPage::writeHeader(QTextStream& str)
 {
-	str << m_sName << "\n" << m_nType << "\n" << m_sText << "\n";
+	// str << m_sName << "\n" << m_nType << "\n" << m_sText << "\n";
 }
 
 // #include "querypage.moc"

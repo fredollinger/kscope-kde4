@@ -48,12 +48,12 @@ KScope::KScope(QWidget *) :
 
 	// Create all child widgets
 	initMainWindow();
-	m_pQueryWidget = new QueryWidget(this);
+	// m_pQueryWidget = new QueryWidget(this);
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
-	m_pCallTreeMgr = new CallTreeManager(this);
+	// m_pCallTreeMgr = new CallTreeManager(this);
 	m_pFileView = new FileView(this);
 
 
@@ -673,17 +673,17 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		
 	if (nType == SymbolDlg::CallTree) {
 		// Create and display a call tree dialogue
-		pCallTreeDlg = m_pCallTreeMgr->addDialog();
-		pCallTreeDlg->setRoot(sSymbol);
-		pCallTreeDlg->show();
+		// pCallTreeDlg = m_pCallTreeMgr->addDialog();
+		// pCallTreeDlg->setRoot(sSymbol);
+		// pCallTreeDlg->show();
 	}
 	else {
 		// Run the requested query
-		nType = SymbolDlg::getQueryType(nType);
-		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+		// nType = SymbolDlg::getQueryType(nType);
+		// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 		// Ensure Query Window is visible
-		toggleQueryWindow(true);	
+		// toggleQueryWindow(true);	
 	}
 }
 // END slotQuery()
@@ -707,8 +707,8 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	QString sSuggested;
 	
 	// Set the currently selected text, if any
-	if ((pPage = m_pEditTabs->getCurrentPage()) != NULL)
-		sSuggested = pPage->getSuggestedText();
+	// if ((pPage = m_pEditTabs->getCurrentPage()) != NULL)
+	//	sSuggested = pPage->getSuggestedText();
 
 	// Return if a symbol was found, and prompting is turned off
 	if (!sSuggested.isEmpty() && !bPrompt) {
@@ -717,7 +717,7 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	}
 	
 	// Show the symbol dialogue
-	sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
+	// sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
 
 	// Cannot accept empty strings
 	if (sSymbol.isEmpty())
