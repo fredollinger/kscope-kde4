@@ -65,6 +65,9 @@ public:
 	void openFileNamed(QString);
 
 private:
+	/** A Cscope process for building the database. */
+	CscopeFrontend* m_pCscopeBuild;
+
 	/** The query results tabbed window. */
 	QueryWidget* m_pQueryWidget;
 

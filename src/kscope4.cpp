@@ -31,7 +31,8 @@
 
 namespace kscope4{
 KScope::KScope(QWidget *) :
-	m_bCscopeVerified(false) //,
+	m_bCscopeVerified(false),
+	m_pCscopeBuild(NULL)
 	// m_pProgressDlg(NULL)
 {
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
@@ -614,7 +615,6 @@ void KScope::initCscope()
 	ProjectBase* pProj;
 	
 	// Delete the current object, if one exists
-	/*
 	if (m_pCscopeBuild)
 		delete m_pCscopeBuild;
 
@@ -622,6 +622,7 @@ void KScope::initCscope()
 	pProj = m_pProjMgr->curProject();
 	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
 
+	/*
 	// Create a persistent Cscope process
 	m_pCscopeBuild = new CscopeFrontend();
 
