@@ -125,6 +125,7 @@ private slots:
 	void slotBuildInvIndex();
 	void slotBuildFinished(uint);
 	void slotBuildAborted();
+	void slotCscopeError(const QString&);
 
 	// Menu actions
 	/*
@@ -168,7 +169,6 @@ private slots:
 	void slotShowEditor(const QString&, uint);
 	void slotFileOpened(EditorPage*, const QString&);
 	void slotFileSaved(const QString&, bool);
-	void slotCscopeError(const QString&);
 	void slotBuildProgress(int, int);
 	void slotBuildInvIndex();
 	void slotBuildFinished(uint);

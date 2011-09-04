@@ -613,6 +613,8 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 void KScope::initCscope()
 {
 	ProjectBase* pProj;
+
+	qDebug() << "initCscope() \n";
 	
 	// Delete the current object, if one exists
 	if (m_pCscopeBuild)
@@ -625,7 +627,6 @@ void KScope::initCscope()
 	// Create a persistent Cscope process
 	m_pCscopeBuild = new CscopeFrontend();
 
-	/*
 	// Show build progress information in the main status bar
 	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
 		SLOT(slotBuildProgress(int, int)));
@@ -639,8 +640,6 @@ void KScope::initCscope()
 	// Show errors in a modeless dialogue
 	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
 		SLOT(slotCscopeError(const QString&)));
-
-	*/
 }
 
 /**
@@ -817,5 +816,17 @@ void KScope::slotBuildAborted()
 		"Failed"), 3000);	
 }
 
+/**
+ * Displays error messages from a Cscope process.
+ * This slot is connected to the progress() signal emitted by the any
+ * Cscope process.
+ * @param	sMsg	The error message
+ */
+void KScope::slotCscopeError(const QString& sMsg)
+{
+	qDebug() << "KScope::slotCscopeError() \n";
+	// m_pMsgDlg->addText(sMsg);
+}
+
 } // namespace kscope4
-// Sat Jul 16 18:23:16 UTC 2011
+// Sun Sep  4 11:34:51 PDT 2011
