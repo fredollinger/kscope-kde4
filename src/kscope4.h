@@ -109,7 +109,7 @@ private:
 
 	/** A progress dialogue that is displayed when building the database for
 		the first time. */
-	// ProgressDlg* m_pProgressDlg;
+	ProgressDlg* m_pProgressDlg;
 
 	// Manages menu and tool-bar commands.
 	// KScopeActions* m_pActions;
@@ -118,6 +118,13 @@ private:
 private slots:
 	void slotQuery(uint, bool);
 	void slotQueryPattern();
+
+	// Other slots
+	void slotBuildProgress(int, int);
+	void slotBuildInvIndex();
+	void slotBuildFinished(uint);
+	void slotBuildAborted();
+
 	// Menu actions
 	/*
 	void slotNewFile();

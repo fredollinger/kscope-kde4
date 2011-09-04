@@ -33,7 +33,7 @@ namespace kscope4{
 KScope::KScope(QWidget *) :
 	m_bCscopeVerified(false),
 	m_pCscopeBuild(NULL)
-	// m_pProgressDlg(NULL)
+	m_pProgressDlg(NULL),
 {
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
@@ -622,10 +622,10 @@ void KScope::initCscope()
 	pProj = m_pProjMgr->curProject();
 	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
 
-	/*
 	// Create a persistent Cscope process
 	m_pCscopeBuild = new CscopeFrontend();
 
+	/*
 	// Show build progress information in the main status bar
 	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
 		SLOT(slotBuildProgress(int, int)));
@@ -727,6 +727,95 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 }
 // END getSymbol()
 
+/**
+ * Reports progress information from the Cscope process responsible for
+ * rebuilding the cross-reference database.
+ * This slot is connected to the progress() signal emitted by the builder
+ * process.
+ * Progress information is displayed in the status bar.
+ * @param	nFiles	The number of files scanned
+ * @param	nTotal	The total number of files in the project
+ */
+void KScope::slotBuildProgress(int nFiles, int nTotal)
+{
+	QString sMsg;
+	
+	// Use the progress dialogue, if it exists (first time builds)
+	if (m_pProgressDlg) {
+		m_pProgressDlg->setValue((nFiles * 100) / nTotal);
+		return;
+	}
+	
+	// Show progress information
+	sMsg = i18n("Rebuilding the cross reference database...") + " " +
+		QString::number((nFiles * 100) / nTotal) + "%";
+	statusBar()->message(sMsg);
+}
+
+
+/**
+ * Reports to the user that Cscope has started building the inverted index.
+ * This slot is connected to the buildInvIndex() signal emitted by the 
+ * builder process.
+ */
+void KScope::slotBuildInvIndex()
+{
+	if (m_pProgressDlg) {
+		m_pProgressDlg->setLabel(i18n("Please wait while KScope builds the "
+			"inverted index"));
+		m_pProgressDlg->setIdle();
+		return;
+	}
+	
+	statusBar()->message(i18n("Rebuilding inverted index..."));
+}
+
+
+/**
+ * Informs the user the database rebuild process has finished.
+ * This slot is connected to the finished() signal emitted by the builder
+ * process.
+ */
+void KScope::slotBuildFinished(uint)
+{
+	// Delete the progress dialogue, if it exists (first time builds)
+	if (m_pProgressDlg) {
+		delete m_pProgressDlg;
+		m_pProgressDlg = NULL;
+		return;
+	}
+	
+	// Show a message in the status bar
+	statusBar()->message(i18n("Rebuilding the cross reference database..."
+		"Done!"), 3000);
+}
+
+
+/**
+ * Called if the build process failed to complete.
+ * This slot is connected to the aborted() signal emitted by the builder
+ * process.
+ */
+void KScope::slotBuildAborted()
+{
+	// Delete the progress dialogue, if it exists (first time builds)
+	if (m_pProgressDlg) {
+		delete m_pProgressDlg;
+		m_pProgressDlg = NULL;
+	
+		// Display a failure message
+		KMessageBox::error(0, i18n("The database could not be built.\n"
+			"Cross-reference information will not be available for this "
+			"project.\n"
+			"Please ensure that the Cscope parameters were correctly "
+			"entered in the \"Settings\" dialogue."));		
+		return;
+	}
+	
+	// Show a message in the status bar
+	statusBar()->message(i18n("Rebuilding the cross reference database..."
+		"Failed"), 3000);	
+}
 
 } // namespace kscope4
 // Sat Jul 16 18:23:16 UTC 2011
