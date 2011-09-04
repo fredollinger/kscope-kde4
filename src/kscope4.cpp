@@ -649,7 +649,6 @@ void KScope::initCscope()
  */
 void KScope::slotQueryPattern()
 {
-	qDebug() << "slotQueryPattern() STUB \n";
 	slotQuery(SymbolDlg::Pattern, true);
 }
 
@@ -717,7 +716,7 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	}
 	
 	// Show the symbol dialogue
-	// sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
+	sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
 
 	// Cannot accept empty strings
 	if (sSymbol.isEmpty())
