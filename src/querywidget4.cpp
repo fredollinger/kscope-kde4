@@ -12,12 +12,12 @@
  * @param	pParent	The parent widget
  * @param	szName	The widget's name
  */
-QueryWidget::QueryWidget(QWidget* pParent, const char* szName) : Ui::QueryWidgetLayout()
+QueryWidget::QueryWidget(QWidget* pParent, const char* szName) : Ui::QueryWidgetLayout(),
 	// m_pPageMenu(NULL),
 	// m_pLockAction(NULL),
 	// m_pHistPage(NULL),
 	// m_bHistEnabled(true),
-	// m_nQueryPages(0)
+	m_nQueryPages(0)
 {
 	// Pages can be closed by clicking their tabs
 	// m_pQueryTabs->setHoverCloseButton(true);
@@ -103,7 +103,7 @@ void QueryWidget::findQueryPage()
 		pPage = dynamic_cast<QueryPage*>(m_pQueryTabs->widget(i));
 		if (pPage != NULL) {
 			if (!pPage->isLocked() && !pPage->isRunning()) {
-				setCurrentWidget(pPage);
+				setCurrentPage(pPage);
 				return;
 			}
 		}
@@ -111,6 +111,30 @@ void QueryWidget::findQueryPage()
 
 	// Couldn't find an unlocked query page, create a new one
 	addQueryPage();
+}
+
+/**
+ * Creates a new query page, and adds it to the tab widget.
+ * The new page is set as the current one.
+ */
+void QueryWidget::addQueryPage()
+{
+	QueryPage* pPage;
+	QString sTitle;
+
+	// Create the page
+	pPage = new QueryPage(this);
+
+	// Add the page, and set it as the current one
+	// m_pQueryTabs->insertTab(pPage, GET_PIXMAP(TabUnlocked), "Query",
+	//	m_nQueryPages++);
+	m_pQueryTabs->insertTab(m_nQueryPages++, pPage, GET_PIXMAP(TabUnlocked), "Query");
+	setCurrentPage(pPage);
+	
+	// Emit the lineRequested() signal when a query record is selected on 
+	// this page
+	connect(pPage, SIGNAL(lineRequested(const QString&, uint)), this, 
+		SLOT(slotRequestLine(const QString&, uint)));
 }
 
 // #include "querywidget.moc"

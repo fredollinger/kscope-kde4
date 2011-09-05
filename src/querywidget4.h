@@ -76,6 +76,8 @@ private:
 		query, etc.). */
 	QMenu* m_pPageMenu;
 	
+	/** The number of query pages currently open. */
+	int m_nQueryPages;
 #if 0
 	/** A toggle-like action for changing the locked state of a query. */
 	// KToggleAction* m_pLockAction;
@@ -112,6 +114,15 @@ private:
 		return (dynamic_cast<HistoryPage*>(pPage) != NULL);
 	}
 #endif
+	/**
+	 * @param	pWidget	A query page to set as the current one
+	 */
+
+	inline void setCurrentPage(QWidget* pWidget) {
+		if (pWidget)
+			m_pQueryTabs->setCurrentIndex(m_pQueryTabs->indexOf(pWidget));
+	}
+
 	/**
 	 * @return	The active page in the tab widget
 	 */
