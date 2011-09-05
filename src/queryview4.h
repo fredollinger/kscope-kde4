@@ -3,7 +3,9 @@
 
 #include <qlistview.h>
 #include <qregexp.h>
+#include "qlistviewitem4.h"
 
+namespace kscope4{
 class QueryResultsMenu;
 
 /**
@@ -186,5 +188,6 @@ protected slots:
 	virtual void slotShowAll();
 	virtual void slotRemoveItem(QListViewItem*);
 };
+} // namespace kscope4
 
 #endif

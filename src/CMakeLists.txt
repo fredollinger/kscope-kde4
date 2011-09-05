@@ -12,6 +12,8 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+qlistviewitem4.cpp
+queryview4.cpp
 tabwidget4.cpp
 progressdlg4.cpp
 querywidget4.cpp

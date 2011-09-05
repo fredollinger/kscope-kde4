@@ -1,6 +1,7 @@
 #include <qfile.h>
 #include <klocale.h>
 #include "querypage4.h"
+#include "queryview4.h"
 //#include "queryview.h"
 // #include "queryviewdriver.h"
 
@@ -26,11 +27,11 @@ QueryPage::QueryPage(QWidget* pParent, const char * szName) :
 	QueryPageBase(),
 	m_nType(CscopeFrontend::None)
 {
-	// m_pView = new QueryView(this);
-	// m_pDriver = new QueryViewDriver(m_pView, this);
+	m_pView = new QueryView(this);
+	m_pDriver = new QueryViewDriver(m_pView, this);
 	
 	// connect(m_pView, SIGNAL(lineRequested(const QString&, uint)), this,
-		// SIGNAL(lineRequested(const QString&, uint)));
+	//	 SIGNAL(lineRequested(const QString&, uint)));
 	
 	// Set colours and font
 	applyPrefs();
@@ -56,7 +57,7 @@ void QueryPage::query(uint nType, const QString& sText, bool bCase)
 	m_bCase = bCase;
 	m_sName = getCaption();
 	
-	// m_pDriver->query(nType, sText, bCase);
+	m_pDriver->query(nType, sText, bCase);
 }
 
 /**

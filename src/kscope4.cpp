@@ -649,7 +649,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 	// Ensure Query Window is visible
-	// toggleQueryWindow(true);	
+	toggleQueryWindow(true);	
 	// }
 }
 // END slotQuery()
@@ -827,6 +827,30 @@ void KScope::initCscope()
 	// Show errors in a modeless dialogue
 	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
 		SLOT(slotCscopeError(const QString&)));
+}
+
+/**
+ * Shows or hides the query dock window.
+ * This function is only called internally, not as a result of a user's
+ * workspace action (e.g., clicking the "Show/Hide Query Window" toolbar
+ * button). Therefore it does not reflect the user's preference, which is
+ * kept through the m_bHideQueryOnSelection variable.
+ * @param	bShow	true to show the window, false to hide it
+ */
+void KScope::toggleQueryWindow(bool bShow)
+{
+	// Remember the user's preferences
+	if (bShow)
+		m_bHideQueryOnSelection = m_pQueryDock->isHidden();
+	else
+		m_bHideQueryOnSelection = false;
+	
+	// Change the visibility state of the widget, if required
+	if (m_pQueryDock->isShown() != bShow)
+		m_pQueryDock->changeHideShowState();
+		
+	// Synchronise with the menu command's state
+	m_pActions->slotQueryDockToggled(bShow);
 }
 
 } // namespace kscope4
