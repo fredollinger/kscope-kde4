@@ -7,7 +7,7 @@
 // #include "queryviewdlg4.h"
 #include "cscopefrontend4.h"
 #include "searchresultsdlg4.h"
-
+#include <QTreeView>
 
 namespace kscope4{
 /**
