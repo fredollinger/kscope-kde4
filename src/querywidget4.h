@@ -7,7 +7,8 @@
 #include <kaction.h>
 #include "querywidgetlayout4.h"
 // #include "tabwidget4.h"
-// #include "querypage4.h"
+#include "querypage4.h"
+#include "querypagebase4.h"
 // #include "historypage4.h"
 // #include "projectmanager4.h"
 #include <QDialog>
@@ -40,7 +41,7 @@ public:
 	 * @param	bEnabled	true to enable new history items, false to 
 	 *						disable
 	 */
-	void setHistoryEnabled(bool bEnabled) { m_bHistEnabled = bEnabled; }
+	// void setHistoryEnabled(bool bEnabled) { m_bHistEnabled = bEnabled; }
 
 /*
 public slots:
@@ -75,6 +76,7 @@ private:
 		query, etc.). */
 	QMenu* m_pPageMenu;
 	
+#if 0
 	/** A toggle-like action for changing the locked state of a query. */
 	// KToggleAction* m_pLockAction;
 	
@@ -88,7 +90,37 @@ private:
 	/** The number of query pages currently open. */
 	int m_nQueryPages;
 	
-	// void setPageCaption(QueryPageBase*);
+	void setPageCaption(QueryPageBase*);
+	
+	/**
+	 * @return	The active page in the tab widget
+	 */
+	inline QueryPageBase* currentWidget()	{ 
+		return (QueryPageBase*)m_pQueryTabs->currentWidget();
+	}
+	
+	/**
+	 * @param	pWidget	A query page to set as the current one
+	 */
+
+	inline void setCurrentPage(QWidget* pWidget) {
+		if (pWidget)
+			m_pQueryTabs->setCurrentPage(m_pQueryTabs->indexOf(pWidget));
+	}
+
+	inline bool isHistoryPage(QWidget* pPage) {
+		return (dynamic_cast<HistoryPage*>(pPage) != NULL);
+	}
+#endif
+	/**
+	 * @return	The active page in the tab widget
+	 */
+	inline QueryPageBase* currentWidget()	{ 
+		return (QueryPageBase*)m_pQueryTabs->currentWidget();
+	}
+	// void setPageLocked(QueryPageBase*, bool);
+	void findQueryPage();
+	void findHistoryPage();
 
 /*
 private slots:
@@ -101,3 +133,4 @@ private slots:
 };
 
 #endif
+// Sun Sep  4 13:51:43 PDT 2011

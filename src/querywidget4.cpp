@@ -3,6 +3,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include "querywidget4.h"
+#include "querypage4.h"
 #include "kscopepixmaps4.h"
 #include "kscopeconfig4.h"
 
@@ -43,6 +44,73 @@ QueryWidget::QueryWidget(QWidget* pParent, const char* szName) : Ui::QueryWidget
  */
 QueryWidget::~QueryWidget()
 {
+}
+
+/**
+ * Runs a query in a query page.
+ * A query page is first selected, with a new one created if required. The
+ * method then creates a Cscope process and runs the query.
+ * @param	nType	The query's numeric type code
+ * @param	sText	The query's text, as entered by the user
+ * @param	bCase		true for case-sensitive queries, false otherwise
+ */
+void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
+{
+	QueryPage* pPage;
+	
+	// Make sure we have a query page
+	findQueryPage();
+	pPage = (QueryPage*)currentWidget();
+			
+	// Use the current page, or a new page if the current one is locked
+	if (pPage->isLocked()) {
+		addQueryPage();
+		pPage = (QueryPage*)currentWidget();
+	}
+
+	// Reset the page's results list
+	pPage->clear();
+	pPage->query(nType, sText, bCase);
+	
+	// Set the page's tab text according to the new query
+	// setPageCaption(pPage);
+}
+
+/**
+ * Ensures the current page is a query page that is ready to accept new
+ * queries.
+ * The function first checks the current page. If it is an unlocked query
+ * page, then nothing needs to be done. Otherwise, it checks for the first
+ * unlocked query page by iterating over all pages in the tab widget. If this
+ * fails as well, a new query page is created.
+ */
+void QueryWidget::findQueryPage()
+{
+	QueryPage* pPage;
+	int nPages, i;
+	
+	// First check if the current page is an unlocked query page
+	pPage = dynamic_cast<QueryPage*>(currentWidget());
+	if (pPage != NULL) {
+		if (!pPage->isLocked() && !pPage->isRunning())
+			return;
+	}
+	
+	// Look for the first unlocked query page
+	nPages = m_pQueryTabs->count();
+	for (i = 0; i < nPages; i++) {
+		// pPage = dynamic_cast<QueryPage*>(m_pQueryTabs->page(i));
+		pPage = dynamic_cast<QueryPage*>(m_pQueryTabs->widget(i));
+		if (pPage != NULL) {
+			if (!pPage->isLocked() && !pPage->isRunning()) {
+				setCurrentWidget(pPage);
+				return;
+			}
+		}
+	}
+
+	// Couldn't find an unlocked query page, create a new one
+	addQueryPage();
 }
 
 // #include "querywidget.moc"

@@ -26,6 +26,7 @@
 #include "project4.h"
 #include "symbolcompletion4.h"
 #include "symboldlg4.h"
+#include "querywidget4.h"
 
 #include <qdebug.h>
 
@@ -645,8 +646,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	// Run the requested query
 	nType = SymbolDlg::getQueryType(nType);
 
-	// /home/follinge/projects/kscope-kde4/src/kscope4.cpp:646: undefined reference to `SymbolDlg::getQueryType(unsigned int)'
-	// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+	m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 	// Ensure Query Window is visible
 	// toggleQueryWindow(true);	

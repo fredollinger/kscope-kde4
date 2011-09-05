@@ -12,8 +12,11 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+tabwidget4.cpp
 progressdlg4.cpp
 querywidget4.cpp
+querypage4.cpp
+querypagebase4.cpp
 symboldlg4.cpp
 symbolcompletion4.cpp
 openprojectdlg4.cpp
