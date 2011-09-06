@@ -56,7 +56,7 @@ public:
 			int nResult;
 
 			// Get the line numbers of each item
-			nLineCur = text(nCol).toUInt();
+		nLineCur = text(nCol).toUInt();
 			nLineOther = pItem->text(nCol).toUInt();
 
 			// Compare the line numbers
