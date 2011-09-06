@@ -2,12 +2,11 @@
 #include <qclipboard.h>
 #include <klocale.h>
 #include "queryview4.h"
-#include "querylistviewitem4.h"
+#include "qlistviewitem4.h"
 // #include "queryresultsmenu.h"
 // #include "queryviewdlg4.h"
 #include "cscopefrontend4.h"
-#include "searchresultsdlg4.h"
-#include <QTreeView>
+// #include "searchresultsdlg4.h"
 
 namespace kscope4{
 /**

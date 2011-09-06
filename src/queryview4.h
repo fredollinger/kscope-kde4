@@ -1,6 +1,7 @@
 #ifndef QUERYVIEW_H
 #define QUERYVIEW_H
 
+#include <QString>
 #include <qlistview.h>
 #include <qregexp.h>
 #include "qlistviewitem4.h"
@@ -56,7 +57,8 @@ public:
 			int nResult;
 
 			// Get the line numbers of each item
-		nLineCur = text(nCol).toUInt();
+			nLineCur = text(nCol).toUInt();
+#if 0
 			nLineOther = pItem->text(nCol).toUInt();
 
 			// Compare the line numbers
@@ -69,6 +71,7 @@ public:
 				return -1; // The second item is greater
 		}
 		
+#endif
 		return QListViewItem::compare(pItem, nCol, bAscend);
 	}
 	
@@ -92,7 +95,7 @@ private:
  */
 class QueryView : public QListView
 {
-	Q_OBJECT
+	// Q_OBJECT
 	
 public:
 	QueryView(QWidget* pParent = 0, const char* szName = 0);
