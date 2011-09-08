@@ -26,7 +26,7 @@ public:
 	 * @param	pAfter		The item to preceed the new one
 	 * @param	nLineCol	The index of the line column
 	 */
-	QueryViewItem(QListView* pView, QListViewItem* pAfter, 
+	QueryViewItem(QListView pView, QListViewItem pAfter, 
 		int nLineCol) : QListViewItem(pView, pAfter), m_nLineCol(nLineCol)
 		{}
 	
@@ -37,7 +37,7 @@ public:
 	 * @param	pAfter		The item to preceed the new one
 	 * @param	nLineCol	The index of the line column
 	 */
-	QueryViewItem(QListViewItem* pParent, QListViewItem* pAfter, 
+	QueryViewItem(QListViewItem pParent, QListViewItem pAfter, 
 		int nLineCol) : QListViewItem(pParent, pAfter), m_nLineCol(nLineCol)
 		{}
 	
