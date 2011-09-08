@@ -14,8 +14,8 @@ public:
 	// QListViewItem(QListViewItem*, QListViewItem*);
 	QListViewItem();
 	QString* text(int); // return a string at the given position
-private:
 	virtual ~QListViewItem();
+private:
 };
 
 }

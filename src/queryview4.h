@@ -18,6 +18,7 @@ class QueryResultsMenu;
 class QueryViewItem : public QListViewItem
 {
 public:
+	int m_nLineCol;
 	/**
 	 * Class constructor.
 	 * Used for list views.
@@ -77,7 +78,7 @@ public:
 	
 private:
 	/** The index of the column holding the line numbers. */
-	int m_nLineCol;
+	// int m_nLineCol;
 };
 
 /**
