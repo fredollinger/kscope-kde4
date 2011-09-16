@@ -12,6 +12,7 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+qlistview4444.cpp
 qlistviewitem4.cpp
 queryview4.cpp
 tabwidget4.cpp

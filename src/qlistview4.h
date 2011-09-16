@@ -1,5 +1,5 @@
-#ifndef KPROGRESS4_H
-#define KPROGRESS4_H
+#ifndef QLISTVIEW4_H
+#define QLISTVIEW4_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -8,17 +8,17 @@
 #include "qlistview4.h"
 
 namespace kscope4{
-class QListViewItem : public QListWidgetItem
+class QListView: public QListWidget
 {
 	Q_OBJECT
 public:
-	// QListViewItem(QListView*, QListViewItem*);
-	// QListViewItem(QListViewItem*, QListViewItem*);
-	QListViewItem(QListView * parent);
+	QListView();
 	QString* text(int); // return a string at the given position
-	virtual ~QListViewItem();
+	virtual ~QListView();
 private:
 };
 
 }
-#endif // KPROGRESS4_H
+#endif 
+
+// Thu Sep 15 19:54:15 PDT 2011
