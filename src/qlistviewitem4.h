@@ -1,5 +1,5 @@
-#ifndef KPROGRESS4_H
-#define KPROGRESS4_H
+#ifndef QLISTVIEWITEM4_H
+#define QLISTVIEWITEM4_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -21,4 +21,4 @@ private:
 };
 
 }
-#endif // KPROGRESS4_H
+#endif 
