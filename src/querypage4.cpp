@@ -2,8 +2,7 @@
 #include <klocale.h>
 #include "querypage4.h"
 #include "queryview4.h"
-//#include "queryview.h"
-// #include "queryviewdriver.h"
+#include "queryviewdriver4.h"
 
 const char* QUERY_TYPES[][2] = {
 	{ "References to ", "REF " },

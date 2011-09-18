@@ -1,13 +1,15 @@
 #include <QStringList>
 #include <QAbstractTableModel>
 #include <QString>
+#include <QWidget>
+#include <QListWidgetItem>
 #include <qdebug.h>
 
 #include "qlistview4.h"
 
 namespace kscope4{
 
-QListView::QListView() : QListWidget()
+QListView::QListView() 
 {
 	qDebug() <<"QListView::QListView() FIXME\n";
 }

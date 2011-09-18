@@ -4,11 +4,11 @@
 #include <QAbstractTableModel>
 #include <QStringList>
 #include <QString>
-
-#include "qlistview4.h"
+#include <QWidget>
+#include <QListWidgetItem>
 
 namespace kscope4{
-class QListView: public QListWidget
+class QListView : QObject
 {
 	Q_OBJECT
 public:

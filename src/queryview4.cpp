@@ -2,13 +2,11 @@
 #include <qclipboard.h>
 #include <klocale.h>
 #include "queryview4.h"
-#include "qlistviewitem4.h"
-// #include "queryresultsmenu.h"
-// #include "queryviewdlg4.h"
-#include "cscopefrontend4.h"
-// #include "searchresultsdlg4.h"
+#include "queryresultsmenu.h"
+#include "queryviewdlg.h"
+#include "cscopefrontend.h"
+#include "searchresultsdlg.h"
 
-namespace kscope4{
 /**
  * Class constructor.
  * @param	pParent	The parent widget
@@ -415,6 +413,5 @@ QString QueryView::Iterator::getText()
 		
 	return m_pItem->text(3);
 }
-// namespace kscope4
 
 // #include "queryview.moc"

@@ -1,9 +1,12 @@
 #ifndef QUERYVIEW_H
 #define QUERYVIEW_H
 
-#include <QString>
 #include <qlistview.h>
 #include <qregexp.h>
+
+#include <QListWidgetItem>
+#include <QWidget>
+
 #include "qlistviewitem4.h"
 
 namespace kscope4{
@@ -17,8 +20,8 @@ class QueryResultsMenu;
  */
 class QueryViewItem : public QListViewItem
 {
+	Q_OBJECT
 public:
-	int m_nLineCol;
 	/**
 	 * Class constructor.
 	 * Used for list views.
@@ -26,7 +29,7 @@ public:
 	 * @param	pAfter		The item to preceed the new one
 	 * @param	nLineCol	The index of the line column
 	 */
-	QueryViewItem(QListView pView, QListViewItem pAfter, 
+	QueryViewItem(QListView* pView, QListViewItem* pAfter, 
 		int nLineCol) : QListViewItem(pView, pAfter), m_nLineCol(nLineCol)
 		{}
 	
@@ -37,7 +40,7 @@ public:
 	 * @param	pAfter		The item to preceed the new one
 	 * @param	nLineCol	The index of the line column
 	 */
-	QueryViewItem(QListViewItem pParent, QListViewItem pAfter, 
+	QueryViewItem(QListViewItem* pParent, QListViewItem* pAfter, 
 		int nLineCol) : QListViewItem(pParent, pAfter), m_nLineCol(nLineCol)
 		{}
 	
@@ -58,9 +61,8 @@ public:
 			int nResult;
 
 			// Get the line numbers of each item
-			nLineCur = text(nCol).toUInt();
-#if 0
-			nLineOther = pItem->text(nCol).toUInt();
+			// nLineCur = text(nCol).toUInt();
+			// nLineOther = pItem->text(nCol).toUInt();
 
 			// Compare the line numbers
 			nResult = nLineCur - nLineOther;
@@ -72,13 +74,13 @@ public:
 				return -1; // The second item is greater
 		}
 		
-#endif
-		return QListViewItem::compare(pItem, nCol, bAscend);
+		// return QListViewItem::compare(pItem, nCol, bAscend);
+		return 0;
 	}
 	
 private:
 	/** The index of the column holding the line numbers. */
-	// int m_nLineCol;
+	int m_nLineCol;
 };
 
 /**
@@ -96,7 +98,7 @@ private:
  */
 class QueryView : public QListView
 {
-	// Q_OBJECT
+	Q_OBJECT
 	
 public:
 	QueryView(QWidget* pParent = 0, const char* szName = 0);
@@ -192,6 +194,6 @@ protected slots:
 	virtual void slotShowAll();
 	virtual void slotRemoveItem(QListViewItem*);
 };
-} // namespace kscope4
+}
 
 #endif
