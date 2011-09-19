@@ -6,6 +6,7 @@
 #include "qlistviewitem4.h"
 #include "cscopefrontend4.h"
 
+namespace kscope4{
 class QueryView;
 
 /**
@@ -54,5 +55,6 @@ private slots:
 	void slotProgress(int, int);
 	void slotViewClosed();
 };
+}
 
 #endif

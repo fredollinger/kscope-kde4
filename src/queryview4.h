@@ -1,7 +1,7 @@
 #ifndef QUERYVIEW_H
 #define QUERYVIEW_H
 
-#include <qlistview.h>
+#include "qlistview4.h"
 #include <qregexp.h>
 
 #include <QListWidgetItem>
@@ -11,14 +11,14 @@
 
 namespace kscope4{
 class QueryResultsMenu;
-
+ 
 /**
  * Items in a query view.
  * The sole purpose for creating a new class is to be able to sort query 
  * results numerically by line number.
  * @author Elad Lahav
  */
-class QueryViewItem : public QListViewItem
+class QueryView : public QListViewItem
 {
 	Q_OBJECT
 public:

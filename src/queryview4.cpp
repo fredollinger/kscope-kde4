@@ -12,7 +12,7 @@
  * @param	pParent	The parent widget
  * @param	szName	The name of the widget
  */
-QueryView::QueryView(QWidget* pParent, const char* szName) :
+QueryViewItem::QueryViewItem(QWidget* pParent, const char* szName) :
 	QListView(pParent, szName),
 	m_pLastItem(NULL)
 {
