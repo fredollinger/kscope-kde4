@@ -2,9 +2,10 @@
 #define QUERYVIEWDRIVER_H
 
 #include <qobject.h>
-#include "qlistview4.h"
 #include "qlistviewitem4.h"
 #include "cscopefrontend4.h"
+#include <QTableView>
+#include "queryview4.h"
 
 namespace kscope4{
 class QueryView;
@@ -25,7 +26,7 @@ public:
     QueryViewDriver(QueryView*, QObject* pParent = 0, const char* szName = 0);
     ~QueryViewDriver();
 
-	void query(uint, const QString&, bool bCase, QListViewItem* pItem = NULL);
+	void query(uint, const QString&, bool bCase, QTableViewItem* pItem = NULL);
 	
 	/**
 	 * @return	true if a query is currently running, false otherwise
@@ -40,7 +41,7 @@ private:
 	QueryView* m_pView;
 	
 	/** QueryView item passed to addRecord(). */
-	QListViewItem* m_pItem;
+	QTableViewItem* m_pItem;
 	
 	/** Displays query progress information. */
 	CscopeProgress m_progress;

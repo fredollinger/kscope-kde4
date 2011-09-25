@@ -1,16 +1,22 @@
 #ifndef QUERYVIEW_H
 #define QUERYVIEW_H
 
-#include "qlistview4.h"
 #include <qregexp.h>
 
-#include <QListWidgetItem>
+#include <QListView>
 #include <QWidget>
-
-#include "qlistviewitem4.h"
+#include <QObject>
 
 namespace kscope4{
 class QueryResultsMenu;
+
+class QListViewItem : public QObject
+{
+	Q_OBJECT
+
+public:
+	QListViewItem(QListView *pView, QListViewItem *pAfter);
+}
  
 /**
  * Items in a query view.
@@ -18,7 +24,8 @@ class QueryResultsMenu;
  * results numerically by line number.
  * @author Elad Lahav
  */
-class QueryView : public QListViewItem
+// class QueryViewItem : public QListViewItem
+class QueryViewItem : public QListViewItem
 {
 	Q_OBJECT
 public:
@@ -101,7 +108,7 @@ class QueryView : public QListView
 	Q_OBJECT
 	
 public:
-	QueryView(QWidget* pParent = 0, const char* szName = 0);
+	QueryView(QView* pParent = 0, const char* szName = 0);
 	~QueryView();
 	
 	virtual void addRecord(const QString&, const QString&, const QString&,

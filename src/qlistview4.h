@@ -1,24 +1,13 @@
-#ifndef QLISTVIEW4_H
-#define QLISTVIEW4_H
+#ifndef Q_LIST_VIEW4_H
+#define Q_LIST_VIEW4_H
 
-#include <QAbstractTableModel>
-#include <QStringList>
-#include <QString>
-#include <QWidget>
-#include <QListWidgetItem>
+#include <QObject>
 
-namespace kscope4{
-class QListView : QObject
+class QListView : public QObject
 {
-	Q_OBJECT
-public:
+public: 
 	QListView();
-	QString* text(int); // return a string at the given position
 	virtual ~QListView();
-private:
 };
 
-}
-#endif 
-
-// Thu Sep 15 19:54:15 PDT 2011
+#endif
