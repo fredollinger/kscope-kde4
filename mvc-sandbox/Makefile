@@ -1,6 +1,9 @@
-all: kmvcwindow.h
-	mkdir -p build
+all: kmvcwindow.h build
 	cd build && make 2>err
+
+build:
+	mkdir -p build
+	cd build && cmake ..
 
 kmvcwindow.h:
 	uic kmvcwindow.ui > kmvcwindow.h
@@ -22,3 +25,7 @@ test:
 	#make install
 	#/usr/local/bin/kscope
 	build/kmvc
+
+dist-clean:
+	rm -rvf build
+	make clean

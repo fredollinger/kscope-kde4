@@ -9,6 +9,7 @@ kmvwindow.ui
 )
 
 set(kmvc_SRCS
+frontend4.cpp
 KmvcDlg.cpp
 main.cpp
 )

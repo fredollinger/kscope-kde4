@@ -6,6 +6,14 @@
 
 KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) 
 {
+ 	m_model = new QStringListModel();
+     	m_list << "a" << "b" << "c";
+     	m_model->setStringList(m_list);
+	
+
+	setupUi(this);
+
+	listView->setModel(m_model);
 }
 
 KmvcDlg::~KmvcDlg()

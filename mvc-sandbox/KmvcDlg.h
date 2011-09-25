@@ -2,6 +2,8 @@
 #define KMVC_DLG_H
 
 #include <QMainWindow>
+#include <QStringList>
+#include <QStringListModel>
 
 #include "kmvcwindow.h"
 
@@ -11,6 +13,9 @@ class KmvcDlg : public QMainWindow, public Ui::KmvcLayout
 public:
 	KmvcDlg(QWidget* pParent = NULL, const char* szName = NULL);
 	~KmvcDlg();
+private:
+	QStringList m_list;
+	QStringListModel *m_model;
 };
 	
 
