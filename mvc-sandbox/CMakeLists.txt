@@ -5,13 +5,11 @@ find_package(KDE4 REQUIRED)
 include_directories(${KDE4_INCLUDES})
 
 kde4_add_ui_files(kmvc_SRCS 
-preffrontendlayout4.ui
-autocompletionlayout4.ui
-newprojectlayout4.ui
+kmvwindow.ui
 )
 
 set(kmvc_SRCS
-kmvc.cpp
+KmvcDlg.cpp
 main.cpp
 )
 

@@ -1,10 +1,15 @@
- #ifndef KSCOPE4_H
+#ifndef KSCOPE4_H
 #define KSCOPE4_H
-#include <KParts/MainWindow>
-#include <QtGui/QKeyEvent>
-#include <qtimer.h>
+
 #include <kcmdlineargs.h>
+#include <KParts/MainWindow>
 #include <kparts/part.h>
+
+#include <QDockWidget>
+#include <QtGui/QKeyEvent>
+
+#include <qtimer.h>
+
 #include "projectbase4.h"
 #include "projectmanager4.h"
 #include "fileview4.h"
@@ -66,6 +71,14 @@ public:
 	void openFileNamed(QString);
 
 private:
+	/**
+	 * Manages menu and tool-bar commands.
+	 */
+	KScopeActions* m_pActions;
+
+	/** The query window docking area. */
+	KDockWidget* m_pQueryDock;
+
 	/** A Cscope process for building the database. */
 	CscopeFrontend* m_pCscopeBuild;
 
@@ -75,11 +88,10 @@ private:
 	/** Creates and maintains call tree dialogues. */
 	CallTreeManager* m_pCallTreeMgr;
 
-	bool getSymbol(uint&, QString&, bool&, bool bPrompt = true);
-	void initCscope();
-	void initMainWindow();
-	void setupActions();
-	bool openCscopeOut(const QString&);
+	/** Whether the query window should be hidden after the user selects an
+		item. */	
+	bool m_bHideQueryOnSelection;
+
 	KParts::ReadWritePart *m_part;
    	KTextEditor::View *m_view;
 	KTextEditor::Document *m_doc;
@@ -114,6 +126,15 @@ private:
 
 	// Manages menu and tool-bar commands.
 	// KScopeActions* m_pActions;
+
+	// BEGIN PRIVATE FUNCTION PROTOTYPES
+	bool getSymbol(uint&, QString&, bool&, bool bPrompt = true);
+	void initCscope();
+	void initMainWindow();
+	bool openCscopeOut(const QString&);
+	void setupActions();
+	void toggleQueryWindow(bool bShow);
+	// END PRIVATE FUNCTION PROTOTYPES
 
 
 private slots:

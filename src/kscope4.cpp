@@ -1,16 +1,17 @@
 #include <kparts/part.h>
 
 #include <KActionCollection>
+#include <KFileDialog>
+#include <KMessageBox>
 #include <KStandardAction>
+#include <KStatusBar>
 #include <KTextEditor/Document>
 #include <KTextEditor/View>
 #include <KTextEditor/Editor>
 #include <KTextEditor/EditorChooser>
-#include <KFileDialog>
-#include <KStatusBar>
-#include <KMessageBox>
 #include <KXMLGUIFactory>
 
+#include <QDockWidget>
 #include <QFile>
 
 // #include "calltreedlg4.h"
@@ -649,7 +650,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 	// Ensure Query Window is visible
-	toggleQueryWindow(true);	
+	//toggleQueryWindow(true);	
 	// }
 }
 // END slotQuery()

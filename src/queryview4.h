@@ -10,6 +10,7 @@
 namespace kscope4{
 class QueryResultsMenu;
 
+#if 0
 class QListViewItem : public QObject
 {
 	Q_OBJECT
@@ -17,6 +18,7 @@ class QListViewItem : public QObject
 public:
 	QListViewItem(QListView *pView, QListViewItem *pAfter);
 }
+#endif
  
 /**
  * Items in a query view.

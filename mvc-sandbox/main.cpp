@@ -16,7 +16,7 @@
 
 // BEGIN KSCOPE OBJ
 #include<k3dockwidget.h>
-#include "kmvc.h"
+#include "KmvcDlg.h"
 // END KSCOPE OBJ
 
 int main(int argc, char *argv[])
@@ -42,11 +42,14 @@ int main(int argc, char *argv[])
 
 	KApplication app;
 
-	kmvc::kmvc* pKMVC = new kmvc::kmvc();
+	// kscope4::KScope* pKScope = new kscope4::KScope();
+	KmvcDlg* pK =  new KmvcDlg();
+	// pK = new KmvcDlg::KmvcDlg();
+	// KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) 
 
-	pKMVC->show();
+	pK->show();
 
 	return app.exec();
 }
 
-// Sat Jul 30 09:56:59 PDT 2011
+// Sun Sep 25 10:16:50 PDT 2011
