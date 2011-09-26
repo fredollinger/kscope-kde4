@@ -43,58 +43,6 @@ Frontend::~Frontend()
 }
 
 /**
- * Executes the back-end process.
- * @param	sName		The name of the process (for error messages)
- * @param	slArgs		A list containing the command-line arguments
- * @param	sWorkDir	(Optional) working directory
- * @param	bBlock		(Optional) true to block, false otherwise
- * @return	true if the process was executed successfully, false otherwise
- */
-bool Frontend::run(const QString& sName, const QStringList& slArgs, 
-	const QString& sWorkDir, bool bBlock)
-{
-	qDebug() << "BEGIN Frontend::run \n";
-	qDebug() << sName;
-	qDebug() << "\n";
-	// Cannot start if another controlled process is currently running
-	if (isRunning()) {
-		qDebug() << "Cannot restart while another process is still running \n";
-
-		m_sError = i18n("Cannot restart while another process is still "
-			"running");
-		return false;
-	}
-
-	// Reset variables
-	m_nRecords = 0;
-	m_bKilled = false;
-	
-	// Setup the command-line arguments
-	// clearArguments();
-	//*this << slArgs;
-	
-	// Set the working directory, if requested
-	if (!sWorkDir.isEmpty())
-		setWorkingDirectory(sWorkDir);
-
-	/* Execute the child process
-	//if (!start(bBlock ? KProcess::Block : KProcess::NotifyOnExit,
-	//	KProcess::All)) {
-	m_sError = sName + i18n(": Failed to start process");
-		return false;
-	} */
-
-	//setOutputChannelMode(KProcess::ForwardedChannels);
-	setOutputChannelMode(KProcess::MergedChannels);
-	setProgram(sName, slArgs);
-
-	start();
-	
-	m_sError = i18n("No error");
-	return true;
-}
-
-/**
  * Kills the process, and emits the aborted() signal.
  * This function should not be called unless the process needs to be
  * interrupted.
@@ -366,5 +314,58 @@ bool Frontend::isRunning(){
 
 	return false;
 } 
+
+/**
+ * Executes the back-end process.
+ * @param	sName		The name of the process (for error messages)
+ * @param	slArgs		A list containing the command-line arguments
+ * @param	sWorkDir	(Optional) working directory
+ * @param	bBlock		(Optional) true to block, false otherwise
+ * @return	true if the process was executed successfully, false otherwise
+ */
+bool Frontend::run(const QString& sName, const QStringList& slArgs, 
+	const QString& sWorkDir, bool bBlock)
+{
+	// Cannot start if another controlled process is currently running
+	if (isRunning()) {
+		m_sError = i18n("Cannot restart while another process is still "
+			"running");
+		return false;
+	}
+
+	// Reset variables
+	m_nRecords = 0;
+	m_bKilled = false;
+	
+	// Setup the command-line arguments
+	// clearArguments();
+	// *this << slArgs;
+	
+	// Set the working directory, if requested
+	if (!sWorkDir.isEmpty())
+		setWorkingDirectory(sWorkDir);
+
+// void QProcess::start ( const QString & program, const QStringList & arguments, OpenMode mode = ReadWrite )
+	// Execute the child process
+	// if (!start(bBlock ? KProcess::Block : KProcess::NotifyOnExit,
+		//KProcess::All)) {
+
+	setProgram(sName, slArgs);
+
+	start();
+
+	/* if (!start() ){ 
+		m_sError = sName + i18n(": Failed to start process");
+		return false;
+	}*/
+
+	if (bBlock){
+		waitForFinished(5000);
+		m_sError = i18n(": Failed to start process");
+	}
+	
+	m_sError = i18n("No error");
+	return true;
+}
 
 // Mon May 16 00:58:50 UTC 2011
