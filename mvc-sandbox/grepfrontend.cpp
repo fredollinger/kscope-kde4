@@ -52,9 +52,10 @@ bool GrepFrontend::run(const QStringList& slArgs)
 	// Set the command line arguments
 	slCmdLine += slArgs;
 	
+	#if 0
 	// Use verbose mode, if supported
-	if (s_nSupArgs & VerboseOut)
-		slCmdLine << "-v";
+	// if (s_nSupArgs & VerboseOut)
+		//slCmdLine << "-v";
 		
 	// Project-specific options
 	if (s_nProjArgs & Kernel)
@@ -65,12 +66,16 @@ bool GrepFrontend::run(const QStringList& slArgs)
 		slCmdLine << "-c";
 	if (s_nProjArgs & s_nSupArgs & SlowPathDef)
 		slCmdLine << "-D";
+	#endif
 		
+	qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
-	if (!Frontend::run("cscope", slCmdLine, s_sProjPath)) {
+	/*
+	if (!Frontend::run("grep", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
+	*/
 
 	return true;
 }
@@ -94,11 +99,11 @@ void GrepFrontend::query(uint nType, const QString& sText, bool bCase,
 	m_nMaxRecords = nMaxRecords;
 	
 	// Create the grep command line
-	slArgs.append(QString("-L") + QString::number(nType));
+	// slArgs.append(QString("-L") + QString::number(nType));
 	slArgs.append(sText);
-	slArgs.append("-d");
-	if (!bCase)
-		slArgs.append("-C");
+	// slArgs.append("-d");
+	// if (!bCase)
+		//slArgs.append("-C");
 		
 	run(slArgs);
 	
@@ -106,7 +111,7 @@ void GrepFrontend::query(uint nType, const QString& sText, bool bCase,
 	m_state = SearchSymbol;
 	m_delim = WSpace;
 
-	emit progress(0, 1);
+	// emit progress(0, 1);
 }
 
 /**
@@ -355,5 +360,6 @@ Frontend::ParseResult GrepFrontend::parseStdout(QString& sToken,
 #endif
 	return result;
 }
+
 
 // Sun Sep 25 16:40:41 PDT 2011
