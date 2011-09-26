@@ -162,6 +162,7 @@ void GrepFrontend::slotCancel()
  */
 void GrepFrontend::parseStderr(const QString& sText)
 {
+	#if 0
 	// Wait for a complete line to arrive
 	m_sErrMsg += sText;
 	if (!sText.endsWith("\n"))
@@ -172,6 +173,8 @@ void GrepFrontend::parseStderr(const QString& sText)
 		
 	// Line displayed, reset the text accumulator
 	m_sErrMsg = "";
+
+#endif
 }
 
 /**
@@ -189,6 +192,7 @@ void GrepFrontend::finalize()
 		m_bRebuildOnExit = false;
 		rebuild();
 	}
+
 }
 
 /**
@@ -200,12 +204,13 @@ void GrepFrontend::finalize()
  * @return	A value indicating the way this token should be treated: dropped,
  *			added to the token queue, or finishes a new record
  */
-Frontend::ParseResult CscopeFrontend::parseStdout(QString& sToken,
+Frontend::ParseResult GrepFrontend::parseStdout(QString& sToken,
 	ParserDelim /* ignored */)
 {
 	int nFiles, nTotal, nRecords;
 	ParseResult result = DiscardToken;
 	ParserState stPrev;
+#if 0
 	
 	// Remember previous state
 	stPrev = m_state;
@@ -347,6 +352,7 @@ Frontend::ParseResult CscopeFrontend::parseStdout(QString& sToken,
 		break;
 	}
 
+#endif
 	return result;
 }
 
