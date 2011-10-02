@@ -12,6 +12,7 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+kdockwidget4.cpp
 tabwidget4.cpp
 progressdlg4.cpp
 symboldlg4.cpp

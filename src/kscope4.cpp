@@ -5,6 +5,7 @@
 #include <KMessageBox>
 #include <KStandardAction>
 #include <KStatusBar>
+#include <KSystemTrayIcon>
 #include <KTextEditor/Document>
 #include <KTextEditor/View>
 #include <KTextEditor/Editor>
@@ -21,6 +22,7 @@
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
+#include "kdockwidget4.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
 #include "projectmanager4.h"
@@ -647,7 +649,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	// Run the requested query
 	nType = SymbolDlg::getQueryType(nType);
 
-	m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+	// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 	// Ensure Query Window is visible
 	//toggleQueryWindow(true);	
@@ -842,16 +844,16 @@ void KScope::toggleQueryWindow(bool bShow)
 {
 	// Remember the user's preferences
 	if (bShow)
-		m_bHideQueryOnSelection = m_pQueryDock->isHidden();
+		m_bHideQueryOnSelection = m_pQueryDock->isVisible();
 	else
 		m_bHideQueryOnSelection = false;
 	
 	// Change the visibility state of the widget, if required
-	if (m_pQueryDock->isShown() != bShow)
+	if (m_pQueryDock->isVisible() != bShow)
 		m_pQueryDock->changeHideShowState();
 		
 	// Synchronise with the menu command's state
-	m_pActions->slotQueryDockToggled(bShow);
+	// m_pActions->slotQueryDockToggled(bShow);
 }
 
 } // namespace kscope4

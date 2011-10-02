@@ -10,6 +10,7 @@
 
 #include <qtimer.h>
 
+#include "kdockwidget4.h"
 #include "projectbase4.h"
 #include "projectmanager4.h"
 #include "fileview4.h"
@@ -77,6 +78,7 @@ private:
 	KScopeActions* m_pActions;
 
 	/** The query window docking area. */
+	// KDockWidget* m_pQueryDock;
 	KDockWidget* m_pQueryDock;
 
 	/** A Cscope process for building the database. */
