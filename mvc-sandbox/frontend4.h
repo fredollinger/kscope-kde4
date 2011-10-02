@@ -2,8 +2,8 @@
 #define FRONTEND_H
 
 #include <qobject.h>
-#include <kprocess.h>
-
+// #include <kprocess.h>
+#include <KProcess>
 
 /**
  * Represents a single token in the parsed output stream.

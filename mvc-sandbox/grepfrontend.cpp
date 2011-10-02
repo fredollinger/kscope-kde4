@@ -93,6 +93,7 @@ bool GrepFrontend::run(const QStringList& slArgs)
 void GrepFrontend::query(uint nType, const QString& sText, bool bCase, 
 	uint nMaxRecords)
 {
+	qDebug() << "query()<<\n";
 	QString sQuery;
 	QStringList slArgs;
 	

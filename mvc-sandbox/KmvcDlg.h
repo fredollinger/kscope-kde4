@@ -6,6 +6,7 @@
 #include <QStringListModel>
 
 #include "kmvcwindow.h"
+#include "grepfrontend.h"
 
 class KmvcDlg : public QMainWindow, public Ui::KmvcLayout
 {
@@ -16,8 +17,10 @@ public:
 private:
 	QStringList m_list;
 	QStringListModel *m_model;
+	GrepFrontend *gfe;
 private slots:
 	void slotLs(void);
+
 };
 	
 

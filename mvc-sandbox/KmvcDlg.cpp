@@ -3,6 +3,7 @@
 #include <QMainWindow>
 
 #include "KmvcDlg.h"
+#include "grepfrontend.h"
 
 KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) 
 {
@@ -13,6 +14,7 @@ KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName)
 	setupUi(this);
 
 	// listView->setModel(m_model);
+	*gfe = new GrepFrontend();
 
 	connect(pushButtonLs, SIGNAL(clicked()),
 	this, SLOT(slotLs()));
