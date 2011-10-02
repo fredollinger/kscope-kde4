@@ -16,6 +16,8 @@ public:
 private:
 	QStringList m_list;
 	QStringListModel *m_model;
+private slots:
+	void slotLs(void);
 };
 	
 
