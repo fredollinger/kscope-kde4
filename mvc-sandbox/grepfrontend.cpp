@@ -360,5 +360,11 @@ Frontend::ParseResult GrepFrontend::parseStdout(QString& sToken,
 	return result;
 }
 
+void 
+GrepFrontend::slotFinished(){
+	emit done(m_bResult, m_nArgs);
+	delete this;
+}
+
 
 // Sun Sep 25 16:40:41 PDT 2011

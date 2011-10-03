@@ -27,7 +27,13 @@ KmvcDlg::~KmvcDlg()
 
 void KmvcDlg::slotLs()
 {
-	qDebug() << "ls \n";
+	qDebug() << "slotLs() \n";
+	connect(m_gfe, SIGNAL(done(bool, uint)), this,
+		SLOT(slotLsDone(bool, uint)));
+}
+
+void KmvcDlg::slotLsDone(bool b, uint i){
+	qDebug() << "slotLsDone() \n";
 }
 
 // Sun Sep 25 09:51:16 PDT 2011

@@ -60,12 +60,14 @@ public:
 	
 public slots:
 	void slotCancel();
+	void slotFinished();
 
 signals:
 	/**
 	 * Emitted when Grep starts building the inverted index.
 	 */
 	void buildInvIndex();
+	void done(bool, uint);
 
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
@@ -78,6 +80,9 @@ private:
 	 */
 	enum ParserState { Unknown = 0, BuildStart, BuildSymbol, Building,
 		SearchSymbol, Searching, SearchEnd, File, Func, Line, LineText };
+
+	bool m_bResult;
+	uint m_nArgs;
 	
 	/** The current state of the parser state machine. */
 	ParserState m_state;
@@ -96,11 +101,11 @@ private:
 	/** The full path of the directory holding the project files. */
 	static QString s_sProjPath;
 	
-	
 	/** The command line arguments supported by this version of Grep. */
 	static uint s_nSupArgs;
 	
 	bool run(const QStringList&);
+
 };
 
 #endif

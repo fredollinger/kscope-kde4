@@ -14,13 +14,13 @@ class KmvcDlg : public QMainWindow, public Ui::KmvcLayout
 public:
 	KmvcDlg(QWidget* pParent = NULL, const char* szName = NULL);
 	~KmvcDlg();
+	GrepFrontend *m_gfe;
 private:
 	QStringList m_list;
 	QStringListModel *m_model;
-	GrepFrontend *m_gfe;
 private slots:
 	void slotLs(void);
-
+	void slotLsDone(bool, uint);
 };
 	
 
