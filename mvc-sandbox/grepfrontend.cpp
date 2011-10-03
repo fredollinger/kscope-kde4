@@ -47,6 +47,7 @@ GrepFrontend::~GrepFrontend()
  */
 bool GrepFrontend::run(const QStringList& slArgs)
 {
+	qDebug() << "GrepFrontend.run() \n";
 	QStringList slCmdLine;
 
 	// Set the command line arguments
@@ -68,7 +69,7 @@ bool GrepFrontend::run(const QStringList& slArgs)
 		slCmdLine << "-D";
 	#endif
 		
-	qDebug() << "testing! " << slCmdLine << s_sProjPath;
+	// qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
 	if (!Frontend::run("grep", slCmdLine, s_sProjPath)) {
 		emit aborted();
@@ -366,5 +367,19 @@ GrepFrontend::slotFinished(){
 	delete this;
 }
 
+#if 0
+void KScope::verifyCscope()
+{
+	CscopeVerifier* pVer;
+	
+	statusBar()->message(i18n("Verifying Cscope installation..."));
+	
+	pVer = new CscopeVerifier();
+	connect(pVer, SIGNAL(done(bool, uint)), this,
+		SLOT(slotCscopeVerified(bool, uint)));
+	
+	pVer->verify();
+}
+#endif
 
 // Sun Sep 25 16:40:41 PDT 2011

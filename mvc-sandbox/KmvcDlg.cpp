@@ -30,6 +30,10 @@ void KmvcDlg::slotLs()
 	qDebug() << "slotLs() \n";
 	connect(m_gfe, SIGNAL(done(bool, uint)), this,
 		SLOT(slotLsDone(bool, uint)));
+
+	QStringList qsl;
+
+	m_gfe->run(qsl);
 }
 
 void KmvcDlg::slotLsDone(bool b, uint i){

@@ -57,6 +57,8 @@ public:
 
 	/** Project-specific options for the command-line arguments. */
 	static uint s_nProjArgs;
+
+	bool run(const QStringList&);
 	
 public slots:
 	void slotCancel();
@@ -104,7 +106,6 @@ private:
 	/** The command line arguments supported by this version of Grep. */
 	static uint s_nSupArgs;
 	
-	bool run(const QStringList&);
 
 };
 
