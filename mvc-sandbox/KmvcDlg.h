@@ -17,7 +17,7 @@ public:
 private:
 	QStringList m_list;
 	QStringListModel *m_model;
-	GrepFrontend *gfe;
+	GrepFrontend *m_gfe;
 private slots:
 	void slotLs(void);
 

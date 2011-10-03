@@ -70,12 +70,10 @@ bool GrepFrontend::run(const QStringList& slArgs)
 		
 	qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
-	/*
 	if (!Frontend::run("grep", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
-	*/
 
 	return true;
 }
