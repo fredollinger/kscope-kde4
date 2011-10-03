@@ -16,6 +16,9 @@ KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) :
 
 	// listView->setModel(m_model);
 
+	// Create a persistent Cscope process
+	m_gfe = new GrepFrontend();
+
 	connect(pushButtonLs, SIGNAL(clicked()),
 	this, SLOT(slotLs()));
 }
