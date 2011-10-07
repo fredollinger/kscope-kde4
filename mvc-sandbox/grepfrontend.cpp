@@ -29,6 +29,7 @@ GrepFrontend::GrepFrontend(bool bAutoDelete) :
 	m_bRebuildOnExit(false)
 {
 	s_nProjArgs=0;
+
 }
 
 /**
@@ -47,11 +48,13 @@ GrepFrontend::~GrepFrontend()
  */
 bool GrepFrontend::run(const QStringList& slArgs)
 {
-	qDebug() << "GrepFrontend.run() \n";
+	// qDebug() << "GrepFrontend.run() \n";
 	QStringList slCmdLine;
 
 	// Set the command line arguments
 	slCmdLine += slArgs;
+
+	setOutputChannelMode(KProcess::MergedChannels);
 	
 	#if 0
 	// Use verbose mode, if supported
@@ -68,13 +71,20 @@ bool GrepFrontend::run(const QStringList& slArgs)
 	if (s_nProjArgs & s_nSupArgs & SlowPathDef)
 		slCmdLine << "-D";
 	#endif
+
+	// slCmdLine << "/var/log/Xorg.0.log";
+	slCmdLine << "hi";
 		
-	// qDebug() << "testing! " << slCmdLine << s_sProjPath;
+	qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
-	if (!Frontend::run("ls", slCmdLine, s_sProjPath)) {
+	if (!Frontend::run("cat", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
+	
+	waitForFinished();
+	
+	qDebug() << "done";
 
 	return true;
 }
@@ -92,7 +102,7 @@ bool GrepFrontend::run(const QStringList& slArgs)
 void GrepFrontend::query(uint nType, const QString& sText, bool bCase, 
 	uint nMaxRecords)
 {
-	qDebug() << "query()<<\n";
+	qDebug() << "query() \n";
 	QString sQuery;
 	QStringList slArgs;
 	
@@ -167,6 +177,7 @@ void GrepFrontend::slotCancel()
  */
 void GrepFrontend::parseStderr(const QString& sText)
 {
+	qDebug() << "Frontend::ParseStderr \n";
 	#if 0
 	// Wait for a complete line to arrive
 	m_sErrMsg += sText;
@@ -212,11 +223,14 @@ void GrepFrontend::finalize()
 Frontend::ParseResult GrepFrontend::parseStdout(QString& sToken,
 	ParserDelim /* ignored */)
 {
+
+	qDebug() << "Frontend::ParseResult \n";
+
 	int nFiles, nTotal, nRecords;
 	ParseResult result = DiscardToken;
 	ParserState stPrev;
-#if 0
 	
+#if 0
 	// Remember previous state
 	stPrev = m_state;
 	
@@ -364,8 +378,8 @@ Frontend::ParseResult GrepFrontend::parseStdout(QString& sToken,
 void 
 GrepFrontend::slotFinished(){
 	qDebug() << "GrepFrontend \n";
-	emit done(m_bResult, m_nArgs);
-	delete this;
+	// emit done(m_bResult, m_nArgs);
+	// delete this;
 }
 
 #if 0

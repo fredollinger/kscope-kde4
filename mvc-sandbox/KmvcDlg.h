@@ -21,6 +21,8 @@ private:
 private slots:
 	void slotLs(void);
 	void slotLsDone(uint);
+	void slotReadStd(void);
+	void slotStarted(void);
 };
 	
 

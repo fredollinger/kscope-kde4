@@ -21,11 +21,26 @@ KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) :
 
 	connect(pushButtonLs, SIGNAL(clicked()),
 	this, SLOT(slotLs()));
+
+	connect(m_gfe, SIGNAL(readyRead()),
+	this, SLOT(slotReadStd()));
+
+	connect(m_gfe, SIGNAL(started()),
+	this, SLOT(slotStarted()));
 }
 
 KmvcDlg::~KmvcDlg()
 {
 
+}
+
+void KmvcDlg::slotStarted(){
+	qDebug() << "slotStarted() \n";
+}
+
+void KmvcDlg::slotReadStd()
+{
+	qDebug() << "slotReadStd() \n";
 }
 
 void KmvcDlg::slotLs()
@@ -40,16 +55,17 @@ void KmvcDlg::slotLs()
 }
 
 void KmvcDlg::slotLsDone(uint ui){
-	qDebug() << "slotLsDone(): " << ui;
-	QByteArray qba;
+	qDebug() << "slotLsDone(): " << m_gfe->bytesAvailable();
+	m_gfe->setReadChannel(QProcess::StandardOutput);
 	QString qs;
-	qDebug() << m_gfe->bytesAvailable();
+	QByteArray qba;
+	qDebug() << "slotLsDone(): " << m_gfe->bytesAvailable();
 	while (m_gfe->atEnd() == false){
 		qba = m_gfe->readLine(2000);	
 		qs = QString(qba);
-		qDebug() << qs;
+		// qDebug() << qs;
 	}
-	qDebug() << "slotLsDone(): DONE " << ui;
+	// qDebug() << "slotLsDone(): DONE " << ui;
 }
 
-// Sun Sep 25 09:51:16 PDT 2011
+// Fri Oct  7 14:00:55 PDT 2011

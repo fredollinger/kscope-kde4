@@ -20,6 +20,7 @@ Frontend::Frontend(uint nRecordSize, bool bAutoDelete) : KProcess(),
 	m_bInToken(false),
 	m_nRecordSize(nRecordSize)
 {
+
 	connect(this, SIGNAL(readyReadStandardOutput() ), this,
 		SLOT(slotReadStdout() ) );
 
@@ -194,7 +195,7 @@ void Frontend::parseStderr(const QString& sText)
  */
 void Frontend::slotProcessExit()
 {
-	qDebug() << "Frontend::slotProcessExit() \n";
+	qDebug() << "Frontend::slotProcessExit() " << bytesAvailable();
 	// Allow specialised clean-up by inheriting classes
 	finalize();
 	
@@ -217,6 +218,8 @@ void Frontend::slotProcessExit()
 // void Frontend::slotReadStdout(KProcess*, char* pBuffer, int nSize)
 void Frontend::slotReadStdout()
 {
+	qDebug() << "Frontend::slotReadStdout() \n";
+	return;
 	// BEGIN NEED TO GET THESE FROM KPROCESS
 	char* pBuffer; 
 	qint64 nSize;
@@ -301,6 +304,8 @@ void Frontend::slotReadStderr()
 {
 	QString sBuf;
 	
+	qDebug() << "Frontend::slotReadStderr() \n";
+
 	// Do nothing if waiting for process to die
 	if (m_bKilled)
 		return;
