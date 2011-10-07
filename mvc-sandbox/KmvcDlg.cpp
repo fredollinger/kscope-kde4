@@ -16,8 +16,8 @@ KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) :
 
 	// listView->setModel(m_model);
 
-	// Create a persistent Cscope process
-	m_gfe = new GrepFrontend();
+	// Create a persistent grep process
+	m_gfe = new GrepFrontend(false);
 
 	connect(pushButtonLs, SIGNAL(clicked()),
 	this, SLOT(slotLs()));
@@ -31,16 +31,25 @@ KmvcDlg::~KmvcDlg()
 void KmvcDlg::slotLs()
 {
 	qDebug() << "slotLs() \n";
-	connect(m_gfe, SIGNAL(done(bool, uint)), this,
-		SLOT(slotLsDone(bool, uint)));
+	connect(m_gfe, SIGNAL(finished(uint)), this,
+		SLOT(slotLsDone(uint)));
 
 	QStringList qsl;
 
 	m_gfe->run(qsl);
 }
 
-void KmvcDlg::slotLsDone(bool b, uint i){
-	qDebug() << "slotLsDone() \n";
+void KmvcDlg::slotLsDone(uint ui){
+	qDebug() << "slotLsDone(): " << ui;
+	QByteArray qba;
+	QString qs;
+	qDebug() << m_gfe->bytesAvailable();
+	while (m_gfe->atEnd() == false){
+		qba = m_gfe->readLine(2000);	
+		qs = QString(qba);
+		qDebug() << qs;
+	}
+	qDebug() << "slotLsDone(): DONE " << ui;
 }
 
 // Sun Sep 25 09:51:16 PDT 2011

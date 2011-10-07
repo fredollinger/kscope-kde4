@@ -194,6 +194,7 @@ void Frontend::parseStderr(const QString& sText)
  */
 void Frontend::slotProcessExit()
 {
+	qDebug() << "Frontend::slotProcessExit() \n";
 	// Allow specialised clean-up by inheriting classes
 	finalize();
 	

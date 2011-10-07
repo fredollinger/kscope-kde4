@@ -20,7 +20,7 @@ private:
 	QStringListModel *m_model;
 private slots:
 	void slotLs(void);
-	void slotLsDone(bool, uint);
+	void slotLsDone(uint);
 };
 	
 

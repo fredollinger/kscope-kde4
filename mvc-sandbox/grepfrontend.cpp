@@ -71,7 +71,7 @@ bool GrepFrontend::run(const QStringList& slArgs)
 		
 	// qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
-	if (!Frontend::run("grep", slCmdLine, s_sProjPath)) {
+	if (!Frontend::run("ls", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
@@ -363,6 +363,7 @@ Frontend::ParseResult GrepFrontend::parseStdout(QString& sToken,
 
 void 
 GrepFrontend::slotFinished(){
+	qDebug() << "GrepFrontend \n";
 	emit done(m_bResult, m_nArgs);
 	delete this;
 }
