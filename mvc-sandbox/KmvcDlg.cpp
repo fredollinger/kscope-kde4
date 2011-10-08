@@ -11,10 +11,10 @@ KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) :
  	m_model = new QStringListModel();
      	m_list << "a" << "b" << "c";
      	m_model->setStringList(m_list);
-	
+
 	setupUi(this);
 
-	// listView->setModel(m_model);
+	listView->setModel(m_model);
 
 	// Create a persistent grep process
 	m_gfe = new GrepFrontend(false);
@@ -65,7 +65,7 @@ void KmvcDlg::slotLsDone(uint ui){
 		qs = QString(qba);
 		// qDebug() << qs;
 	}
-	// qDebug() << "slotLsDone(): DONE " << ui;
+	qDebug() << "slotLsDone(): DONE " << ui;
 }
 
 // Fri Oct  7 14:00:55 PDT 2011
