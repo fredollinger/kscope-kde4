@@ -170,6 +170,11 @@ void KScope::initMainWindow()
 	pStatus = statusBar();
 	pStatus->insertItem(i18n(" Line: N/A Col: N/A "), 0, 0);
 
+	m_model = new QStringListModel();
+     	m_list << "a" << "b" << "c";
+     	m_model->setStringList(m_list);
+	listView->setModel(m_model);
+
 	return;
 }
 

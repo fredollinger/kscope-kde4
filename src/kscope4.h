@@ -72,6 +72,9 @@ public:
 	void openFileNamed(QString);
 
 private:
+    	QListView *listView;
+	QStringList m_list;
+	QStringListModel *m_model;
 	/**
 	 * Manages menu and tool-bar commands.
 	 */
