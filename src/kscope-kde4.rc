@@ -8,6 +8,10 @@
 
 <MenuBar>
 
+	<Menu name="vcs"><text>&amp;VCS</text>
+		<Action name="vcs_commit"/>
+	</Menu>
+
 	<Menu name="cscope"><text>&amp;Cscope</text>
 		<Action name="cscope_rebuild"/>
 		<Separator/>

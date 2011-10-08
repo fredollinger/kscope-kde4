@@ -155,6 +155,13 @@ private slots:
 	void slotBuildAborted();
 	void slotCscopeError(const QString&);
 
+	// BEGIN Menu actions
+	// BEGIN Version Control Actions
+	// move this stuff to it's own vcs class someday
+	void slotCommit(void);	
+	// END Version Control Actions
+	// END Menu actions
+
 	// Menu actions
 	/*
 	void slotNewFile();

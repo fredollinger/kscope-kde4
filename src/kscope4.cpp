@@ -98,6 +98,12 @@ void KScope::setupActions()
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
 
 	// BEGIN KACTIONS
+	KAction* vcsCommit = new KAction(this);
+  	vcsCommit->setText(i18n("commit/submit"));
+	actionCollection()->addAction("vcs_commit", vcsCommit);
+	connect(vcsCommit, SIGNAL(triggered(bool)),
+	this, SLOT(slotCommit()));
+
 	KAction* clearAction = new KAction(this);
   	clearAction->setText(i18n("&Clear"));
 	clearAction->setIcon(KIcon("document-new"));
@@ -865,6 +871,10 @@ void KScope::toggleQueryWindow(bool bShow)
 	// m_pActions->slotQueryDockToggled(bShow);
 }
 
+void KScope::slotCommit(){
+	qDebug() << "slotCommit";
+}
+
 void KScope::createDockWindows(){
 	/*
 	m_model = new QStringListModel();
@@ -875,4 +885,6 @@ void KScope::createDockWindows(){
 }
 
 } // namespace kscope4
-// Sun Sep  4 11:34:51 PDT 2011
+
+
+// Sat Oct  8 12:57:15 PDT 2011
