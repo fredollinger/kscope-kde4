@@ -14,5 +14,5 @@ install: build/kscope
 	cd build && su -c "make install"
 	#cd build && sudo make install
 test:
-	#make install
+	su -c "make install"
 	/usr/local/bin/kscope main.cpp

@@ -6,6 +6,7 @@
 #include <kparts/part.h>
 
 #include <QDockWidget>
+#include <QStringListModel>
 #include <QtGui/QKeyEvent>
 
 #include <qtimer.h>
