@@ -55,6 +55,8 @@ KScope::KScope(QWidget *) :
 	initMainWindow();
 	// m_pQueryWidget = new QueryWidget(this);
 
+	createDockWindows();
+
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
@@ -171,12 +173,6 @@ void KScope::initMainWindow()
 	// Create the status bar
 	pStatus = statusBar();
 	pStatus->insertItem(i18n(" Line: N/A Col: N/A "), 0, 0);
-
-	m_model = new QStringListModel();
-     	m_list << "a" << "b" << "c";
-     	m_model->setStringList(m_list);
-	listView->setModel(m_model);
-
 
 // /home/follinge/projects/kscope-kde4/src/kscope4.cpp:178:34: error: no matching function for call to ‘kscope4::KScope::splitDockWidget(KTextEditor::View*&, QListView*&)’
 // /usr/include/qt4/QtGui/qmainwindow.h:169:10: note: candidate is: void QMainWindow::splitDockWidget(QDockWidget*, QDockWidget*, Qt::Orientation)
@@ -867,6 +863,15 @@ void KScope::toggleQueryWindow(bool bShow)
 		
 	// Synchronise with the menu command's state
 	// m_pActions->slotQueryDockToggled(bShow);
+}
+
+void KScope::createDockWindows(){
+	/*
+	m_model = new QStringListModel();
+     	m_list << "a" << "b" << "c";
+     	m_model->setStringList(m_list);
+	listView->setModel(m_model);
+	*/
 }
 
 } // namespace kscope4

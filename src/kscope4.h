@@ -140,6 +140,7 @@ private:
 	bool openCscopeOut(const QString&);
 	void setupActions();
 	void toggleQueryWindow(bool bShow);
+	void createDockWindows();
 	// END PRIVATE FUNCTION PROTOTYPES
 
 
