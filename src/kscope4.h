@@ -65,7 +65,6 @@ public:
 	KScope(QWidget *parent=0);
 	~KScope();
 	void openProject(const QString&);
-	// ~KScope();
 	void open(const QString&);
 	void save();
 	bool close(bool bForce = false);
@@ -73,9 +72,12 @@ public:
 	void openFileNamed(QString);
 
 private:
+     	QDockWidget *resDock;
+	/*
     	QListView *listView;
 	QStringList m_list;
 	QStringListModel *m_model;
+	*/
 
 	QListWidget *customerList;
 	/**
@@ -162,60 +164,6 @@ private slots:
 	// move this stuff to it's own vcs class someday
 	void slotCommit(void);	
 	// END Version Control Actions
-	// END Menu actions
-
-	// Menu actions
-	/*
-	void slotNewFile();
-	void slotOpenFile();
-
-	void slotCloseEditor();
-	void slotCreateProject();
-	void slotOpenProject();
-	void slotProjectFiles();
-	void slotProjectProps();
-	void slotProjectCscopeOut();
-	bool slotCloseProject();
-	void slotQueryReference();
-	void slotQueryDefinition();
-	void slotQueryCalled();
-	void slotQueryCalling();
-	void slotQueryText();
-	void slotQueryFile();
-	void slotQueryIncluding();
-	void slotQueryQuickDef();
-	void slotCallTree();
-	void slotRebuildDB();
-	void slotHistoryShow();
-	void slotShortcuts();
-	void slotConfigure();
-	void slotCloseAllWindows();
-	void slotExtEdit();
-	void slotCompleteSymbol();
-	void slotShowWelcome();
-	void slotGotoTag();
-	void slotProjectMake();
-	void slotProjectRemake();
-	void slotShowBookmarks();
-	
-	// Other slots
-	void slotProjectFilesChanged();
-	void slotFilesAdded(const QStringList&);
-	void slotDeleteEditor(EditorPage*);
-	void slotChangeEditor(EditorPage*, EditorPage*);
-	void slotShowEditor(const QString&, uint);
-	void slotFileOpened(EditorPage*, const QString&);
-	void slotFileSaved(const QString&, bool);
-	void slotBuildProgress(int, int);
-	void slotBuildInvIndex();
-	void slotBuildFinished(uint);
-	void slotBuildAborted();
-	void slotApplyPref();
-	void slotShowCursorPos(uint, uint);
-	void slotQueryShowEditor(const QString&, uint);
-	void slotDropEvent(QDropEvent*);
-	void slotCscopeVerified(bool, uint);
-	*/
 
 	void openFile(void);
 	void slotOpenProject();
@@ -224,9 +172,11 @@ private slots:
 	void slotRebuildDB(void);
 	void slotCreateProject(void);
 	bool slotCloseProject(void);
+	// END Menu actions
 
-//friend class KScopeActions;
-};
+}; //class Kscope
 } // namespace kscope
 
 #endif // KSCOPE4_H
+
+// Sat Oct  8 13:13:23 PDT 2011
