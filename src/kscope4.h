@@ -76,6 +76,8 @@ private:
     	QListView *listView;
 	QStringList m_list;
 	QStringListModel *m_model;
+
+	QListWidget *customerList;
 	/**
 	 * Manages menu and tool-bar commands.
 	 */

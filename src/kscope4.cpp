@@ -876,6 +876,16 @@ void KScope::slotCommit(){
 }
 
 void KScope::createDockWindows(){
+     QDockWidget *dock = new QDockWidget(tr("Customers"), this);
+     dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+     customerList = new QListWidget(dock);
+     customerList->addItems(QStringList()
+             << "John Doe, Harmony Enterprises, 12 Lakeside, Ambleton"
+             << "Jane Doe, Memorabilia, 23 Watersedge, Beaton"
+             << "Sally Hobart, Tiroli Tea, 67 Long River, Fedula");
+     dock->setWidget(customerList);
+     addDockWidget(Qt::RightDockWidgetArea, dock);
+     // viewMenu->addAction(dock->toggleViewAction());
 	/*
 	m_model = new QStringListModel();
      	m_list << "a" << "b" << "c";
