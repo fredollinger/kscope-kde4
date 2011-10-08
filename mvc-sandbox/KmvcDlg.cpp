@@ -9,7 +9,7 @@ KmvcDlg::KmvcDlg(QWidget* pParent, const char* szName) :
 	m_gfe(NULL)
 {
  	m_model = new QStringListModel();
-     	m_list << "a" << "b" << "c";
+     	// m_list << "a" << "b" << "c";
      	m_model->setStringList(m_list);
 
 	setupUi(this);
@@ -63,9 +63,13 @@ void KmvcDlg::slotLsDone(uint ui){
 	while (m_gfe->atEnd() == false){
 		qba = m_gfe->readLine(2000);	
 		qs = QString(qba);
-		// qDebug() << qs;
+		m_list << qs;
+		qDebug() << qs;
 	}
-	qDebug() << "slotLsDone(): DONE " << ui;
+
+     	m_list << "a" << "b" << "c";
+     	m_model->setStringList(m_list);
+	qDebug() << "slotLsDone(): DONE " << m_list.size();
 }
 
 // Fri Oct  7 14:00:55 PDT 2011
