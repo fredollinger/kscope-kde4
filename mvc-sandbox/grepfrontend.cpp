@@ -73,11 +73,11 @@ bool GrepFrontend::run(const QStringList& slArgs)
 	#endif
 
 	// slCmdLine << "/var/log/Xorg.0.log";
-	slCmdLine << "hi";
+	// slCmdLine << "hi";
 		
 	qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
-	if (!Frontend::run("cat", slCmdLine, s_sProjPath)) {
+	if (!Frontend::run("ls", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}

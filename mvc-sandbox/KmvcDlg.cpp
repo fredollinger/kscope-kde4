@@ -67,7 +67,7 @@ void KmvcDlg::slotLsDone(uint ui){
 		qDebug() << qs;
 	}
 
-     	m_list << "a" << "b" << "c";
+     	// m_list << "a" << "b" << "c";
      	m_model->setStringList(m_list);
 	qDebug() << "slotLsDone(): DONE " << m_list.size();
 }
