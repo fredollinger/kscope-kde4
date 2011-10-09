@@ -55,7 +55,7 @@ KScope::KScope(QWidget *) :
 	initMainWindow();
 	// m_pQueryWidget = new QueryWidget(this);
 
-	createDockWindows();
+	// createDockWindows();
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
@@ -885,6 +885,7 @@ void KScope::slotCommit(){
 	qDebug() << "slotCommit";
 }
 
+#if 0
 // BEGIN createDockWindow()
 void KScope::createDockWindows(){
      resDock = new QDockWidget(i18n("Files"), this);
@@ -898,6 +899,7 @@ void KScope::createDockWindows(){
      addDockWidget(Qt::BottomDockWidgetArea, resDock);
 }
 // END createDockWindow()
+#endif
 
 /**
  * Promts the user for a symbol, an starts a new Cscope query.

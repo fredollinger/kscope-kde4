@@ -72,7 +72,7 @@ public:
 	void openFileNamed(QString);
 
 private:
-     	QDockWidget *resDock;
+     	// QDockWidget *resDock;
 	/*
     	QListView *listView;
 	QStringList m_list;

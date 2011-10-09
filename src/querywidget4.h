@@ -1,7 +1,8 @@
 #ifndef QUERYWIDGET_H
 #define QUERYWIDGET_H
 
-#include <qlistview.h>
+#include <QDockWidget>
+#include <QListView>
 #include <QObject>
 
 /**
@@ -10,7 +11,7 @@
 */
 
 namespace kscope4{
-class QueryWidget : public QObject
+class QueryWidget : public QDockWidget
 {
    Q_OBJECT
 
@@ -29,6 +30,8 @@ public:
 private:
 	/** The number of query pages currently open. */
 	int m_nQueryPages;
+
+     	QDockWidget *resDock;
 };
 } // namespace kscope4
 
