@@ -3,6 +3,7 @@
 
 // #include <qhbox.h>
 #include <QWidget>
+#include "queryview4.h"
 
 class QueryView;
 

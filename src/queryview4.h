@@ -13,7 +13,7 @@ namespace kscope4{
 class QueryResultsMenu;
 
 #if 0
-class QListViewItem : public QObject
+class QListViewItem4 : public QObject
 {
 	Q_OBJECT
 
@@ -40,8 +40,8 @@ public:
 	 * @param	pAfter		The item to preceed the new one
 	 * @param	nLineCol	The index of the line column
 	 */
-	QueryViewItem(QListView* pView, QListViewItem* pAfter, 
-		int nLineCol) : QListViewItem(pView, pAfter), m_nLineCol(nLineCol)
+	QueryViewItem(QListView* pView, QListViewItem4* pAfter, 
+		int nLineCol) : QListViewItem4(pView, pAfter), m_nLineCol(nLineCol)
 		{}
 	
 	/**
@@ -51,8 +51,8 @@ public:
 	 * @param	pAfter		The item to preceed the new one
 	 * @param	nLineCol	The index of the line column
 	 */
-	QueryViewItem(QListViewItem* pParent, QListViewItem* pAfter, 
-		int nLineCol) : QListViewItem(pParent, pAfter), m_nLineCol(nLineCol)
+	QueryViewItem(QListViewItem4* pParent, QListViewItem4* pAfter, 
+		int nLineCol) : QListViewItem4(pParent, pAfter), m_nLineCol(nLineCol)
 		{}
 	
 	/**
@@ -66,7 +66,7 @@ public:
 	 * @return	0 if the items are equal, 1 if the current item is greater,
 	 * 			-1 if the current item is smaller
 	 */
-	virtual int compare(QListViewItem* pItem, int nCol, bool bAscend) const {
+	virtual int compare(QListViewItem4* pItem, int nCol, bool bAscend) const {
 		if (nCol == m_nLineCol) {
 			uint nLineCur, nLineOther;
 			int nResult;
@@ -112,16 +112,16 @@ class QueryView : public QListView
 	Q_OBJECT
 	
 public:
-	QueryView(QView* pParent = 0, const char* szName = 0);
+	QueryView(QListView* pParent = 0, const char* szName = 0);
 	~QueryView();
 	
 	virtual void addRecord(const QString&, const QString&, const QString&,
-		const QString&, QListViewItem* pParent = NULL);
-	virtual void select(QListViewItem*);
+		const QString&, QListViewItem4* pParent = NULL);
+	virtual void select(QListViewItem4*);
 	virtual void selectNext();
 	virtual void selectPrev();
 	virtual void queryProgress();
-	virtual void queryFinished(uint, QListViewItem* pParent = NULL);
+	virtual void queryFinished(uint, QListViewItem4* pParent = NULL);
 	
 	/**
 	 * Provides an iterator over the list of query results.
@@ -156,14 +156,14 @@ public:
 		
 	private:
 		/** Points to the current list item. */
-		QListViewItem* m_pItem;
+		QListViewItem4* m_pItem;
 		
 		/** 
 		 * Private constructor used to return initialised iterators.
 		 * This constructor can only be called from within QueryView.
 		 * @param	pItem	The initial list item
 		 */
-		Iterator(QListViewItem* pItem) : m_pItem(pItem) {}
+		Iterator(QListViewItem4* pItem) : m_pItem(pItem) {}
 		
 		friend class QueryView;
 	};
@@ -193,18 +193,18 @@ protected:
 	QueryResultsMenu* m_pQueryMenu;
 	
 	/** A pointer to the last item (used for appending results). */
-	QListViewItem* m_pLastItem;
+	QListViewItem4* m_pLastItem;
 	
 	void contentsMouseDoubleClickEvent(QMouseEvent*);
 	
 protected slots:
-	virtual void slotRecordSelected(QListViewItem*);
+	virtual void slotRecordSelected(QListViewItem4*);
 	virtual void slotFindDef(const QString&);
-	virtual void slotCopy(QListViewItem*, int);
+	virtual void slotCopy(QListViewItem4*, int);
 	virtual void slotFilter(int);
 	virtual void slotShowAll();
-	virtual void slotRemoveItem(QListViewItem*);
+	virtual void slotRemoveItem(QListViewItem4*);
 };
 }
 
-#endif
+#endif // QUERYVIEW_H

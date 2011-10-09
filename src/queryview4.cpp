@@ -4,11 +4,12 @@
 #include "cscopefrontend4.h"
 #include "queryview4.h"
 // #include "queryresultsmenu.h"
-#include "queryviewdlg.h"
+#include "queryviewdlg4.h"
 // #include "searchresultsdlg.h"
 
 #include <QObject>
 
+namespace kscope4{
 /**
  * Class constructor.
  * @param	pParent	The parent widget
@@ -417,3 +418,5 @@ QString QueryView::Iterator::getText()
 }
 
 // #include "queryview.moc"
+} // namespace kscope4
+// Sun Oct  9 07:54:01 PDT 2011

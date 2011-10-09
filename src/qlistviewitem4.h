@@ -1,5 +1,5 @@
-#ifndef Q_LIST_VIEW4_H
-#define Q_LIST_VIEW4_H
+#ifndef Q_LIST_VIEW_ITEM4_H
+#define Q_LIST_VIEW_ITEM4_H
 
 #include <QObject>
 #include <QListView>

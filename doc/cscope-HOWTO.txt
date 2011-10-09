@@ -1,0 +1,246 @@
+CSCOPE (with vim) HOW TO
+
+Content
+
+1. What is CSCOPE
+2. Download and Install scsope
+3. Use cscope with vim
+3.1 build a project
+3.2 Build the database for cscope
+3.2.1 the simpest method
+3.2.2 the complex method
+3.2.3 Update the cscope database
+4. Use cscope with vim
+4.1 Get help of cscope with vim
+4.2 Connect the cscope database
+4.3 find the definition of function "show"
+4.4 find the functions called by the function "show"
+4.5 find the file test.h above
+4.6 find the functions called the function "show"
+5. Reference & Links
+
+Details
+
+1. What is CSCOPE
+
+As the project homepage says, "Cscope is a developer's tool 
+for browsing source code. It has an impeccable Unix pedigree, 
+having been originally developed at Bell Labs back in the 
+days of the PDP-11...", if u want to know more what it is, 
+browse the homepage: http://cscope.sourceforge.net/
+
+It can be used to find the C symbol,definition,functions 
+called by this function, functions calling this function,the 
+text string,the egrep pattern, the file, and the files 
+#including this file. and also it's very easy to use.
+
+ok, let us start to install and use it.
+
+2. Download and Install scsope
+
+distribution	download&install
+slackware	slapt-get --install cscope
+debian|ubuntu	apt-get install cscope
+.
+
+PS: if cannot find the specific cscope package for your
+ distribution, just download the source code package from
+the cscope homepage : http://cscope.sourceforge.net/
+
+3. Use cscope with vim
+
+I suggest u read these two documents firstly. they are the 
+tutorials from the cscope homepage. if u want to just use 
+cscope quickly. just skip them.
+[1] Using Cscope on large projects (example: the Linux kernel)
+http://cscope.sourceforge.net/large_projects.html
+[2] http://cscope.sourceforge.net/cscope_vim_tutorial.html
+
+As the second tutorial above says, "Cscope support has been 
+built into Vim", so we can use the cscope with vim. but how to
+use it, let us continue.
+
+3.1 build a project
+
+
+>> mkdir test
+>> cd test
+>> vi test.c
+>> vi test.h
+>> more test.c
+
+
+#include <stdio.h>
+#include "test.h"
+
+int main()
+{
+	int i;
+
+	scanf("%d", &i);
+	show(i);
+	return 0;
+}
+
+
+>> more test.h
+
+
+#ifndef FORMAT
+#define FORMAT "%d\n"
+#endif
+
+void show(int i)
+{
+	void print(char *str, int i);
+	print(FORMAT, i);
+}
+
+void print(char *str, int i)
+{
+	printf(str, i);
+}
+
+
+>> make test
+>> ./test
+
+
+3.2 Build the database for cscope
+
+3.2.1 the simpest method
+
+>> cscope -Rbkq
+
+[ -R makes Cscope parse all subdirectories, not just the current directory
+  -b which tells Cscope to just build the database, then exit, otherwise, 
+     it will enter into the cscope comand line.
+  -q causes an additional, 'inverted index' file to be created, 
+     which makes searches run much faster for large databases.    
+  -k sets Cscope's 'kernel' mode--it will not look in /usr/include for any 
+     header files that are #included in your source files]
+
+PS: u will find three new files named cscope.in.out cscope.out cscope.po.out 
+the file cscope.out is the database we need to use.
+
+3.2.2 the complex method
+
+we can select what we want to add to the database for cscope, it is supported
+with the option -i or the default file cscope.files.
+in this method, we can exclude the files not useful, or include the files we 
+have interst on.
+so we can use the command "find" to list the files you have interest on of 
+your
+ project with the absolute path, just like this:
+
+
+>> cd /
+>> find /my/project/dir -name '*.java' >/my/cscope/dir/cscope.files
+
+
+[by default Cscope only parses files with the .c, .h, .y, or .l extensions, so
+we need to add these files have .java extensions to the cscope.files or other 
+files u want if u use the -i option instead]
+
+After create a file including the "interest" files list with their absolute 
+paths, we can use the following command to generate the database cscope.out.
+
+
+>> cscope -bkq
+
+[it will scan the default cscope.files firstly and generate the cscope 
+database,
+if u donot use the defualt file name "cscope.files", u can use -i options
+instead, just like this: " cscope -i filename"]
+
+3.2.3 Update the cscope database
+
+if u have change some files in your project, u can use the "-U" option with 
+the
+first method, and with the second method, u can update the file list in the 
+file
+cscope.files or the filename u defined yourself with the "find" command. and 
+then
+execute "cscope -bkq" command.
+
+4. Use cscope with vim
+
+check your vim version firstly, if it's version 5.0, Perhaps u should download 
+the file cscope_maps.vim from http://cscope.sourceforge.net/cscope_maps.vim
+and add the following line in the file ~/.vimrc: 
+source /path/tocscope_maps.vim
+if the version is 6.0, u can copy the file cscope_maps.vim to ~/.vim/plugin
+and if the version is 7.0, skip the above procedure.
+
+
+>> vi test.c
+
+
+4.1 Get help of cscope with vim
+
+ESC
+:help cs[cope]
+/cs-find		[get the help of find command]
+:q
+
+4.2 Connect the cscope database
+
+:cs[cope] add /path/to/cscope.out
+[* not cvs add, but cs add or cscope add  ^_^
+ * u can execut "export CSCOPE_DB=/path/to/cscope.out" firstly, and try to use
+ ": cs add $CSCOPE_DB" instead of using ":cs[cope] add /path/to/cscope.out".
+] 
+
+4.3 find the definition of function "show"
+
+: cs find g show
+
+[it will open the file "test.h", the cursor direct to the first line of the 
+"show" funciton]
+
+4.4 find the functions called by the function "show"
+
+: cs find d show
+
+[it will list the funcitons called by the funciton "show", just like this
+Cscope tag: show
+   #   line  filename / context / line
+   1      7  test.h <<print>>
+             void print(char *str, int i);
+   2      8  test.h <<print>>
+             print(FORMAT, i);
+]
+
+4.5 find the file test.h above
+
+: cs find f test.h
+[it will open the file test.h]
+
+
+4.6 find the functions called the function "show"
+
+: cs find c show
+
+[it will open the file who have call the function "show", the cursor direct 
+the
+line the function "show" at]
+
+that's all. have a good "trip" with the powerful cscope, if u don't want 
+"grep"
+the string one by one like a snail.
+
+5. Reference & Links
+
+[1] The cscope homepage
+http://cscope.sourceforge.net/
+[2] Using Cscope on large projects (example: the Linux kernel)
+http://cscope.sourceforge.net/large_projects.html
+[3] The Vim/Cscope tutorial
+http://cscope.sourceforge.net/cscope_vim_tutorial.html
+[4] Plugins for cscope
+http://www.vim.org/scripts/script_search_results.php?keywords=cscope&script_type=&order_by=rating&direction=descending&search=search
+[5] Exuberant Ctags     
+http://ctags.sourceforge.net/
+[6] Cbrowser Home Page(is a front end to the popular source code indexing and 
+querying program cscope.)
+http://cbrowser.sourceforge.net/
