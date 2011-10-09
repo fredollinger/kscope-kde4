@@ -10,7 +10,6 @@
  * @author Elad Lahav
 */
 
-namespace kscope4{
 class QueryWidget : public QDockWidget
 {
    Q_OBJECT
@@ -33,7 +32,6 @@ private:
 
      	QDockWidget *resDock;
 };
-} // namespace kscope4
 
 #endif
 // Sun Sep  4 13:51:43 PDT 2011

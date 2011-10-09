@@ -53,7 +53,7 @@ KScope::KScope(QWidget *) :
 
 	// Create all child widgets
 	initMainWindow();
-	// m_pQueryWidget = new QueryWidget(this);
+	m_pQueryWidget = new QueryWidget(this, "Files");
 
 	// createDockWindows();
 

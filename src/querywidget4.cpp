@@ -10,7 +10,6 @@
  * @param	pParent	The parent widget
  * @param	szName	The widget's name
  */
-namespace kscope4{
 QueryWidget::QueryWidget(QWidget* pParent, const char* szName) :
 	QDockWidget(i18n(szName), pParent),
 	m_nQueryPages(0)
@@ -45,5 +44,4 @@ QueryWidget::~QueryWidget()
 {
 }
 
-} // namespace kscope4
 // Sun Oct  9 14:57:45 PDT 2011
