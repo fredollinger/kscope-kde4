@@ -12,8 +12,8 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+grepfrontend.cpp
 qlistviewitem4.cpp
-querywidget4.cpp
 encoder4.cpp
 kdockwidget4.cpp
 tabwidget4.cpp

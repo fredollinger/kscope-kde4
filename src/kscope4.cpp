@@ -924,7 +924,9 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	if (nType == SymbolDlg::Pattern) {
 		// Run the requested query
 		nType = SymbolDlg::getQueryType(nType);
-		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+		qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
+		qDebug() << "KScope::slotQuery()  m_pQueryWidget->initQuery(nType, sSymbol, bCase); \n";
+		// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 		// Ensure Query Window is visible
 		toggleQueryWindow(true);	
