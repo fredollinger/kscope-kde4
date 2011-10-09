@@ -4,7 +4,7 @@
 #include "cscopefrontend4.h"
 #include "queryview4.h"
 // #include "queryresultsmenu.h"
-#include "queryviewdlg4.h"
+// #include "queryviewdlg4.h"
 // #include "searchresultsdlg.h"
 
 #include <QObject>
