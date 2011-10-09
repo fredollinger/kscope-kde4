@@ -54,6 +54,8 @@ KScope::KScope(QWidget *) :
 	// Create all child widgets
 	initMainWindow();
 	m_pQueryWidget = new QueryWidget(this, "Files");
+     	m_pQueryWidget->setAllowedAreas(Qt::RightDockWidgetArea | Qt::RightDockWidgetArea | Qt::BottomDockWidgetArea);
+     	addDockWidget(Qt::BottomDockWidgetArea, m_pQueryWidget);
 
 	// createDockWindows();
 
@@ -925,9 +927,11 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
 		qDebug() << "KScope::slotQuery()  m_pQueryWidget->initQuery(nType, sSymbol, bCase); \n";
 		// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+
+		m_pQueryWidget->show();
 		
 		// Ensure Query Window is visible
-		toggleQueryWindow(true);	
+		// toggleQueryWindow(true);	
 	}
 	else qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
 }

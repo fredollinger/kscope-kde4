@@ -4,6 +4,7 @@
 #include <QDockWidget>
 #include <QListView>
 #include <QObject>
+#include <QTabWidget>
 
 /**
  * A tabbed-window holding Cscope query results pages.
@@ -30,7 +31,9 @@ private:
 	/** The number of query pages currently open. */
 	int m_nQueryPages;
 
-     	QDockWidget *resDock;
+     	// QDockWidget *resDock;
+	QTabWidget *m_pQTabWidget;
+	
 };
 
 #endif
