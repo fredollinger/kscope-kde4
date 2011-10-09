@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'greplayout.ui'
 **
-** Created: Sun Oct 9 13:47:38 2011
+** Created: Sun Oct 9 14:16:02 2011
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -23,7 +23,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Dialog
+class Ui_GrepLayout
 {
 public:
     QWidget *verticalLayoutWidget;
@@ -31,12 +31,12 @@ public:
     QLineEdit *lineEditSearch;
     QPushButton *buttonSearch;
 
-    void setupUi(QDialog *Dialog)
+    void setupUi(QDialog *GrepLayout)
     {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(372, 300);
-        verticalLayoutWidget = new QWidget(Dialog);
+        if (GrepLayout->objectName().isEmpty())
+            GrepLayout->setObjectName(QString::fromUtf8("GrepLayout"));
+        GrepLayout->resize(372, 300);
+        verticalLayoutWidget = new QWidget(GrepLayout);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(100, 60, 291, 151));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
@@ -60,21 +60,21 @@ public:
         verticalLayout->addWidget(buttonSearch);
 
 
-        retranslateUi(Dialog);
+        retranslateUi(GrepLayout);
 
-        QMetaObject::connectSlotsByName(Dialog);
+        QMetaObject::connectSlotsByName(GrepLayout);
     } // setupUi
 
-    void retranslateUi(QDialog *Dialog)
+    void retranslateUi(QDialog *GrepLayout)
     {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", 0, QApplication::UnicodeUTF8));
-        buttonSearch->setText(QApplication::translate("Dialog", "Search", 0, QApplication::UnicodeUTF8));
+        GrepLayout->setWindowTitle(QApplication::translate("GrepLayout", "Dialog", 0, QApplication::UnicodeUTF8));
+        buttonSearch->setText(QApplication::translate("GrepLayout", "Search", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Dialog: public Ui_Dialog {};
+    class GrepLayout: public Ui_GrepLayout {};
 } // namespace Ui
 
 QT_END_NAMESPACE
