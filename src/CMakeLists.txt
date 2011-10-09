@@ -12,6 +12,8 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+encoder4.cpp
+calltreedlg4.cpp
 kdockwidget4.cpp
 tabwidget4.cpp
 progressdlg4.cpp

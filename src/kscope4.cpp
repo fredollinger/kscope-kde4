@@ -98,11 +98,20 @@ void KScope::setupActions()
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
 
 	// BEGIN KACTIONS
+	// BEGIN version control menu
 	KAction* vcsCommit = new KAction(this);
-  	vcsCommit->setText(i18n("commit/submit"));
+  	vcsCommit->setText(i18n("Commit/Submit"));
 	actionCollection()->addAction("vcs_commit", vcsCommit);
 	connect(vcsCommit, SIGNAL(triggered(bool)),
 	this, SLOT(slotCommit()));
+
+	KAction* vcsPush = new KAction(this);
+  	vcsPush->setText(i18n("Push"));
+	actionCollection()->addAction("vcs_push", vcsPush);
+	connect(vcsPush, SIGNAL(triggered(bool)),
+	this, SLOT(slotPush()));
+
+	// END version control menu
 
 	KAction* clearAction = new KAction(this);
   	clearAction->setText(i18n("&Clear"));
@@ -110,6 +119,7 @@ void KScope::setupActions()
 	clearAction->setShortcut(Qt::CTRL + Qt::Key_W);
 	actionCollection()->addAction("clear", clearAction);
 
+	// BEGIN Cscope Menu
 	KAction* cscopeRebuild = new KAction(this);
   	cscopeRebuild->setText(i18n("cscope rebuild"));
 	actionCollection()->addAction("cscope_rebuild", cscopeRebuild);
@@ -121,6 +131,7 @@ void KScope::setupActions()
 	actionCollection()->addAction("cscope_text", cscopeText);
 	connect(cscopeText, SIGNAL(triggered(bool)),
 	this, SLOT(slotQueryPattern()));
+	// END Cscope Menu
 
 	KAction* projectNew = new KAction(this);
   	projectNew->setText(i18n("project_new"));
@@ -635,6 +646,8 @@ void KScope::slotQueryPattern()
 	slotQuery(SymbolDlg::Pattern, true);
 }
 
+#if 0 
+// BEGIN slotQuery WORKS
 /**
  * Promts the user for a symbol, an starts a new Cscope query.
  * @param	nType	The numeric query type code
@@ -671,6 +684,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	// }
 }
 // END slotQuery()
+#endif 
 
 /**
  * Prompts the user for a symbol to query.
@@ -875,9 +889,9 @@ void KScope::slotCommit(){
 	qDebug() << "slotCommit";
 }
 
+// BEGIN createDockWindow()
 void KScope::createDockWindows(){
      resDock = new QDockWidget(i18n("Files"), this);
-     //resDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
      resDock->setAllowedAreas(Qt::RightDockWidgetArea | Qt::RightDockWidgetArea | Qt::BottomDockWidgetArea);
      customerList = new QListWidget(resDock);
      customerList->addItems(QStringList()
@@ -885,17 +899,41 @@ void KScope::createDockWindows(){
              << "main_menu.cpp"
              << "kscope4.cpp");
      resDock->setWidget(customerList);
-     addDockWidget(Qt::RightDockWidgetArea, resDock);
-     // viewMenu->addAction(dock->toggleViewAction());
-	/*
-	m_model = new QStringListModel();
-     	m_list << "a" << "b" << "c";
-     	m_model->setStringList(m_list);
-	listView->setModel(m_model);
-	*/
+     addDockWidget(Qt::BottomDockWidgetArea, resDock);
+}
+// END createDockWindow()
+
+/**
+ * Promts the user for a symbol, an starts a new Cscope query.
+ * @param	nType	The numeric query type code
+ * @param	bPrompt	true to always prompt for a symbol, false to try to
+ * 					obtain the symbol automatically
+ */
+void KScope::slotQuery(uint nType, bool bPrompt)
+{
+	QString sSymbol;
+	CallTreeDlg* pCallTreeDlg;
+	bool bCase;
+	
+	// Get the requested symbol and query type
+	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
+		return;
+		
+	if (nType == SymbolDlg::CallTree) {
+		// Create and display a call tree dialogue
+		pCallTreeDlg = m_pCallTreeMgr->addDialog();
+		pCallTreeDlg->setRoot(sSymbol);
+		pCallTreeDlg->show();
+	}
+	else {
+		// Run the requested query
+		nType = SymbolDlg::getQueryType(nType);
+		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+		
+		// Ensure Query Window is visible
+		toggleQueryWindow(true);	
+	}
 }
 
-} // namespace kscope4
-
-
 // Sat Oct  8 12:57:15 PDT 2011
+} // namespace kscope4

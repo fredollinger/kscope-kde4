@@ -10,6 +10,7 @@
 
 	<Menu name="vcs"><text>&amp;VCS</text>
 		<Action name="vcs_commit"/>
+		<Action name="vcs_push"/>
 	</Menu>
 
 	<Menu name="cscope"><text>&amp;Cscope</text>
