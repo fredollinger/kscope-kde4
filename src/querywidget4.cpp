@@ -17,6 +17,8 @@ QueryWidget::QueryWidget(QWidget* pParent, const char* szName) :
 {
 
 	m_pQTabWidget = new QTabWidget();
+
+	setWidget(m_pQTabWidget);
 	//resDock = new QDockWidget(i18n("Files"), this);
 
 	/*
