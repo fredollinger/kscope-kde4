@@ -7,38 +7,40 @@
 
 namespace kscope4{
 
-///home/follinge/projects/kscope-kde4/src/build/../queryview4.h :28:68: error: no matching function for call to ‘kscope4::QListViewItem::QListViewItem(QListView*&, kscope4::QListViewItem*&)’
-QListViewItem::QListViewItem(QListView * parent) 
+///home/follinge/projects/kscope-kde4/src/build/../queryview4.h :28:68: error: no matching function for call to ‘kscope4::QListViewItem4::QListViewItem4(QListView*&, kscope4::QListViewItem4*&)’
+QListViewItem4::QListViewItem4(QListView * parent) 
 {
-	qDebug() <<"QListViewItem::QListViewItem() FIXME\n";
+	qDebug() <<"QListViewItem4::QListViewItem4() FIXME\n";
 }
 
-QListViewItem::QListViewItem(QListViewItem *f, QListViewItem *l){
+QListViewItem4::QListViewItem4(QListViewItem4 *f, QListViewItem4 *l){
 }
 
-QListViewItem::QListViewItem(QListView *v, QListViewItem *l){
+QListViewItem4::QListViewItem4(QListView *v, QListViewItem4 *l){
 }
-
-int QListViewItem::compare(QListViewItem *i, int col, bool){
-	qDebug() <<"QListViewItem::compare() FIXME\n";
-	return 0;
-} 
 
 /*
-QListViewItem::QListViewItem( QListView *parent, QListViewItem *after) : QStringList()
+int QListViewItem4::compare(QListViewItem4 *i, int col, bool){
+	qDebug() <<"QListViewItem4::compare() FIXME\n";
+	return 0;
+} 
+*/
+
+/*
+QListViewItem4::QListViewItem4( QListView *parent, QListViewItem4 *after) : QStringList()
 {
-	qDebug() <<"QListViewItem::QListViewItem() FIXME\n";
+	qDebug() <<"QListViewItem4::QListViewItem4() FIXME\n";
 }
 
-QListViewItem::QListViewItem( QListViewItem *parent, QListViewItem *after) : QStringList()
+QListViewItem4::QListViewItem4( QListViewItem4 *parent, QListViewItem4 *after) : QStringList()
 {
-	qDebug() <<"QListViewItem::QListViewItem() FIXME\n";
+	qDebug() <<"QListViewItem4::QListViewItem4() FIXME\n";
 }
 */
 
 /**
  */
-QListViewItem::~QListViewItem()
+QListViewItem4::~QListViewItem4()
 {
 	// close();
 }

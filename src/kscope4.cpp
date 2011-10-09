@@ -911,21 +911,17 @@ void KScope::createDockWindows(){
  */
 void KScope::slotQuery(uint nType, bool bPrompt)
 {
+
+	// slotQuery(SymbolDlg::Pattern, true);
 	QString sSymbol;
-	CallTreeDlg* pCallTreeDlg;
+	// CallTreeDlg* pCallTreeDlg;
 	bool bCase;
 	
 	// Get the requested symbol and query type
 	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
 		return;
-		
-	if (nType == SymbolDlg::CallTree) {
-		// Create and display a call tree dialogue
-		pCallTreeDlg = m_pCallTreeMgr->addDialog();
-		pCallTreeDlg->setRoot(sSymbol);
-		pCallTreeDlg->show();
-	}
-	else {
+
+	if (nType == SymbolDlg::Pattern) {
 		// Run the requested query
 		nType = SymbolDlg::getQueryType(nType);
 		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
@@ -933,7 +929,9 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		// Ensure Query Window is visible
 		toggleQueryWindow(true);	
 	}
+	else qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
 }
 
-// Sat Oct  8 12:57:15 PDT 2011
+
 } // namespace kscope4
+// Sun Oct  9 07:35:27 PDT 2011

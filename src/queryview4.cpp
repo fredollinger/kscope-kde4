@@ -1,11 +1,11 @@
 #include <qapplication.h>
 #include <qclipboard.h>
 #include <klocale.h>
+#include "cscopefrontend4.h"
 #include "queryview4.h"
-#include "queryresultsmenu.h"
+// #include "queryresultsmenu.h"
 #include "queryviewdlg.h"
-#include "cscopefrontend.h"
-#include "searchresultsdlg.h"
+// #include "searchresultsdlg.h"
 
 #include <QObject>
 

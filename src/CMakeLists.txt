@@ -12,8 +12,10 @@ newprojectlayout4.ui
 
 
 set(kscope_SRCS
+qlistviewitem4.cpp
+querypage4.cpp
+querywidget4.cpp
 encoder4.cpp
-calltreedlg4.cpp
 kdockwidget4.cpp
 tabwidget4.cpp
 progressdlg4.cpp

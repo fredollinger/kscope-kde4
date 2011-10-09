@@ -7,6 +7,8 @@
 #include <QWidget>
 #include <QObject>
 
+#include "qlistviewitem4.h"
+
 namespace kscope4{
 class QueryResultsMenu;
 
@@ -27,7 +29,7 @@ public:
  * @author Elad Lahav
  */
 // class QueryViewItem : public QListViewItem
-class QueryViewItem : public QListViewItem
+class QueryViewItem : public QListViewItem4
 {
 	Q_OBJECT
 public:
