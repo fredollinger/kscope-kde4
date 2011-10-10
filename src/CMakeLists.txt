@@ -13,6 +13,7 @@ newprojectlayout4.ui
 
 set(kscope_SRCS
 querywidget4.cpp
+querypagebase4.cpp
 grepdlg.cpp
 grepfrontend.cpp
 qlistviewitem4.cpp
