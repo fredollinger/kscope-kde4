@@ -1,6 +1,8 @@
 #ifndef SYMBOLDLG_H
 #define SYMBOLDLG_H
 
+#include <QDialog>
+
 #include <qregexp.h>
 #include "symbollayout4.h"
 #include "cscopefrontend4.h"
@@ -14,7 +16,8 @@
  * @author Elad Lahav
  */
  
-class SymbolDlg : public QDialog, public Ui::SymbolLayout
+class SymbolDlg : public QDialog//, public Ui::SymbolLayout
+//class SymbolDlg : QObject
 {
 	Q_OBJECT
 
@@ -33,6 +36,7 @@ public:
 	bool getCase() const;
 	
 	static QString promptSymbol(QWidget*, uint&, const QString&, bool&);
+	static QString promptTest(QWidget*);
 	static uint getQueryType(uint);
 	static void resetHistory() { s_slHistory.clear(); }
 	
@@ -50,14 +54,14 @@ private:
 	
 	static QStringList s_slHistory;
 	
-/*
 private slots:
+	void slotTypeChanged(int);
+/*
 	void slotHintClicked();
 	void slotHintDataReady(FrontendToken*);
 	void slotHintOptionChanged(bool);
 	void slotHintProgress(int, int);
 	void slotHintFinished(uint);
-	void slotTypeChanged(int);
 */
 };
 

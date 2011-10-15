@@ -701,6 +701,8 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 {
 	EditorPage* pPage;
 	QString sSuggested;
+
+	qDebug() << "getSymbol() \n";
 	
 	// Set the currently selected text, if any
 	// if ((pPage = m_pEditTabs->getCurrentPage()) != NULL)
@@ -713,7 +715,15 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	}
 	
 	// Show the symbol dialogue
-	sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
+	// sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
+	// SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
+	// SymbolDlg::promptTest(this);
+
+	SymbolDlg dlg(this);
+
+	qDebug() << "coming back from promptSymbol() \n";
+
+	return true;
 
 	// Cannot accept empty strings
 	if (sSymbol.isEmpty())

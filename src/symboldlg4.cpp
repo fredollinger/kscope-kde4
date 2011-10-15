@@ -7,9 +7,11 @@
 #include <kcombobox.h>
 #include <klocale.h>
 
-#include "symboldlg4.h"
 #include "cscopefrontend4.h"
 #include "kscopeconfig4.h"
+#include "symboldlg4.h"
+#include "symbollayout4.h"
+
 #include "qdebug.h"
 
 QStringList SymbolDlg::s_slHistory;
@@ -19,10 +21,10 @@ QStringList SymbolDlg::s_slHistory;
  * @param	pParent	Parent widget
  * @param	szName	This widget's name
  */
-SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) : 
-	//Ui::SymbolLayout(pParent, szName, true, 0),
-	Ui::SymbolLayout() 
+SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) // : 
+	// Ui::SymbolLayout() 
 {
+	qDebug() << "SymbolDlg() constructor \n";
 	/*
 	// Create a persistent Cscope process
 	m_pCscope = new CscopeFrontend();
@@ -78,10 +80,28 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) :
  */
 SymbolDlg::~SymbolDlg()
 {
-	delete m_pCscope;
+	// delete m_pCscope;
+}
+
+/**
+ * Displays the requested type of query in the type combo-box.
+ * @param	nType	The requested type
+ */
+void SymbolDlg::setType(uint nType)
+{
+	// m_pTypeCombo->setCurrentIndex(nType);
+	slotTypeChanged(nType);
 }
 
 
+QString SymbolDlg::promptTest(QWidget* pParent)
+{
+	QString fakeString;
+	qDebug() << "symboldld.c: promptTest BEGIN \n";
+	SymbolDlg dlg(pParent);
+	qDebug() << "symboldld.c: promptSymbol END \n";
+	return fakeString;
+}
 /**
  * A convinience static function for creating and showing SymbolDlg dialogue.
  * @param	pParent		The parent widget
@@ -94,12 +114,20 @@ SymbolDlg::~SymbolDlg()
 QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType, 
 	const QString& sSymbol, bool& bCase)
 {
+
+	QString fakeString;
+
 	qDebug() << "symboldld.c: promptSymbol NOT DONE \n";
 	SymbolDlg dlg(pParent);
+	qDebug() << "symboldld.c: promptSymbol makde dlg \n";
+	return fakeString;
 	
+
+	// get rid of this
 	// Initialise the dialogue
-	/*
 	dlg.setType(nType);
+
+	/*
 	dlg.setHistory(s_slHistory);
 	dlg.setSymbol(sSymbol);
 	
@@ -147,6 +175,21 @@ uint SymbolDlg::getQueryType(uint nType)
 		return nType;
 		
 	return nType + 1;
+}
+
+/**
+ * Enables/disables the hint button, based on the newly selected type.
+ * This slot is connected to the activated() signal of the type combo-box.
+ * @param	nType	The newly selected type
+ */
+void SymbolDlg::slotTypeChanged(int nType)
+{
+	#if 0
+	if (nType == FileName || nType == Including)
+		// m_pHintButton->setEnabled(false);
+	else
+		// m_pHintButton->setEnabled(true);
+	#endif
 }
 
 // #include "symboldlg.moc"
