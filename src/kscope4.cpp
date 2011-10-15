@@ -715,15 +715,7 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	}
 	
 	// Show the symbol dialogue
-	// sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
-	// SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
-	// SymbolDlg::promptTest(this);
-
-	SymbolDlg dlg(this);
-
-	qDebug() << "coming back from promptSymbol() \n";
-
-	return true;
+	sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
 
 	// Cannot accept empty strings
 	if (sSymbol.isEmpty())

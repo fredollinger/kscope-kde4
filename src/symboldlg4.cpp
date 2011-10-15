@@ -21,13 +21,17 @@ QStringList SymbolDlg::s_slHistory;
  * @param	pParent	Parent widget
  * @param	szName	This widget's name
  */
-SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) // : 
-	// Ui::SymbolLayout() 
+SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) : 
+	 Ui::SymbolLayout() 
 {
 	qDebug() << "SymbolDlg() constructor \n";
-	/*
 	// Create a persistent Cscope process
 	m_pCscope = new CscopeFrontend();
+
+	// Must do this _before_ we connect signals and slots
+	setupUi(this);
+	/*
+
 	
 	// Initialise the hint list (hidden by default)
 	m_pHintList->addColumn(i18n("Suggested Symbols"));
@@ -80,7 +84,7 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) // :
  */
 SymbolDlg::~SymbolDlg()
 {
-	// delete m_pCscope;
+	delete m_pCscope;
 }
 
 /**
@@ -94,14 +98,6 @@ void SymbolDlg::setType(uint nType)
 }
 
 
-QString SymbolDlg::promptTest(QWidget* pParent)
-{
-	QString fakeString;
-	qDebug() << "symboldld.c: promptTest BEGIN \n";
-	SymbolDlg dlg(pParent);
-	qDebug() << "symboldld.c: promptSymbol END \n";
-	return fakeString;
-}
 /**
  * A convinience static function for creating and showing SymbolDlg dialogue.
  * @param	pParent		The parent widget
@@ -115,26 +111,23 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 	const QString& sSymbol, bool& bCase)
 {
 
-	QString fakeString;
-
 	qDebug() << "symboldld.c: promptSymbol NOT DONE \n";
 	SymbolDlg dlg(pParent);
-	qDebug() << "symboldld.c: promptSymbol makde dlg \n";
-	return fakeString;
-	
 
-	// get rid of this
 	// Initialise the dialogue
 	dlg.setType(nType);
 
 	/*
 	dlg.setHistory(s_slHistory);
+	*/
 	dlg.setSymbol(sSymbol);
 	
+	dlg.show();
 	// Display the dialogue
 	if (dlg.exec() != QDialog::Accepted)
 		return "";
 	
+	/*
 	// Return the text entered by the user
 	nType = dlg.getType();
 	bCase = dlg.getCase();
@@ -192,5 +185,21 @@ void SymbolDlg::slotTypeChanged(int nType)
 	#endif
 }
 
-// #include "symboldlg.moc"
-// Sat Sep  3 18:43:35 PDT 2011
+/**
+ * @param	sSymbol	The initial text of the combo-box
+ */
+void SymbolDlg::setSymbol(const QString& sSymbol)
+{
+	// m_pSymbolHC->setCurrentText(sSymbol);
+}
+
+/**
+ * @param	slSymHistory	A list of previously queried symbols
+ */
+void SymbolDlg::setHistory(QStringList& slSymHistory)
+{
+	// m_pSymbolHC->setHistoryItems(slSymHistory);
+}
+
+// Sat Oct 15 14:49:45 PDT 2011
+

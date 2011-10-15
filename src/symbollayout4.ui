@@ -110,14 +110,14 @@
         </widget>
        </item>
        <item>
-        <widget class="KHistoryCombo" name="m_pSymbolHC" native="true">
+        <widget class="KHistoryComboBox" name="m_pSymbolHC">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="duplicatesEnabled" stdset="0">
+         <property name="duplicatesEnabled">
           <bool>false</bool>
          </property>
         </widget>
@@ -195,7 +195,7 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3ListView" name="m_pHintList"/>
+    <widget class="QTableView" name="m_pHintList"/>
    </item>
    <item>
     <widget class="Q3ButtonGroup" name="m_pHintGroup">
@@ -226,15 +226,19 @@
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>KComboBox</class>
+   <extends>QComboBox</extends>
+   <header>kcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KHistoryComboBox</class>
+   <extends>KComboBox</extends>
+   <header>khistorycombobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>Q3GroupBox</class>
    <extends>QGroupBox</extends>
    <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends>QFrame</extends>
-   <header>Qt3Support/Q3Frame</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -242,16 +246,6 @@
    <extends>Q3GroupBox</extends>
    <header>Qt3Support/Q3ButtonGroup</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Q3ListView</class>
-   <extends>Q3Frame</extends>
-   <header>q3listview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KHistoryCombo</class>
-   <extends>QWidget</extends>
-   <header>khistorycombo.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

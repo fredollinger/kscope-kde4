@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'symbollayout4.ui'
 **
-** Created: Sun Aug 28 14:03:35 2011
+** Created: Sat Oct 15 16:21:13 2011
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -11,9 +11,7 @@
 #define UI_SYMBOLLAYOUT4_H
 
 #include <Qt3Support/Q3ButtonGroup>
-#include <Qt3Support/Q3Frame>
 #include <Qt3Support/Q3GroupBox>
-#include <Qt3Support/Q3Header>
 #include <Qt3Support/Q3MimeSourceFactory>
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -29,9 +27,10 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
 #include <QtGui/QSpacerItem>
+#include <QtGui/QTableView>
 #include <QtGui/QVBoxLayout>
 #include "kcombobox.h"
-// #include "khistorycombo.h"
+#include "khistorycombobox.h"
 #include "klineedit.h"
 
 QT_BEGIN_NAMESPACE
@@ -46,6 +45,7 @@ public:
     QLabel *textLabel2;
     QVBoxLayout *vboxLayout2;
     QComboBox *m_pTypeCombo;
+    KHistoryComboBox *m_pSymbolHC;
     QCheckBox *m_pSubStringCheck;
     QCheckBox *m_pCaseCheck;
     QFrame *line2;
@@ -54,6 +54,7 @@ public:
     QPushButton *m_pOKButton;
     QPushButton *m_pHintButton;
     QPushButton *m_pCancelButton;
+    QTableView *m_pHintList;
     Q3ButtonGroup *m_pHintGroup;
     QVBoxLayout *vboxLayout3;
     QRadioButton *m_pBeginWithRadio;
@@ -109,6 +110,15 @@ public:
 
         vboxLayout2->addWidget(m_pTypeCombo);
 
+        m_pSymbolHC = new KHistoryComboBox(SymbolLayout);
+        m_pSymbolHC->setObjectName(QString::fromUtf8("m_pSymbolHC"));
+        sizePolicy1.setHeightForWidth(m_pSymbolHC->sizePolicy().hasHeightForWidth());
+        m_pSymbolHC->setSizePolicy(sizePolicy1);
+        m_pSymbolHC->setDuplicatesEnabled(false);
+
+        vboxLayout2->addWidget(m_pSymbolHC);
+
+
         hboxLayout->addLayout(vboxLayout2);
 
 
@@ -156,9 +166,10 @@ public:
 
         vboxLayout->addLayout(hboxLayout1);
 
-        // m_pHintList->setObjectName(QString::fromUtf8("m_pHintList"));
+        m_pHintList = new QTableView(SymbolLayout);
+        m_pHintList->setObjectName(QString::fromUtf8("m_pHintList"));
 
-        // vboxLayout->addWidget(m_pHintList);
+        vboxLayout->addWidget(m_pHintList);
 
         m_pHintGroup = new Q3ButtonGroup(SymbolLayout);
         m_pHintGroup->setObjectName(QString::fromUtf8("m_pHintGroup"));
@@ -184,12 +195,13 @@ public:
 
         vboxLayout->addWidget(m_pHintGroup);
 
+        QWidget::setTabOrder(m_pSymbolHC, m_pTypeCombo);
         QWidget::setTabOrder(m_pTypeCombo, m_pSubStringCheck);
         QWidget::setTabOrder(m_pSubStringCheck, m_pOKButton);
         QWidget::setTabOrder(m_pOKButton, m_pHintButton);
         QWidget::setTabOrder(m_pHintButton, m_pCancelButton);
-        // QWidget::setTabOrder(m_pCancelButton, m_pHintList);
-        // QWidget::setTabOrder(m_pHintList, m_pBeginWithRadio);
+        QWidget::setTabOrder(m_pCancelButton, m_pHintList);
+        QWidget::setTabOrder(m_pHintList, m_pBeginWithRadio);
         QWidget::setTabOrder(m_pBeginWithRadio, m_pContainRadio);
 
         retranslateUi(SymbolLayout);

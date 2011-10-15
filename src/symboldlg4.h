@@ -16,8 +16,7 @@
  * @author Elad Lahav
  */
  
-class SymbolDlg : public QDialog//, public Ui::SymbolLayout
-//class SymbolDlg : QObject
+class SymbolDlg : public QDialog, public Ui::SymbolLayout
 {
 	Q_OBJECT
 
@@ -30,7 +29,7 @@ public:
 	
 	void setType(uint);
 	void setSymbol(const QString&);
-	// void setHistory(QStringList&);
+	void setHistory(QStringList&);
 	QString getSymbol() const;
 	uint getType() const;
 	bool getCase() const;
