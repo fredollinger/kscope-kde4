@@ -30,6 +30,7 @@
 #include "symbolcompletion4.h"
 #include "symboldlg4.h"
 #include "querywidget4.h"
+#include "vcsCommitDlg.h"
 
 #include <qdebug.h>
 
@@ -56,8 +57,6 @@ KScope::KScope(QWidget *) :
 	m_pQueryWidget = new QueryWidget(this, "Files");
      	m_pQueryWidget->setAllowedAreas(Qt::RightDockWidgetArea | Qt::RightDockWidgetArea | Qt::BottomDockWidgetArea);
      	addDockWidget(Qt::BottomDockWidgetArea, m_pQueryWidget);
-
-	// createDockWindows();
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
@@ -188,6 +187,8 @@ void KScope::initMainWindow()
 {
 	KDockWidget* pMainDock;
 	KStatusBar* pStatus;
+
+	m_pVcsCommit = new vcsCommitDlg();
 
 	// Create the status bar
 	pStatus = statusBar();
@@ -887,6 +888,7 @@ void KScope::toggleQueryWindow(bool bShow)
 
 void KScope::slotCommit(){
 	qDebug() << "slotCommit";
+	m_pVcsCommit->exec();
 }
 
 #if 0

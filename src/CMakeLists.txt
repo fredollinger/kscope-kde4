@@ -8,10 +8,12 @@ kde4_add_ui_files(kscope_SRCS
 preffrontendlayout4.ui
 autocompletionlayout4.ui
 newprojectlayout4.ui
+vcsCommitLayout.ui
 )
 
 
 set(kscope_SRCS
+vcsCommitDlg.cpp
 querywidget4.cpp
 querypagebase4.cpp
 grepdlg.cpp

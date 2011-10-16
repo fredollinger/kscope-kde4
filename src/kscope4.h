@@ -16,6 +16,7 @@
 #include "projectmanager4.h"
 #include "fileview4.h"
 #include "progressdlg4.h"
+#include "vcsCommitDlg.h"
 
 // class ProjectManager;
 class EditorTabs;
@@ -78,6 +79,8 @@ private:
 	QStringList m_list;
 	QStringListModel *m_model;
 	*/
+
+	vcsCommitDlg *m_pVcsCommit;
 
 	QListWidget *customerList;
 	/**
