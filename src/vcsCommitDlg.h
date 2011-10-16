@@ -14,10 +14,11 @@ public:
 	vcsCommitDlg(QWidget* pParent = 0, const char* szName = 0);
 	~vcsCommitDlg();
 	
-// private:
-	
-// private slots:
+private:
 
+private slots:
+	void slotCommit(void);
+	
 };
 } // namespace kscope4
 #endif
