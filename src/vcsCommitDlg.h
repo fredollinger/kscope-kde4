@@ -16,7 +16,7 @@ public:
 	~vcsCommitDlg();
 	
 private:
-	vcsFrontEnd *m_pVcsProcess;
+	vcsFrontEnd *m_pVcs;
 
 private slots:
 	void slotCommit(void);

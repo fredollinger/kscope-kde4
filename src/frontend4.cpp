@@ -86,7 +86,7 @@ bool Frontend::run(const QString& sName, const QStringList& slArgs,
 {
 	qDebug() << "BEGIN Frontend::run \n";
 	qDebug() << sName;
-	qDebug() << "\n";
+	qDebug() << slArgs;
 	// Cannot start if another controlled process is currently running
 	/*
 	if (isRunning()) {

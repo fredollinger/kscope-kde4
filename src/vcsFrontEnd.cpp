@@ -29,17 +29,18 @@ vcsFrontEnd::~vcsFrontEnd()
 }
 
 bool vcsFrontEnd::commit(QString msg){
-	qDebug() << "commit\n";
-
 	QStringList slCmdLine;
+
+	QString fmsg = "\""; //msg which is fixed with quotes
+	fmsg.append(msg);
+	fmsg.append("\"");
 
 	QString s_sProjPath = "."; // FIXME: put in project path
 
 	slCmdLine << "-a";
 
-	slCmdLine << "-m '"; 
-	slCmdLine << msg;
-	slCmdLine << "'";
+	slCmdLine << "-m"; 
+	slCmdLine << fmsg;
 
 	// FIXME:Branch based upon command, that is p4, etc
 		
@@ -51,7 +52,9 @@ bool vcsFrontEnd::commit(QString msg){
 	return true;
 }
 
+
 /**
+ * FIXME: NOW THIS IS ONLY A STUB TO SHUT UP COMPILER!
  * Parses the output of a vcs process.
  * Implements a state machine, where states correspond to the output of the
  * controlled vcs process.
