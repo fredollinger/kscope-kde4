@@ -31,7 +31,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+     <widget class="QPlainTextEdit" name="textCommitMsg"/>
     </item>
     <item>
      <widget class="QDialogButtonBox" name="buttonBox">

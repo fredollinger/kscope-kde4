@@ -27,9 +27,12 @@ class vcsFrontEnd : public Frontend
 	Q_OBJECT
 
 public:
-	vcsFrontEnd(bool bAutoDelete = false);
+	vcsFrontEnd();
 	~vcsFrontEnd();
 	bool commit(QString); // also called submit in the p4 world
+
+protected:
+	virtual ParseResult parseStdout(QString&, ParserDelim);
 private:
 	/** The current state of the parser state machine. */
 	VcsState m_state;

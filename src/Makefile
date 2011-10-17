@@ -1,3 +1,15 @@
+UI=uic-qt4
+UI_HEADERS=autocompletionlayout4.h \
+calltreelayout4.h \
+cscopemsglayout.h \
+fileviewlayout4.h \
+fileviewlayout.h \
+greplayout.h \
+newprojectlayout4.h \
+openprojectlayout4.h \
+symbollayout4.h \
+vcsCommitLayout.h
+
 all:
 	mkdir -p build
 	cd build && make 2>err
@@ -8,6 +20,9 @@ err:
 	vim build/err
 clean:
 	cd build && make clean
+dist-clean:
+	rm $(UI_HEADERS)
+
 build/kscope:
 	make all
 install: build/kscope
@@ -16,3 +31,9 @@ install: build/kscope
 test:
 	su -c "make install"
 	/usr/local/bin/kscope main.cpp
+
+vcsCommitLayout.h:
+	$(UI) vcsCommitLayout.ui > vcsCommitLayout.h
+		
+
+# Sun Oct 16 18:44:17 PDT 2011

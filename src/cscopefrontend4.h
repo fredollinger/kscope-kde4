@@ -70,6 +70,7 @@ protected:
 	virtual void finalize();
 
 private:
+
 	/**
 	 * The possible states of the parser state machine.
 	 */

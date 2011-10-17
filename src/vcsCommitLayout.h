@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'vcsCommitLayout.ui'
 **
-** Created: Sat Oct 15 17:27:15 2011
+** Created: Sun Oct 16 18:51:32 2011
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,7 +30,7 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QPlainTextEdit *plainTextEdit;
+    QPlainTextEdit *textCommitMsg;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *vcsCommitLayout)
@@ -49,10 +49,10 @@ public:
 
         verticalLayout->addWidget(label);
 
-        plainTextEdit = new QPlainTextEdit(verticalLayoutWidget);
-        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        textCommitMsg = new QPlainTextEdit(verticalLayoutWidget);
+        textCommitMsg->setObjectName(QString::fromUtf8("textCommitMsg"));
 
-        verticalLayout->addWidget(plainTextEdit);
+        verticalLayout->addWidget(textCommitMsg);
 
         buttonBox = new QDialogButtonBox(verticalLayoutWidget);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));

@@ -16,8 +16,8 @@
 #include "vcsFrontEnd.h"
 
 namespace kscope4{
-vcsFrontEnd::vcsFrontEnd(bool bAutoDelete) : 
-	Frontend(CSCOPE_RECORD_SIZE, bAutoDelete),
+vcsFrontEnd::vcsFrontEnd() : 
+	Frontend(CSCOPE_RECORD_SIZE, false),
 	m_state(vcsUnknown),
 	m_sErrMsg(""),
 	m_bRebuildOnExit(false)
@@ -49,6 +49,24 @@ bool vcsFrontEnd::commit(QString msg){
 
 	// FIXME: we need to return false if command fails...
 	return true;
+}
+
+/**
+ * Parses the output of a vcs process.
+ * Implements a state machine, where states correspond to the output of the
+ * controlled vcs process.
+ * @param	sToken	The current token read (the token delimiter is determined
+ *					by the current state)
+ * @return	A value indicating the way this token should be treated: dropped,
+ *			added to the token queue, or finishes a new record
+ */
+Frontend::ParseResult vcsFrontEnd::parseStdout(QString& sToken,
+	ParserDelim /* ignored */)
+{
+	int nFiles, nTotal, nRecords;
+	ParseResult result = DiscardToken;
+	
+	return result;
 }
 
 } // namespace kscope4

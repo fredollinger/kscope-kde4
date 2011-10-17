@@ -4,6 +4,7 @@
 #include <QDialog>
 
 #include "vcsCommitLayout.h"
+#include "vcsFrontEnd.h"
  
 namespace kscope4{
 class vcsCommitDlg : public QDialog, public Ui::vcsCommitLayout
@@ -15,6 +16,7 @@ public:
 	~vcsCommitDlg();
 	
 private:
+	vcsFrontEnd *m_pVcsProcess;
 
 private slots:
 	void slotCommit(void);
