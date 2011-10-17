@@ -1,3 +1,13 @@
+
+/*
+ * Copyright (C) 2011 Fred Ollinger (follinge@gmail.com)
+ *
+ * Frontend to the version control systems.
+ * The name of each function is from git, but we run analogous commands for other systems.
+ * For example, commit() called "submit" for p4 as there's no "p4 commit".
+ *
+ */
+
 #ifndef VCS_FRONT_END_H
 #define VCS_FRONT_END_H
 
@@ -19,6 +29,7 @@ class vcsFrontEnd : public Frontend
 public:
 	vcsFrontEnd(bool bAutoDelete = false);
 	~vcsFrontEnd();
+	bool commit(QString); // also called submit in the p4 world
 private:
 	/** The current state of the parser state machine. */
 	VcsState m_state;
