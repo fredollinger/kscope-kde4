@@ -16,6 +16,7 @@ QueryWidget::QueryWidget(QWidget* pParent, const char* szName) :
 	m_nQueryPages(0)
 {
 
+	setObjectName("qwFiles");
 	m_pQTabWidget = new QTabWidget();
 
 	setWidget(m_pQTabWidget);

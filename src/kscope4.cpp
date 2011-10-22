@@ -31,6 +31,7 @@
 #include "symboldlg4.h"
 #include "querywidget4.h"
 #include "vcsCommitDlg.h"
+#include "vcsFrontEnd.h"
 
 #include <qdebug.h>
 
@@ -63,8 +64,8 @@ KScope::KScope(QWidget *) :
 	// m_pEditMgr = new EditorManager(this);
 	// m_pCallTreeMgr = new CallTreeManager(this);
 	m_pFileView = new FileView(this);
-
-
+	m_pVcs = new vcsFrontEnd();
+	
 	// BEGIN STUFF FROM KSCOPE
 	// Connect menu and toolbar items with the object's slots
 	// m_pActions = new KScopeActions(this);
@@ -889,6 +890,12 @@ void KScope::toggleQueryWindow(bool bShow)
 void KScope::slotCommit(){
 	qDebug() << "slotCommit";
 	m_pVcsCommit->exec();
+}
+
+void KScope::slotPush(){
+	qDebug() << "slotPush";
+	m_pVcs->push(); 
+	// m_pVcsPush->exec();
 }
 
 #if 0

@@ -30,10 +30,12 @@ public:
 	vcsFrontEnd();
 	~vcsFrontEnd();
 	bool commit(QString); // also called submit in the p4 world
+	bool push(); // send files to server (no p4 equivalent)
 
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
 private:
+	bool slotPushDone(uint i);
 	/** The current state of the parser state machine. */
 	VcsState m_state;
 

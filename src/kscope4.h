@@ -73,6 +73,8 @@ public:
 	void openFileNamed(QString);
 
 private:
+	vcsFrontEnd *m_pVcs;
+
      	// QDockWidget *resDock;
 	/*
     	QListView *listView;
@@ -166,6 +168,7 @@ private slots:
 	// BEGIN Version Control Actions
 	// move this stuff to it's own vcs class someday
 	void slotCommit(void);	
+	void slotPush(void);	
 	// END Version Control Actions
 
 	void openFile(void);

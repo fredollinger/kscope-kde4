@@ -28,6 +28,31 @@ vcsFrontEnd::~vcsFrontEnd()
 {
 }
 
+bool vcsFrontEnd::push(){
+	qDebug ()<< "vcsFrontEnd::push()";
+
+	QStringList slCmdLine;
+	QString s_sProjPath = "."; // FIXME: put in project path
+	//slCmdLine << "push"; 
+
+	connect(this, SIGNAL(finished(uint)), this,
+		SLOT(slotPushDone(uint)));
+
+	Frontend::run("ls", slCmdLine, s_sProjPath);
+	return true;
+}
+
+bool vcsFrontEnd::slotPushDone(uint i){
+	qDebug ()<< "vcsFrontEnd::slotPushDone()";
+	// FIXME: Disconnect slot
+	return true;
+}
+
+/* Writes a commit message. Whether things get pushed to mother ship depend up on the 
+ * type of vcs. For example, p4 pushes things automatically while git does not.
+ * We may want to make this changable by a flag or even just push everything upon commit.
+ * Not sure yet.
+ */
 bool vcsFrontEnd::commit(QString msg){
 	QStringList slCmdLine;
 
@@ -73,4 +98,4 @@ Frontend::ParseResult vcsFrontEnd::parseStdout(QString& sToken,
 }
 
 } // namespace kscope4
-// Sun Oct 16 18:07:49 PDT 2011
+// Sat Oct 22 13:39:30 PDT 2011
