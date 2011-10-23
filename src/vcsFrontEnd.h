@@ -35,7 +35,6 @@ public:
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
 private:
-	bool slotPushDone(uint i);
 	/** The current state of the parser state machine. */
 	VcsState m_state;
 
@@ -58,6 +57,9 @@ private:
 	
 	/** The command line arguments supported by this version of Grep. */
 	static uint s_nSupArgs;
+
+private slots:
+	bool slotPushDone(uint i);
 };
 
 } // namespace kscope4
