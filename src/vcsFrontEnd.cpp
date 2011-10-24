@@ -31,6 +31,8 @@ vcsFrontEnd::~vcsFrontEnd()
 bool vcsFrontEnd::push(){
 	qDebug ()<< "vcsFrontEnd::push()";
 
+	setOutputChannelMode(KProcess::MergedChannels);
+
 	QStringList slCmdLine;
 	QString s_sProjPath = "."; // FIXME: put in project path
 	//slCmdLine << "push"; 
@@ -39,12 +41,48 @@ bool vcsFrontEnd::push(){
 		SLOT(slotPushDone(uint)));
 
 	Frontend::run("ls", slCmdLine, s_sProjPath);
+
+	waitForFinished();
+
+	qDebug ()<< "vcsFrontEnd::done()";
 	return true;
 }
+
+#if 0
+void KmvcDlg::slotLsDone(uint ui){
+	qDebug() << "slotLsDone(): " << m_gfe->bytesAvailable();
+	m_gfe->setReadChannel(QProcess::StandardOutput);
+	QString qs;
+	QByteArray qba;
+	qDebug() << "slotLsDone(): " << m_gfe->bytesAvailable();
+	while (m_gfe->atEnd() == false){
+		qba = m_gfe->readLine(2000);	
+		qs = QString(qba);
+		m_list << qs;
+		qDebug() << qs;
+	}
+
+     	// m_list << "a" << "b" << "c";
+     	m_model->setStringList(m_list);
+	qDebug() << "slotLsDone(): DONE " << m_list.size();
+}
+#endif
 
 bool vcsFrontEnd::slotPushDone(uint i){
 	qDebug ()<< "vcsFrontEnd::slotPushDone()";
 	// FIXME: Disconnect slot
+
+	setReadChannel(QProcess::StandardOutput);
+	QString qs;
+	QByteArray qba;
+	qDebug() << "slotLsDone(): " << bytesAvailable();
+	while (atEnd() == false){
+		qba = readLine(2000);	
+		qs = QString(qba);
+		qDebug() << qs;
+	}
+
+
 	return true;
 }
 
