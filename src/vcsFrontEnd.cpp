@@ -65,7 +65,8 @@ bool vcsFrontEnd::push(){
 
 bool vcsFrontEnd::slotPushDone(){
 	qDebug ()<< "vcsFrontEnd::slotPushDone()";
-	// FIXME: Disconnect slot
+
+	disconnect(this, SIGNAL(readyRead()), 0, 0);
 
 	setReadChannel(QProcess::StandardOutput);
 	QString qs;
