@@ -56,7 +56,7 @@ bool vcsFrontEnd::push(){
 		return false;
 	}
 	
-	waitForFinished();
+	// waitForFinished();
 	
 	qDebug() << "done";
 
