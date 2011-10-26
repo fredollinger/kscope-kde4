@@ -98,6 +98,8 @@ bool vcsFrontEnd::commit(QString msg){
 
 	QString s_sProjPath = "."; // FIXME: put in project path
 
+	slCmdLine << "commit";
+
 	slCmdLine << "-a";
 
 	slCmdLine << "-m"; 
