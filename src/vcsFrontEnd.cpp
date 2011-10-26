@@ -22,6 +22,7 @@ vcsFrontEnd::vcsFrontEnd() :
 	m_sErrMsg(""),
 	m_bRebuildOnExit(false)
 {
+	m_qmbMsg = new QMessageBox();
 }
 
 vcsFrontEnd::~vcsFrontEnd() 
@@ -76,6 +77,8 @@ bool vcsFrontEnd::slotPushDone(){
 		qDebug() << qs;
 	}
 
+	m_qmbMsg->setText(qs);
+	m_qmbMsg->exec();
 
 	return true;
 }

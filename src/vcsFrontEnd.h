@@ -14,6 +14,7 @@
 #include <qstringlist.h>
 #include <qprogressbar.h>
 #include <qlabel.h>
+#include <QMessageBox>
 #include "frontend4.h"
 
 namespace kscope4{
@@ -35,6 +36,7 @@ public:
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
 private:
+	QMessageBox *m_qmbMsg; // message box dialog
 	/** The current state of the parser state machine. */
 	VcsState m_state;
 
