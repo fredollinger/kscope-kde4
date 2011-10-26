@@ -28,47 +28,41 @@ vcsFrontEnd::~vcsFrontEnd()
 {
 }
 
+/**
+ * Executes a grep process using the given command line arguments.
+ * The full path to the grep executable should be set in the "Path" key
+ * under the "grep" group.
+ * @param	slArgs	Command line arguments for grep
+ * @return	true if successful, false otherwise
+ */
+
 bool vcsFrontEnd::push(){
-	qDebug ()<< "vcsFrontEnd::push()";
+	QStringList slCmdLine;
 
 	setOutputChannelMode(KProcess::MergedChannels);
-
-	QStringList slCmdLine;
+	
 	QString s_sProjPath = "."; // FIXME: put in project path
-	//slCmdLine << "push"; 
 
-	connect(this, SIGNAL(finished(uint)), this,
-		SLOT(slotPushDone(uint)));
+	slCmdLine << "push";
 
-	Frontend::run("ls", slCmdLine, s_sProjPath);
-
+	connect(this, SIGNAL(readyRead()),
+	this, SLOT(slotPushDone()));
+		
+	qDebug() << "testing! " << slCmdLine << s_sProjPath;
+	// Run a new process
+	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+		emit aborted();
+		return false;
+	}
+	
 	waitForFinished();
+	
+	qDebug() << "done";
 
-	qDebug ()<< "vcsFrontEnd::done()";
 	return true;
 }
 
-#if 0
-void KmvcDlg::slotLsDone(uint ui){
-	qDebug() << "slotLsDone(): " << m_gfe->bytesAvailable();
-	m_gfe->setReadChannel(QProcess::StandardOutput);
-	QString qs;
-	QByteArray qba;
-	qDebug() << "slotLsDone(): " << m_gfe->bytesAvailable();
-	while (m_gfe->atEnd() == false){
-		qba = m_gfe->readLine(2000);	
-		qs = QString(qba);
-		m_list << qs;
-		qDebug() << qs;
-	}
-
-     	// m_list << "a" << "b" << "c";
-     	m_model->setStringList(m_list);
-	qDebug() << "slotLsDone(): DONE " << m_list.size();
-}
-#endif
-
-bool vcsFrontEnd::slotPushDone(uint i){
+bool vcsFrontEnd::slotPushDone(){
 	qDebug ()<< "vcsFrontEnd::slotPushDone()";
 	// FIXME: Disconnect slot
 

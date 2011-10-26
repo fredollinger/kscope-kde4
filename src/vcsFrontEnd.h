@@ -59,7 +59,7 @@ private:
 	static uint s_nSupArgs;
 
 private slots:
-	bool slotPushDone(uint i);
+	bool slotPushDone();
 };
 
 } // namespace kscope4
