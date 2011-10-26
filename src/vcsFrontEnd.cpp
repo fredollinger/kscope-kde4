@@ -73,7 +73,7 @@ bool vcsFrontEnd::slotPushDone(){
 	qDebug() << "slotLsDone(): " << bytesAvailable();
 	while (atEnd() == false){
 		qba = readLine(2000);	
-		qs = QString(qba);
+		qs = qs + QString(qba);
 		qDebug() << qs;
 	}
 
