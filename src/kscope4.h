@@ -169,6 +169,7 @@ private slots:
 	// move this stuff to it's own vcs class someday
 	void slotCommit(void);	
 	void slotPush(void);	
+	void slotDiff(void);	
 	// END Version Control Actions
 
 	void openFile(void);

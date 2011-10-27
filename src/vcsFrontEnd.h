@@ -32,6 +32,7 @@ public:
 	~vcsFrontEnd();
 	bool commit(QString); // also called submit in the p4 world
 	bool push(); // send files to server (no p4 equivalent)
+	bool diff(); // diff of current changes and last commit
 
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
@@ -66,4 +67,4 @@ private slots:
 
 } // namespace kscope4
 #endif
-// Sat Oct 15 17:52:05 PDT 2011
+// Wed Oct 26 18:22:32 PDT 2011

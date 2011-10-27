@@ -112,7 +112,12 @@ void KScope::setupActions()
 	actionCollection()->addAction("vcs_push", vcsPush);
 	connect(vcsPush, SIGNAL(triggered(bool)),
 	this, SLOT(slotPush()));
-
+	
+	KAction* vcsDiff = new KAction(this);
+  	vcsDiff->setText(i18n("Show Recent Changes"));
+	actionCollection()->addAction("vcs_diff", vcsDiff);
+	connect(vcsDiff, SIGNAL(triggered(bool)),
+	this, SLOT(slotDiff()));
 	// END version control menu
 
 	KAction* clearAction = new KAction(this);
@@ -898,6 +903,12 @@ void KScope::slotPush(){
 	// m_pVcsPush->exec();
 }
 
+void KScope::slotDiff(){
+	qDebug() << "slotDiff";
+	m_pVcs->diff(); 
+	// m_pVcsPush->exec();
+}
+
 #if 0
 // BEGIN createDockWindow()
 void KScope::createDockWindows(){
@@ -949,4 +960,4 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 
 
 } // namespace kscope4
-// Sun Oct 16 18:36:11 PDT 2011
+// Wed Oct 26 18:25:22 PDT 2011

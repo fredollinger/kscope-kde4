@@ -30,12 +30,10 @@ vcsFrontEnd::~vcsFrontEnd()
 }
 
 /**
- * Executes a grep process using the given command line arguments.
- * The full path to the grep executable should be set in the "Path" key
- * under the "grep" group.
- * @param	slArgs	Command line arguments for grep
+ * Pushes the all ready committed changes to the server. 
+ * At this time, does nothing if we are using p4.
  * @return	true if successful, false otherwise
- */
+*/
 
 bool vcsFrontEnd::push(){
 	QStringList slCmdLine;
@@ -49,17 +47,12 @@ bool vcsFrontEnd::push(){
 	connect(this, SIGNAL(readyRead()),
 	this, SLOT(slotPushDone()));
 		
-	qDebug() << "testing! " << slCmdLine << s_sProjPath;
 	// Run a new process
 	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
 	
-	// waitForFinished();
-	
-	qDebug() << "done";
-
 	return true;
 }
 
@@ -135,5 +128,24 @@ Frontend::ParseResult vcsFrontEnd::parseStdout(QString& sToken,
 	return result;
 }
 
+bool vcsFrontEnd::diff(){
+	QStringList slCmdLine;
+
+	QString s_sProjPath = "."; // FIXME: put in project path
+
+	setOutputChannelMode(KProcess::MergedChannels);
+	
+	slCmdLine << "diff";
+	slCmdLine << "master..HEAD";
+
+	// Run a new process
+	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+		emit aborted();
+		return false;
+	}
+	
+	return true;
+}
+
 } // namespace kscope4
-// Sat Oct 22 13:39:30 PDT 2011
+// Wed Oct 26 18:07:19 PDT 2011
