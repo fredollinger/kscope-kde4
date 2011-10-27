@@ -2,7 +2,6 @@
 #include <qfileinfo.h>
 #include <klocale.h>
 #include "filelist4.h"
-#include "kscope4.h"
 #include "kscopeconfig4.h"
 
 /**

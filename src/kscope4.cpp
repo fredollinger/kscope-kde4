@@ -906,14 +906,21 @@ void KScope::slotPush(){
 void KScope::slotDiff(){
 	qDebug() << "slotDiff";
 
+	connect(m_pVcs, SIGNAL(finished(int, QProcess::ExitStatus)),
+	this, SLOT(slotDiffReady(int, QProcess::ExitStatus) ) );
+
 	connect(m_pVcs, SIGNAL(readyRead()),
-	this, SLOT(slotDiffDone()));
+	this, SLOT(slotDiffReady()));
 
 	m_pVcs->diff(); 
-	// m_pVcsPush->exec();
 }
 
-void KScope::slotDiffDone(){
+void KScope::slotDiffDone(int i, QProcess::ExitStatus es){
+	qDebug() << "slotDiffDone";
+	disconnect(this, SIGNAL(finished()), 0, 0);
+}
+
+void KScope::slotDiffReady(){
 	disconnect(this, SIGNAL(readyRead()), 0, 0);
 
 	QString qs;
@@ -929,7 +936,7 @@ void KScope::slotDiffDone(){
 
 	m_view->document()->setText(qs);	
 
-	qDebug() << "slotDiffDone";
+	qDebug() << "slotDiffReady";
 }
 
 #if 0

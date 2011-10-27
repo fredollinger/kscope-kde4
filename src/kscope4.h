@@ -170,7 +170,8 @@ private slots:
 	void slotCommit(void);	
 	void slotPush(void);	
 	void slotDiff(void);	
-	void slotDiffDone(void);	
+	void slotDiffDone(int i, QProcess::ExitStatus es);
+	void slotDiffReady(void);	
 	// END Version Control Actions
 
 	void openFile(void);
