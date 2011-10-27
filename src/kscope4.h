@@ -170,6 +170,7 @@ private slots:
 	void slotCommit(void);	
 	void slotPush(void);	
 	void slotDiff(void);	
+	void slotDiffDone(void);	
 	// END Version Control Actions
 
 	void openFile(void);
