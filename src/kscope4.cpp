@@ -983,4 +983,4 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 
 
 } // namespace kscope4
-// Wed Oct 26 18:25:22 PDT 2011
+// Thu Oct 27 15:03:08 PDT 2011

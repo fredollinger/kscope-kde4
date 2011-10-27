@@ -135,12 +135,12 @@ bool vcsFrontEnd::diff(){
 
 	setOutputChannelMode(KProcess::MergedChannels);
 	
-	// slCmdLine << "diff";
-	// slCmdLine << "master..HEAD";
+	slCmdLine << "--no-pager";
+	slCmdLine << "diff";
+	slCmdLine << "HEAD";
 
 	// Run a new process
-	// if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
-	if (!Frontend::run("ls", slCmdLine, s_sProjPath)) {
+	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
@@ -149,4 +149,4 @@ bool vcsFrontEnd::diff(){
 }
 
 } // namespace kscope4
-// Wed Oct 26 18:07:19 PDT 2011
+// Thu Oct 27 15:00:58 PDT 2011
