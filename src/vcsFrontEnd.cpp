@@ -135,11 +135,12 @@ bool vcsFrontEnd::diff(){
 
 	setOutputChannelMode(KProcess::MergedChannels);
 	
-	slCmdLine << "diff";
-	slCmdLine << "master..HEAD";
+	// slCmdLine << "diff";
+	// slCmdLine << "master..HEAD";
 
 	// Run a new process
-	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+	// if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+	if (!Frontend::run("ls", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}

@@ -65,9 +65,6 @@ KScope::KScope(QWidget *) :
 	// m_pCallTreeMgr = new CallTreeManager(this);
 	m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
-
-	connect(m_pVcs, SIGNAL(readyRead()),
-	this, SLOT(slotDiffDone()));
 	
 	// BEGIN STUFF FROM KSCOPE
 	// Connect menu and toolbar items with the object's slots
@@ -908,11 +905,30 @@ void KScope::slotPush(){
 
 void KScope::slotDiff(){
 	qDebug() << "slotDiff";
+
+	connect(m_pVcs, SIGNAL(readyRead()),
+	this, SLOT(slotDiffDone()));
+
 	m_pVcs->diff(); 
 	// m_pVcsPush->exec();
 }
 
 void KScope::slotDiffDone(){
+	disconnect(this, SIGNAL(readyRead()), 0, 0);
+
+	QString qs;
+	QByteArray qba;
+
+	m_pVcs->setReadChannel(QProcess::StandardOutput);
+
+	while (m_pVcs->atEnd() == false){
+		qba = m_pVcs->readLine(2000);	
+		qs = qs + QString(qba);
+		qDebug() << qs;
+	}
+
+	m_view->document()->setText(qs);	
+
 	qDebug() << "slotDiffDone";
 }
 
