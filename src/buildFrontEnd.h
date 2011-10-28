@@ -8,8 +8,8 @@
  *
  */
 
-#ifndef VCS_FRONT_END_H
-#define VCS_FRONT_END_H
+#ifndef BUILD_FRONT_END_H
+#define BUILD_FRONT_END_H
 
 #include <qstringlist.h>
 #include <qprogressbar.h>
@@ -21,25 +21,21 @@ namespace kscope4{
 
 #define CSCOPE_RECORD_SIZE 4
 
-enum VcsState { vcsUnknown = 0, vcsGit, vcsP4 };
+// enum VcsState { vcsUnknown = 0, vcsGit, vcsP4 };
 
-class vcsFrontEnd : public Frontend
+class buildFrontEnd : public Frontend
 {
 	Q_OBJECT
 
 public:
-	vcsFrontEnd();
-	~vcsFrontEnd();
-	bool commit(QString); // also called submit in the p4 world
-	bool push(); // send files to server (no p4 equivalent)
-	bool diff(); // diff of current changes and last commit
+	buildFrontEnd();
+	~buildFrontEnd();
 
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
 private:
-	QMessageBox *m_qmbMsg; // message box dialog
 	/** The current state of the parser state machine. */
-	VcsState m_state;
+	// VcsState m_state;
 
 	bool m_bResult;
 	uint m_nArgs;
@@ -61,8 +57,8 @@ private:
 	/** The command line arguments supported by this version of Grep. */
 	static uint s_nSupArgs;
 
-private slots:
-	bool slotPushDone();
+public slots:
+	bool build(void);
 };
 
 } // namespace kscope4

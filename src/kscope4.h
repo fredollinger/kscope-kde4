@@ -11,6 +11,7 @@
 
 #include <qtimer.h>
 
+#include "buildFrontEnd.h"
 #include "kdockwidget4.h"
 #include "projectbase4.h"
 #include "projectmanager4.h"
@@ -74,6 +75,7 @@ public:
 
 private:
 	vcsFrontEnd *m_pVcs;
+	buildFrontEnd *m_pBuild;
 
      	// QDockWidget *resDock;
 	/*
@@ -181,6 +183,7 @@ private slots:
 	void slotRebuildDB(void);
 	void slotCreateProject(void);
 	bool slotCloseProject(void);
+	bool slotBuildProject(void);
 	// END Menu actions
 
 }; //class Kscope

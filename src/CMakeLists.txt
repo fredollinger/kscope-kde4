@@ -13,6 +13,7 @@ vcsCommitLayout.ui
 
 
 set(kscope_SRCS
+buildFrontEnd.cpp
 vcsFrontEnd.cpp
 vcsCommitDlg.cpp
 querywidget4.cpp

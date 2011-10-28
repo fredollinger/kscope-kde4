@@ -38,8 +38,9 @@
 		<Action name="project_add_rem_files"/>
 		<Action name="project_properties"/>
 		<Separator/>
-		<Action name="project_make"/>
+		<Action name="project_build"/>
 		<Action name="project_remake"/>
+		<Action name="project_clean"/>
 		<Separator/>
 		<Action name="project_close"/>
 	</Menu>

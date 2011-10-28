@@ -32,6 +32,7 @@
 #include "querywidget4.h"
 #include "vcsCommitDlg.h"
 #include "vcsFrontEnd.h"
+#include "buildFrontEnd.h"
 
 #include <qdebug.h>
 
@@ -53,7 +54,6 @@ KScope::KScope(QWidget *) :
 	createShellGUI();
 	guiFactory()->addClient(m_view);
 
-	// Create all child widgets
 	initMainWindow();
 	m_pQueryWidget = new QueryWidget(this, "Files");
      	m_pQueryWidget->setAllowedAreas(Qt::RightDockWidgetArea | Qt::RightDockWidgetArea | Qt::BottomDockWidgetArea);
@@ -65,6 +65,7 @@ KScope::KScope(QWidget *) :
 	// m_pCallTreeMgr = new CallTreeManager(this);
 	m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
+	m_pBuild = new buildFrontEnd();
 	
 	// BEGIN STUFF FROM KSCOPE
 	// Connect menu and toolbar items with the object's slots
@@ -136,15 +137,24 @@ void KScope::setupActions()
 	KAction* cscopeText = new KAction(this);
   	cscopeText->setText(i18n("Find &EGrep Pattern..."));
 	actionCollection()->addAction("cscope_text", cscopeText);
-	connect(cscopeText, SIGNAL(triggered(bool)),
-	this, SLOT(slotQueryPattern()));
+	
 	// END Cscope Menu
 
+	// BEGIN Project Menu
+	
 	KAction* projectNew = new KAction(this);
   	projectNew->setText(i18n("project_new"));
 	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
+	
+	KAction* projectBuild = new KAction(this);
+  	projectBuild->setText(i18n("Build"));
+	actionCollection()->addAction("project_build", projectBuild);
+	connect(projectBuild, SIGNAL(triggered(bool)),
+	this, SLOT(slotBuildProject()));
+	
+	// END Project Menu
 
 	// END KACTIONS
 
@@ -978,7 +988,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		nType = SymbolDlg::getQueryType(nType);
 		qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
 		qDebug() << "KScope::slotQuery()  m_pQueryWidget->initQuery(nType, sSymbol, bCase); \n";
-		// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+		// m_pQueryWidget->(nType, sSymbol, bCase);
 
 		m_pQueryWidget->show();
 		
@@ -988,6 +998,10 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	else qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
 }
 
+bool KScope::slotBuildProject(){
+	qDebug() << "slotBuildProject";
+	return m_pBuild->build(); 
+}
 
 } // namespace kscope4
 // Thu Oct 27 15:03:08 PDT 2011
