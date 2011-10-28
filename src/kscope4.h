@@ -184,6 +184,7 @@ private slots:
 	void slotCreateProject(void);
 	bool slotCloseProject(void);
 	bool slotBuildProject(void);
+	bool slotBuildReady(void);
 	// END Menu actions
 
 }; //class Kscope

@@ -1000,7 +1000,31 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 
 bool KScope::slotBuildProject(){
 	qDebug() << "slotBuildProject";
+
+	connect(m_pBuild, SIGNAL(ReadyRead()),
+	this, SLOT(slotBuildReady() ) );
+
 	return m_pBuild->build(); 
+}
+
+bool KScope::slotBuildReady(){
+	qDebug() << "slotBuildReady";
+	disconnect(this, SIGNAL(readyRead()), 0, 0);
+
+	QString qs;
+	QByteArray qba;
+
+	m_pBuild->setReadChannel(QProcess::StandardOutput);
+
+	while (m_pBuild->atEnd() == false){
+		qba = m_pBuild->readLine(2000);	
+		qs = qs + QString(qba);
+		qDebug() << qs;
+	}
+
+	m_view->document()->setText(qs);	
+
+	return true;
 }
 
 } // namespace kscope4

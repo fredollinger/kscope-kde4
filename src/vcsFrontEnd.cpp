@@ -129,6 +129,7 @@ Frontend::ParseResult vcsFrontEnd::parseStdout(QString& sToken,
 }
 
 bool vcsFrontEnd::diff(){
+
 	QStringList slCmdLine;
 
 	QString s_sProjPath = "."; // FIXME: put in project path

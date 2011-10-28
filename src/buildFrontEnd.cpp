@@ -50,6 +50,18 @@ Frontend::ParseResult buildFrontEnd::parseStdout(QString& sToken,
 bool buildFrontEnd::build() 
 {
 	qDebug ()<< "buildFrontEnd::build()";
+
+	QStringList slCmdLine;
+
+	QString s_sProjPath = "."; // FIXME: put in project path
+
+	setOutputChannelMode(KProcess::MergedChannels);
+	
+	// Run a new process
+	if (!Frontend::run("make", slCmdLine, s_sProjPath)) {
+		emit aborted();
+		return false;
+	}
 	return true;
 }
 
