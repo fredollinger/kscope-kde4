@@ -30,7 +30,7 @@ install: build/kscope
 	#cd build && sudo make install
 test:
 	su -c "make install"
-	/usr/local/bin/kscope main.cpp
+	/usr/local/bin/kscope kscope4.cpp
 
 vcsCommitLayout.h:
 	$(UI) vcsCommitLayout.ui > vcsCommitLayout.h

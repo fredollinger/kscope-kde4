@@ -60,6 +60,7 @@ void ProjectBase::getMakeParams(QString& sCmd, QString& sDir) const
  */
 void ProjectBase::getDefOptions(Options& opt)
 {
+	qDebug() << "BEGIN ProjectBase::getDefOptions() \n";
 	// Set default source path to file-system root
 	opt.sSrcRootPath = "/";
 	
@@ -86,6 +87,7 @@ void ProjectBase::getDefOptions(Options& opt)
 		opt.nAutoRebuildTime = -1;
 		opt.bACEnabled = false;
 	}
+	qDebug() << "END ProjectBase::getDefOptions() \n";
 }
 	
 void ProjectBase::initOptions()

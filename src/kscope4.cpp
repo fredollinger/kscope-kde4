@@ -353,7 +353,7 @@ bool KScope::slotCloseProject()
 	m_pProjMgr->close();
 	delete m_pCscopeBuild;
 	m_pCscopeBuild = NULL;
-	setCaption(QString::null);
+	setWidowTitle(QString::null);
 
 	// Clear the contents of the file list
 	m_pFileView->clear();
@@ -429,7 +429,7 @@ void KScope::openProject(const QString& sDir)
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
-	setCaption(pProj->getName());
+	setWindowTitle(pProj->getName());
 
 	// Set the root of the file tree
 	m_pFileView->setRoot(pProj->getSourceRoot());
@@ -563,7 +563,7 @@ void KScope::openProject(const QString& sDir)
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
-	setCaption(pProj->getName());
+	setWindowTitle(pProj->getName());
 
 	// Set the root of the file tree
 	m_pFileView->setRoot(pProj->getSourceRoot());
@@ -633,7 +633,7 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 	
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
-	setCaption(pProj->getName());
+	setWindowTitle(pProj->getName());
 	
 	// Set the root folder in the file tree
 	m_pFileView->setRoot(pProj->getSourceRoot());
@@ -915,6 +915,16 @@ void KScope::slotCommit(){
 
 void KScope::slotPush(){
 	qDebug() << "slotPush";
+
+	ProjectBase* pProj;
+
+	// Do nothing if no project is open
+	pProj = m_pProjMgr->curProject();
+	if (!pProj){
+		qDebug() << "no project!!";
+		return;
+	}
+
 	m_pVcs->push(); 
 	// m_pVcsPush->exec();
 }

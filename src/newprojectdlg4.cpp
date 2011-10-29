@@ -12,82 +12,27 @@
 #include "newprojectdlg4.h"
 #include "autocompletionlayout4.h"
 
-// BEGIN AutoCompletionDlg
-/**
- * Class constructor.
- * @param	pParent		The parent widget
- * @param	szName		The widget's name
- */
-AutoCompletionDlg::AutoCompletionDlg(QWidget* pParent,
-	const char* szName ) 
-{
-}
-
-/**
- * Class destructor.
- */
-AutoCompletionDlg::~AutoCompletionDlg()
-{
-}
-
-/**
- * Stores the values set by the user in the dialogue widgets, and terminates
- * the dialogue.
- * This slot is connected to the clicked() signal of the "OK" button.
- */
-void AutoCompletionDlg::accept()
-{
-	// Store widget values
-	m_nMinChars = m_pMinCharsSpin->value();
-	m_nDelay = m_pDelaySpin->value();
-	m_nMaxEntries = m_pMaxEntriesSpin->value();
-	
-	// Close the dialogue, indicating acceptance
-	QDialog::accept();
-}
-
-/**
- * Displays the dialogue, and waits for either the "OK" or "Cancel" button to
- * be clicked.
- * Before the dialogue is displayed, the stored values are set to the widgets.
- * @return	The dialogue's termination code
- */
-int AutoCompletionDlg::exec()
-{
-	// Set current values
-	m_pMinCharsSpin->setValue(m_nMinChars);
-	m_pDelaySpin->setValue(m_nDelay);
-	m_pMaxEntriesSpin->setValue(m_nMaxEntries);
-
-	// Show the dialogue
-	return QDialog::exec();
-}
-// END AutoCompletionDlg
-
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
 	Ui::NewProjectLayout(),
 	m_bNewProj(bNewProj)
 {
-	// Must do this _before_ we connect signals and slots
-	setupUi(this);
+	qDebug() << "BEGIN NewProjectDlg() \n";
+ 	setupUi(this);
 
-	// BEGIN OLD STUFF
 	ProjectBase::Options opt;
 
-	// FIXME:
 	// Create the auto-completion sub-dialogue
 	m_pAutoCompDlg = new AutoCompletionDlg(this);
 	
+	qDebug() << "NewProjectDlg(): Restrict files to existing dirs... \n";
 	// Restrict the path requester to existing directories.
 	m_pPathRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 		KFile::LocalOnly);
-
-	/*
 	m_pSrcRootRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 			KFile::LocalOnly);
-	*/
 	
+	qDebug() << "NewProjectDlg(): Connect signals and slots \n";
 	// Set up the Create/Cancel buttons	
 	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
@@ -95,15 +40,16 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	// Show the auto-completion properties dialogue
 	connect(m_pACButton, SIGNAL(clicked()), m_pAutoCompDlg, SLOT(exec()));	
 		
-	// FIXME:
 	// Perform actions specific to the type of dialog (new project or
 	// project properties)
 	if (bNewProj) {
+		qDebug() << "NewProjectDlg(): bNewProj \n";
 		// Set default project properties
 		ProjectBase::getDefOptions(opt);
 		setProperties("", "", opt);
 	}
 	else {
+		qDebug() << "NewProjectDlg(): NOT bNewProj \n";
 		// Give appropriate titles to the dialog and the accept button
 		setWindowTitle(i18n("Project Properties"));
 		m_pCreateButton->setText(i18n("OK"));
@@ -112,7 +58,8 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 		m_pNameEdit->setEnabled(false);
 		m_pPathRequester->setEnabled(false);
 	}
-	// END OLD STUFF
+
+	qDebug() << "END: NewProjectDlg()\n";
 }
 
 NewProjectDlg::~NewProjectDlg()
@@ -277,5 +224,57 @@ void NewProjectDlg::accept()
 	// Close the dialog
 	QDialog::accept();
 }
+
+// BEGIN AutoCompletionDlg
+/**
+ * Class constructor.
+ * @param	pParent		The parent widget
+ * @param	szName		The widget's name
+ */
+AutoCompletionDlg::AutoCompletionDlg(QWidget* pParent,
+	const char* szName ) 
+{
+}
+
+/**
+ * Class destructor.
+ */
+AutoCompletionDlg::~AutoCompletionDlg()
+{
+}
+
+/**
+ * Stores the values set by the user in the dialogue widgets, and terminates
+ * the dialogue.
+ * This slot is connected to the clicked() signal of the "OK" button.
+ */
+void AutoCompletionDlg::accept()
+{
+	// Store widget values
+	m_nMinChars = m_pMinCharsSpin->value();
+	m_nDelay = m_pDelaySpin->value();
+	m_nMaxEntries = m_pMaxEntriesSpin->value();
+	
+	// Close the dialogue, indicating acceptance
+	QDialog::accept();
+}
+
+/**
+ * Displays the dialogue, and waits for either the "OK" or "Cancel" button to
+ * be clicked.
+ * Before the dialogue is displayed, the stored values are set to the widgets.
+ * @return	The dialogue's termination code
+ */
+int AutoCompletionDlg::exec()
+{
+	// Set current values
+	m_pMinCharsSpin->setValue(m_nMinChars);
+	m_pDelaySpin->setValue(m_nDelay);
+	m_pMaxEntriesSpin->setValue(m_nMaxEntries);
+
+	// Show the dialogue
+	return QDialog::exec();
+}
+// END AutoCompletionDlg
 
 // Mon Jun 20 19:44:33 UTC 2011
