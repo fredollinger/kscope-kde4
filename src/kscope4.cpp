@@ -921,6 +921,7 @@ void KScope::slotPush(){
 
 void KScope::slotPull(){
 	qDebug() << "slotPull";
+	m_pVcs->pull(); 
 }
 
 void KScope::slotDiff(){
