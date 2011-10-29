@@ -149,5 +149,28 @@ bool vcsFrontEnd::diff(){
 	return true;
 }
 
+bool vcsFrontEnd::pull(){
+	QStringList slCmdLine;
+
+	qDebug ()<< "vcsFrontEnd::slotPull()";
+
+	setOutputChannelMode(KProcess::MergedChannels);
+	
+	QString s_sProjPath = "."; // FIXME: put in project path
+
+	slCmdLine << "pull";
+
+	// connect(this, SIGNAL(readyRead()),
+	// this, SLOT(slotPushDone()));
+		
+	// Run a new process
+	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+		emit aborted();
+		return false;
+	}
+	
+	return true;
+}
+
 } // namespace kscope4
-// Thu Oct 27 15:00:58 PDT 2011
+// Sat Oct 29 09:12:36 PDT 2011

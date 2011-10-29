@@ -12,6 +12,7 @@
 		<Action name="vcs_commit"/>
 		<Action name="vcs_push"/>
 		<Action name="vcs_diff"/>
+		<Action name="vcs_pull"/>
 	</Menu>
 
 	<Menu name="cscope"><text>&amp;Cscope</text>

@@ -168,12 +168,12 @@ private slots:
 
 	// BEGIN Menu actions
 	// BEGIN Version Control Actions
-	// move this stuff to it's own vcs class someday
 	void slotCommit(void);	
-	void slotPush(void);	
-	void slotDiff(void);	
 	void slotDiffDone(int i, QProcess::ExitStatus es);
 	void slotDiffReady(void);	
+	void slotPull(void);	
+	void slotPush(void);	
+	void slotDiff(void);	
 	// END Version Control Actions
 
 	void openFile(void);
@@ -192,4 +192,4 @@ private slots:
 
 #endif // KSCOPE4_H
 
-// Sat Oct  8 13:13:23 PDT 2011
+// Sat Oct 29 09:00:02 PDT 2011

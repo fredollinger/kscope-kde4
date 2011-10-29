@@ -119,6 +119,12 @@ void KScope::setupActions()
 	actionCollection()->addAction("vcs_diff", vcsDiff);
 	connect(vcsDiff, SIGNAL(triggered(bool)),
 	this, SLOT(slotDiff()));
+
+	KAction* vcsPull = new KAction(this);
+  	vcsPull->setText(i18n("Pull"));
+	actionCollection()->addAction("vcs_pull", vcsPull);
+	connect(vcsPull, SIGNAL(triggered(bool)),
+	this, SLOT(slotPull()));
 	// END version control menu
 
 	KAction* clearAction = new KAction(this);
@@ -913,6 +919,10 @@ void KScope::slotPush(){
 	// m_pVcsPush->exec();
 }
 
+void KScope::slotPull(){
+	qDebug() << "slotPull";
+}
+
 void KScope::slotDiff(){
 	qDebug() << "slotDiff";
 
@@ -1028,4 +1038,4 @@ bool KScope::slotBuildReady(){
 }
 
 } // namespace kscope4
-// Thu Oct 27 15:03:08 PDT 2011
+// Sat Oct 29 09:00:56 PDT 2011
