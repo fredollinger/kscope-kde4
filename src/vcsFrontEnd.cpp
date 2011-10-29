@@ -45,7 +45,7 @@ bool vcsFrontEnd::push(){
 	slCmdLine << "push";
 
 	connect(this, SIGNAL(readyRead()),
-	this, SLOT(slotPushDone()));
+	this, SLOT(slotDisplayResults()));
 		
 	// Run a new process
 	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
@@ -56,8 +56,8 @@ bool vcsFrontEnd::push(){
 	return true;
 }
 
-bool vcsFrontEnd::slotPushDone(){
-	qDebug ()<< "vcsFrontEnd::slotPushDone()";
+bool vcsFrontEnd::slotDisplayResults(){
+	qDebug ()<< "vcsFrontEnd::slotDisplayResults()";
 
 	disconnect(this, SIGNAL(readyRead()), 0, 0);
 
@@ -154,15 +154,15 @@ bool vcsFrontEnd::pull(){
 
 	qDebug ()<< "vcsFrontEnd::slotPull()";
 
+	connect(this, SIGNAL(readyRead()),
+	this, SLOT(slotDisplayResults()));
+
 	setOutputChannelMode(KProcess::MergedChannels);
 	
 	QString s_sProjPath = "."; // FIXME: put in project path
 
 	slCmdLine << "pull";
 
-	// connect(this, SIGNAL(readyRead()),
-	// this, SLOT(slotPushDone()));
-		
 	// Run a new process
 	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
 		emit aborted();
