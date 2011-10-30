@@ -8,9 +8,10 @@
 
 #include <QTextStream>
 
-#include "project4.h"
-#include "kscopeconfig4.h"
 #include "cscopefrontend4.h"
+#include "ksconfig4.h"
+#include "kscopeconfig4.h"
+#include "project4.h"
 
 #define PROJECT_CONFIG_VER 4
 
@@ -82,7 +83,7 @@ bool Project::open(const QString& sPath)
 	m_fiFileList.setFileName(sPath + "/cscope.files");
 
 	// Open the configuration files
-	m_pConf = new KConfig(sPath + "/cscope.proj");
+	m_pConf = new kscope4::KSConfig(sPath + "/cscope.proj");
 
 	// Verify the configuration file's version is compatible
 	// ORIG: m_pConf->setGroup("");

@@ -1,6 +1,7 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 
+#include "ksconfig4.h"
 #include "projectbase4.h"
 
 /**
@@ -47,7 +48,7 @@ public:
 	
 private:
 	/** The configuration file ("cscope.proj") */
-	KConfig* m_pConf;
+	kscope4::KSConfig* m_pConf;
 
 	/** The file that holds the paths of all source files in this project
 	("cscope.files") */
