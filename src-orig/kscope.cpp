@@ -1654,7 +1654,7 @@ void KScope::slotShowCursorPos(uint nLine, uint nCol)
 	QString sText;
 	
 	/* Show the line and column numbers. */
-	QTextOStream(&sText) << " Line: " << nLine << " Col: " << nCol << " ";
+	// QTextOStream(&sText) << " Line: " << nLine << " Col: " << nCol << " ";
 	pStatus->changeItem(sText, 0);
 	
 	/* Store the current line. */

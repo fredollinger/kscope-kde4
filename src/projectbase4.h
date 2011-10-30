@@ -1,10 +1,14 @@
 #ifndef PROJECTBASE_H
 #define PROJECTBASE_H
 
+#include <kconfig.h>
+
+#include <qstringlist.h>
 #include <qstringlist.h>
 #include <qdir.h>
 #include <qfile.h>
-#include <kconfig.h>
+
+#include <Q3PtrList>
 
 #define DEF_IS_KERNEL		false
 #define DEF_INV_INDEX		true
@@ -118,7 +122,7 @@ struct FileLocation
 /**
  * A list of file locations used for restoring a session.
  */
-typedef QList<FileLocation> FileLocationList;
+typedef Q3PtrList<FileLocation> FileLocationList;
 
 class FileSemaphore;
 

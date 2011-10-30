@@ -1,6 +1,8 @@
+
 #include "projectbase4.h"
 #include "kscopeconfig4.h"
 #include "cscopefrontend4.h"
+
 #include <qdebug.h>
 
 ProjectBase::ProjectBase()
