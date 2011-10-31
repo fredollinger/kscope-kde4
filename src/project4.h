@@ -58,7 +58,7 @@ private:
 	
 	QString m_sMakeRoot;
 	
-	static void writeOptions(KConfig*, const Options&);
+	static void writeOptions(kscope4::KSConfig*, const Options&);
 };
 
 #endif

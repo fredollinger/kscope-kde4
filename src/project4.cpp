@@ -1,19 +1,17 @@
-#include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
-
-#include <kconfiggroup.h>
-#include <klocale.h>
 #include <kmessagebox.h>
+#include <klocale.h>
+#include <unistd.h>
 
-#include <QTextStream>
+#include <QIODevice>
 
 #include "cscopefrontend4.h"
-#include "ksconfig4.h"
 #include "kscopeconfig4.h"
+#include "ksconfig4.h"
 #include "project4.h"
 
-#define PROJECT_CONFIG_VER 4
+#define PROJECT_CONFIG_VER 2
 
 inline void flListFromStringList(FileLocationList& fll, const QStringList& sl)
 {
@@ -45,14 +43,14 @@ inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
 	for (pLoc = pList->first(); pLoc != NULL; pLoc = pList->next()) {
 		sLoc = "";
 		// QTextOStream(&sLoc) << pLoc->m_sPath << ":" << pLoc->m_nLine << ":" 
-				// << pLoc->m_nCol;
+				//<< pLoc->m_nCol;
 
 		QTextStream(&sLoc, QIODevice::WriteOnly) << pLoc->m_sPath << ":" 
 			<< pLoc->m_nLine << ":" << pLoc->m_nCol;
-
 		sl.append(sLoc);
 	}
 }
+
 /**
  */
 Project::Project() : ProjectBase(),
@@ -86,20 +84,16 @@ bool Project::open(const QString& sPath)
 	m_pConf = new kscope4::KSConfig(sPath + "/cscope.proj");
 
 	// Verify the configuration file's version is compatible
-	// ORIG: m_pConf->setGroup("");
-	KConfigGroup gp(m_pConf, "");
-
-	// ORIG: if (m_pConf->readUnsignedNumEntry("Version", 0) != PROJECT_CONFIG_VER) {
-	if ( (unsigned int) gp.readEntry("Version", 0) != PROJECT_CONFIG_VER) {
+	m_pConf->setGroup("");
+	if (m_pConf->readUnsignedNumEntry("Version", 0) != PROJECT_CONFIG_VER) {
 		KMessageBox::error(0, i18n("Your project is not compatible with this "
 				"version of KScope.\nPlease re-create the project."));
 		return false;
 	}
 	
 	// Get the project name
-	// ORIG: m_pConf->setGroup("Project");
-	KConfigGroup pGp(m_pConf, "Project");
-	m_sName = pGp.readEntry("Name");
+	m_pConf->setGroup("Project");
+	m_sName = m_pConf->readEntry("Name");
 	if (m_sName == QString::null) {
 		KMessageBox::error(0, i18n("Cannot read project name"));
 		return false;
@@ -134,11 +128,8 @@ QString Project::getFileTypes() const
 {
 	QString sTypes;
 
-	// ORIG: m_pConf->setGroup("Project");
-	KConfigGroup gp(m_pConf, "Project");
-
-	// ORIG: return m_pConf->readEntry("FileTypes");
-	return gp.readEntry("FileTypes");
+	m_pConf->setGroup("Project");
+	return m_pConf->readEntry("FileTypes");
 }
 
 /**
@@ -148,28 +139,24 @@ QString Project::getFileTypes() const
 void Project::getOptions(Options& opt) const
 {
 	// Get project properties
-	// ORIG: m_pConf->setGroup("Project");
-	KConfigGroup gp(m_pConf, "Project");
-
-	opt.sSrcRootPath = gp.readEntry("RootPath", "/");
-	opt.slFileTypes = gp.readListEntry("FileTypes", ' ');
-	opt.bKernel = gp.readBoolEntry("Kernel", DEF_IS_KERNEL);
-	opt.bInvIndex = gp.readBoolEntry("InvIndex", DEF_INV_INDEX);
-	opt.bNoCompress = gp.readBoolEntry("NoCompress", DEF_NO_COMPRESS);
-	opt.bSlowPathDef = gp.readBoolEntry("SlowPathDef", DEF_SLOW_PATH);
-	opt.nAutoRebuildTime = gp.readNumEntry("AutoRebuildTime");
-	opt.nTabWidth = gp.readUnsignedNumEntry("TabWidth");
-	opt.sCtagsCmd = gp.readEntry("CtagsCommand", DEF_CTAGS_COMMAND);
+	m_pConf->setGroup("Project");
+	opt.sSrcRootPath = m_pConf->readEntry("RootPath", "/");
+	opt.slFileTypes = m_pConf->readListEntry("FileTypes", " ");
+	opt.bKernel = m_pConf->readBoolEntry("Kernel", DEF_IS_KERNEL);
+	opt.bInvIndex = m_pConf->readBoolEntry("InvIndex", DEF_INV_INDEX);
+	opt.bNoCompress = m_pConf->readBoolEntry("NoCompress", DEF_NO_COMPRESS);
+	opt.bSlowPathDef = m_pConf->readBoolEntry("SlowPathDef", DEF_SLOW_PATH);
+	opt.nAutoRebuildTime = m_pConf->readNumEntry("AutoRebuildTime");
+	opt.nTabWidth = m_pConf->readUnsignedNumEntry("TabWidth");
+	opt.sCtagsCmd = m_pConf->readEntry("CtagsCommand", DEF_CTAGS_COMMAND);
 			
 	// Get auto-completion options
-	// ORIG: m_pConf->setGroup("AutoCompletion");
-	KConfigGroup pAC(m_pConf, "Project");
-
-	opt.bACEnabled = pAc.readBoolEntry("Enabled");
-	opt.nACMinChars = pAc.readUnsignedNumEntry("MinChars",
+	m_pConf->setGroup("AutoCompletion");
+	opt.bACEnabled = m_pConf->readBoolEntry("Enabled");
+	opt.nACMinChars = m_pConf->readUnsignedNumEntry("MinChars",
 			DEF_AC_MIN_CHARS);
-	opt.nACDelay = pAc.readUnsignedNumEntry("Delay", DEF_AC_DELAY);
-	opt.nACMaxEntries = pAc.readUnsignedNumEntry("MaxEntries",
+	opt.nACDelay = m_pConf->readUnsignedNumEntry("Delay", DEF_AC_DELAY);
+	opt.nACMaxEntries = m_pConf->readUnsignedNumEntry("MaxEntries",
 			DEF_AC_MAX_ENTRIES);
 }
 
@@ -192,27 +179,26 @@ void Project::loadSession(Session& sess)
 {
 	QStringList slEntry;
 	
-	// ORIG: m_pConf->setGroup("Session");
-	KConfigGroup pS(m_pConf, "Session");
+	m_pConf->setGroup("Session");
 	
 	// Read the list of open file locations
-	slEntry = pS.readListEntry("OpenFiles");
+	slEntry = m_pConf->readListEntry("OpenFiles");
 	flListFromStringList(sess.fllOpenFiles, slEntry);
 	
 	// Get the path of the last viewed file
-	sess.sLastFile = pS.readEntry("LastOpenFile");
+	sess.sLastFile = m_pConf->readEntry("LastOpenFile");
 	
 	// Read the lists of locked query files and call-tree/graph files
-	sess.slQueryFiles = pS.readListEntry("QueryFiles");
-	sess.slCallTreeFiles = pS.readListEntry("CallTreeFiles");
+	sess.slQueryFiles = m_pConf->readListEntry("QueryFiles");
+	sess.slCallTreeFiles = m_pConf->readListEntry("CallTreeFiles");
 	
 	// Read the list of bookmarks
-	slEntry = pS.readListEntry("Bookmarks");
+	slEntry = m_pConf->readListEntry("Bookmarks");
 	flListFromStringList(sess.fllBookmarks, slEntry);
 	
 	// Read make-related information
-	sess.sMakeCmd = pS.readEntry("MakeCommand", "make");
-	sess.sMakeRoot = pS.readEntry("MakeRoot", getSourceRoot());
+	sess.sMakeCmd = m_pConf->readEntry("MakeCommand", "make");
+	sess.sMakeRoot = m_pConf->readEntry("MakeRoot", getSourceRoot());
 	
 	// Cache make values
 	m_sMakeCmd = sess.sMakeCmd;
@@ -227,31 +213,30 @@ void Project::storeSession(const Session& sess)
 {
 	QStringList slEntry;
 	
-	// ORIG: m_pConf->setGroup("Session");
-	KConfigGroup pS(m_pConf, "Session");
+	m_pConf->setGroup("Session");
 	
 	// Write the list of open file locations
 	stringListFromFlList(slEntry, sess.fllOpenFiles);
-	pS.writeEntry("OpenFiles", slEntry);
+	m_pConf->writeEntry("OpenFiles", slEntry);
 	
 	// Write the path of the last viewed file
-	pS.writeEntry("LastOpenFile", sess.sLastFile);
+	m_pConf->writeEntry("LastOpenFile", sess.sLastFile);
 	
 	// Write the lists of locked query files and call-tree/graph files
-	pS.writeEntry("QueryFiles", sess.slQueryFiles);
-	pS.writeEntry("CallTreeFiles", sess.slCallTreeFiles);
+	m_pConf->writeEntry("QueryFiles", sess.slQueryFiles);
+	m_pConf->writeEntry("CallTreeFiles", sess.slCallTreeFiles);
 	
 	// Write the list of bookmarks
 	stringListFromFlList(slEntry, sess.fllBookmarks);
-	pS.writeEntry("Bookmarks", slEntry);
+	m_pConf->writeEntry("Bookmarks", slEntry);
 	
 	// Write make-related information
 	// Be careful not to write empty strings, as they may occur if the make
 	// dialogue was not invoked during this session
 	if (!sess.sMakeCmd.isEmpty())
-		pS.writeEntry("MakeCommand", sess.sMakeCmd);
+		m_pConf->writeEntry("MakeCommand", sess.sMakeCmd);
 	if (!sess.sMakeRoot.isEmpty())
-		pS.writeEntry("MakeRoot", sess.sMakeRoot);
+		m_pConf->writeEntry("MakeRoot", sess.sMakeRoot);
 }
 
 /**
@@ -267,7 +252,7 @@ bool Project::loadFileList(FileListTarget* pList)
 	QString sFilePath;
 	
 	// Open the 'cscope.files' file
-	if (!m_fiFileList.open(IO_ReadOnly))
+	if (!m_fiFileList.open(QIODevice::ReadOnly))
 		return false;
 
 	// Read all file names from the file
@@ -295,7 +280,7 @@ bool Project::storeFileList(FileListSource* pList)
 	QString sFilePath;
 	
 	// Open the 'cscope.files' file
-	if (!m_fiFileList.open(IO_WriteOnly | IO_Truncate))
+	if (!m_fiFileList.open(QIODevice::WriteOnly | QIODevice::Truncate))
 		return false;
 
 	QTextStream str(&m_fiFileList);
@@ -319,7 +304,7 @@ bool Project::storeFileList(FileListSource* pList)
 bool Project::addFile(const QString& sPath)
 {
 	// Open the 'cscope.files' file
-	if (!m_fiFileList.open(IO_WriteOnly | IO_Append))
+	if (!m_fiFileList.open(QIODevice::WriteOnly | QIODevice::Append))
 		return false;
 	
 	// Write the file path
@@ -344,7 +329,7 @@ bool Project::isEmpty()
 	bool bResult = true;
 	
 	// Open the 'cscope.files' file
-	if (!m_fiFileList.open(IO_ReadOnly))
+	if (!m_fiFileList.open(QIODevice::ReadOnly))
 		return true;
 
 	// Find at least one file name entry in the file
@@ -395,7 +380,7 @@ bool Project::create(const QString& sName, const QString& sPath,
 	const Options& opt)
 {
 	// Prepare the project's files
-	KConfig conf(sPath + "/cscope.proj");
+	kscope4::KSConfig conf(sPath + "/cscope.proj");
 
 	// Write the configuration file version
 	conf.setGroup("");
@@ -413,30 +398,25 @@ bool Project::create(const QString& sName, const QString& sPath,
 	return true;
 }
 
-void Project::writeOptions(KConfig* pConf, const Options& opt)
+void Project::writeOptions(kscope4::KSConfig* pConf, const Options& opt)
 {
-	qDebug() << "Project::writeOptions() stub \n";
-	// ORIG: pConf->setGroup("Project");
-	KConfigGroup gp(pConf, "Project");
-
-	gp.writeEntry("RootPath", opt.sSrcRootPath);
-	gp.writeEntry("FileTypes", opt.slFileTypes.join(" "));
-	gp.writeEntry("Kernel", opt.bKernel);
-	gp.writeEntry("InvIndex", opt.bInvIndex);		
-	gp.writeEntry("NoCompress", opt.bNoCompress);		
-	gp.writeEntry("SlowPathDef", opt.bSlowPathDef);		
-	gp.writeEntry("AutoRebuildTime", opt.nAutoRebuildTime);
-	gp.writeEntry("TabWidth", opt.nTabWidth);
-	gp.writeEntry("CtagsCommand", opt.sCtagsCmd);
+	pConf->setGroup("Project");
+	pConf->writeEntry("RootPath", opt.sSrcRootPath);
+	pConf->writeEntry("FileTypes", opt.slFileTypes.join(" "));
+	pConf->writeEntry("Kernel", opt.bKernel);
+	pConf->writeEntry("InvIndex", opt.bInvIndex);		
+	pConf->writeEntry("NoCompress", opt.bNoCompress);		
+	pConf->writeEntry("SlowPathDef", opt.bSlowPathDef);		
+	pConf->writeEntry("AutoRebuildTime", opt.nAutoRebuildTime);
+	pConf->writeEntry("TabWidth", opt.nTabWidth);
+	pConf->writeEntry("CtagsCommand", opt.sCtagsCmd);
 	
 	// Set auto-completion options
-	// ORIG: pConf->setGroup("AutoCompletion");
-	KConfigGroup ac(pConf, "AutoCompletion");
-	ac.writeEntry("Enabled", opt.bACEnabled);
-	ac.writeEntry("MinChars", opt.nACMinChars);
-	ac.writeEntry("Delay", opt.nACDelay);
-	ac.writeEntry("MaxEntries", opt.nACMaxEntries);
-	return;
+	pConf->setGroup("AutoCompletion");
+	pConf->writeEntry("Enabled", opt.bACEnabled);
+	pConf->writeEntry("MinChars", opt.nACMinChars);
+	pConf->writeEntry("Delay", opt.nACDelay);
+	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
 
-// Sat Oct 29 13:45:28 PDT 2011
+// Sun Oct 30 18:02:22 PDT 2011
