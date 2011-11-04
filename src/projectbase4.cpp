@@ -1,9 +1,7 @@
-
+#include <Q3PtrList>
 #include "projectbase4.h"
 #include "kscopeconfig4.h"
 #include "cscopefrontend4.h"
-
-#include <qdebug.h>
 
 ProjectBase::ProjectBase()
 {
@@ -18,19 +16,19 @@ bool ProjectBase::open(const QString& sPath)
 	QFileInfo fi(sPath);
 		
 	// Make sure the file exists, and that is is a cross-reference file
-	if (!fi.exists() || !isCscopeOut(fi.absoluteFilePath()))
+ 	if (!fi.exists() || !isCscopeOut(fi.absoluteFilePath()))
 		return false;
 		
 	// Set the project's directory
-	m_dir = fi.dir();
+	m_dir = fi.dirPath(true);
 	
 	// Set the name of the project to be the full path of the file
-	m_sName = fi.absoluteFilePath();
+ 	m_sName = fi.absoluteFilePath();
 	
 	// Initialise project options (assume source root is the folder holding the
 	// cscope.out file)
 	getDefOptions(m_opt);
-	m_opt.sSrcRootPath = m_dir.absolutePath();
+ 	m_opt.sSrcRootPath = m_dir.absolutePath();
 	
 	return true;
 }
@@ -62,7 +60,6 @@ void ProjectBase::getMakeParams(QString& sCmd, QString& sDir) const
  */
 void ProjectBase::getDefOptions(Options& opt)
 {
-	qDebug() << "BEGIN ProjectBase::getDefOptions() \n";
 	// Set default source path to file-system root
 	opt.sSrcRootPath = "/";
 	
@@ -89,7 +86,6 @@ void ProjectBase::getDefOptions(Options& opt)
 		opt.nAutoRebuildTime = -1;
 		opt.bACEnabled = false;
 	}
-	qDebug() << "END ProjectBase::getDefOptions() \n";
 }
 	
 void ProjectBase::initOptions()
@@ -121,16 +117,13 @@ bool ProjectBase::isCscopeOut(const QString& sPath)
 	int nVer;
 	char szDir[PATH_MAX];
 
-	qDebug() << "ProjectBase::isCscopeOut FIXME: try to open file \n";
 	// Try to open the file
-	/*
 	if (!file.open(IO_ReadOnly))
 		return false;
-	*/
 		
 	// Check if the first line matches the expected format
 	sLine = QTextStream(&file).readLine();
-	return sscanf(sLine.toLatin1(), "cscope %d %s", &nVer, szDir) == 2;
+ 	return sscanf(sLine.toLatin1(), "cscope %d %s", &nVer, szDir) == 2;
 }
 
 /**
@@ -151,16 +144,11 @@ bool ProjectBase::loadFileList(FileListTarget* pList)
 		return false;
 	
 	// Open the file
-	file.setFileName(m_dir.absolutePath() + "/cscope.files");
-	qDebug() << "ProjectBase::loadFileList FIXME: try to open file \n";
-	/*
+ 	file.setFileName(m_dir.absolutePath() + "/cscope.files");
 	if (!file.open(IO_ReadOnly))
 		return false;
-	*/
 
-	qDebug() << "ProjectBase::loadFileList FIXME: read names from file \n";
 	// Read all file names from the file
-	/*
 	QTextStream str(&file);
 	while ((sFilePath = str.readLine()) != QString::null) {
 		// Skip option lines
@@ -170,8 +158,8 @@ bool ProjectBase::loadFileList(FileListTarget* pList)
 		// Set the new list item
 		pList->addItem(sFilePath);
 	}
-	*/
 
 	file.close();
 	return true;
 }
+// Thu Nov  3 18:25:57 PDT 2011

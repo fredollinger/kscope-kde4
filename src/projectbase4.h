@@ -1,14 +1,11 @@
 #ifndef PROJECTBASE_H
 #define PROJECTBASE_H
 
-#include <kconfig.h>
-
-#include <qstringlist.h>
+#include <Q3PtrList>
 #include <qstringlist.h>
 #include <qdir.h>
 #include <qfile.h>
-
-#include <Q3PtrList>
+#include <kconfig.h>
 
 #define DEF_IS_KERNEL		false
 #define DEF_INV_INDEX		true
@@ -256,3 +253,4 @@ protected:
 };
 
 #endif
+// Thu Nov  3 18:26:18 PDT 2011

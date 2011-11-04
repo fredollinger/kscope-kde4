@@ -19,7 +19,7 @@ class KSConfig : public KConfig
 {
 public:
 	KSConfig(const QString&);
-	virtual ~KSConfig();
+	// virtual ~KSConfig();
 
 	bool readBoolEntry(const char*);
 	bool readBoolEntry(const char*, bool);
