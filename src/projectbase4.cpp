@@ -1,7 +1,9 @@
+#include <QTextStream>
 #include <Q3PtrList>
 #include "projectbase4.h"
 #include "kscopeconfig4.h"
 #include "cscopefrontend4.h"
+#include "kio4.h"
 
 ProjectBase::ProjectBase()
 {
@@ -20,7 +22,7 @@ bool ProjectBase::open(const QString& sPath)
 		return false;
 		
 	// Set the project's directory
-	m_dir = fi.dirPath(true);
+	m_dir = fi.dir();
 	
 	// Set the name of the project to be the full path of the file
  	m_sName = fi.absoluteFilePath();
