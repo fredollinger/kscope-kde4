@@ -53,6 +53,7 @@ public:
 
 private:
 	QString m_group; // what group we have
+	KConfigGroup m_gp;
 };
 
 } // namespace kscope4

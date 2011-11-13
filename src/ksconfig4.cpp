@@ -9,7 +9,8 @@
 //usr/include/KDE/../kconfig.h:177:5: note:                 KConfig::KConfig(const QString&, const QString&, const char*)
 namespace kscope4{
 KSConfig::KSConfig(const QString &qs) : KConfig(qs),
-	m_group("") 
+	m_group(""),
+	m_gp(this, "")
 {}
 
 void KSConfig::setGroup(const char* group){
@@ -17,48 +18,54 @@ void KSConfig::setGroup(const char* group){
 }
 
 unsigned int KSConfig::readUnsignedNumEntry(const char* key, int i){
-	KConfigGroup gp(this, m_group);
-	return (unsigned int) gp.readEntry(key, i);
+	m_gp.changeGroup(m_group);
+	qDebug() << "ksconfig(): number: " <<  m_gp.readEntry(key, i) << " group: " << m_group;
+	// stops a dumb bug
+	if ( m_group.isEmpty() ) {
+	// 	qDebug() << "ksconfig(): empty: " << readEntry(key, i);
+	}
+	return (unsigned int) m_gp.readEntry(key, i);
 }
 
 unsigned int KSConfig::readUnsignedNumEntry(const char* key){
 	int i = 0;
-	KConfigGroup gp(this, m_group);
-	return (unsigned int) gp.readEntry(key, i);
+	m_gp.changeGroup(m_group);
+	return (unsigned int) m_gp.readEntry(key, i);
 }
 
 QString KSConfig::readEntry(const char* key){
-	KConfigGroup gp(this, m_group);
-	return gp.readEntry(key);
+	m_gp.changeGroup(m_group);
+	return m_gp.readEntry(key);
 }
 
 QString KSConfig::readEntry(const char* key, char *def){
 	const char *cdef = def;
-	KConfigGroup gp(this, m_group);
-	return gp.readEntry(key,cdef);
+	m_gp.changeGroup(m_group);
+	return m_gp.readEntry(key,cdef);
 }
 
 QString KSConfig::readEntry(const char* key, QString def){
-	KConfigGroup gp(this, m_group);
-	return gp.readEntry(key,def);
+	m_gp.changeGroup(m_group);
+	return m_gp.readEntry(key,def);
 }
 
 QStringList KSConfig::readListEntry(const char* key, char* def){
-	KConfigGroup gp(this, m_group);
+	m_gp.changeGroup(m_group);
 	QVariant qv;
 	const char *cdef = def;
 
-	qv = gp.readEntry(key, cdef);
+	qv = m_gp.readEntry(key, cdef);
 	return qv.toStringList();
 }
 
 bool KSConfig::readBoolEntry(const char* key, bool def){
+	m_gp.changeGroup(m_group);
+
 	bool res = NULL;
 
-	KConfigGroup gp(this, m_group);
 	QVariant qv;
 
-	qv = gp.readEntry(key);
+	qv = m_gp.readEntry(key);
 
 	res = qv.toBool();
 	if (NULL == res) return def;
@@ -68,10 +75,10 @@ bool KSConfig::readBoolEntry(const char* key, bool def){
 bool KSConfig::readBoolEntry(const char* key){
 	bool res = NULL;
 
-	KConfigGroup gp(this, m_group);
+	m_gp.changeGroup(m_group);
 	QVariant qv;
 
-	qv = gp.readEntry(key);
+	qv = m_gp.readEntry(key);
 
 	res = qv.toBool();
 	return res;
@@ -80,10 +87,10 @@ bool KSConfig::readBoolEntry(const char* key){
 int KSConfig::readNumEntry(const char* key){
 	int res = 0;
 
-	KConfigGroup gp(this, m_group);
+	m_gp.changeGroup(m_group);
 	QVariant qv;
 
-	qv = gp.readEntry(key);
+	qv = m_gp.readEntry(key);
 
 	res = qv.toInt();
 
@@ -91,28 +98,28 @@ int KSConfig::readNumEntry(const char* key){
 }
 
 QStringList KSConfig::readListEntry(const char* key){
-	KConfigGroup gp(this, m_group);
+	m_gp.changeGroup(m_group);
 	QVariant qv;
 	const char *cdef = "";
 
-	qv = gp.readEntry(key, cdef);
+	qv = m_gp.readEntry(key, cdef);
 	return qv.toStringList();
 }
 
 void KSConfig::writeEntry(const char* key, QStringList val){
-	KConfigGroup gp(this, m_group);
-	return gp.writeEntry(key, val);
+	m_gp.changeGroup(m_group);
+	return m_gp.writeEntry(key, val);
 }
 
 void KSConfig::writeEntry(const char* key, QString val){
-	KConfigGroup gp(this, m_group);
-	return gp.writeEntry(key, val);
+	m_gp.changeGroup(m_group);
+	return m_gp.writeEntry(key, val);
 }
 
 void KSConfig::writeEntry(const char* key, int val){
-	KConfigGroup gp(this, m_group);
-	return gp.writeEntry(key, val);
+	m_gp.changeGroup(m_group);
+	return m_gp.writeEntry(key, val);
 }
 
 } // namespace kscope4
-// Sun Oct 30 18:25:59 PDT 2011
+// Sun Nov 13 14:10:46 PST 2011

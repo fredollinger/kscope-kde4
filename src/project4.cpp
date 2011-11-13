@@ -85,7 +85,7 @@ bool Project::open(const QString& sPath)
 
 	// Verify the configuration file's version is compatible
 	m_pConf->setGroup("");
-	if (m_pConf->readUnsignedNumEntry("Version", 0) != PROJECT_CONFIG_VER) {
+	if (m_pConf->readUnsignedNumEntry("Version", 0) < PROJECT_CONFIG_VER) {
 		KMessageBox::error(0, i18n("Your project is not compatible with this "
 				"version of KScope.\nPlease re-create the project."));
 		return false;
