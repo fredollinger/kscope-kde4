@@ -19,11 +19,9 @@ void KSConfig::setGroup(const char* group){
 
 unsigned int KSConfig::readUnsignedNumEntry(const char* key, int i){
 	m_gp.changeGroup(m_group);
+	m_gp.sync();
 	qDebug() << "ksconfig(): number: " <<  m_gp.readEntry(key, i) << " group: " << m_group;
-	// stops a dumb bug
-	if ( m_group.isEmpty() ) {
-	// 	qDebug() << "ksconfig(): empty: " << readEntry(key, i);
-	}
+
 	return (unsigned int) m_gp.readEntry(key, i);
 }
 

@@ -69,6 +69,8 @@ bool Project::open(const QString& sPath)
 {
 	QString sConfFile;
 	Options opt;
+
+	qDebug() << "open: sPath: " << sPath;
 	
 	// Associate the object with the project directory
 	m_dir.setPath(sPath);
@@ -84,8 +86,10 @@ bool Project::open(const QString& sPath)
 	m_pConf = new kscope4::KSConfig(sPath + "/cscope.proj");
 
 	// Verify the configuration file's version is compatible
+	m_pConf->reparseConfiguration();
 	m_pConf->setGroup("");
 	if (m_pConf->readUnsignedNumEntry("Version", 0) < PROJECT_CONFIG_VER) {
+		qDebug() << "version: " << m_pConf->readUnsignedNumEntry("Version", 0);
 		KMessageBox::error(0, i18n("Your project is not compatible with this "
 				"version of KScope.\nPlease re-create the project."));
 		return false;
@@ -218,6 +222,7 @@ void Project::storeSession(const Session& sess)
 	// Write the list of open file locations
 	stringListFromFlList(slEntry, sess.fllOpenFiles);
 	m_pConf->writeEntry("OpenFiles", slEntry);
+
 	
 	// Write the path of the last viewed file
 	m_pConf->writeEntry("LastOpenFile", sess.sLastFile);
@@ -382,9 +387,13 @@ bool Project::create(const QString& sName, const QString& sPath,
 	// Prepare the project's files
 	kscope4::KSConfig conf(sPath + "/cscope.proj");
 
+	qDebug() << "create: sPath: " << sPath;
+
 	// Write the configuration file version
 	conf.setGroup("");
 	conf.writeEntry("Version", PROJECT_CONFIG_VER);
+
+	qDebug() << "just wrote: "<< conf.readEntry("Version");
 	
 	// Write project properties in the configuration file
 	conf.setGroup("Project");

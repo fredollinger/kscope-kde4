@@ -149,7 +149,7 @@ void KScope::setupActions()
 	// BEGIN Project Menu
 	
 	KAction* projectNew = new KAction(this);
-  	projectNew->setText(i18n("project_new"));
+  	projectNew->setText(i18n("New Project"));
 	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
@@ -510,8 +510,14 @@ void KScope::slotCreateProject()
 
 	// Create and open the new project
 	dlg.getOptions(opt);
+
+	QString deepcopy(sProjPath.toLatin1() );
+
+	// if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
+		//openProject(sProjPath);
+
 	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
-		openProject(sProjPath);
+		openProject(deepcopy);
 }
 
 
