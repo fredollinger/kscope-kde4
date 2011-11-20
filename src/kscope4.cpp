@@ -511,13 +511,9 @@ void KScope::slotCreateProject()
 	// Create and open the new project
 	dlg.getOptions(opt);
 
-	QString deepcopy(sProjPath.toLatin1() );
-
-	// if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
-		//openProject(sProjPath);
-
-	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
-		openProject(deepcopy);
+	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath)){
+		openProject(sProjPath);
+	}
 }
 
 
@@ -575,8 +571,11 @@ void KScope::openProject(const QString& sDir)
 	m_pFileView->setRoot(pProj->getSourceRoot());
 	
 	// Initialise Cscope and create a builder object
-	/*
 	initCscope();
+
+	/*
+	// FIXME: Get this to work
+	// Sun Nov 20 14:10:43 PST 2011
 	
 	// Set auto-completion parameters
 	pProj->getOptions(opt);
@@ -683,8 +682,6 @@ void KScope::slotQueryPattern()
  */
 void KScope::slotQuery(uint nType, bool bPrompt)
 {
-	qDebug() << "slotQuery() FIXME: Not done \n";
-
 	QString sSymbol;
 	bool bCase;
 	// CallTreeDlg* pCallTreeDlg;
@@ -731,8 +728,6 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	EditorPage* pPage;
 	QString sSuggested;
 
-	qDebug() << "getSymbol() \n";
-	
 	// Set the currently selected text, if any
 	// if ((pPage = m_pEditTabs->getCurrentPage()) != NULL)
 	//	sSuggested = pPage->getSuggestedText();
@@ -852,7 +847,7 @@ void KScope::slotBuildAborted()
  */
 void KScope::slotCscopeError(const QString& sMsg)
 {
-	qDebug() << "KScope::slotCscopeError() \n";
+	qDebug() << "KScope::slotCscopeError(): FIXME: not done \n";
 	// m_pMsgDlg->addText(sMsg);
 }
 
@@ -915,13 +910,10 @@ void KScope::toggleQueryWindow(bool bShow)
 }
 
 void KScope::slotCommit(){
-	qDebug() << "slotCommit";
 	m_pVcsCommit->exec();
 }
 
 void KScope::slotPush(){
-	qDebug() << "slotPush";
-
 	ProjectBase* pProj;
 
 	// Do nothing if no project is open
@@ -932,7 +924,6 @@ void KScope::slotPush(){
 	}
 
 	m_pVcs->push(); 
-	// m_pVcsPush->exec();
 }
 
 void KScope::slotPull(){

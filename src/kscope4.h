@@ -14,12 +14,12 @@
 #include "buildFrontEnd.h"
 #include "kdockwidget4.h"
 #include "projectbase4.h"
-#include "projectmanager4.h"
+//#include "projectmanager4.h"
 #include "fileview4.h"
 #include "progressdlg4.h"
 #include "vcsCommitDlg.h"
 
-// class ProjectManager;
+class ProjectManager;
 class EditorTabs;
 // class FileView;
 // class FileList;

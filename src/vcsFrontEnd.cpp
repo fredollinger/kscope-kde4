@@ -57,18 +57,14 @@ bool vcsFrontEnd::push(){
 }
 
 bool vcsFrontEnd::slotDisplayResults(){
-	qDebug ()<< "vcsFrontEnd::slotDisplayResults()";
-
 	disconnect(this, SIGNAL(readyRead()), 0, 0);
 
 	setReadChannel(QProcess::StandardOutput);
 	QString qs;
 	QByteArray qba;
-	qDebug() << "slotLsDone(): " << bytesAvailable();
 	while (atEnd() == false){
 		qba = readLine(2000);	
 		qs = qs + QString(qba);
-		qDebug() << qs;
 	}
 
 	m_qmbMsg->setText(qs);
@@ -151,8 +147,6 @@ bool vcsFrontEnd::diff(){
 
 bool vcsFrontEnd::pull(){
 	QStringList slCmdLine;
-
-	qDebug ()<< "vcsFrontEnd::slotPull()";
 
 	connect(this, SIGNAL(readyRead()),
 	this, SLOT(slotDisplayResults()));
