@@ -1,0 +1,7 @@
+Files are completed when all functions and vars have been implemented from original.
+
+Also, this file is integrated into the regular project (linked, but not all functions need to be called yet.)
+
+Also, minimal changes are made to allow us to compile against kde4.
+
+newprojectdlg4.h
