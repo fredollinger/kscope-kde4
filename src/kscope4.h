@@ -66,16 +66,19 @@ Q_OBJECT
 public:
 	KScope(QWidget *parent=0);
 	~KScope();
-	void openProject(const QString&);
-	void open(const QString&);
-	void save();
 	bool close(bool bForce = false);
-	void verifyCscope();
+	bool noOpenProject();
+	void open(const QString&);
 	void openFileNamed(QString);
+	void openProject(const QString&);
+	void save();
+	void verifyCscope();
 
 private:
 	vcsFrontEnd *m_pVcs;
 	buildFrontEnd *m_pBuild;
+
+	QMessageBox *m_qmbMsg; // message box dialog
 
      	// QDockWidget *resDock;
 	/*

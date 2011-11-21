@@ -66,6 +66,7 @@ KScope::KScope(QWidget *) :
 	m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
 	m_pBuild = new buildFrontEnd();
+	m_qmbMsg = new QMessageBox();
 	
 	// BEGIN STUFF FROM KSCOPE
 	// Connect menu and toolbar items with the object's slots
@@ -913,16 +914,25 @@ void KScope::slotCommit(){
 	m_pVcsCommit->exec();
 }
 
-void KScope::slotPush(){
+/* Returns false if we have an open project 
+ * msg - custom message to show if we do not have an open project.
+ */
+bool KScope::noOpenProject(){
 	ProjectBase* pProj;
 
 	// Do nothing if no project is open
 	pProj = m_pProjMgr->curProject();
 	if (!pProj){
-		qDebug() << "no project!!";
-		return;
+		m_qmbMsg->setText("First create of open a project!");
+		m_qmbMsg->exec();
+		return true;
 	}
+	return false;
+}
 
+void KScope::slotPush(){
+	if (noOpenProject()) return;
+  
 	m_pVcs->push(); 
 }
 

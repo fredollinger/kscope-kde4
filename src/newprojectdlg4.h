@@ -1,9 +1,10 @@
-#ifndef NEWPROJECTDLG_H
-#define NEWPROJECTDLG_H
+#ifndef NEWPROJECTDLG4_H
+#define NEWPROJECTDLG4_H
 
 #include <QtGui/QDialog>
 #include <qlineedit.h>
 #include <qcheckbox.h>
+
 #include "newprojectlayout4.h"
 #include "autocompletionlayout4.h"
 #include "projectbase4.h"
@@ -13,6 +14,7 @@
  * Allows the user to configure auto-completion parameters.
  * @author Elad Lahav
  */
+
 class AutoCompletionDlg : public QDialog, public Ui::AutoCompletionLayout
 {
 	Q_OBJECT
@@ -29,7 +31,6 @@ protected slots:
 	virtual void accept();
 
 private:
-
 	/** The minimum number of characters in a symbol required for automatic
 		completion. */
 	uint m_nMinChars;
@@ -59,32 +60,30 @@ class NewProjectDlg : public QDialog, public Ui::NewProjectLayout
 	
 public: 
 	NewProjectDlg(bool, QWidget* pParent = NULL, const char* szName = NULL);
-	// NewProjectDlg(void);
 	~NewProjectDlg();
-
+	
 	void setProperties(const QString&, const QString&, 
 		const ProjectBase::Options&);
 
 	QString getName();
 	QString getPath();
 	void getOptions(ProjectBase::Options&);
-
+	
 protected slots:
-	void accept();
-	void slotAddType();
-	void slotRemoveType();
-	void slotAvailTypesChanged(const QString&);
+	virtual void accept();
+	virtual void slotAddType();
+	virtual void slotRemoveType();
+	virtual void slotAvailTypesChanged(const QString&);
 
 private:
 	/** The file MIME-types associated with the new project. */
 	QStringList m_slTypes;
-
+	
 	/** A sub-dialogue for configuring symbol auto-completion parameters. */
 	AutoCompletionDlg* m_pAutoCompDlg;
-
+	
+	/** Whether the dialogue represents a new or existing project. */
 	bool m_bNewProj;
 };
-
 #endif
-
-// Mon Jun 20 19:44:45 UTC 2011
+// Sun Nov 20 16:04:36 PST 2011
