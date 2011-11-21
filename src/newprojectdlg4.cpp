@@ -147,6 +147,7 @@ QString NewProjectDlg::getPath()
  */
 void NewProjectDlg::getOptions(ProjectBase::Options& opt)
 {
+	qDebug() << "NewProjectDlg::getOptions(): BEGIN";
 	opt.sSrcRootPath = m_pSrcRootRequester->text();
 	opt.slFileTypes = m_slTypes;
 	opt.bKernel = m_pKernelCheck->isChecked();
@@ -170,6 +171,8 @@ void NewProjectDlg::getOptions(ProjectBase::Options& opt)
 	opt.nACMaxEntries = m_pAutoCompDlg->m_nMaxEntries;
 	
 	opt.sCtagsCmd = m_pCtagsCmdEdit->text();
+
+	qDebug() << "NewProjectDlg::getOptions(): END";
 }
 
 /**
@@ -177,6 +180,7 @@ void NewProjectDlg::getOptions(ProjectBase::Options& opt)
  */
 void NewProjectDlg::accept()
 {
+	qDebug() << "NewProjectDlg::accept(): BEGIN";
 	int i, nCount;
 	
 	// Validate the name of a new project
@@ -203,6 +207,8 @@ void NewProjectDlg::accept()
 		
 	// Close the dialog
 	QDialog::accept();
+
+	qDebug() << "NewProjectDlg::accept(): END";
 }
 
 /**

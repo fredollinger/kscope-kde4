@@ -4,6 +4,7 @@
 #include "project4.h"
 #include "kscopeconfig4.h"
 #include "kio4.h"
+#include "qdebug.h"
 
 /**
  * Class constructor.
@@ -98,11 +99,14 @@ bool ProjectManager::open(const QString& sPath)
 		return false;
 	}
 	
+	qDebug() << "ProjectManager::open(): addRecentProject()";
 	// Add to the list of recently opened projects
 	Config().addRecentProject(sPath);
+	qDebug() << "ProjectManager::open(): addRecentProject(): SUCCESS";
 	
 	// Project opened successfully
 	m_pCurProj = pProj;
+	qDebug() << "ProjectManager::open(): END";
 	return true;
 }
 
@@ -125,8 +129,10 @@ bool ProjectManager::openCscopeOut(const QString& sFilePath)
 		return false;
 	}
 	
+	qDebug() << "ProjectManager::openCScopeOut(): addRecentProject()";
 	// Add to the list of recently opened projects
 	Config().addRecentProject(sFilePath);
+	qDebug() << "ProjectManager::openCScopeOut(): addRecentProject(): SUCCESS";
 	
 	// Project opened successfully
 	m_pCurProj = pProj;

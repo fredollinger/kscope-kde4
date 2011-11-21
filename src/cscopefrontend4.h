@@ -70,7 +70,6 @@ protected:
 	virtual void finalize();
 
 private:
-
 	/**
 	 * The possible states of the parser state machine.
 	 */
@@ -158,5 +157,3 @@ private slots:
 };
 
 #endif
-
-// Sun Oct 16 17:49:28 PDT 2011

@@ -1752,4 +1752,5 @@ void KScope::slotDropEvent(QDropEvent* pEvent)
 		addEditor((*itr).path());
 }
 
+
 #include "kscope.moc"

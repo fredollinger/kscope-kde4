@@ -383,140 +383,6 @@ void KScope::slotRebuildDB()
 
 	pProj = m_pProjMgr->curProject();
 }
-	/*
-	if (!pProj)
-		return;
-	
-	if (!pProj->dbExists()) {
-		m_pProgressDlg = new ProgressDlg(i18n("KScope"), i18n("Please wait "
-			"while KScope builds the database"), this);
-		m_pProgressDlg->setAllowCancel(false);
-		m_pProgressDlg->setValue(0);
-	}
-	
-	m_pCscopeBuild->rebuild();
-	*/
-
-
-
-/**
- * Opens a project.
- * If another project is currently active, it is closed first.
- * @param	sDir	The directory of the project to open.
- */
-/*
-void KScope::openProject(const QString& sDir)
-{
-	QString sProjDir;
-	ProjectBase* pProj;
-	QStringList slQueryFiles;
-	QStringList slCallTreeFiles;
-	QStringList slArgs;
-	ProjectBase::Options opt;
-	
-	qDebug() << "KScope::slotOpenProject() BEGIN \n";
-
-	// Close the current project (may return false if the user clicks on the
-	// "Cancel" button while prompted to save a file)
-	if (!slotCloseProject())
-		return;
-
-	// FIXME:
-	qDebug() << "KScope::slotOpenProject() crashing?? \n";
-	// Open the project in the project manager
-	sProjDir = QDir::cleanPath(sDir);
-	if (!m_pProjMgr->open(sProjDir))
-		return;
-	
-	// Change main window title
-	pProj = m_pProjMgr->curProject();
-	setWindowTitle(pProj->getName());
-
-	// Set the root of the file tree
-	m_pFileView->setRoot(pProj->getSourceRoot());
-	return;
-	
-	// Initialise Cscope and create a builder object
-	// initCscope();
-	
-	// Set auto-completion parameters
-	pProj->getOptions(opt);
-	// SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
-		//opt.nACDelay, opt.nACMaxEntries);
-	
-	// Set per-project command-line arguments for Ctags
-	// CtagsFrontend::setExtraArgs(opt.sCtagsCmd);
-	
-	// Create an initial query page
-	// m_pQueryWidget->addQueryPage();
-	
-	// Enable project-related actions
-	// m_pActions->slotEnableProjectActions(true);
-	
-	// If this is a new project (i.e., no source files are yet included), 
-	// display the project files dialogue
-	if (pProj->isEmpty()) {
-		slotProjectFiles();
-		return;
-	}
-	
-	// Fill the file list with all files in the project. 
-	// m_pFileList->setUpdatesEnabled(false);
-	// pProj->loadFileList(m_pFileList);
-	// m_pFileList->setUpdatesEnabled(true);
-	
-	// Restore the last session
-	// restoreSession();
-	
-	// Rebuild the cross-reference database
-	if (isAutoRebuildEnabled()) {
-		// If Cscope installation was not yet verified, postpone the build
-		// process
-		if (m_bCscopeVerified)
-		slotRebuildDB();
-		else
-			m_bRebuildDB = true;
-	}
-}
-*/
-
-/**
- * Handles the "Project->New..." command.
- * Prompts the user for the name and folder for the project, and then creates
- * the project.
- */
-void KScope::slotCreateProject()
-{
-	NewProjectDlg dlg(true, this);
-	ProjectBase::Options opt;
-	QString sProjPath;
-	
-	// Prompt the user to close any active projects
-	if (m_pProjMgr->curProject()) {
-		if (KMessageBox::questionYesNo(0, 
-			i18n("The current project needs to be closed before a new one is"
-			" created.\nWould you like to close it now?")) != 
-			KMessageBox::Yes) {
-			return;
-		}
-		
-		// Try to close the project.
-		if (!slotCloseProject())
-			return;
-	}
-	
-	// Display the "New Project" dialog
-	if (dlg.exec() != QDialog::Accepted)
-		return;
-
-	// Create and open the new project
-	dlg.getOptions(opt);
-
-	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath)){
-		openProject(sProjPath);
-	}
-}
-
 
 /**
  * Handles the "Project->Open..." command.
@@ -858,6 +724,7 @@ void KScope::slotCscopeError(const QString& sMsg)
  */
 void KScope::initCscope()
 {
+	qDebug() <<  "KScope::initCscope(): BEGIN";
 	ProjectBase* pProj;
 	
 	// Delete the current object, if one exists
@@ -866,8 +733,10 @@ void KScope::initCscope()
 
 	// Initialise CscopeFrontend
 	pProj = m_pProjMgr->curProject();
+	qDebug() <<  "KScope::initCscope(): Init CScopeFrontEnd";
 	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
 
+	qDebug() <<  "KScope::initCscope(): New CScopeFrontEnd";
 	// Create a persistent Cscope process
 	m_pCscopeBuild = new CscopeFrontend();
 
@@ -884,6 +753,8 @@ void KScope::initCscope()
 	// Show errors in a modeless dialogue
 	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
 		SLOT(slotCscopeError(const QString&)));
+
+	qDebug() <<  "KScope::initCscope(): END";
 }
 
 /**
@@ -1053,6 +924,42 @@ bool KScope::slotBuildReady(){
 	m_view->document()->setText(qs);	
 
 	return true;
+}
+
+/**
+ * Handles the "Project->New..." command.
+ * Prompts the user for the name and folder for the project, and then creates
+ * the project.
+ */
+void KScope::slotCreateProject()
+{
+	NewProjectDlg dlg(true, this);
+	ProjectBase::Options opt;
+	QString sProjPath;
+	
+	// Prompt the user to close any active projects
+	if (m_pProjMgr->curProject()) {
+		if (KMessageBox::questionYesNo(0, 
+			i18n("The current project needs to be closed before a new one is"
+			" created.\nWould you like to close it now?")) != 
+			KMessageBox::Yes) {
+			return;
+		}
+		
+		// Try to close the project.
+		if (!slotCloseProject())
+			return;
+	}
+	
+	// Display the "New Project" dialog
+	if (dlg.exec() != QDialog::Accepted)
+		return;
+
+	// Create and open the new project
+	dlg.getOptions(opt);
+
+	if (m_pProjMgr->create(dlg.getName(), dlg.getPath(), opt, sProjPath))
+		openProject(sProjPath);
 }
 
 } // namespace kscope4
