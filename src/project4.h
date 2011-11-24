@@ -7,6 +7,7 @@
 /**
  * @author Elad Lahav
  */
+namespace kscope4{
 class Project : public ProjectBase
 {
 public:
@@ -62,5 +63,5 @@ private:
 };
 
 #endif
-
+}// namespace kscope4
 // Sat Oct 29 13:47:05 PDT 2011

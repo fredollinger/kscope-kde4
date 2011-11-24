@@ -8,6 +8,7 @@
 #include <QDockWidget>
 #include <QStringListModel>
 #include <QtGui/QKeyEvent>
+#include <QListWidget>
 
 #include <qtimer.h>
 
@@ -15,7 +16,7 @@
 #include "kdockwidget4.h"
 #include "projectbase4.h"
 //#include "projectmanager4.h"
-#include "fileview4.h"
+// #include "fileview4.h"
 #include "progressdlg4.h"
 #include "vcsCommitDlg.h"
 
@@ -135,7 +136,7 @@ private:
 
 	/** The file selection widget (project file list and OS file system
 		tree.) */
-	FileView* m_pFileView;
+	// FileView* m_pFileView;
 	
 	/** Pointer to the file list part of the FileView widget. */
 	// FileList* m_pFileList;

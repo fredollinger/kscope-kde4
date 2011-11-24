@@ -41,7 +41,7 @@
  * Allows the user to configure auto-completion parameters.
  * @author Elad Lahav
  */
-
+namespace kscope4{
 class AutoCompletionDlg : public QDialog, public Ui::AutoCompletionLayout
 {
 	Q_OBJECT
@@ -113,4 +113,5 @@ private:
 	bool m_bNewProj;
 };
 #endif
+} // namespace kscope4
 // Sun Nov 20 16:04:36 PST 2011

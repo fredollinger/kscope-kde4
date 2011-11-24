@@ -11,6 +11,7 @@
 #include "ksconfig4.h"
 #include "project4.h"
 
+namespace kscope4{
 #define PROJECT_CONFIG_VER 2
 
 inline void flListFromStringList(FileLocationList& fll, const QStringList& sl)
@@ -427,5 +428,5 @@ void Project::writeOptions(kscope4::KSConfig* pConf, const Options& opt)
 	pConf->writeEntry("Delay", opt.nACDelay);
 	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
-
+}// namespace kscope4
 // Sun Oct 30 18:02:22 PDT 2011

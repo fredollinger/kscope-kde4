@@ -17,7 +17,7 @@
 
 // #include "calltreedlg4.h"
 // #include "calltreemanager4.h"
-#include "fileview4.h"
+// #include "fileview4.h"
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
@@ -63,7 +63,7 @@ KScope::KScope(QWidget *) :
 	m_pProjMgr = new ProjectManager();
 	// m_pEditMgr = new EditorManager(this);
 	// m_pCallTreeMgr = new CallTreeManager(this);
-	m_pFileView = new FileView(this);
+	// m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
 	m_pBuild = new buildFrontEnd();
 	m_qmbMsg = new QMessageBox();
@@ -413,6 +413,7 @@ void KScope::slotOpenProject()
  */
 void KScope::openProject(const QString& sDir)
 {
+	qDebug() << "KScope::openProject(): BEGIN";
 	QString sProjDir;
 	ProjectBase* pProj;
 	QStringList slQueryFiles;
@@ -430,13 +431,15 @@ void KScope::openProject(const QString& sDir)
 	if (!m_pProjMgr->open(sProjDir))
 		return;
 	
+	qDebug() << "KScope::openProject(): change project window title";
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
 	setWindowTitle(pProj->getName());
 
 	// Set the root of the file tree
-	m_pFileView->setRoot(pProj->getSourceRoot());
+	// m_pFileView->setRoot(pProj->getSourceRoot());
 	
+	qDebug() << "KScope::openProject(): initCscope()";
 	// Initialise Cscope and create a builder object
 	initCscope();
 
@@ -508,7 +511,7 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 	setWindowTitle(pProj->getName());
 	
 	// Set the root folder in the file tree
-	m_pFileView->setRoot(pProj->getSourceRoot());
+	// m_pFileView->setRoot(pProj->getSourceRoot());
 	
 	// Initialise Cscope and create a builder object
 	/*

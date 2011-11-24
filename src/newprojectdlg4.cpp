@@ -26,6 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  ***************************************************************************/
+
 #include <qdebug.h>
 #include <QRegExp>
 #include <qregexp.h>
@@ -46,6 +47,7 @@
  * @param	pParent		The parent widget
  * @param	szName		The widget's name
  */
+namespace kscope4{
 NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent, 
 	const char* szName) :
  	Ui::NewProjectLayout(),
@@ -361,3 +363,6 @@ void AutoCompletionDlg::accept()
 	// Close the dialogue, indicating acceptance
 	QDialog::accept();
 }
+
+} // namespace kscope4
+// Thu Nov 24 14:45:06 PST 2011

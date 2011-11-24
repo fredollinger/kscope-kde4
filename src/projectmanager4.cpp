@@ -34,7 +34,7 @@ ProjectManager::~ProjectManager()
  * @return	true if successful, false otherwise
  */
 bool ProjectManager::create(const QString& sName, const QString& sPath, 
-	const ProjectBase::Options& opt, QString& sProjDir)
+	const kscope4::ProjectBase::Options& opt, QString& sProjDir)
 {
 	QDir dir(sPath);
 	QString sParentPath;
@@ -73,7 +73,7 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
 		return false;
 	}
 	
-	if (!Project::create(sName, dir.absolutePath(), opt))
+	if (!kscope4::Project::create(sName, dir.absolutePath(), opt))
 		return false;
 	
 	sProjDir = dir.path();
@@ -87,13 +87,13 @@ bool ProjectManager::create(const QString& sName, const QString& sPath,
  */
 bool ProjectManager::open(const QString& sPath)
 {
-	Project* pProj;
+	kscope4::Project* pProj;
 	
 	// Close the current project
 	close();
 	
 	// Try to open the new project
-	pProj = new Project();
+	pProj = new kscope4::Project();
 	if (!pProj->open(sPath)) {
 		delete pProj;
 		return false;
@@ -117,13 +117,13 @@ bool ProjectManager::open(const QString& sPath)
  */
 bool ProjectManager::openCscopeOut(const QString& sFilePath)
 {
-	ProjectBase* pProj;
+	kscope4::ProjectBase* pProj;
 	
 	// Close the current project
 	close();
 	
 	// Try to open the new project
-	pProj = new ProjectBase();
+	pProj = new kscope4::ProjectBase();
 	if (!pProj->open(sFilePath)) {
 		delete pProj;
 		return false;
@@ -158,3 +158,4 @@ QString ProjectManager::getProjName() const
 		
 	return m_pCurProj->getName();
 }
+// Thu Nov 24 15:10:30 PST 2011
