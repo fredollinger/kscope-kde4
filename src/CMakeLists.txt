@@ -13,6 +13,7 @@ vcsCommitLayout.ui
 
 
 set(kscope_SRCS
+kscopeactions4.cpp
 ksconfig4.cpp
 project4.cpp
 buildFrontEnd.cpp

@@ -1,7 +1,7 @@
 #ifndef HISTORYVIEW_H
 #define HISTORYVIEW_H
 
-#include "queryview4.h"
+// #include "queryview4.h"
 
 /**
  * A list view item for holding position history records.

@@ -18,10 +18,12 @@
 // #include "calltreedlg4.h"
 // #include "calltreemanager4.h"
 // #include "fileview4.h"
+#include "ctagsfrontend4.h"
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
+#include "kscopeactions4.h"
 #include "kdockwidget4.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
@@ -445,7 +447,7 @@ void KScope::openProject(const QString& sDir)
 
 	// Set auto-completion parameters
 	pProj->getOptions(opt);
-	/*
+
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
 		opt.nACDelay, opt.nACMaxEntries);
 	
@@ -482,7 +484,6 @@ void KScope::openProject(const QString& sDir)
 		else
 			m_bRebuildDB = true;
 	}
-	*/
 }
 
 /**
