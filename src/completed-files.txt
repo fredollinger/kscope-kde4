@@ -6,3 +6,4 @@ Also, minimal changes are made to allow us to compile against kde4.
 
 newprojectdlg4.h newprojectdlg4.cpp
 projectbase4.h projectbase4.cpp
+cscopefrontend4.h cscopefrontend4.cpp

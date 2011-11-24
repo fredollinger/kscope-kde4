@@ -14,6 +14,7 @@
 
 #include "qdebug.h"
 
+namespace kscope4{
 QStringList SymbolDlg::s_slHistory;
 
 /**
@@ -200,6 +201,5 @@ void SymbolDlg::setHistory(QStringList& slSymHistory)
 {
 	// m_pSymbolHC->setHistoryItems(slSymHistory);
 }
-
-// Sat Oct 15 14:49:45 PDT 2011
-
+}// namespace kscope4
+// Thu Nov 24 15:34:26 PST 2011

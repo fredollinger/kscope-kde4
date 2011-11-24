@@ -7,6 +7,7 @@
 #include "symbollayout4.h"
 #include "cscopefrontend4.h"
 
+namespace kscope4{
 /**
  * A dialogue that prompts the user for the text of a query.
  * When a query is requested, the user needs to fill in the required
@@ -65,5 +66,6 @@ private slots:
 };
 
 #endif
+} // namespace kscope4
 
 // Sun Aug 28 13:59:01 PDT 2011

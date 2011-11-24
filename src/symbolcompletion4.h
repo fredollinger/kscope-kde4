@@ -15,6 +15,7 @@ namespace KTextEditor
 }
 */
 
+namespace kscope4{
 /**
  * This class executes symbol definition queries based on symbol prefixes.
  * The results can then be displayed as symbol completion lists.
@@ -178,7 +179,6 @@ private slots:
 	void slotQueryFinished(uint);
 	// void slotFilterInsert(KTextEditor::CodeCompletionModel*, QString*);
 };
-
+}// namespace kscope4
 #endif
-
-// Sat Jul 16 23:14:44 UTC 2011
+// Thu Nov 24 15:35:38 PST 2011

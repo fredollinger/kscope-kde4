@@ -443,12 +443,9 @@ void KScope::openProject(const QString& sDir)
 	// Initialise Cscope and create a builder object
 	initCscope();
 
-	/*
-	// FIXME: Get this to work
-	// Sun Nov 20 14:10:43 PST 2011
-	
 	// Set auto-completion parameters
 	pProj->getOptions(opt);
+	/*
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
 		opt.nACDelay, opt.nACMaxEntries);
 	
@@ -722,45 +719,6 @@ void KScope::slotCscopeError(const QString& sMsg)
 }
 
 /**
- * Initialises the CscopeFrontend class with the current project arguments,
- * and creates an object used for rebuilding the symbol database.
- */
-void KScope::initCscope()
-{
-	qDebug() <<  "KScope::initCscope(): BEGIN";
-	ProjectBase* pProj;
-	
-	// Delete the current object, if one exists
-	if (m_pCscopeBuild)
-		delete m_pCscopeBuild;
-
-	// Initialise CscopeFrontend
-	pProj = m_pProjMgr->curProject();
-	qDebug() <<  "KScope::initCscope(): Init CScopeFrontEnd";
-	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
-
-	qDebug() <<  "KScope::initCscope(): New CScopeFrontEnd";
-	// Create a persistent Cscope process
-	m_pCscopeBuild = new CscopeFrontend();
-
-	// Show build progress information in the main status bar
-	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
-		SLOT(slotBuildProgress(int, int)));
-	connect(m_pCscopeBuild, SIGNAL(buildInvIndex()), this,
-		SLOT(slotBuildInvIndex()));
-	connect(m_pCscopeBuild, SIGNAL(finished(uint)), this,
-		SLOT(slotBuildFinished(uint)));
-	connect(m_pCscopeBuild, SIGNAL(aborted()), this,
-		SLOT(slotBuildAborted()));
-
-	// Show errors in a modeless dialogue
-	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
-		SLOT(slotCscopeError(const QString&)));
-
-	qDebug() <<  "KScope::initCscope(): END";
-}
-
-/**
  * Shows or hides the query dock window.
  * This function is only called internally, not as a result of a user's
  * workspace action (e.g., clicking the "Show/Hide Query Window" toolbar
@@ -965,5 +923,39 @@ void KScope::slotCreateProject()
 		openProject(sProjPath);
 }
 
+/**
+ * Initialises the CscopeFrontend class with the current project arguments,
+ * and creates an object used for rebuilding the symbol database.
+ */
+void KScope::initCscope()
+{
+	ProjectBase* pProj;
+	
+	// Delete the current object, if one exists
+	if (m_pCscopeBuild)
+		delete m_pCscopeBuild;
+
+	// Initialise CscopeFrontend
+	pProj = m_pProjMgr->curProject();
+	CscopeFrontend::init(pProj->getPath(), pProj->getArgs());
+
+	// Create a persistent Cscope process
+	m_pCscopeBuild = new CscopeFrontend();
+
+	// Show build progress information in the main status bar
+	connect(m_pCscopeBuild, SIGNAL(progress(int, int)), this,
+		SLOT(slotBuildProgress(int, int)));
+	connect(m_pCscopeBuild, SIGNAL(buildInvIndex()), this,
+		SLOT(slotBuildInvIndex()));
+	connect(m_pCscopeBuild, SIGNAL(finished(uint)), this,
+		SLOT(slotBuildFinished(uint)));
+	connect(m_pCscopeBuild, SIGNAL(aborted()), this,
+		SLOT(slotBuildAborted()));
+
+	// Show errors in a modeless dialogue
+	connect(m_pCscopeBuild, SIGNAL(error(const QString&)), this,
+		SLOT(slotCscopeError(const QString&)));
+}
+
 } // namespace kscope4
-// Sat Oct 29 09:00:56 PDT 2011
+// Thu Nov 24 15:23:32 PST 2011

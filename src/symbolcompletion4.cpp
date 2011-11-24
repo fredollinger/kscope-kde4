@@ -3,7 +3,7 @@
 #include "symbolcompletion4.h"
 #include <KTextEditor/CodeCompletionModel>
 
-
+namespace kscope4{
 bool SymbolCompletion::s_bACEnabled;
 uint SymbolCompletion::s_nACMinChars;
 uint SymbolCompletion::s_nACDelay;
@@ -331,6 +331,5 @@ void SymbolCompletion::slotAutoCompleteTimeout()
 		complete(sPrefix, s_nACMaxEntries);
 	}
 }
-
-// #include "symbolcompletion.moc"
-// Sat Jul 16 23:14:35 UTC 2011
+} // namespace kscope4
+// Thu Nov 24 15:36:00 PST 2011
