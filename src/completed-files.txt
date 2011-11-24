@@ -4,4 +4,4 @@ Also, this file is integrated into the regular project (linked, but not all func
 
 Also, minimal changes are made to allow us to compile against kde4.
 
-newprojectdlg4.h
+newprojectdlg4.h newprojectdlg4.cpp
