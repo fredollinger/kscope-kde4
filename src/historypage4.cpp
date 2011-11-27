@@ -2,6 +2,7 @@
 #include "historypage4.h"
 #include "historyview4.h"
 
+namespace kscope4{
 int HistoryPage::s_nMaxPageID = 0;
 
 /**
@@ -93,5 +94,5 @@ QString HistoryPage::getFileName(const QString&) const
 {
 	return QString("History_") + QString::number(m_nPageID);
 }
-
-// #include "historypage.moc"
+} // namespace kscope4
+// Fri Nov 25 19:40:20 PST 2011

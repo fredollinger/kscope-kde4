@@ -14,16 +14,16 @@
 
 #include <QDockWidget>
 #include <QFile>
+#include <QTabWidget>
 
-// #include "calltreedlg4.h"
+#include "calltreedlg4.h"
 // #include "calltreemanager4.h"
 // #include "fileview4.h"
-#include "ctagsfrontend4.h"
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
-#include "kscopeactions4.h"
+#include "kscopeconfig4.h"
 #include "kdockwidget4.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
@@ -68,7 +68,6 @@ KScope::KScope(QWidget *) :
 	// m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
 	m_pBuild = new buildFrontEnd();
-	m_qmbMsg = new QMessageBox();
 	
 	// BEGIN STUFF FROM KSCOPE
 	// Connect menu and toolbar items with the object's slots
@@ -83,11 +82,14 @@ KScope::KScope(QWidget *) :
  */
 KScope::~KScope()
 {
+	qDebug() << "KScope::~KScope()";
 	// Save configuration
-	// Config().store();
+	Config().store();
 	// Config().storeWorkspace(this);
 	
 	delete m_pProjMgr;
+	delete m_pVcs;
+	delete m_pBuild;
 	/*
 	delete m_pCallTreeMgr;
 	delete m_pEditMgr;
@@ -146,10 +148,18 @@ void KScope::setupActions()
 	KAction* cscopeText = new KAction(this);
   	cscopeText->setText(i18n("Find &EGrep Pattern..."));
 	actionCollection()->addAction("cscope_text", cscopeText);
+	connect(cscopeText, SIGNAL(triggered(bool)),
+	this, SLOT(slotQueryPattern()));
 	
 	// END Cscope Menu
 
 	// BEGIN Project Menu
+
+	KAction* projectOpen = new KAction(this);
+  	projectOpen->setText(i18n("Open Project"));
+	actionCollection()->addAction("project_open", projectOpen);
+	connect(projectOpen, SIGNAL(triggered(bool)),
+	this, SLOT(slotOpenProject()));
 	
 	KAction* projectNew = new KAction(this);
   	projectNew->setText(i18n("New Project"));
@@ -162,6 +172,12 @@ void KScope::setupActions()
 	actionCollection()->addAction("project_build", projectBuild);
 	connect(projectBuild, SIGNAL(triggered(bool)),
 	this, SLOT(slotBuildProject()));
+
+	KAction* projectClose = new KAction(this);
+  	projectClose->setText(i18n("Close Project"));
+	actionCollection()->addAction("project_close", projectClose);
+	connect(projectClose, SIGNAL(triggered(bool)),
+	this, SLOT(slotCloseProject()));
 	
 	// END Project Menu
 
@@ -292,8 +308,6 @@ void KScope::slotConfigure()
 bool KScope::slotCloseProject()
 {
 
-	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
-	return true;
 
 	ProjectBase* pProj;
 	Project::Session sess;
@@ -303,6 +317,9 @@ bool KScope::slotCloseProject()
 	pProj = m_pProjMgr->curProject();
 	if (!pProj)
 		return true;
+
+	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
+	return true;
 	
 	/*
 	// Make sure all FileLocation objects are deleted
@@ -393,11 +410,14 @@ void KScope::slotRebuildDB()
  */
 void KScope::slotOpenProject()
 {
+	qDebug() << "KScope::slotOpenProject()";
 	OpenProjectDlg dlg;
 	QString sPath;
 	
-	if (dlg.exec() == QDialog::Rejected)
+	if (dlg.exec() == QDialog::Rejected){
+		qDebug() << "KScope::slotOpenProject(): Rejected Selected.";
 		return;
+	}
 
 	sPath = dlg.getPath();
 	
@@ -447,7 +467,7 @@ void KScope::openProject(const QString& sDir)
 
 	// Set auto-completion parameters
 	pProj->getOptions(opt);
-
+	/*
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
 		opt.nACDelay, opt.nACMaxEntries);
 	
@@ -484,6 +504,7 @@ void KScope::openProject(const QString& sDir)
 		else
 			m_bRebuildDB = true;
 	}
+	*/
 }
 
 /**
@@ -537,46 +558,9 @@ bool KScope::openCscopeOut(const QString& sFilePath)
  */
 void KScope::slotQueryPattern()
 {
+	qDebug() << "slotQueryPattern";
 	slotQuery(SymbolDlg::Pattern, true);
 }
-
-#if 0 
-// BEGIN slotQuery WORKS
-/**
- * Promts the user for a symbol, an starts a new Cscope query.
- * @param	nType	The numeric query type code
- * @param	bPrompt	true to always prompt for a symbol, false to try to
- * 					obtain the symbol automatically
- */
-void KScope::slotQuery(uint nType, bool bPrompt)
-{
-	QString sSymbol;
-	bool bCase;
-	// CallTreeDlg* pCallTreeDlg;
-
-	// Get the requested symbol and query type
-	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
-		return;
-		
-	/*
-	if (nType == SymbolDlg::CallTree) {
-		// Create and display a call tree dialogue
-		// pCallTreeDlg = m_pCallTreeMgr->addDialog();
-		// pCallTreeDlg->setRoot(sSymbol);
-		// pCallTreeDlg->show();
-	}
-	else { */
-	// Run the requested query
-	nType = SymbolDlg::getQueryType(nType);
-
-	// m_pQueryWidget->initQuery(nType, sSymbol, bCase);
-		
-	// Ensure Query Window is visible
-	//toggleQueryWindow(true);	
-	// }
-}
-// END slotQuery()
-#endif 
 
 /**
  * Prompts the user for a symbol to query.
@@ -744,6 +728,8 @@ void KScope::toggleQueryWindow(bool bShow)
 }
 
 void KScope::slotCommit(){
+	if (noOpenProject()) return;
+	m_pVcsCommit->setSourceRoot(m_pProjMgr->getSourceRoot()); 
 	m_pVcsCommit->exec();
 }
 
@@ -756,17 +742,18 @@ bool KScope::noOpenProject(){
 	// Do nothing if no project is open
 	pProj = m_pProjMgr->curProject();
 	if (!pProj){
-		m_qmbMsg->setText("First create of open a project!");
-		m_qmbMsg->exec();
+	//	m_qmbMsg->setText("First create of open a project!");
+	//	m_qmbMsg->exec();
+		KMessageBox::error(0, i18n("First create or open a project!"));
 		return true;
 	}
 	return false;
 }
 
 void KScope::slotPush(){
+	qDebug() << "push: " << m_pProjMgr->getSourceRoot();
 	if (noOpenProject()) return;
-  
-	m_pVcs->push(); 
+	m_pVcs->push(m_pProjMgr->getSourceRoot()); 
 }
 
 void KScope::slotPull(){
@@ -825,39 +812,6 @@ void KScope::createDockWindows(){
 }
 // END createDockWindow()
 #endif
-
-/**
- * Promts the user for a symbol, an starts a new Cscope query.
- * @param	nType	The numeric query type code
- * @param	bPrompt	true to always prompt for a symbol, false to try to
- * 					obtain the symbol automatically
- */
-void KScope::slotQuery(uint nType, bool bPrompt)
-{
-
-	// slotQuery(SymbolDlg::Pattern, true);
-	QString sSymbol;
-	// CallTreeDlg* pCallTreeDlg;
-	bool bCase;
-	
-	// Get the requested symbol and query type
-	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
-		return;
-
-	if (nType == SymbolDlg::Pattern) {
-		// Run the requested query
-		nType = SymbolDlg::getQueryType(nType);
-		qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
-		qDebug() << "KScope::slotQuery()  m_pQueryWidget->initQuery(nType, sSymbol, bCase); \n";
-		// m_pQueryWidget->(nType, sSymbol, bCase);
-
-		m_pQueryWidget->show();
-		
-		// Ensure Query Window is visible
-		// toggleQueryWindow(true);	
-	}
-	else qDebug() << "KScope::slotQuery() NOT IMPLEMENTED! \n";
-}
 
 bool KScope::slotBuildProject(){
 	qDebug() << "slotBuildProject";
@@ -958,5 +912,39 @@ void KScope::initCscope()
 		SLOT(slotCscopeError(const QString&)));
 }
 
+/**
+ * Promts the user for a symbol, an starts a new Cscope query.
+ * @param	nType	The numeric query type code
+ * @param	bPrompt	true to always prompt for a symbol, false to try to
+ * 					obtain the symbol automatically
+ */
+void KScope::slotQuery(uint nType, bool bPrompt)
+{
+	QString sSymbol;
+	CallTreeDlg* pCallTreeDlg;
+	bool bCase;
+	
+	// Get the requested symbol and query type
+	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
+		return;
+		
+	/*
+	if (nType == SymbolDlg::CallTree) {
+		// Create and display a call tree dialogue
+		pCallTreeDlg = m_pCallTreeMgr->addDialog();
+		pCallTreeDlg->setRoot(sSymbol);
+		pCallTreeDlg->show();
+	}
+	else {
+	*/
+		// Run the requested query
+		nType = SymbolDlg::getQueryType(nType);
+		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
+		
+		// Ensure Query Window is visible
+		toggleQueryWindow(true);	
+	// }
+}
+
 } // namespace kscope4
-// Sun Nov 27 12:04:01 PST 2011
+// Thu Nov 24 15:23:32 PST 2011

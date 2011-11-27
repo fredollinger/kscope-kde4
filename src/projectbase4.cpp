@@ -92,8 +92,9 @@ void ProjectBase::getMakeParams(QString& sCmd, QString& sDir) const
  */
 void ProjectBase::getDefOptions(Options& opt)
 {
-	// Set default source path to file-system root
-	opt.sSrcRootPath = "/";
+	// FO: Unsets default source path 
+	// We want to force user to set one for vcs purposes
+	opt.sSrcRootPath = "";
 	
 	// Initialise MIME-type list
 	opt.slFileTypes.append("*.c");

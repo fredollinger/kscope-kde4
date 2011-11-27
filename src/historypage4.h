@@ -7,6 +7,7 @@
  * A QueryWidget page for holding position history.
  * @author Elad Lahav
  */
+namespace kscope4{
 class HistoryPage : public QueryPageBase
 {
 	Q_OBJECT
@@ -41,5 +42,5 @@ private:
 	/** Used to generate the unique page ID for each object. */
 	static int s_nMaxPageID;
 };
-
+} // namespace kscope4
 #endif

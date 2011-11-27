@@ -55,50 +55,6 @@ const ElementInfo eiFonts[] = {
 #define FONT_NAME(_i)	eiFonts[_i].szName
 #define FONT_ENTRY(_i)	eiFonts[_i].szEntry
 
-		/*
-KScopeConfig::ConfParams KScopeConfig::s_cpDef = {
-	"/usr/bin/cscope", // Cscope path
-	"/usr/bin/ctags", // Ctags path
-	"/usr/bin/dot", // Dot path
-	true, // Show the tag list
-	SPLIT_SIZES(), // Tag list width
-	{
-		QColor(black), // File list foreground
-		QColor(white), // File list background
-		QColor(black), // Tag list foreground
-		QColor(white), // Tag list background
-		QColor(black), // Query page foreground
-		QColor(white), // Query page background
-		QColor("#c0c0c0"), // Call graph background
-		QColor("#c0ff80"), // Call graph nodes
-		QColor(black), // Call graph text
-		QColor("#ff8000")
-	},
-	{
-		QFont(), // Font definitions are overriden in load()
-		QFont(),
-		QFont(),
-		QFont()
-	},
-	NameAsc, // Ctags sort order
-	false, // Read-only mode
-	true, // Load last project
-	true, // Automatic tag highlighting
-	false, // Brief query captions
-	true, // Warn when file is modified on the disk
-	true, // Sort files when a project is loaded
-	"kate --line %L %F", // External editor example
-	Fast, // System profile
-	Embedded, // Editor context menu
-	"TB",  // Call graph orientation
-	10, // Maximum calls per graph node
-	0 // Default graph view
-};
-		*/
-
-/**
- * Class constructor.
- */
 KScopeConfig::KScopeConfig() : m_bFontsChanged(false)
 {
 }

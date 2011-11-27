@@ -74,7 +74,7 @@ signals:
 
 protected:
 	/** The embedded list. */
-	// QueryView* m_pView;
+	QueryView* m_pView;
 	
 	/** Indicates whether this page is locked. A locked page is never
 		overriden by new data, and is also saved to a disc file when the

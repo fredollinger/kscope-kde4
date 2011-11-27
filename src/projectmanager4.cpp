@@ -158,4 +158,13 @@ QString ProjectManager::getProjName() const
 		
 	return m_pCurProj->getName();
 }
-// Thu Nov 24 15:10:30 PST 2011
+
+QString ProjectManager::getSourceRoot() const
+{
+	if (!m_pCurProj)
+		return i18n("No Project");
+		
+	return m_pCurProj->getSourceRoot();
+}
+
+// Sat Nov 26 10:39:34 PST 2011

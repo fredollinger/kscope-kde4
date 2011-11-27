@@ -2,7 +2,10 @@
 #include <qlineedit.h>
 #include <Q3ListBoxItem>
 #include <kurlrequester.h>
+#include <qdebug.h>
+
 #include "openprojectdlg4.h"
+#include "ui_openprojectdialog2.h"
 #include "kscopeconfig4.h"
 
 /**
@@ -11,10 +14,16 @@
  * @param	szName	The widget's name
  */
 OpenProjectDlg::OpenProjectDlg(QWidget* pParent, const char* szName) :
-	Ui::OpenProjectLayout()
+	Ui::OpenProjectDialog()
+//	Ui::OpenProjectLayout()
 {
-	loadRecent();
-	m_pProjPathRequester->setFilter("cscope.proj");
+	setupUi(this);
+
+	qDebug() << "OpenProjectDlg::OpenProjectDlg: init(): FIXME";
+
+	// loadRecent();
+
+	// m_pProjPathRequester->setFilter("cscope.proj");
 }
 
 /**
@@ -29,8 +38,9 @@ OpenProjectDlg::~OpenProjectDlg()
  */
 QString OpenProjectDlg::getPath() const
 {
+    	return pathEdit_->text();
 	//return m_pProjPathRequester->url();
-	return m_pProjPathRequester->text();
+	// return m_pProjPathRequester->text();
 }
 
 /**
@@ -41,7 +51,7 @@ QString OpenProjectDlg::getPath() const
 void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
 {
 	QFileInfo fi(sProjPath);
-	m_pProjPathRequester->setUrl(fi.absolutePath());
+	// m_pProjPathRequester->setUrl(fi.absolutePath());
 }
 
 /**
@@ -53,11 +63,13 @@ void OpenProjectDlg::slotRemoveRecent()
 	Q3ListBoxItem *pItem;
 
 	// Remove the selected item, if any
+	/*
 	pItem = m_pRecentList->selectedItem();
 	if (pItem != NULL) {
 		Config().removeRecentProject(pItem->text());
 		m_pRecentList->removeItem(m_pRecentList->currentItem());
 	}
+	*/
 }
 
 /**
@@ -69,8 +81,8 @@ void OpenProjectDlg::slotRemoveRecent()
  */
 void OpenProjectDlg::slotSelectRecent(Q3ListBoxItem *pItem)
 {
-	if (pItem != NULL)
-		m_pProjPathRequester->setUrl(pItem->text());
+	// if (pItem != NULL)
+		// m_pProjPathRequester->setUrl(pItem->text());
 }
 
 /**
@@ -82,10 +94,10 @@ void OpenProjectDlg::slotSelectRecent(Q3ListBoxItem *pItem)
  */
 void OpenProjectDlg::slotOpenRecent(Q3ListBoxItem* pItem)
 {
-	if (pItem != NULL) {
-		m_pProjPathRequester->setUrl(pItem->text());
-		accept();
-	}
+	// if (pItem != NULL) {
+		// m_pProjPathRequester->setUrl(pItem->text());
+//		accept();
+//	}
 }
 
 /**
@@ -94,14 +106,15 @@ void OpenProjectDlg::slotOpenRecent(Q3ListBoxItem* pItem)
  */
 void OpenProjectDlg::loadRecent()
 {
+	qDebug() << "KScope::slotOpenProject()";
+
 	const QStringList& slProjects = Config().getRecentProjects();
 	QStringList::const_iterator itr;
 
+	qDebug() << "KScope::slotOpenProject(): FIXME";
+
 	// Create a list item for each project in the list
-	for (itr = slProjects.begin(); itr != slProjects.end(); ++itr)
-		m_pRecentList->insertItem(*itr);
+	// for (itr = slProjects.begin(); itr != slProjects.end(); ++itr)
+		//m_pRecentList->insertItem(*itr);
 }
-
-// #include "openprojectdlg.moc"
-
-// Sat Jul 16 18:50:08 UTC 2011
+// Sun Nov 27 11:27:39 PST 2011

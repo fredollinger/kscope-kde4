@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'symbollayout4.ui'
 **
-** Created: Sat Oct 15 16:21:13 2011
+** Created: Fri Nov 25 11:36:50 2011
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,7 +27,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
 #include <QtGui/QSpacerItem>
-#include <QtGui/QTableView>
+#include <QtGui/QTableWidget>
 #include <QtGui/QVBoxLayout>
 #include "kcombobox.h"
 #include "khistorycombobox.h"
@@ -54,7 +54,7 @@ public:
     QPushButton *m_pOKButton;
     QPushButton *m_pHintButton;
     QPushButton *m_pCancelButton;
-    QTableView *m_pHintList;
+    QTableWidget *m_pHintList;
     Q3ButtonGroup *m_pHintGroup;
     QVBoxLayout *vboxLayout3;
     QRadioButton *m_pBeginWithRadio;
@@ -166,7 +166,7 @@ public:
 
         vboxLayout->addLayout(hboxLayout1);
 
-        m_pHintList = new QTableView(SymbolLayout);
+        m_pHintList = new QTableWidget(SymbolLayout);
         m_pHintList->setObjectName(QString::fromUtf8("m_pHintList"));
 
         vboxLayout->addWidget(m_pHintList);

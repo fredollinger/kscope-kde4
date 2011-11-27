@@ -32,30 +32,32 @@ int CallTreeDlg::s_nFileNameIndex = 0;
  * @param	szName	The widget's name
  */
 CallTreeDlg::CallTreeDlg(QWidget* pParent, const char* szName) :
-	CallTreeLayout(pParent, szName, CALL_TREE_W_FLAGS)
+	CallTreeLayout()
 {
 	// Set button pixmaps
-	m_pCalledButton->setPixmap(GET_PIXMAP(CalledTree));
-	m_pCallingButton->setPixmap(GET_PIXMAP(CallingTree));
-	m_pGraphButton->setPixmap(GET_PIXMAP(CallGraph));
-	m_pSaveButton->setPixmap(GET_PIXMAP(ButtonSaveAs));
-	m_pZoomInButton->setPixmap(GET_PIXMAP(ButtonZoomIn));
-	m_pZoomOutButton->setPixmap(GET_PIXMAP(ButtonZoomOut));
-	m_pRotateButton->setPixmap(GET_PIXMAP(ButtonRotate));
-	m_pPrefButton->setPixmap(GET_PIXMAP(ButtonPref));
+	m_pCalledButton->setIcon(GET_PIXMAP(CalledTree));
+	m_pCallingButton->setIcon(GET_PIXMAP(CallingTree));
+	m_pGraphButton->setIcon(GET_PIXMAP(CallGraph));
+	m_pSaveButton->setIcon(GET_PIXMAP(ButtonSaveAs));
+	m_pZoomInButton->setIcon(GET_PIXMAP(ButtonZoomIn));
+	m_pZoomOutButton->setIcon(GET_PIXMAP(ButtonZoomOut));
+	m_pRotateButton->setIcon(GET_PIXMAP(ButtonRotate));
+	m_pPrefButton->setIcon(GET_PIXMAP(ButtonPref));
 	
 	// Open the location of a call
+	/*
 	connect(m_pGraphWidget, SIGNAL(lineRequested(const QString&, uint)),
 		this, SIGNAL(lineRequested(const QString&, uint)));
 	connect(m_pCalledWidget, SIGNAL(lineRequested(const QString&, uint)),
 		this, SIGNAL(lineRequested(const QString&, uint)));
 	connect(m_pCallingWidget, SIGNAL(lineRequested(const QString&, uint)),
 		this, SIGNAL(lineRequested(const QString&, uint)));
+	*/
 	
-	m_pCallingWidget->setMode(TreeWidget::Calling);
+	// m_pCallingWidget->setMode(TreeWidget::Calling);
 	
 	// Get the default view from KScope's configuration
-	m_nDefView = Config().getDefGraphView();
+	// m_nDefView = Config().getDefGraphView();
 }
 
 /**
@@ -78,9 +80,11 @@ void CallTreeDlg::setRoot(const QString& sFunc)
 	m_sFileName += QString::number(++s_nFileNameIndex);
 	
 	// Set the root item in all views
+	/*
 	m_pGraphWidget->setRoot(sFunc);
 	m_pCalledWidget->setRoot(sFunc);
 	m_pCallingWidget->setRoot(sFunc);
+	*/
 }
 
 /**
@@ -93,7 +97,7 @@ void CallTreeDlg::show()
 	m_pStack->raiseWidget(m_nDefView);
 	slotViewChanged(m_nDefView);
 	
-	CallTreeLayout::show();
+	// CallTreeLayout::show();
 }
 
 /**
@@ -134,7 +138,7 @@ bool CallTreeDlg::load(const QString& sProjPath, const QString& sFileName)
 	sPath = sProjPath + "/" + sFileName;
 	
 	// Open the file for reading
-	pFile = fopen(sPath.latin1(), "r");
+	pFile = fopen(sPath.toLatin1(), "r");
 	if (pFile == NULL)
 		return false;
 		
@@ -168,7 +172,7 @@ bool CallTreeDlg::load(const QString& sProjPath, const QString& sFileName)
 	m_sFilePath = sPath;
 	
 	// Draw the graph
-	m_pGraphWidget->draw();
+	// m_pGraphWidget->draw();
 	return true;
 }
 
@@ -188,7 +192,7 @@ void CallTreeDlg::store(const QString& sProjPath)
 	m_sFilePath = sPath;
 	
 	// Open a file for writing (create if necessary)
-	pFile = fopen(sPath.latin1(), "w+");
+	pFile = fopen(sPath.toLatin1(), "w+");
 	if (pFile == NULL)
 		return;
 		
@@ -197,14 +201,17 @@ void CallTreeDlg::store(const QString& sProjPath)
 	fprintf(pFile, "View=%d\n", m_pViewGroup->selectedId());
 	
 	// Save the contents of all widgets
+	/*
 	m_pCalledWidget->save(pFile);
 	m_pCallingWidget->save(pFile);
 	m_pGraphWidget->save(pFile);
+	*/
 	
 	// Close the file
 	fclose(pFile);
 }
 
+	#if 0
 /**
  * Saves the graph to a dot file.
  * The user is prompted for a name to use for the file, and then graph
@@ -307,5 +314,6 @@ void CallTreeDlg::slotViewChanged(int nView)
 	
 	Config().setDefGraphView(nView);
 }
+	#endif
 
 // #include "calltreedlg.moc"

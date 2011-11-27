@@ -1,13 +1,11 @@
 #ifndef SYMBOLDLG_H
 #define SYMBOLDLG_H
 
-#include <QDialog>
-
 #include <qregexp.h>
 #include "symbollayout4.h"
 #include "cscopefrontend4.h"
+#include "qlistviewitem4.h"
 
-namespace kscope4{
 /**
  * A dialogue that prompts the user for the text of a query.
  * When a query is requested, the user needs to fill in the required
@@ -17,6 +15,7 @@ namespace kscope4{
  * @author Elad Lahav
  */
  
+namespace kscope4{
 class SymbolDlg : public QDialog, public Ui::SymbolLayout
 {
 	Q_OBJECT
@@ -36,7 +35,6 @@ public:
 	bool getCase() const;
 	
 	static QString promptSymbol(QWidget*, uint&, const QString&, bool&);
-	static QString promptTest(QWidget*);
 	static uint getQueryType(uint);
 	static void resetHistory() { s_slHistory.clear(); }
 	
@@ -50,22 +48,19 @@ private:
 	QRegExp m_reHint;
 	
 	/** Displays query progress information. */
-	// CscopeProgress m_progress;
+	CscopeProgress m_progress;
 	
 	static QStringList s_slHistory;
 	
 private slots:
-	void slotTypeChanged(int);
-/*
 	void slotHintClicked();
 	void slotHintDataReady(FrontendToken*);
+	void slotHintItemSelected(QTableWidgetItem*);
 	void slotHintOptionChanged(bool);
 	void slotHintProgress(int, int);
 	void slotHintFinished(uint);
-*/
+	void slotTypeChanged(int);
 };
-
+}// namespace kscope4
 #endif
-} // namespace kscope4
 
-// Sun Aug 28 13:59:01 PDT 2011

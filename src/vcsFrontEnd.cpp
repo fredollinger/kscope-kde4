@@ -35,7 +35,7 @@ vcsFrontEnd::~vcsFrontEnd()
  * @return	true if successful, false otherwise
 */
 
-bool vcsFrontEnd::push(){
+bool vcsFrontEnd::push(QString rootdir){
 	QStringList slCmdLine;
 
 	setOutputChannelMode(KProcess::MergedChannels);
@@ -78,14 +78,12 @@ bool vcsFrontEnd::slotDisplayResults(){
  * We may want to make this changable by a flag or even just push everything upon commit.
  * Not sure yet.
  */
-bool vcsFrontEnd::commit(QString msg){
+bool vcsFrontEnd::commit(QString s_sProjPath, QString msg){
 	QStringList slCmdLine;
 
 	QString fmsg = "\""; //msg which is fixed with quotes
 	fmsg.append(msg);
 	fmsg.append("\"");
-
-	QString s_sProjPath = "."; // FIXME: put in project path
 
 	slCmdLine << "commit";
 

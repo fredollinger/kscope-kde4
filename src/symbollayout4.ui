@@ -195,7 +195,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="m_pHintList"/>
+    <widget class="QTableWidget" name="m_pHintList"/>
    </item>
    <item>
     <widget class="Q3ButtonGroup" name="m_pHintGroup">

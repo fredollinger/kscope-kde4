@@ -4,7 +4,7 @@
 
 #include "cscopefrontend4.h"
 #include "qtableviewitem4.h"
-// #include "queryview4.h"
+#include "queryview4.h"
 
 #include <QObject>
 

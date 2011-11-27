@@ -1,3 +1,4 @@
+#include <QListWidgetItem>
 #include <qlabel.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
@@ -6,13 +7,9 @@
 #include <qgroupbox.h>
 #include <kcombobox.h>
 #include <klocale.h>
-
+#include "symboldlg4.h"
 #include "cscopefrontend4.h"
 #include "kscopeconfig4.h"
-#include "symboldlg4.h"
-#include "symbollayout4.h"
-
-#include "qdebug.h"
 
 namespace kscope4{
 QStringList SymbolDlg::s_slHistory;
@@ -23,19 +20,17 @@ QStringList SymbolDlg::s_slHistory;
  * @param	szName	This widget's name
  */
 SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) : 
-	 Ui::SymbolLayout() 
+	Ui::SymbolLayout(),
+	m_progress(m_pHintList)
 {
-	qDebug() << "SymbolDlg() constructor \n";
 	// Create a persistent Cscope process
 	m_pCscope = new CscopeFrontend();
-
-	// Must do this _before_ we connect signals and slots
-	setupUi(this);
-	/*
-
 	
 	// Initialise the hint list (hidden by default)
-	m_pHintList->addColumn(i18n("Suggested Symbols"));
+	
+	// FIXME: We set model, there is no notion addColumn()
+	// m_pHintList->addColumn(i18n("Suggested Symbols"));
+
 	m_pHintList->hide();
 	((QWidget*)m_pHintGroup)->hide();
 	m_pBeginWithRadio->toggle();
@@ -77,7 +72,6 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) :
 		SLOT(slotHintProgress(int, int)));
 	connect(m_pCscope, SIGNAL(finished(uint)), this,
 		SLOT(slotHintFinished(uint)));
-	*/
 }
 
 /**
@@ -94,10 +88,55 @@ SymbolDlg::~SymbolDlg()
  */
 void SymbolDlg::setType(uint nType)
 {
-	// m_pTypeCombo->setCurrentIndex(nType);
+	m_pTypeCombo->setCurrentIndex(nType);
 	slotTypeChanged(nType);
 }
 
+/**
+ * @param	sSymbol	The initial text of the combo-box
+ */
+void SymbolDlg::setSymbol(const QString& sSymbol)
+{
+	m_pSymbolHC->setItemText(0, sSymbol);
+}
+
+/**
+ * @param	slSymHistory	A list of previously queried symbols
+ */
+void SymbolDlg::setHistory(QStringList& slSymHistory)
+{
+	m_pSymbolHC->setHistoryItems(slSymHistory);
+}
+
+/**
+ * @return	The current text of the symbol combo-box
+ */
+QString SymbolDlg::getSymbol() const
+{
+	QString sResult;
+	
+	sResult = m_pSymbolHC->currentText().trimmed();
+	if (m_pSubStringCheck->isChecked())
+		sResult = ".*" + sResult + ".*";
+		
+	return sResult;
+}
+
+/**
+ * @return	The type of query requested by the user
+ * @note	The returned value does not conform to the type used for running
+ * 			Cscope queries. Use getQueryType() to translate between these
+ *			values.
+ */
+uint SymbolDlg::getType() const
+{
+	return m_pTypeCombo->currentIndex();
+}
+
+bool SymbolDlg::getCase() const
+{
+	return !m_pCaseCheck->isChecked();
+}
 
 /**
  * A convinience static function for creating and showing SymbolDlg dialogue.
@@ -111,48 +150,23 @@ void SymbolDlg::setType(uint nType)
 QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType, 
 	const QString& sSymbol, bool& bCase)
 {
-
-	qDebug() << "symboldld.c: promptSymbol NOT DONE \n";
 	SymbolDlg dlg(pParent);
-
+	
 	// Initialise the dialogue
 	dlg.setType(nType);
-
-	/*
 	dlg.setHistory(s_slHistory);
-	*/
 	dlg.setSymbol(sSymbol);
 	
-	dlg.show();
 	// Display the dialogue
 	if (dlg.exec() != QDialog::Accepted)
 		return "";
 	
-	/*
 	// Return the text entered by the user
 	nType = dlg.getType();
 	bCase = dlg.getCase();
 	dlg.m_pSymbolHC->addToHistory(dlg.getSymbol());
 	s_slHistory = dlg.m_pSymbolHC->historyItems();
-	*/
 	return dlg.getSymbol();
-}
-
-/**
- * @return	The current text of the symbol combo-box
- */
-QString SymbolDlg::getSymbol() const
-{
-	QString sResult;
-	
-	qDebug() << "symboldld.c: getSymbol NOT DONE \n";
-	/*
-	sResult = m_pSymbolHC->currentText().stripWhiteSpace();
-	if (m_pSubStringCheck->isChecked())
-		sResult = ".*" + sResult + ".*";
-	*/
-		
-	return sResult;
 }
 
 /**
@@ -162,13 +176,133 @@ QString SymbolDlg::getSymbol() const
  */
 uint SymbolDlg::getQueryType(uint nType)
 {
-//	if (nType == CallTree)
-//		return CscopeFrontend::None;
+	if (nType == CallTree)
+		return CscopeFrontend::None;
 		
 	if (nType <= Text)
 		return nType;
 		
 	return nType + 1;
+}
+
+/**
+ * Runs a symbol definition query, looking for symbols starting with the
+ * currently entered text.
+ * If the hint list is not visible, it is shown first.
+ * This slot is connected to the clicked() signal of the "Hint" button.
+ */
+void SymbolDlg::slotHintClicked()
+{
+	QString sText, sRegExp;
+	
+	// Show the hint list if necessary
+	if (!m_pHintList->isVisible()) {
+		m_pHintList->show();
+		((QWidget*)m_pHintGroup)->show();
+		adjustSize();
+	}
+	
+	// Clear the previous contents
+	m_pHintList->clearSpans();
+	
+	// Get the currently entered text (must have at least one character)
+	sText = m_pSymbolHC->currentText().trimmed();
+	if (sText.isEmpty())
+		return;
+
+	// Create the regular expression
+	if (m_pBeginWithRadio->isChecked())
+		sRegExp = sText + "[a-zA-Z0-9_]*";
+	else	
+		sRegExp = "[a-zA-Z0-9_]*" + sText + "[a-zA-Z0-9_]*";
+	
+	m_reHint.setPattern(sRegExp);
+
+	// Run a Cscope symbol definition query using a regular expression
+	m_pCscope->query(CscopeFrontend::Definition, sRegExp);
+}
+
+/**
+ * Called when a new record is ready to be added to the hint list.
+ * NOTE: Cscope 15.5 has a bug where the "function" field of the record
+ * displays the regular expression instead of the matched symbol name. For
+ * this reason, we need to extract the symbol from the "Text" field.
+ * @param	pToken	The head of the record's token list
+ */
+void SymbolDlg::slotHintDataReady(FrontendToken* pToken)
+{
+	QString sText;
+
+	QList<QTableWidgetItem *> ql;
+
+	// Get the line text
+	pToken = pToken->getNext()->getNext()->getNext();
+	sText = pToken->getData();
+
+	// Find the symbol within the line
+	if (m_reHint.indexIn(sText) == -1)
+		return;
+	
+	// Find the symbol within the list, if found - do not add
+	ql = m_pHintList->findItems(m_reHint.capturedTexts().first(), 0);
+	if (ql.size() > 0) return;
+	/*
+	if (NULL != (m_pHintList->findItems(m_reHint.capturedTexts().first(), 0)))
+		return;
+	*/
+	
+	// Add a list item
+	// (void)new QListViewItem(m_pHintList, m_reHint.capturedTexts().first());
+	QTableWidgetItem *newitem = new QTableWidgetItem(m_reHint.capturedTexts().first());
+	m_pHintList->setItem(0, m_pHintList->columnCount()+1, newitem);
+
+}
+
+/**
+ * Sets the text of a selected hint list item as the current text of the
+ * symbol combo-box. 
+ * This slot is connected to the doubleClicked() signal of the hint list-view.
+ * @param	pItem	The clicked list item
+ */
+void SymbolDlg::slotHintItemSelected(QTableWidgetItem* pItem)
+{
+	m_pSymbolHC->setItemText(0, pItem->data(0).toString());
+	return;
+}
+
+/**
+ * Refreshes the hint list based on the newly selected option.
+ * This slot is connected to the toggled() signal of the hint options radio
+ * buttons.
+ * NOTE: The list is only refreshed if the system profile is set to Fast.
+ * @param	bOn	true if the button was toggled on
+ */
+void SymbolDlg::slotHintOptionChanged(bool bOn)
+{
+	if (bOn && Config().getSysProfile() == KScopeConfig::Fast)
+		slotHintClicked();
+}
+
+/**
+ * Display a progress bar while the hint query is working.
+ * This slot is connected to the progress() signal emitted by the Cscope
+ * frontend object.
+ * @param	nProgress	Progress value
+ * @param	nTotal		The final expected value
+ */
+void SymbolDlg::slotHintProgress(int nProgress, int nTotal)
+{
+	m_progress.setProgress(nProgress, nTotal);
+}
+
+/**
+ * Destroys all progress information widget when the query process terminates.
+ * This slot is connected to the finished() signal emitted by the Cscope
+ * process.
+ */
+void SymbolDlg::slotHintFinished(uint /* ignored */)
+{
+	m_progress.finished();
 }
 
 /**
@@ -178,28 +312,9 @@ uint SymbolDlg::getQueryType(uint nType)
  */
 void SymbolDlg::slotTypeChanged(int nType)
 {
-	#if 0
 	if (nType == FileName || nType == Including)
-		// m_pHintButton->setEnabled(false);
+		m_pHintButton->setEnabled(false);
 	else
-		// m_pHintButton->setEnabled(true);
-	#endif
+		m_pHintButton->setEnabled(true);
 }
-
-/**
- * @param	sSymbol	The initial text of the combo-box
- */
-void SymbolDlg::setSymbol(const QString& sSymbol)
-{
-	// m_pSymbolHC->setCurrentText(sSymbol);
-}
-
-/**
- * @param	slSymHistory	A list of previously queried symbols
- */
-void SymbolDlg::setHistory(QStringList& slSymHistory)
-{
-	// m_pSymbolHC->setHistoryItems(slSymHistory);
-}
-}// namespace kscope4
-// Thu Nov 24 15:34:26 PST 2011
+} // namespace kscope4

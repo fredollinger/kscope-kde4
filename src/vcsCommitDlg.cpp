@@ -26,8 +26,12 @@ vcsCommitDlg::~vcsCommitDlg()
 void vcsCommitDlg::slotCommit(){
 	qDebug() << "slotcommit: "<< textCommitMsg->toPlainText();
 
-	m_pVcs->commit(textCommitMsg->toPlainText() );
+	m_pVcs->commit(m_sSourceRoot, textCommitMsg->toPlainText() );
 	close();
+}
+
+void vcsCommitDlg::setSourceRoot(QString qs){
+	m_sSourceRoot=qs;
 }
 
 } // namespace kscope4

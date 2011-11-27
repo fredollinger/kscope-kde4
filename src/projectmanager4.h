@@ -19,6 +19,7 @@ public:
 	bool openCscopeOut(const QString&);
 	void close();
 	QString getProjName() const;
+	QString getSourceRoot() const;
 	
 	kscope4::ProjectBase* curProject() const { 
 		qDebug() << "ProjectBase* ProjectManger::curProject()";

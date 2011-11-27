@@ -30,8 +30,8 @@ class vcsFrontEnd : public Frontend
 public:
 	vcsFrontEnd();
 	~vcsFrontEnd();
-	bool commit(QString); // also called submit in the p4 world
-	bool push(); // send files to server (no p4 equivalent)
+	bool commit(QString, QString); // also called submit in the p4 world
+	bool push(QString); // send files to server (no p4 equivalent)
 	bool pull(); // send files to server (no p4 equivalent)
 	bool diff(); // diff of current changes and last commit
 

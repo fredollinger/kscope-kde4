@@ -79,8 +79,6 @@ private:
 	vcsFrontEnd *m_pVcs;
 	buildFrontEnd *m_pBuild;
 
-	QMessageBox *m_qmbMsg; // message box dialog
-
      	// QDockWidget *resDock;
 	/*
     	QListView *listView;

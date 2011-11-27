@@ -92,9 +92,6 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 
 }
 
-/**
- * Class destructor.
- */
 NewProjectDlg::~NewProjectDlg()
 {
 }
@@ -222,18 +219,25 @@ void NewProjectDlg::accept()
 			return;
 		}
 	}
+
 	
 	// Fill the string list with all file types
 	nCount = (int)m_pTypesList->count();
 	for (i = 0; i < nCount; i++)
 		m_slTypes.append(m_pTypesList->text(i));
 
+	// FO: FIXME: Validate SrcRoot
 	// Clean-up the source root
 	QDir dir(m_pSrcRootRequester->text());
 	if (dir.exists())
 		m_pSrcRootRequester->setText(dir.absolutePath());
-	else
-		m_pSrcRootRequester->setText("/");
+	else{
+		// We no longer want to just have / b/c it will mess up vcs
+		// m_pSrcRootRequester->setText("/");
+		KMessageBox::error(0, i18n("Project names must contain "
+				"a Root Directory."));
+			return;
+	}
 		
 	// Close the dialog
 	QDialog::accept();
