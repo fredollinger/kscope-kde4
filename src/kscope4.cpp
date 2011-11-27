@@ -319,14 +319,13 @@ bool KScope::slotCloseProject()
 		return true;
 
 	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
-	return true;
 	
-	/*
 	// Make sure all FileLocation objects are deleted
 	sess.fllOpenFiles.setAutoDelete(true);
 	sess.fllBookmarks.setAutoDelete(true);
 	
 	// Close all open editor pages
+	/*
 	if (m_pEditTabs->count() > 0) {
 		// Save session information for persistent projects
 		if (!pProj->isTemporary()) {
@@ -338,11 +337,13 @@ bool KScope::slotCloseProject()
 		if (!m_pEditTabs->removeAllPages())
 			return false;
 	}
+	*/
 	
 	// Disable project-related actions
-	m_pActions->slotEnableProjectActions(false);
+	// m_pActions->slotEnableProjectActions(false);
 	
 	// Destroy the make dialogue
+	/*
 	if (m_pMakeDlg != NULL) {
 		// Save session information for persistent projects
 		if (!pProj->isTemporary()) {
@@ -353,16 +354,19 @@ bool KScope::slotCloseProject()
 		delete m_pMakeDlg;
 		m_pMakeDlg = NULL;
 	}
+	*/
 	
 	// Save session information for persistent projects
+	/*
 	if (!pProj->isTemporary()) {
 		m_pQueryWidget->savePages(pProj->getPath(), sess.slQueryFiles);
-		m_pCallTreeMgr->saveOpenDialogs(pProj->getPath(), sess.slCallTreeFiles);
+		// m_pCallTreeMgr->saveOpenDialogs(pProj->getPath(), sess.slCallTreeFiles);
 	}
+	*/
 		
 	// Close all query pages and call trees
-	m_pQueryWidget->slotCloseAll();
-	m_pCallTreeMgr->closeAll();
+	// m_pQueryWidget->slotCloseAll();
+	// m_pCallTreeMgr->closeAll();
 	
 	// Store session information for persistent projects
 	if (!pProj->isTemporary())
@@ -373,17 +377,16 @@ bool KScope::slotCloseProject()
 	m_pProjMgr->close();
 	delete m_pCscopeBuild;
 	m_pCscopeBuild = NULL;
-	setWidowTitle(QString::null);
+	// setWidowTitle(QString::null);
 
 	// Clear the contents of the file list
-	m_pFileView->clear();
+	// m_pFileView->clear();
 
 	// Reset queried symbols history
 	SymbolDlg::resetHistory();
 	
-    // Remove any remaining status bar messages
-	*/
-    statusBar()->clearMessage();
+    	// Remove any remaining status bar messages
+    	statusBar()->clearMessage();
     
 	return true;
 }
@@ -456,7 +459,7 @@ void KScope::openProject(const QString& sDir)
 	qDebug() << "KScope::openProject(): change project window title";
 	// Change main window title
 	pProj = m_pProjMgr->curProject();
-	setWindowTitle(pProj->getName());
+	// setWindowTitle(pProj->getName());
 
 	// Set the root of the file tree
 	// m_pFileView->setRoot(pProj->getSourceRoot());
