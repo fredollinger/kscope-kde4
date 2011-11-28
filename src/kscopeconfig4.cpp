@@ -3,6 +3,7 @@
 #include <kglobalsettings.h>
 #include <qdebug.h>
 #include "kscopeconfig4.h"
+#include "ksconfig4.h"
 
 // NOTE:
 // This configuration file entry controls whether the welcome dialogue is
@@ -173,10 +174,13 @@ void KScopeConfig::loadWorkspace(MainWindow* pMainWindow)
  */
 void KScopeConfig::store()
 {
-	/*
+	qDebug() << "KScopeConfig::store()";
 	uint i;
 	
-	KConfig* pConf = kapp->config();
+	// KConfig* pConf = kapp->config();
+	/*
+	KConfig* pConf = KGlobal::config();
+
 
 	// Write the paths to required executables
 	pConf->setGroup("Programs");
