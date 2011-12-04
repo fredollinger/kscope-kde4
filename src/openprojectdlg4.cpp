@@ -21,7 +21,7 @@ OpenProjectDlg::OpenProjectDlg(QWidget* pParent, const char* szName) :
 
 	qDebug() << "OpenProjectDlg::OpenProjectDlg: init(): FIXME";
 
-	// loadRecent();
+	loadRecent();
 
 	// m_pProjPathRequester->setFilter("cscope.proj");
 }
@@ -106,15 +106,20 @@ void OpenProjectDlg::slotOpenRecent(Q3ListBoxItem* pItem)
  */
 void OpenProjectDlg::loadRecent()
 {
-	qDebug() << "KScope::slotOpenProject()";
+	qDebug() << "BEGIN: OpenProjectDlg::loadRecent()";
 
 	const QStringList& slProjects = Config().getRecentProjects();
-	QStringList::const_iterator itr;
+	// QStringList::const_iterator itr;
+	QStringListIterator itr(slProjects);
 
 	qDebug() << "KScope::slotOpenProject(): FIXME";
 
 	// Create a list item for each project in the list
 	// for (itr = slProjects.begin(); itr != slProjects.end(); ++itr)
 		//m_pRecentList->insertItem(*itr);
+     while (itr.hasNext())
+          qDebug() << itr.next();
+
+	qDebug() << "END: OpenProjectDlg::loadRecent()";
 }
 // Sun Nov 27 11:27:39 PST 2011
