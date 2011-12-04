@@ -104,7 +104,7 @@ void KScopeConfig::load()
 
 	// Read the recent projects list
 	pConf->setGroup("Projects");
-	m_slProjects = pConf->readListEntry("Recent");
+	mRecentProjects = pConf->readListEntry("Recent");
 
 	// Read colour settings
 	pConf->setGroup("Colors");
@@ -200,7 +200,7 @@ void KScopeConfig::store()
 
 	// Write the recent projects list
 	pConf->setGroup("Projects");
-	pConf->writeEntry("Recent", m_slProjects);
+	pConf->writeEntry("Recent", mRecentProjects);
 
 	// Write colour settings
 	pConf->setGroup("Colors");
@@ -340,7 +340,7 @@ void KScopeConfig::setDotPath(const QString& sPath)
  */
 const QStringList& KScopeConfig::getRecentProjects() const
 {
-	return m_slProjects;
+	return mRecentProjects;
 }
 
 /**
@@ -351,7 +351,7 @@ void KScopeConfig::removeRecentProject(const QString& sProjPath)
 {
 
 	qDebug() << "KScopeConfig::removeRecentProject need replacement to QString.find() \n";
-	// m_slProjects.remove(sProjPath);
+	// mRecentProjects.remove(sProjPath);
 }
 
 /**

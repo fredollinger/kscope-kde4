@@ -106,7 +106,8 @@ public:
 	
 private:
 	/** A list of previously loaded projects. */
-	QStringList m_slProjects;
+	// FIXME: replace with mRecentProjects
+	// QStringList m_slProjects;
 
 	/** Defines the list of all configurable parameters in KScope.
 		The use of a structure helps define default values (@see s_cpDef) */
