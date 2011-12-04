@@ -4,8 +4,8 @@
 #include <Q3ListBoxItem>
 #include <Q3ListBox>
 #include <qwidget.h>
-// #include "openprojectlayout4.h"
 #include "ui_openprojectdialog2.h"
+// #include "openprojectdlg4.h"
 
 /**
  * A dialogue for selecting a project to open.

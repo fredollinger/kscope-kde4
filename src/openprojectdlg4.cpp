@@ -4,8 +4,8 @@
 #include <kurlrequester.h>
 #include <qdebug.h>
 
-#include "openprojectdlg4.h"
 #include "ui_openprojectdialog2.h"
+#include "openprojectdlg4.h"
 #include "kscopeconfig4.h"
 
 /**
@@ -117,8 +117,9 @@ void OpenProjectDlg::loadRecent()
 	// Create a list item for each project in the list
 	// for (itr = slProjects.begin(); itr != slProjects.end(); ++itr)
 		//m_pRecentList->insertItem(*itr);
-     while (itr.hasNext())
-          qDebug() << itr.next();
+	while (itr.hasNext())
+		//qDebug() << itr.next();
+		m_pRecentList->addItem(itr.next());
 
 	qDebug() << "END: OpenProjectDlg::loadRecent()";
 }

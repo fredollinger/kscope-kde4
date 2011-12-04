@@ -1,14 +1,14 @@
 /********************************************************************************
-** Form generated from reading UI file 'openprojectdlg2.ui'
+** Form generated from reading UI file 'openprojectdialog2.ui'
 **
-** Created: Sun Nov 27 09:33:35 2011
+** Created: Sun Dec 4 09:15:16 2011
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_OPENPROJECTDLG2_H
-#define UI_OPENPROJECTDLG2_H
+#ifndef UI_OPENPROJECTDIALOG2_H
+#define UI_OPENPROJECTDIALOG2_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -38,7 +38,7 @@ public:
     QToolButton *browseButton_;
     QGroupBox *groupBox;
     QVBoxLayout *verticalLayout;
-    QListWidget *recentProjectsList_;
+    QListWidget *m_pRecentList;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *removeProjectButton_;
@@ -80,10 +80,10 @@ public:
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         verticalLayout = new QVBoxLayout(groupBox);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        recentProjectsList_ = new QListWidget(groupBox);
-        recentProjectsList_->setObjectName(QString::fromUtf8("recentProjectsList_"));
+        m_pRecentList = new QListWidget(groupBox);
+        m_pRecentList->setObjectName(QString::fromUtf8("m_pRecentList"));
 
-        verticalLayout->addWidget(recentProjectsList_);
+        verticalLayout->addWidget(m_pRecentList);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -130,8 +130,8 @@ public:
         verticalLayout_2->addLayout(horizontalLayout_3);
 
         QWidget::setTabOrder(pathEdit_, browseButton_);
-        QWidget::setTabOrder(browseButton_, recentProjectsList_);
-        QWidget::setTabOrder(recentProjectsList_, removeProjectButton_);
+        QWidget::setTabOrder(browseButton_, m_pRecentList);
+        QWidget::setTabOrder(m_pRecentList, removeProjectButton_);
         QWidget::setTabOrder(removeProjectButton_, newButton_);
         QWidget::setTabOrder(newButton_, openButton_);
         QWidget::setTabOrder(openButton_, cancelButton_);
@@ -140,7 +140,7 @@ public:
         QObject::connect(cancelButton_, SIGNAL(clicked()), OpenProjectDialog, SLOT(reject()));
         QObject::connect(newButton_, SIGNAL(clicked()), OpenProjectDialog, SLOT(newProject()));
         QObject::connect(pathEdit_, SIGNAL(textChanged(QString)), OpenProjectDialog, SLOT(pathChanged(QString)));
-        QObject::connect(recentProjectsList_, SIGNAL(itemSelectionChanged()), OpenProjectDialog, SLOT(recentProjectSelected()));
+        QObject::connect(m_pRecentList, SIGNAL(itemSelectionChanged()), OpenProjectDialog, SLOT(recentProjectSelected()));
         QObject::connect(removeProjectButton_, SIGNAL(clicked()), OpenProjectDialog, SLOT(removeProject()));
         QObject::connect(browseButton_, SIGNAL(clicked()), OpenProjectDialog, SLOT(browse()));
         QObject::connect(openButton_, SIGNAL(clicked()), OpenProjectDialog, SLOT(accept()));
@@ -168,4 +168,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_OPENPROJECTDLG2_H
+#endif // UI_OPENPROJECTDIALOG2_H

@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'openprojectlayout4.ui'
 **
-** Created: Sat Jul 16 18:59:10 2011
-**      by: Qt User Interface Compiler version 4.7.0
+** Created: Sun Dec 4 09:11:20 2011
+**      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,9 +11,7 @@
 #define UI_OPENPROJECTLAYOUT4_H
 
 #include <Qt3Support/Q3ButtonGroup>
-#include <Qt3Support/Q3Frame>
 #include <Qt3Support/Q3GroupBox>
-#include <Qt3Support/Q3ListBox>
 #include <Qt3Support/Q3MimeSourceFactory>
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -22,6 +20,7 @@
 #include <QtGui/QDialog>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
+#include <QtGui/QListWidget>
 #include <QtGui/QPushButton>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QVBoxLayout>
@@ -37,10 +36,10 @@ public:
     QVBoxLayout *vboxLayout;
     Q3ButtonGroup *buttonGroup5;
     QHBoxLayout *hboxLayout;
-    KUrlRequester *m_pProjPathRequester;
+    KURLRequester *m_pProjPathRequester;
     Q3ButtonGroup *buttonGroup6;
     QVBoxLayout *vboxLayout1;
-    Q3ListBox *m_pRecentList;
+    QListWidget *m_pRecentList;
     QHBoxLayout *hboxLayout1;
     QSpacerItem *spacer4;
     QPushButton *m_pRemoveButton;
@@ -53,7 +52,7 @@ public:
     {
         if (OpenProjectLayout->objectName().isEmpty())
             OpenProjectLayout->setObjectName(QString::fromUtf8("OpenProjectLayout"));
-        OpenProjectLayout->resize(417, 384);
+        OpenProjectLayout->resize(418, 384);
         vboxLayout = new QVBoxLayout(OpenProjectLayout);
         vboxLayout->setSpacing(6);
         vboxLayout->setContentsMargins(11, 11, 11, 11);
@@ -69,7 +68,7 @@ public:
             boxlayout->addLayout(hboxLayout);
         hboxLayout->setAlignment(Qt::AlignTop);
         hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
-        m_pProjPathRequester = new KUrlRequester(buttonGroup5);
+        m_pProjPathRequester = new KURLRequester(buttonGroup5);
         m_pProjPathRequester->setObjectName(QString::fromUtf8("m_pProjPathRequester"));
 
         hboxLayout->addWidget(m_pProjPathRequester);
@@ -88,7 +87,7 @@ public:
             boxlayout1->addLayout(vboxLayout1);
         vboxLayout1->setAlignment(Qt::AlignTop);
         vboxLayout1->setObjectName(QString::fromUtf8("vboxLayout1"));
-        m_pRecentList = new Q3ListBox(buttonGroup6);
+        m_pRecentList = new QListWidget(buttonGroup6);
         m_pRecentList->setObjectName(QString::fromUtf8("m_pRecentList"));
 
         vboxLayout1->addWidget(m_pRecentList);
@@ -96,7 +95,7 @@ public:
         hboxLayout1 = new QHBoxLayout();
         hboxLayout1->setSpacing(6);
         hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
-        spacer4 = new QSpacerItem(281, 21, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        spacer4 = new QSpacerItem(281, 21, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         hboxLayout1->addItem(spacer4);
 
@@ -114,7 +113,7 @@ public:
         hboxLayout2 = new QHBoxLayout();
         hboxLayout2->setSpacing(6);
         hboxLayout2->setObjectName(QString::fromUtf8("hboxLayout2"));
-        spacer6 = new QSpacerItem(201, 31, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        spacer6 = new QSpacerItem(201, 31, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         hboxLayout2->addItem(spacer6);
 
@@ -137,10 +136,7 @@ public:
         QObject::connect(m_pOpenButton, SIGNAL(clicked()), OpenProjectLayout, SLOT(accept()));
         QObject::connect(m_pCancelButton, SIGNAL(clicked()), OpenProjectLayout, SLOT(reject()));
         QObject::connect(m_pRemoveButton, SIGNAL(clicked()), OpenProjectLayout, SLOT(slotRemoveRecent()));
-        QObject::connect(m_pRecentList, SIGNAL(highlighted(Q3ListBoxItem*)), OpenProjectLayout, SLOT(slotSelectRecent(Q3ListBoxItem*)));
-        QObject::connect(m_pRecentList, SIGNAL(doubleClicked(Q3ListBoxItem*)), OpenProjectLayout, SLOT(slotOpenRecent(Q3ListBoxItem*)));
         QObject::connect(m_pProjPathRequester, SIGNAL(urlSelected(QString)), OpenProjectLayout, SLOT(slotProjectSelected(QString)));
-        QObject::connect(m_pRecentList, SIGNAL(returnPressed(Q3ListBoxItem*)), OpenProjectLayout, SLOT(slotOpenRecent(Q3ListBoxItem*)));
 
         QMetaObject::connectSlotsByName(OpenProjectLayout);
     } // setupUi
