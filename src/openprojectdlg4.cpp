@@ -38,8 +38,6 @@ OpenProjectDlg::~OpenProjectDlg()
 QString OpenProjectDlg::getPath() const
 {
     	return pathEdit_->text();
-	//return m_pProjPathRequester->url();
-	// return m_pProjPathRequester->text();
 }
 
 /**
@@ -50,7 +48,6 @@ QString OpenProjectDlg::getPath() const
 void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
 {
 	QFileInfo fi(sProjPath);
-	// m_pProjPathRequester->setUrl(fi.absolutePath());
 }
 
 /**
@@ -80,6 +77,7 @@ void OpenProjectDlg::slotRemoveRecent()
  */
 void OpenProjectDlg::slotSelectRecent(QListWidgetItem *pItem)
 {
+	qDebug() << "OpenProjectDlg::slotSelectRecent: FIXME";
 	// if (pItem != NULL)
 		// m_pProjPathRequester->setUrl(pItem->text());
 }
@@ -105,21 +103,12 @@ void OpenProjectDlg::slotOpenRecent(QListWidgetItem* pItem)
  */
 void OpenProjectDlg::loadRecent()
 {
-	qDebug() << "BEGIN: OpenProjectDlg::loadRecent()";
-
 	const QStringList& slProjects = Config().getRecentProjects();
 	// QStringList::const_iterator itr;
 	QStringListIterator itr(slProjects);
 
-	qDebug() << "KScope::slotOpenProject(): FIXME";
-
 	// Create a list item for each project in the list
-	// for (itr = slProjects.begin(); itr != slProjects.end(); ++itr)
-		//m_pRecentList->insertItem(*itr);
 	while (itr.hasNext())
-		//qDebug() << itr.next();
 		m_pRecentList->addItem(itr.next());
-
-	qDebug() << "END: OpenProjectDlg::loadRecent()";
 }
-// Sun Nov 27 11:27:39 PST 2011
+// Sun Dec  4 09:30:23 PST 2011

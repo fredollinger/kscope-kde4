@@ -11,6 +11,9 @@ newprojectlayout4.ui
 vcsCommitLayout.ui
 )
 
+kde4_add_kcfg_files(kscope4_SRCS settings.kcfgc)
+install(FILES settings.kcfg DESTINATION ${KCFG_INSTALL_DIR})
+
 
 set(kscope_SRCS
 ksconfigglobal4.cpp
