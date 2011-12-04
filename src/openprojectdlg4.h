@@ -1,11 +1,8 @@
 #ifndef OPENPROJECTDLG_H
 #define OPENPROJECTDLG_H
 
-#include <Q3ListBoxItem>
-#include <Q3ListBox>
 #include <qwidget.h>
 #include "ui_openprojectdialog2.h"
-// #include "openprojectdlg4.h"
 
 /**
  * A dialogue for selecting a project to open.
@@ -28,8 +25,8 @@ public:
 protected slots:
 	virtual void slotProjectSelected(const QString&);
 	virtual void slotRemoveRecent();
-	virtual void slotSelectRecent(Q3ListBoxItem*);
-	virtual void slotOpenRecent(Q3ListBoxItem*);
+	virtual void slotSelectRecent(QListWidgetItem*);
+	virtual void slotOpenRecent(QListWidgetItem*);
 
 private:
 	void loadRecent();

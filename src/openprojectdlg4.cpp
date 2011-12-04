@@ -1,6 +1,5 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
-#include <Q3ListBoxItem>
 #include <kurlrequester.h>
 #include <qdebug.h>
 
@@ -60,7 +59,7 @@ void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
  */
 void OpenProjectDlg::slotRemoveRecent()
 {
-	Q3ListBoxItem *pItem;
+	// QListWidgetItem *pItem;
 
 	// Remove the selected item, if any
 	/*
@@ -79,7 +78,7 @@ void OpenProjectDlg::slotRemoveRecent()
  * list box.
  * @param	pItem	The selected project item
  */
-void OpenProjectDlg::slotSelectRecent(Q3ListBoxItem *pItem)
+void OpenProjectDlg::slotSelectRecent(QListWidgetItem *pItem)
 {
 	// if (pItem != NULL)
 		// m_pProjPathRequester->setUrl(pItem->text());
@@ -92,7 +91,7 @@ void OpenProjectDlg::slotSelectRecent(Q3ListBoxItem *pItem)
  * projects list box.
  * @param	pItem	The selected project item
  */
-void OpenProjectDlg::slotOpenRecent(Q3ListBoxItem* pItem)
+void OpenProjectDlg::slotOpenRecent(QListWidgetItem* pItem)
 {
 	// if (pItem != NULL) {
 		// m_pProjPathRequester->setUrl(pItem->text());
