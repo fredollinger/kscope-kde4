@@ -101,7 +101,7 @@ bool ProjectManager::open(const QString& sPath)
 	
 	qDebug() << "ProjectManager::open(): addRecentProject()";
 	// Add to the list of recently opened projects
-	Config().addRecentProject(sPath);
+	kscope4::Config().addRecentProject(sPath);
 	qDebug() << "ProjectManager::open(): addRecentProject(): SUCCESS";
 	
 	// Project opened successfully
@@ -131,7 +131,7 @@ bool ProjectManager::openCscopeOut(const QString& sFilePath)
 	
 	qDebug() << "ProjectManager::openCScopeOut(): addRecentProject()";
 	// Add to the list of recently opened projects
-	Config().addRecentProject(sFilePath);
+	kscope4::Config().addRecentProject(sFilePath);
 	qDebug() << "ProjectManager::openCScopeOut(): addRecentProject(): SUCCESS";
 	
 	// Project opened successfully

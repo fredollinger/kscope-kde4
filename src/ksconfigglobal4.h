@@ -12,13 +12,14 @@
 
 #include <qdebug.h>
 
-#include "ksconfig4.h"
+#include "KSGlobalConfig.h"
 
 namespace kscope4{
-class KSConfigGlobal : public KSConfig
+class KSConfigGlobal : public KSGlobalConfig 
 {
 public:
-	KSConfigGlobal(const QString&);
+	KSConfigGlobal();
+	~KSConfigGlobal();
 
 private:
 	QString m_group; // what group we have

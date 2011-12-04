@@ -1,3 +1,5 @@
+ksconfigglobal.cpp
+
 buildFrontEnd.cpp
 calltreedlg4.cpp
 calltreemanager4.cpp

@@ -5,7 +5,7 @@
 #include <qobject.h>
 #include <qstringlist.h>
 #include <qcolor.h>
-// #include <kdockwidget.h>
+#include "KSGlobalConfig.h"
 
 // typedef QList<int> SPLIT_SIZES;
 
@@ -14,7 +14,8 @@
  * @author Elad Lahav
  */
 
-class KScopeConfig : public QObject
+namespace kscope4{
+class KScopeConfig : public KSGlobalConfig
 {
 	Q_OBJECT
 	
@@ -190,4 +191,5 @@ private:
 
 extern KScopeConfig& Config();
 
+} // namespace kscope4
 #endif

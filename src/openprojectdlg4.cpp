@@ -103,7 +103,7 @@ void OpenProjectDlg::slotOpenRecent(QListWidgetItem* pItem)
  */
 void OpenProjectDlg::loadRecent()
 {
-	const QStringList& slProjects = Config().getRecentProjects();
+	const QStringList& slProjects = kscope4::Config().recentProjects();
 	// QStringList::const_iterator itr;
 	QStringListIterator itr(slProjects);
 

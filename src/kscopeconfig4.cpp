@@ -2,8 +2,10 @@
 #include <kapplication.h>
 #include <kglobalsettings.h>
 #include <qdebug.h>
+
 #include "kscopeconfig4.h"
 #include "ksconfig4.h"
+#include "KSGlobalConfig.h"
 
 // NOTE:
 // This configuration file entry controls whether the welcome dialogue is
@@ -56,7 +58,9 @@ const ElementInfo eiFonts[] = {
 #define FONT_NAME(_i)	eiFonts[_i].szName
 #define FONT_ENTRY(_i)	eiFonts[_i].szEntry
 
-KScopeConfig::KScopeConfig() : m_bFontsChanged(false)
+namespace kscope4{
+KScopeConfig::KScopeConfig() : KSGlobalConfig(),
+m_bFontsChanged(false)
 {
 }
 
@@ -175,7 +179,8 @@ void KScopeConfig::loadWorkspace(MainWindow* pMainWindow)
 void KScopeConfig::store()
 {
 	qDebug() << "KScopeConfig::store()";
-	uint i;
+	writeConfig();
+	// uint i;
 	
 	// KConfig* pConf = kapp->config();
 	/*
@@ -724,8 +729,10 @@ KScopeConfig& Config()
  */
 void KScopeConfig::addRecentProject(const QString& sProjPath)
 {
-	m_slProjects.prepend(sProjPath);
-	m_slProjects.removeDuplicates();
+// FIXME: Change all m_slRecentProcject to mRecentProjects. 
+	mRecentProjects.prepend(sProjPath);
+	mRecentProjects.removeDuplicates();
 
 }
-// Sun Nov 20 17:37:53 PST 2011
+} // namespace kscope4
+// Sun Dec  4 14:58:59 PST 2011
