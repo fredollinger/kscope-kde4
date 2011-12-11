@@ -40,6 +40,18 @@ QString OpenProjectDlg::getPath() const
     	return pathEdit_->text();
 }
 
+void OpenProjectDlg::accept(){
+	qDebug() << "OpenProjectDlg::slot accept";
+}
+
+void OpenProjectDlg::recentProjectSelected(){
+	qDebug() << "OpenProjectDlg::slotProjectSelected: FIXME";
+
+        // QListWidgetItem* item = m_pRecentList->selectedItems().first();
+        openButton_->setEnabled(true);
+    	removeProjectButton_->setEnabled(true);
+}
+
 /**
  * Sets the requester to reflect the selected project's directory, instead of
  * the cscope.proj file.
@@ -48,6 +60,7 @@ QString OpenProjectDlg::getPath() const
 void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
 {
 	QFileInfo fi(sProjPath);
+
 }
 
 /**

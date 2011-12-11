@@ -23,10 +23,19 @@ public:
 	QString getPath() const;
 
 protected slots:
+	// BEGIN ORIG
 	virtual void slotProjectSelected(const QString&);
 	virtual void slotRemoveRecent();
 	virtual void slotSelectRecent(QListWidgetItem*);
 	virtual void slotOpenRecent(QListWidgetItem*);
+	// END ORIG
+
+	// BEGIN FROM kscope2
+	/* Trying to connect to existing slots from openprojectdialog  
+	 */
+	virtual void recentProjectSelected(void);
+	virtual void accept(void);
+	// END FROM kscope2
 
 private:
 	void loadRecent();
