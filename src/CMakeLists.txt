@@ -23,7 +23,6 @@ buildFrontEnd.cpp
 vcsFrontEnd.cpp
 vcsCommitDlg.cpp
 querywidget4.cpp
-querypage4.cpp
 querypagebase4.cpp
 grepdlg.cpp
 grepfrontend.cpp

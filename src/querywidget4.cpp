@@ -4,7 +4,6 @@
 #include <QString>
 #include <QTabWidget>
 #include "querywidget4.h"
-#include "querypage4.h"
 #include <klocalizedstring.h>
 
 /**
@@ -51,7 +50,7 @@ QueryWidget::~QueryWidget()
  */
 void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
 {
-	QueryPage* pPage;
+	// QueryPage* pPage;
 	
 	// Make sure we have a query page
 	// findQueryPage();
@@ -66,8 +65,8 @@ void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
 	*/
 
 	// Reset the page's results list
-	pPage->clear();
-	pPage->query(nType, sText, bCase);
+	// pPage->clear();
+	// pPage->query(nType, sText, bCase);
 	
 	// Set the page's tab text according to the new query
 	// setPageCaption(pPage);
