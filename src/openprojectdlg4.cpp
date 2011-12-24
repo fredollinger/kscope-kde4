@@ -41,7 +41,7 @@ QString OpenProjectDlg::getPath() const
 }
 
 void OpenProjectDlg::accept(){
-	qDebug() << "OpenProjectDlg::slot accept";
+	qDebug() << "OpenProjectDlg::slot accept: " << pathEdit_->text();
 	QDialog::accept();
 }
 
@@ -51,6 +51,8 @@ void OpenProjectDlg::recentProjectSelected(){
         // QListWidgetItem* item = m_pRecentList->selectedItems().first();
         openButton_->setEnabled(true);
     	removeProjectButton_->setEnabled(true);
+	pathEdit_->setText(m_pRecentList->currentItem()->text());
+	 //pathEdit_->setText("bob");
 }
 
 /**
