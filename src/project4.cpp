@@ -428,5 +428,6 @@ void Project::writeOptions(kscope4::KSConfig* pConf, const Options& opt)
 	pConf->writeEntry("Delay", opt.nACDelay);
 	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
+
 }// namespace kscope4
-// Sun Oct 30 18:02:22 PDT 2011
+// Sat Dec 24 13:15:32 PST 2011

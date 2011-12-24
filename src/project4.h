@@ -64,4 +64,4 @@ private:
 
 #endif
 }// namespace kscope4
-// Sat Oct 29 13:47:05 PDT 2011
+// Sat Dec 24 13:15:13 PST 2011

@@ -431,6 +431,7 @@ void KScope::slotOpenProject()
 		openProject(sPath);
 	else
 		openCscopeOut(sPath);
+
 }
 
 /**
@@ -563,8 +564,12 @@ bool KScope::openCscopeOut(const QString& sFilePath)
  */
 void KScope::slotQueryPattern()
 {
+	ProjectBase* pProj;
 	qDebug() << "slotQueryPattern";
-	slotQuery(SymbolDlg::Pattern, true);
+	// slotQuery(SymbolDlg::Pattern, true);
+
+	pProj = m_pProjMgr->curProject();
+	// m_pVcsCommit->setSourceRoot(m_pProjMgr->getSourceRoot()); 
 }
 
 /**
