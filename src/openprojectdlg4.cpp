@@ -42,6 +42,7 @@ QString OpenProjectDlg::getPath() const
 
 void OpenProjectDlg::accept(){
 	qDebug() << "OpenProjectDlg::slot accept";
+	QDialog::accept();
 }
 
 void OpenProjectDlg::recentProjectSelected(){

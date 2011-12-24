@@ -73,7 +73,7 @@ KScope::KScope(QWidget *) :
 	// Connect menu and toolbar items with the object's slots
 	// m_pActions = new KScopeActions(this);
 	// m_pActions->init();
-	//m_pActions->slotEnableProjectActions(false);
+	// m_pActions->slotEnableProjectActions(false);
 	// END STUFF FROM KSCOPE
 }
 
@@ -423,6 +423,8 @@ void KScope::slotOpenProject()
 	}
 
 	sPath = dlg.getPath();
+
+	qDebug() << "KScope::slotOpenProject(): " << sPath;
 	
 	// Check if the path refers to a permanent or temporary project
 	if (QFileInfo(sPath).isDir())
