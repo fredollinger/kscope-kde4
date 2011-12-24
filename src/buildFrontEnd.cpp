@@ -47,21 +47,45 @@ Frontend::ParseResult buildFrontEnd::parseStdout(QString& sToken,
 	return result;
 }
 
-bool buildFrontEnd::build() 
+bool buildFrontEnd::build(QString s_sProjPath) 
 {
-	qDebug ()<< "buildFrontEnd::build()";
+	qDebug ()<< "buildFrontEnd::build(): "<< s_sProjPath;
 
 	QStringList slCmdLine;
 
-	QString s_sProjPath = "."; // FIXME: put in project path
+	// QString s_sProjPath = "."; // FIXME: put in project path
 
 	setOutputChannelMode(KProcess::MergedChannels);
+
+	connect(this, SIGNAL(readyRead()),
+	this, SLOT(slotDisplayResults()));
 	
 	// Run a new process
 	if (!Frontend::run("make", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
 	}
+	return true;
+}
+
+
+bool buildFrontEnd::slotDisplayResults(){
+	qDebug() << "buildFrontEnd::slotDisplayResults()";
+	disconnect(this, SIGNAL(readyRead()), 0, 0);
+
+	setReadChannel(QProcess::StandardOutput);
+	QString qs;
+	QByteArray qba;
+	while (atEnd() == false){
+		qba = readLine(2000);	
+		qs = qs + QString(qba);
+	}
+	
+	qDebug() << qs;
+
+//	m_qmbMsg->setText(qs);
+	//m_qmbMsg->exec();
+
 	return true;
 }
 

@@ -11,7 +11,8 @@ vcsCommitLayout.h
 
 all:
 	mkdir -p build
-	cd build && make 2>err
+	#cd build && make 2>err
+	cd build && make 
 setup:
 	mkdir build
 	cd build && cmake ..

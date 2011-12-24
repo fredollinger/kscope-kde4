@@ -829,7 +829,7 @@ bool KScope::slotBuildProject(){
 	connect(m_pBuild, SIGNAL(ReadyRead()),
 	this, SLOT(slotBuildReady() ) );
 
-	return m_pBuild->build(); 
+	return m_pBuild->build(getSourceRoot()); 
 }
 
 bool KScope::slotBuildReady(){
@@ -954,6 +954,12 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 		// Ensure Query Window is visible
 		toggleQueryWindow(true);	
 	// }
+}
+
+QString KScope::getSourceRoot(){
+	ProjectBase* pProj;
+	pProj = m_pProjMgr->curProject();
+	return pProj->getSourceRoot();
 }
 
 } // namespace kscope4

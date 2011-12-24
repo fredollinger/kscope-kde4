@@ -58,7 +58,8 @@ private:
 	static uint s_nSupArgs;
 
 public slots:
-	bool build(void);
+	bool build(QString);
+	bool slotDisplayResults();
 };
 
 } // namespace kscope4

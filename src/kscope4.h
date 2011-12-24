@@ -72,8 +72,9 @@ public:
 	void open(const QString&);
 	void openFileNamed(QString);
 	void openProject(const QString&);
-	void save();
-	void verifyCscope();
+	void save(void);
+	void verifyCscope(void);
+	QString getSourceRoot(void);
 
 private:
 	vcsFrontEnd *m_pVcs;
