@@ -823,39 +823,6 @@ void KScope::createDockWindows(){
 // END createDockWindow()
 #endif
 
-bool KScope::slotBuildProject(){
-	qDebug() << "slotBuildProject";
-
-	if (noOpenProject()) return false;
-
-	connect(m_pBuild, SIGNAL(ReadyRead()),
-	this, SLOT(slotBuildReady() ) );
-
-	return m_pBuild->build(getSourceRoot()); 
-}
-
-bool KScope::slotBuildReady(){
-	qDebug() << "slotBuildReady";
-	disconnect(this, SIGNAL(readyRead()), 0, 0);
-
-	QString qs;
-	QByteArray qba;
-
-	m_pBuild->setReadChannel(QProcess::StandardOutput);
-
-	while (m_pBuild->atEnd() == false){
-		qba = m_pBuild->readLine(2000);	
-		qs = qs + QString(qba);
-		qDebug() << qs;
-	}
-	
-	// m_pQueryWidget->bob();
-
-	// m_view->document()->setText(qs);	
-
-	return true;
-}
-
 /**
  * Handles the "Project->New..." command.
  * Prompts the user for the name and folder for the project, and then creates
@@ -964,6 +931,40 @@ QString KScope::getSourceRoot(){
 	ProjectBase* pProj;
 	pProj = m_pProjMgr->curProject();
 	return pProj->getSourceRoot();
+}
+
+
+bool KScope::slotBuildProject(){
+	qDebug() << "slotBuildProject";
+
+	if (noOpenProject()) return false;
+
+	connect(m_pBuild, SIGNAL(readyRead()),
+	this, SLOT(slotBuildReady() ) );
+
+	return m_pBuild->build(getSourceRoot()); 
+}
+
+bool KScope::slotBuildReady(){
+	qDebug() << "slotBuildReady";
+	disconnect(this, SIGNAL(readyRead()), 0, 0);
+
+	QString qs;
+	QByteArray qba;
+
+	m_pBuild->setReadChannel(QProcess::StandardOutput);
+
+	while (m_pBuild->atEnd() == false){
+		qba = m_pBuild->readLine(2000);	
+		qs = qs + QString(qba);
+		qDebug() << qs;
+	}
+	
+	m_pQueryWidget->applyPrefs();
+
+	// m_view->document()->setText(qs);	
+
+	return true;
 }
 
 } // namespace kscope4

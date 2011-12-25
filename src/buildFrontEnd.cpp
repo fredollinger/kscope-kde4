@@ -57,8 +57,8 @@ bool buildFrontEnd::build(QString s_sProjPath)
 
 	setOutputChannelMode(KProcess::MergedChannels);
 
-	connect(this, SIGNAL(readyRead()),
-	this, SLOT(slotDisplayResults()));
+	// connect(this, SIGNAL(readyRead()),
+	// this, SLOT(slotDisplayResults()));
 	
 	// Run a new process
 	if (!Frontend::run("make", slCmdLine, s_sProjPath)) {
