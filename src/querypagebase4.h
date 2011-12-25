@@ -2,7 +2,7 @@
 #define QUERYPAGEBASE_H
 
 #include <QWidget>
-#include "queryview4.cpp"
+#include "queryview4.h"
 
 /**
  * Defines a page in a QueryWidget's tab widget.
