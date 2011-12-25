@@ -783,7 +783,7 @@ void KScope::slotDiff(){
 	m_pVcs->diff(); 
 }
 
-void KScope::slotDiffDone(int i, QProcess::ExitStatus es){
+void KScope::slotDiffDone(int i, QProcess::ExitStatus es __attribute__ ((unused)) ){
 	qDebug() << "slotDiffDone";
 	disconnect(this, SIGNAL(finished()), 0, 0);
 }
@@ -934,17 +934,6 @@ QString KScope::getSourceRoot(){
 }
 
 
-bool KScope::slotBuildProject(){
-	qDebug() << "slotBuildProject";
-
-	if (noOpenProject()) return false;
-
-	connect(m_pBuild, SIGNAL(readyRead()),
-	this, SLOT(slotBuildReady() ) );
-
-	return m_pBuild->build(getSourceRoot()); 
-}
-
 bool KScope::slotBuildReady(){
 	qDebug() << "slotBuildReady";
 	disconnect(this, SIGNAL(readyRead()), 0, 0);
@@ -960,11 +949,23 @@ bool KScope::slotBuildReady(){
 		qDebug() << qs;
 	}
 	
-	m_pQueryWidget->applyPrefs();
 
 	// m_view->document()->setText(qs);	
 
 	return true;
+}
+
+bool KScope::slotBuildProject(){
+	qDebug() << "slotBuildProject";
+
+	if (noOpenProject()) return false;
+
+	connect(m_pBuild, SIGNAL(readyRead()),
+	this, SLOT(slotBuildReady() ) );
+
+	m_pQueryWidget->addQueryPage();
+
+	return m_pBuild->build(getSourceRoot()); 
 }
 
 } // namespace kscope4
