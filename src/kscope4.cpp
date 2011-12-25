@@ -826,6 +826,8 @@ void KScope::createDockWindows(){
 bool KScope::slotBuildProject(){
 	qDebug() << "slotBuildProject";
 
+	if (noOpenProject()) return false;
+
 	connect(m_pBuild, SIGNAL(ReadyRead()),
 	this, SLOT(slotBuildReady() ) );
 
@@ -846,8 +848,10 @@ bool KScope::slotBuildReady(){
 		qs = qs + QString(qba);
 		qDebug() << qs;
 	}
+	
+	m_pQueryWidget->addQueryPage();
 
-	m_view->document()->setText(qs);	
+	// m_view->document()->setText(qs);	
 
 	return true;
 }
@@ -931,7 +935,7 @@ void KScope::initCscope()
 void KScope::slotQuery(uint nType, bool bPrompt)
 {
 	QString sSymbol;
-	CallTreeDlg* pCallTreeDlg;
+	// CallTreeDlg* pCallTreeDlg;
 	bool bCase;
 	
 	// Get the requested symbol and query type

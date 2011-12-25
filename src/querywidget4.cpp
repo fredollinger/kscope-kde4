@@ -188,12 +188,14 @@ void QueryWidget::setPageCaption(QueryPageBase* pPage)
  * Creates a new query page, and adds it to the tab widget.
  * The new page is set as the current one.
  */
-/*
 void QueryWidget::addQueryPage()
 {
+	qDebug() << "BEGIN QueryWidget::addQueryPage()";
 	QueryPage* pPage;
 	QString sTitle;
 
+	return;
+/*
 	// Create the page
 	pPage = new QueryPage(this);
 
