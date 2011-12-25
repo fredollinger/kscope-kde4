@@ -24,6 +24,7 @@ vcsFrontEnd.cpp
 vcsCommitDlg.cpp
 querywidget4.cpp
 querypagebase4.cpp
+querypage4.cpp
 grepdlg.cpp
 grepfrontend.cpp
 qlistviewitem4.cpp

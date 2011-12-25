@@ -4,7 +4,9 @@
 #include <QString>
 #include <QTabWidget>
 #include "querywidget4.h"
+#include "querypage4.h"
 #include <klocalizedstring.h>
+#include <qdebug.h>
 
 /**
  * Class constructor.
@@ -15,6 +17,8 @@ QueryWidget::QueryWidget(QWidget* pParent, const char* szName) :
 	QDockWidget(i18n(szName), pParent),
 	m_nQueryPages(0)
 {
+	qDebug() << "QueryWidget";
+	
 
 	setObjectName("qwFiles");
 	m_pQTabWidget = new QTabWidget();
@@ -48,7 +52,7 @@ QueryWidget::~QueryWidget()
  * @param	sText	The query's text, as entered by the user
  * @param	bCase		true for case-sensitive queries, false otherwise
  */
-void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
+void QueryWidget::initQuery(uint nType __attribute__ ((unused))  , const QString& sText, bool bCase)
 {
 	// QueryPage* pPage;
 	
@@ -72,13 +76,17 @@ void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
 	// setPageCaption(pPage);
 }
 
-#if 0
 /**
  * Applies the user's colour and font preferences to all pages.
  */
 void QueryWidget::applyPrefs()
 {
-qDebug() << "QueryWidget::applyPrefs(): FIXME not implemented";
+	qDebug() << "QueryWidget::applyPrefs(): FIXME not implemented";
+	// QueryPage* pPage;
+	QString sTitle;
+
+	return;
+#if 0
 	QueryPage* pPage;
 	int nPages, i;
 
@@ -89,8 +97,10 @@ qDebug() << "QueryWidget::applyPrefs(): FIXME not implemented";
 		pPage->applyPrefs();
 		setPageCaption(pPage);
 	}
+#endif
 }
 
+#if 0
 /**
  * Loads all pages saved when the project was closed.
  * @param	sProjPath		The full path of the project directory
@@ -191,7 +201,7 @@ void QueryWidget::setPageCaption(QueryPageBase* pPage)
 void QueryWidget::addQueryPage()
 {
 	qDebug() << "BEGIN QueryWidget::addQueryPage()";
-	QueryPage* pPage;
+	// QueryPage* pPage;
 	QString sTitle;
 
 	return;
@@ -210,6 +220,14 @@ void QueryWidget::addQueryPage()
 		//SLOT(slotRequestLine(const QString&, uint)));
 }
 */
+
+void QueryWidget::newQueryPage()
+	return;
+}
+
+void QueryWidget::bob(){
+	return;
+}
 
 #endif
 // Sat Nov 26 09:48:44 PST 2011

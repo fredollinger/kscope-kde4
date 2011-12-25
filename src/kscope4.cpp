@@ -849,7 +849,7 @@ bool KScope::slotBuildReady(){
 		qDebug() << qs;
 	}
 	
-	m_pQueryWidget->addQueryPage();
+	// m_pQueryWidget->bob();
 
 	// m_view->document()->setText(qs);	
 
@@ -968,5 +968,3 @@ QString KScope::getSourceRoot(){
 
 } // namespace kscope4
 // Thu Nov 24 15:23:32 PST 2011
-
-

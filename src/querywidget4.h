@@ -26,7 +26,9 @@ public:
 	QueryWidget(QWidget* pParent = 0, const char* szName = 0);
 	~QueryWidget();
 
+	void bob();
 	void addQueryPage();
+	void newQueryPage(void);
 	void initQuery(uint, const QString&, bool);
 	void applyPrefs();
 	void loadPages(const QString&, const QStringList&);
