@@ -52,7 +52,7 @@ QueryWidget::~QueryWidget()
  * @param	sText	The query's text, as entered by the user
  * @param	bCase		true for case-sensitive queries, false otherwise
  */
-void QueryWidget::initQuery(uint nType __attribute__ ((unused))  , const QString& sText, bool bCase)
+void QueryWidget::initQuery(uint nType __attribute__ ((unused))  , const QString& sText __attribute__ ((unused)), bool bCase __attribute__ ((unused)))
 {
 	// QueryPage* pPage;
 	
@@ -82,7 +82,7 @@ void QueryWidget::initQuery(uint nType __attribute__ ((unused))  , const QString
 void QueryWidget::applyPrefs()
 {
 	qDebug() << "QueryWidget::applyPrefs(): FIXME not implemented";
-	// QueryPage* pPage;
+	QueryPage* pPage;
 	QString sTitle;
 
 	return;
