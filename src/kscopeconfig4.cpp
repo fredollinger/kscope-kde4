@@ -1,3 +1,7 @@
+/*
+ * This is THE entry point to GLOBAL configuration options in KScope4
+ *
+ */
 #include <kconfig.h>
 #include <kapplication.h>
 #include <kglobalsettings.h>
@@ -76,79 +80,6 @@ KScopeConfig::~KScopeConfig()
  */
 void KScopeConfig::load()
 {
-	/*
-	uint i;
-	
-	KConfig* pConf = kapp->config();
-
-	// Need a working instance to get the system's default font (cannot be
-	// initialised statically)
-	s_cpDef.fonts[FileList] = KGlobalSettings::generalFont();
-	s_cpDef.fonts[TagList] = KGlobalSettings::generalFont();
-	s_cpDef.fonts[QueryWindow] = KGlobalSettings::generalFont();
-	s_cpDef.fonts[Graph] = KGlobalSettings::generalFont();
-	
-	// Read the paths to required executables
-	pConf->setGroup("Programs");
-	m_cp.sCscopePath = pConf->readEntry("CScope");
-	m_cp.sCtagsPath = pConf->readEntry("CTags");
-	m_cp.sDotPath = pConf->readEntry("Dot");
-
-	// Read size and position parameters
-	pConf->setGroup("Geometry");
-	m_cp.bShowTagList = pConf->readBoolEntry("ShowTagList", 
-		s_cpDef.bShowTagList);
-	m_cp.siEditor = pConf->readIntListEntry("Editor");
-	if (m_cp.siEditor.empty())
-		m_cp.siEditor << 200 << 800;
-
-	// Read the recent projects list
-	pConf->setGroup("Projects");
-	mRecentProjects = pConf->readListEntry("Recent");
-
-	// Read colour settings
-	pConf->setGroup("Colors");
-	for (i = 0; i <= LAST_COLOR; i++) {
-		m_cp.clrs[i] = pConf->readColorEntry(COLOR_ENTRY(i),
-			&s_cpDef.clrs[i]);
-	}
-
-	// Read font settings
-	pConf->setGroup("Fonts");
-	for (i = 0; i <= LAST_FONT; i++) {
-		m_cp.fonts[i] = pConf->readFontEntry(FONT_ENTRY(i),
-			&s_cpDef.fonts[i]);
-	}
-	
-	// Other options
-	pConf->setGroup("Options");
-	m_cp.ctagSortOrder = 
-		(CtagSort)pConf->readUnsignedNumEntry("CtagSortOrder",
-		s_cpDef.ctagSortOrder);
-	m_cp.bReadOnlyMode = pConf->readBoolEntry("ReadOnlyMode", 
-		s_cpDef.bReadOnlyMode);
-	m_cp.bLoadLastProj = pConf->readBoolEntry("LoadLastProj", 
-		s_cpDef.bLoadLastProj);
-	m_cp.bAutoTagHl = pConf->readBoolEntry("AutoTagHl", 
-		s_cpDef.bAutoTagHl);
-	m_cp.bBriefQueryCaptions = pConf->readBoolEntry("BriefQueryCaptions", 
-		s_cpDef.bBriefQueryCaptions);
-	m_cp.bWarnModifiedOnDisk = pConf->readBoolEntry("WarnModifiedOnDisk", 
-		s_cpDef.bWarnModifiedOnDisk);
-	m_cp.bAutoSortFiles = pConf->readBoolEntry("AutoSortFiles",
-		s_cpDef.bAutoSortFiles);
-	m_cp.sExtEditor = pConf->readEntry("ExternalEditor", s_cpDef.sExtEditor);
-	m_cp.profile = (SysProfile)pConf->readUnsignedNumEntry("SystemProfile",
-		s_cpDef.profile);
-	m_cp.popup = (EditorPopup)pConf->readUnsignedNumEntry("EditorPopup",
-		s_cpDef.popup);
-	m_cp.sGraphOrient = pConf->readEntry("GraphOrientation",
-		s_cpDef.sGraphOrient);
-	m_cp.nGraphMaxNodeDegree = pConf->readNumEntry("GraphMaxNodeDegree",
-		s_cpDef.nGraphMaxNodeDegree);
-	m_cp.nDefGraphView = pConf->readNumEntry("DefGraphView",
-		s_cpDef.nDefGraphView);
-	*/
 }
 
 /**
@@ -157,21 +88,7 @@ void KScopeConfig::load()
  */
 void KScopeConfig::loadDefault()
 {
-	// m_cp = s_cpDef;
 }
-
-/**
- * Loads the layout of the main window.
- * @param	pMainWindow	Pointer to the main docking window
- */
-/*
-void KScopeConfig::loadWorkspace(MainWindow* pMainWindow)
-{
-	//pMainWindow->readDockConfig(kapp->config(), "Workspace");
-	qDebug() << "KScopeConfig::loadWorkspace no implemented. \n";
-	return;
-}
-*/
  
 /**
  * Writes KScope's parameters from the standard configuration file.
@@ -180,76 +97,7 @@ void KScopeConfig::store()
 {
 	qDebug() << "KScopeConfig::store()";
 	writeConfig();
-	// uint i;
-	
-	// KConfig* pConf = kapp->config();
-	/*
-	KConfig* pConf = KGlobal::config();
-
-
-	// Write the paths to required executables
-	pConf->setGroup("Programs");
-	pConf->writeEntry("CScope", m_cp.sCscopePath);
-	pConf->writeEntry("CTags", m_cp.sCtagsPath);
-	pConf->writeEntry("Dot", m_cp.sDotPath);
-
-	// Write size and position parameters
-	pConf->setGroup("Geometry");
-	pConf->writeEntry("ShowTagList", m_cp.bShowTagList);
-	pConf->writeEntry("Editor", m_cp.siEditor);
-
-	// Write the recent projects list
-	pConf->setGroup("Projects");
-	pConf->writeEntry("Recent", mRecentProjects);
-
-	// Write colour settings
-	pConf->setGroup("Colors");
-	for (i = 0; i <= LAST_COLOR; i++)
-		pConf->writeEntry(COLOR_ENTRY(i), m_cp.clrs[i]);
-
-	// Write font settings
-	if (m_bFontsChanged) {
-		pConf->setGroup("Fonts");
-		for (i = 0; i <= LAST_FONT; i++)
-			pConf->writeEntry(FONT_ENTRY(i), m_cp.fonts[i]);
-		
-		m_bFontsChanged = false;
-	}
-		
-	// Other options
-	pConf->setGroup("Options");
-	pConf->writeEntry("CtagSortOrder", (uint)m_cp.ctagSortOrder);
-	pConf->writeEntry("ReadOnlyMode", m_cp.bReadOnlyMode);
-	pConf->writeEntry("LoadLastProj", m_cp.bLoadLastProj);
-	pConf->writeEntry("AutoTagHl", m_cp.bAutoTagHl);
-	pConf->writeEntry("BriefQueryCaptions", m_cp.bBriefQueryCaptions);
-	pConf->writeEntry("WarnModifiedOnDisk", m_cp.bWarnModifiedOnDisk);
-	pConf->writeEntry("AutoSortFiles", m_cp.bAutoSortFiles);
-	pConf->writeEntry("ExternalEditor", m_cp.sExtEditor);
-	pConf->writeEntry("SystemProfile", (uint)m_cp.profile);
-	pConf->writeEntry("EditorPopup", (uint)m_cp.popup);
-	pConf->writeEntry("GraphOrientation", m_cp.sGraphOrient);
-	pConf->writeEntry("GraphMaxNodeDegree", m_cp.nGraphMaxNodeDegree);
-	pConf->writeEntry("DefGraphView", m_cp.nDefGraphView);
-	
-	// Do not report it's the first time on the next run
-	pConf->setGroup("General");
-	pConf->writeEntry("FirstTime", false);
-	pConf->writeEntry(SHOW_WELCOME_ENTRY, false);
-	*/
 }
-
-/**
- * Stores the layout of the main window.
- * @param	pMainWindow	Pointer to the main docking window
- */
-/*
-void KScopeConfig::storeWorkspace(MainWindow* pMainWindow)
-{
-	qDebug() << "KScopeConfig::loadWorkspace no implemented. \n";
-	//pMainWindow->writeDockConfig(kapp->config(), "Workspace");
-}
-*/
 
 /**
  * Determines if this is the first time KScope was launched by the current
@@ -371,28 +219,6 @@ void KScopeConfig::setShowTagList(bool bShowTagList)
 }
 
 /**
- * @return	A list containing the widths of the Ctags list part and the
- * editor part in an editor page.
- */
-/*
-const SPLIT_SIZES& KScopeConfig::getEditorSizes() const
-{
-	return m_cp.siEditor;
-}
-*/
-
-/**
- * @param	siEditor	A list containing the widths of the Ctags list part
- * and the editor part in an editor page.
- */
-/*
-void KScopeConfig::setEditorSizes(const SPLIT_SIZES& siEditor)
-{
-	m_cp.siEditor = siEditor;
-}
-*/
-
-/**
  * Finds a colour to use for a GUI element.
  * @param	ce		Identifies the GUI element
  * @return	A reference to the colour object to use
@@ -421,20 +247,6 @@ void KScopeConfig::setColor(ColorElement ce, const QColor& clr)
 {
 	m_cp.clrs[ce] = clr;
 }
-
-/**
- * Finds a font to use for a GUI element.
- * @param	fe		Identifies the GUI element
- * @return	A reference to the font object to use
- */
-/*
-const QFont& KScopeConfig::getFont(FontElement fe) const
-{
-
-	qDebug() << "KScopeConfig::getFont not implemented! \n";
-	// return m_cp.fonts[fe];
-}
-*/
 
 /**
  * Returns the display name of a GUI element whose font can be configured.
@@ -735,4 +547,4 @@ void KScopeConfig::addRecentProject(const QString& sProjPath)
 
 }
 } // namespace kscope4
-// Sun Dec  4 14:58:59 PST 2011
+// Sun Dec 25 16:28:52 PST 2011

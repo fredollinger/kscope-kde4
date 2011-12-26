@@ -26,10 +26,20 @@ class KSGlobalConfig : public KConfigSkeleton
       return mRecentProjects;
     }
 
+
+    /**
+      Get Path to the last open project
+    */
+    QString lastOpenProject() const
+    {
+      return mLastOpenProject;
+    }
+
   protected:
 
     // Projects
     QStringList mRecentProjects;
+    QString mLastOpenProject;
 
   private:
 };

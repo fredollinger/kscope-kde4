@@ -9,5 +9,8 @@
     <entry name="RecentProjects" type="StringList">
       <label>List of recent projects</label>
     </entry>
+    <entry name="LastOpenProject" type="String">
+      <label>Path to the last open project</label>
+    </entry>
   </group>
 </kcfg>

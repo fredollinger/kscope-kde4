@@ -13,6 +13,9 @@ KSGlobalConfig::KSGlobalConfig(  )
   KConfigSkeleton::ItemStringList  *itemRecentProjects;
   itemRecentProjects = new KConfigSkeleton::ItemStringList( currentGroup(), QLatin1String( "RecentProjects" ), mRecentProjects );
   addItem( itemRecentProjects, QLatin1String( "RecentProjects" ) );
+  KConfigSkeleton::ItemString  *itemLastOpenProject;
+  itemLastOpenProject = new KConfigSkeleton::ItemString( currentGroup(), QLatin1String( "LastOpenProject" ), mLastOpenProject );
+  addItem( itemLastOpenProject, QLatin1String( "LastOpenProject" ) );
 }
 
 KSGlobalConfig::~KSGlobalConfig()

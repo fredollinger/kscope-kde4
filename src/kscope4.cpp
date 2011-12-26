@@ -16,9 +16,8 @@
 #include <QFile>
 #include <QTabWidget>
 
+#include "buildFrontEnd.h"
 #include "calltreedlg4.h"
-// #include "calltreemanager4.h"
-// #include "fileview4.h"
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
@@ -34,7 +33,6 @@
 #include "querywidget4.h"
 #include "vcsCommitDlg.h"
 #include "vcsFrontEnd.h"
-#include "buildFrontEnd.h"
 
 #include <qdebug.h>
 
@@ -68,13 +66,6 @@ KScope::KScope(QWidget *) :
 	// m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
 	m_pBuild = new buildFrontEnd();
-	
-	// BEGIN STUFF FROM KSCOPE
-	// Connect menu and toolbar items with the object's slots
-	// m_pActions = new KScopeActions(this);
-	// m_pActions->init();
-	// m_pActions->slotEnableProjectActions(false);
-	// END STUFF FROM KSCOPE
 }
 
 /**
@@ -90,14 +81,6 @@ KScope::~KScope()
 	delete m_pProjMgr;
 	delete m_pVcs;
 	delete m_pBuild;
-	/*
-	delete m_pCallTreeMgr;
-	delete m_pEditMgr;
-	delete m_pCscopeBuild;
-	
-	if (m_pMakeDlg != NULL)
-		delete m_pMakeDlg;
-	*/
 }
 
 void KScope::setupActions()
