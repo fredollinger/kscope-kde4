@@ -42,6 +42,9 @@ KScope::KScope(QWidget *) :
 	m_pCscopeBuild(NULL),
 	m_pProgressDlg(NULL)
 {
+
+	QString currentProject;
+	
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
@@ -66,6 +69,14 @@ KScope::KScope(QWidget *) :
 	// m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
 	m_pBuild = new buildFrontEnd();
+
+	currentProject=QDir::cleanPath(Config().getCurrentProject());
+	
+	qDebug() << "current project: " << currentProject;
+
+	if ( QDir(currentProject).exists() && currentProject.length() > 2 )
+		openProject(currentProject);
+
 }
 
 /**
@@ -456,6 +467,9 @@ void KScope::openProject(const QString& sDir)
 
 	// Set auto-completion parameters
 	pProj->getOptions(opt);
+
+	Config().setCurrentProject(sDir);
+
 	/*
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
 		opt.nACDelay, opt.nACMaxEntries);
