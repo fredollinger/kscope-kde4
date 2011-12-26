@@ -55,6 +55,9 @@ public:
 	void storeWorkspace(KParts::MainWindow*);
 	bool isFirstTime();
 	bool showWelcomeDlg();
+
+	const QString& getCurrentProject();
+	void setCurrentProject(const QString& sProjPath);
 	
 	const QString& getCscopePath() const;
 	void setCscopePath(const QString&);

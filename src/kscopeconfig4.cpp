@@ -1,4 +1,6 @@
 /*
+ * kscopeconfig4.cpp
+ *
  * This is THE entry point to GLOBAL configuration options in KScope4
  *
  */
@@ -546,5 +548,21 @@ void KScopeConfig::addRecentProject(const QString& sProjPath)
 	mRecentProjects.removeDuplicates();
 
 }
+
+/* Set the name of the project that we will load when start up KScope */
+void KScopeConfig::setCurrentProject(const QString& sProjPath)
+{
+    QString mLastOpenProject = sProjPath;
+
+}
+
+/* Set the name of the project that we will load when start up KScope */
+
+const QString& KScopeConfig::getCurrentProject()
+{
+    return mLastOpenProject;
+
+}
+
 } // namespace kscope4
 // Sun Dec 25 16:28:52 PST 2011
