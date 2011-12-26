@@ -5,21 +5,24 @@
 #include <QTabWidget>
 #include "querywidget4.h"
 #include "querypage4.h"
+#include "queryview4.h"
 #include <klocalizedstring.h>
 #include <qdebug.h>
 
 void QueryWidget::addQueryPage()
 {
 	QueryPage* pPage;
-	QString sTitle;
+	const QString sTitle = "Query";
 
 	// Create the page
-	pPage = new QueryPage(this);
+	pPage = new QueryPage(this, "Query");
 
-	#if 0
+	m_pQueryTabs->addTab(pPage, sTitle);
+
 	// Add the page, and set it as the current one
-	m_pQueryTabs->insertTab(pPage, GET_PIXMAP(TabUnlocked), "Query",
-		m_nQueryPages++);
+	//m_pQueryTabs->insertTab(pPage, GET_PIXMAP(TabUnlocked), "Query",
+		//m_nQueryPages++);
+	#if 0
 	setCurrentPage(pPage);
 	
 	// Emit the lineRequested() signal when a query record is selected on 

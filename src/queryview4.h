@@ -26,9 +26,8 @@ class QueryView : public QStringListModel
 	Q_OBJECT
 	
 public:
-
-	QueryView(QWidget*, const char*);
-	// QueryView(QWidget* pParent = 0, const char* szName = 0);
+	// QueryView(QWidget*, const char*);
+	QueryView(QWidget* pParent = 0, const char* szName = 0);
 	~QueryView();
 
 };
