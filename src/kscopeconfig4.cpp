@@ -553,7 +553,7 @@ void KScopeConfig::addRecentProject(const QString& sProjPath)
 void KScopeConfig::setCurrentProject(const QString& sProjPath)
 { 
 	qDebug() << "KScopeConfig::setCurrentProject(): "<< sProjPath;
-	QString mLastOpenProject = sProjPath;
+	mLastOpenProject = sProjPath;
 }
 
 /* Set the name of the project that we will load when start up KScope */
