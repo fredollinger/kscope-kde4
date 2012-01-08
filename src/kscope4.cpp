@@ -88,6 +88,10 @@ KScope::~KScope()
 	// Save configuration
 	Config().store();
 	// Config().storeWorkspace(this);
+
+	QString currentProject;
+	currentProject=QDir::cleanPath(Config().getCurrentProject());
+	qDebug() << "current project: " << currentProject;
 	
 	delete m_pProjMgr;
 	delete m_pVcs;
