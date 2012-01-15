@@ -570,6 +570,7 @@ void KScope::slotQueryPattern()
 	// slotQuery(SymbolDlg::Pattern, true);
 
 	pProj = m_pProjMgr->curProject();
+	qDebug() << "slotQueryPattern: slotQuery";
 	slotQuery(SymbolDlg::Pattern, true);
 	// m_pVcsCommit->setSourceRoot(m_pProjMgr->getSourceRoot()); 
 }
@@ -904,6 +905,8 @@ void KScope::initCscope()
 void KScope::slotQuery(uint nType, bool bPrompt)
 {
 	QString sSymbol;
+
+	qDebug() << "KScope::slotQuery";
 	// CallTreeDlg* pCallTreeDlg;
 	bool bCase;
 	
@@ -921,7 +924,9 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	else {
 	*/
 		// Run the requested query
+		qDebug() << "KScope::getQueryType";
 		nType = SymbolDlg::getQueryType(nType);
+		qDebug() << "initQuery";
 		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
 		
 		// Ensure Query Window is visible

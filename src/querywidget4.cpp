@@ -18,6 +18,7 @@ void QueryWidget::addQueryPage()
 	// Create the page
 	pPage = new QueryPage(this, "Query");
 
+	qDebug() << "QueryWidget::addTab";
 	m_pQueryTabs->addTab(pPage, sTitle);
 
 	// Add the page, and set it as the current one
