@@ -5,6 +5,7 @@
 #include "symbollayout4.h"
 #include "cscopefrontend4.h"
 #include "qlistviewitem4.h"
+#include <QTableWidgetItem>
 
 /**
  * A dialogue that prompts the user for the text of a query.
@@ -55,7 +56,7 @@ private:
 private slots:
 	void slotHintClicked();
 	void slotHintDataReady(FrontendToken*);
-	void slotHintItemSelected(QTableWidgetItem*);
+	// void slotHintItemSelected(QTableWidgetItem*);
 	void slotHintOptionChanged(bool);
 	void slotHintProgress(int, int);
 	void slotHintFinished(uint);

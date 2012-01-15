@@ -570,7 +570,7 @@ void KScope::slotQueryPattern()
 	// slotQuery(SymbolDlg::Pattern, true);
 
 	pProj = m_pProjMgr->curProject();
-	qDebug() << "slotQueryPattern: slotQuery";
+	qDebug() << "slotQueryPattern: calling slotQuery";
 	slotQuery(SymbolDlg::Pattern, true);
 	// m_pVcsCommit->setSourceRoot(m_pProjMgr->getSourceRoot()); 
 }
@@ -604,6 +604,7 @@ bool KScope::getSymbol(uint& nType, QString& sSymbol, bool& bCase,
 	}
 	
 	// Show the symbol dialogue
+	qDebug() << "KScope::calling promptSymbol \n";
 	sSymbol = SymbolDlg::promptSymbol(this, nType, sSuggested, bCase);
 
 	// Cannot accept empty strings

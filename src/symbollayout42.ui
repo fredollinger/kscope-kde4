@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SymbolLayout</class>
+ <widget class="QDialog" name="SymbolLayout">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>456</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>KScope Query</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <layout class="QHBoxLayout" name="SymbolQHBoxLayout">
+     <item>
+      <layout class="QVBoxLayout" name="SymbolQVBoxLayout2">
+       <item>
+        <widget class="QLabel" name="textLabel1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Type</string>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="textLabel2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Symbol</string>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="SymbolQVBoxLayout">
+       <item>
+        <widget class="QComboBox" name="m_pTypeCombo">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>References to</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Definition of</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Functions called by</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Functions calling</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Find text</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Find EGrep pattern</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Find file</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Files #including</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Call graph for</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="KHistoryComboBox" name="m_pSymbolHC">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="duplicatesEnabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_pSubStringCheck">
+     <property name="text">
+      <string>Search for &amp;a Sub-String</string>
+     </property>
+     <property name="shortcut">
+      <string>Alt+A</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_pCaseCheck">
+     <property name="text">
+      <string>Case Insensitive</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line2">
+     <property name="frameShape">
+      <enum>QFrame::HLine</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="SymbolQHBoxLayout_2">
+     <item>
+      <spacer name="spacer2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>71</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pOKButton">
+       <property name="text">
+        <string>OK</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pHintButton">
+       <property name="text">
+        <string>Hi&amp;nt</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_pCancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="m_pHintList"/>
+   </item>
+   <item>
+    <widget class="Q3ButtonGroup" name="m_pHintGroup">
+     <property name="title">
+      <string>Hint Options</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <widget class="QRadioButton" name="m_pBeginWithRadio">
+        <property name="text">
+         <string>S&amp;ymbols Beginning With...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_pContainRadio">
+        <property name="text">
+         <string>Sym&amp;bols Containing...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KComboBox</class>
+   <extends>QComboBox</extends>
+   <header>kcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KHistoryComboBox</class>
+   <extends>KComboBox</extends>
+   <header>khistorycombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends>Q3GroupBox</extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_pSymbolHC</tabstop>
+  <tabstop>m_pTypeCombo</tabstop>
+  <tabstop>m_pSubStringCheck</tabstop>
+  <tabstop>m_pOKButton</tabstop>
+  <tabstop>m_pHintButton</tabstop>
+  <tabstop>m_pCancelButton</tabstop>
+  <tabstop>m_pHintList</tabstop>
+  <tabstop>m_pBeginWithRadio</tabstop>
+  <tabstop>m_pContainRadio</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local">kcombobox.h</include>
+  <include location="local">klineedit.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

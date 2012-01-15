@@ -23,17 +23,23 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) :
 	Ui::SymbolLayout(),
 	m_progress(m_pHintList)
 {
+	qDebug() << "SymbolDlg::SymbolDlg(): calling CscopeFrontend()";
 	// Create a persistent Cscope process
 	m_pCscope = new CscopeFrontend();
 	
+	#if 0
 	// Initialise the hint list (hidden by default)
 	
 	// FIXME: We set model, there is no notion addColumn()
 	// m_pHintList->addColumn(i18n("Suggested Symbols"));
 
-	m_pHintList->hide();
-	((QWidget*)m_pHintGroup)->hide();
+	// qDebug() << "SymbolDlg::SymbolDlg(): m_pHintList->hide()";
+	// m_pHintList->hide();
+	// qDebug() << "SymbolDlg::SymbolDlg(): pHintGroup->hide()";
+	// ((QWidget*)m_pHintGroup)->hide();
+	qDebug() << "SymbolDlg::SymbolDlg(): toggle()";
 	m_pBeginWithRadio->toggle();
+	qDebug() << "SymbolDlg::SymbolDlg(): adjustSize()";
 	adjustSize();
 	
 	// Close the dialogue when either the "OK" or "Cancel" button are clicked
@@ -72,6 +78,7 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) :
 		SLOT(slotHintProgress(int, int)));
 	connect(m_pCscope, SIGNAL(finished(uint)), this,
 		SLOT(slotHintFinished(uint)));
+	#endif
 }
 
 /**
@@ -88,7 +95,9 @@ SymbolDlg::~SymbolDlg()
  */
 void SymbolDlg::setType(uint nType)
 {
-	m_pTypeCombo->setCurrentIndex(nType);
+	qDebug() << "SymbolDlg::setType()";
+	// m_pTypeCombo->setCurrentIndex(nType);
+	qDebug() << "SymbolDlg::setType() calling: slotTypeChanged()";
 	slotTypeChanged(nType);
 }
 
@@ -97,7 +106,8 @@ void SymbolDlg::setType(uint nType)
  */
 void SymbolDlg::setSymbol(const QString& sSymbol)
 {
-	m_pSymbolHC->setItemText(0, sSymbol);
+	qDebug() << "SymbolDlg::setSymbol(): FIXME: NOT IMPLEMENTED";
+	// m_pSymbolHC->setItemText(0, sSymbol);
 }
 
 /**
@@ -105,7 +115,8 @@ void SymbolDlg::setSymbol(const QString& sSymbol)
  */
 void SymbolDlg::setHistory(QStringList& slSymHistory)
 {
-	m_pSymbolHC->setHistoryItems(slSymHistory);
+	qDebug() << "SymbolDlg::setHistory(): FIXME: NOT IMPLEMENTED";
+	// m_pSymbolHC->setHistoryItems(slSymHistory);
 }
 
 /**
@@ -150,20 +161,26 @@ bool SymbolDlg::getCase() const
 QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType, 
 	const QString& sSymbol, bool& bCase)
 {
+	qDebug() << "SymbolDlg::promptSymbol()";
 	SymbolDlg dlg(pParent);
 	
 	// Initialise the dialogue
+	qDebug() << "SymbolDlg::promptSymbol() calling setType()";
 	dlg.setType(nType);
+	qDebug() << "SymbolDlg::setHistory()";
 	dlg.setHistory(s_slHistory);
+	qDebug() << "SymbolDlg::setSymbol()";
 	dlg.setSymbol(sSymbol);
 	
 	// Display the dialogue
+	qDebug() << "SymbolDlg::exec()";
 	if (dlg.exec() != QDialog::Accepted)
 		return "";
 	
 	// Return the text entered by the user
 	nType = dlg.getType();
 	bCase = dlg.getCase();
+	qDebug() << "SymbolDlg::addToHistory()";
 	dlg.m_pSymbolHC->addToHistory(dlg.getSymbol());
 	s_slHistory = dlg.m_pSymbolHC->historyItems();
 	return dlg.getSymbol();
@@ -312,9 +329,15 @@ void SymbolDlg::slotHintFinished(uint /* ignored */)
  */
 void SymbolDlg::slotTypeChanged(int nType)
 {
-	if (nType == FileName || nType == Including)
+	qDebug() << "SymbolDlg::slotTypeChanged()";
+	if (nType == FileName || nType == Including){
+		qDebug() << "SymbolDlg::m_pHintButton->setEnabled(false)";
 		m_pHintButton->setEnabled(false);
-	else
-		m_pHintButton->setEnabled(true);
+	}
+	else{
+		// qDebug() << "SymbolDlg::m_pHintButton->setEnabled(true)";
+		// m_pHintButton->setEnabled(true);
+	}
 }
 } // namespace kscope4
+// Sat Jan 14 20:13:39 PST 2012
