@@ -11,6 +11,7 @@
 
 void QueryWidget::addQueryPage()
 {
+	qDebug() << "QueryWidget::initQuery";
 	QueryPage* pPage;
 	const QString sTitle = "Query";
 
@@ -75,6 +76,13 @@ QueryWidget::~QueryWidget()
 
 void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
 {
+	QueryPage* pPage;
+	qDebug() << "QueryWidget::initQuery";
+	addQueryPage();
+	pPage = (QueryPage*)currentPage();
+	// Reset the page's results list
+	// pPage->clear();
+	// pPage->query(nType, sText, bCase);
 }
 
 // Sat Nov 26 09:48:44 PST 2011

@@ -570,6 +570,7 @@ void KScope::slotQueryPattern()
 	// slotQuery(SymbolDlg::Pattern, true);
 
 	pProj = m_pProjMgr->curProject();
+	slotQuery(SymbolDlg::Pattern, true);
 	// m_pVcsCommit->setSourceRoot(m_pProjMgr->getSourceRoot()); 
 }
 

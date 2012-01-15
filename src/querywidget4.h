@@ -121,6 +121,13 @@ private:
 	void setPageLocked(QueryPageBase*, bool);
 	void findQueryPage();
 	void findHistoryPage();
+
+	/**
+	 * @return	The active page in the tab widget
+	 */
+	inline QueryPageBase* currentPage()	{ 
+		return (QueryPageBase*)m_pQueryTabs->currentWidget();
+	}
 		
 /*
 private slots:
