@@ -127,8 +127,10 @@ QString SymbolDlg::getSymbol() const
 	QString sResult;
 	
 	sResult = m_pSymbolHC->currentText().trimmed();
+	#if 0
 	if (m_pSubStringCheck->isChecked())
 		sResult = ".*" + sResult + ".*";
+	#endif
 		
 	return sResult;
 }
@@ -146,7 +148,8 @@ uint SymbolDlg::getType() const
 
 bool SymbolDlg::getCase() const
 {
-	return !m_pCaseCheck->isChecked();
+	// return !m_pCaseCheck->isChecked();
+	return true;
 }
 
 /**
@@ -163,6 +166,8 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 {
 	qDebug() << "SymbolDlg::promptSymbol()";
 	SymbolDlg dlg(pParent);
+	QDialog *widget = new QDialog(pParent);
+	dlg.setupUi(widget);
 	
 	// Initialise the dialogue
 	qDebug() << "SymbolDlg::promptSymbol() calling setType()";
@@ -215,7 +220,7 @@ void SymbolDlg::slotHintClicked()
 	// Show the hint list if necessary
 	if (!m_pHintList->isVisible()) {
 		m_pHintList->show();
-		((QWidget*)m_pHintGroup)->show();
+		// ((QWidget*)m_pHintGroup)->show();
 		adjustSize();
 	}
 	
@@ -228,10 +233,12 @@ void SymbolDlg::slotHintClicked()
 		return;
 
 	// Create the regular expression
+	#if 0
 	if (m_pBeginWithRadio->isChecked())
 		sRegExp = sText + "[a-zA-Z0-9_]*";
 	else	
-		sRegExp = "[a-zA-Z0-9_]*" + sText + "[a-zA-Z0-9_]*";
+	#endif
+	sRegExp = "[a-zA-Z0-9_]*" + sText + "[a-zA-Z0-9_]*";
 	
 	m_reHint.setPattern(sRegExp);
 
@@ -281,11 +288,13 @@ void SymbolDlg::slotHintDataReady(FrontendToken* pToken)
  * This slot is connected to the doubleClicked() signal of the hint list-view.
  * @param	pItem	The clicked list item
  */
+#if 0
 void SymbolDlg::slotHintItemSelected(QTableWidgetItem* pItem)
 {
 	m_pSymbolHC->setItemText(0, pItem->data(0).toString());
 	return;
 }
+#endif
 
 /**
  * Refreshes the hint list based on the newly selected option.
@@ -332,7 +341,7 @@ void SymbolDlg::slotTypeChanged(int nType)
 	qDebug() << "SymbolDlg::slotTypeChanged()";
 	if (nType == FileName || nType == Including){
 		qDebug() << "SymbolDlg::m_pHintButton->setEnabled(false)";
-		m_pHintButton->setEnabled(false);
+		// m_pHintButton->setEnabled(false);
 	}
 	else{
 		// qDebug() << "SymbolDlg::m_pHintButton->setEnabled(true)";

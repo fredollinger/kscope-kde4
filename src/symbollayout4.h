@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'symbollayout4.ui'
 **
-** Created: Sat Jan 14 20:55:07 2012
+** Created: Sat Jan 21 14:04:06 2012
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,6 +15,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QComboBox>
 #include <QtGui/QDialog>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -36,9 +37,11 @@ public:
     QLabel *label_2;
     QLabel *label;
     QVBoxLayout *verticalLayout_2;
-    KHistoryComboBox *m_pSymbolHC;
+    KHistoryComboBox *khistorycombobox;
+    QComboBox *m_pTypeCombo;
     QHBoxLayout *horizontalLayout;
     QTableWidget *m_pHintList;
+    KHistoryComboBox *m_pSymbolHC;
 
     void setupUi(QDialog *SymbolLayout)
     {
@@ -71,16 +74,15 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        m_pSymbolHC = new KHistoryComboBox(SymbolLayout);
-        m_pSymbolHC->setObjectName(QString::fromUtf8("m_pSymbolHC"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(m_pSymbolHC->sizePolicy().hasHeightForWidth());
-        m_pSymbolHC->setSizePolicy(sizePolicy);
-        m_pSymbolHC->setDuplicatesEnabled(false);
+        khistorycombobox = new KHistoryComboBox(SymbolLayout);
+        khistorycombobox->setObjectName(QString::fromUtf8("khistorycombobox"));
 
-        verticalLayout_2->addWidget(m_pSymbolHC);
+        verticalLayout_2->addWidget(khistorycombobox);
+
+        m_pTypeCombo = new QComboBox(SymbolLayout);
+        m_pTypeCombo->setObjectName(QString::fromUtf8("m_pTypeCombo"));
+
+        verticalLayout_2->addWidget(m_pTypeCombo);
 
 
         horizontalLayout_2->addLayout(verticalLayout_2);
@@ -98,6 +100,17 @@ public:
         m_pHintList->setObjectName(QString::fromUtf8("m_pHintList"));
 
         vboxLayout->addWidget(m_pHintList);
+
+        m_pSymbolHC = new KHistoryComboBox(SymbolLayout);
+        m_pSymbolHC->setObjectName(QString::fromUtf8("m_pSymbolHC"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(m_pSymbolHC->sizePolicy().hasHeightForWidth());
+        m_pSymbolHC->setSizePolicy(sizePolicy);
+        m_pSymbolHC->setDuplicatesEnabled(false);
+
+        vboxLayout->addWidget(m_pSymbolHC);
 
 
         retranslateUi(SymbolLayout);
