@@ -165,33 +165,31 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 	const QString& sSymbol, bool& bCase)
 {
 	qDebug() << "SymbolDlg::promptSymbol()";
-	SymbolDlg dlg(pParent);
-	SymbolDlg *widget = new SymbolDlg();
-	dlg.setupUi(widget);
+	SymbolDlg widget(pParent);
+	SymbolDlg *dlg = new SymbolDlg();
+	// dlg.setupUi(widget);
+	widget.setupUi(dlg);
 	
 	// Initialise the dialogue
 	qDebug() << "SymbolDlg::promptSymbol() calling setType()";
-	dlg.setType(nType);
+	dlg->setType(nType);
 	qDebug() << "SymbolDlg::setHistory()";
-	dlg.setHistory(s_slHistory);
+	dlg->setHistory(s_slHistory);
 	qDebug() << "SymbolDlg::setSymbol()";
-	dlg.setSymbol(sSymbol);
+	dlg->setSymbol(sSymbol);
 	
 	// Display the dialogue
 	qDebug() << "SymbolDlg::exec()";
-	widget->exec();
-	#if 0
-	if (dlg.exec() != QDialog::Accepted)
+	if (dlg->exec() != QDialog::Accepted)
 		return "";
-	#endif
 	
 	// Return the text entered by the user
-	nType = dlg.getType();
-	bCase = dlg.getCase();
+	nType = dlg->getType();
+	bCase = dlg->getCase();
 	qDebug() << "SymbolDlg::addToHistory()";
-	dlg.m_pSymbolHC->addToHistory(dlg.getSymbol());
-	s_slHistory = dlg.m_pSymbolHC->historyItems();
-	return dlg.getSymbol();
+	dlg->m_pSymbolHC->addToHistory(dlg->getSymbol());
+	s_slHistory = dlg->m_pSymbolHC->historyItems();
+	return dlg->getSymbol();
 }
 
 /**
