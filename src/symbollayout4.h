@@ -10,6 +10,8 @@
 #ifndef UI_SYMBOLLAYOUT4_H
 #define UI_SYMBOLLAYOUT4_H
 
+#include "qdebug.h"
+
 #include <Qt3Support/Q3MimeSourceFactory>
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -45,6 +47,7 @@ public:
 
     void setupUi(QDialog *SymbolLayout)
     {
+	qDebug() << "symbollayout:setupUi";
         if (SymbolLayout->objectName().isEmpty())
             SymbolLayout->setObjectName(QString::fromUtf8("SymbolLayout"));
         SymbolLayout->resize(400, 456);

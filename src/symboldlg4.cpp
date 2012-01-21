@@ -166,7 +166,7 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 {
 	qDebug() << "SymbolDlg::promptSymbol()";
 	SymbolDlg dlg(pParent);
-	QDialog *widget = new QDialog(pParent);
+	SymbolDlg *widget = new SymbolDlg();
 	dlg.setupUi(widget);
 	
 	// Initialise the dialogue
@@ -179,8 +179,11 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 	
 	// Display the dialogue
 	qDebug() << "SymbolDlg::exec()";
+	widget->exec();
+	#if 0
 	if (dlg.exec() != QDialog::Accepted)
 		return "";
+	#endif
 	
 	// Return the text entered by the user
 	nType = dlg.getType();
