@@ -23,11 +23,9 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) :
 	Ui::SymbolLayout(),
 	m_progress(m_pHintList)
 {
-	qDebug() << "SymbolDlg::SymbolDlg(): calling CscopeFrontend()";
 	// Create a persistent Cscope process
 	m_pCscope = new CscopeFrontend();
 	
-	#if 0
 	// Initialise the hint list (hidden by default)
 	
 	// FIXME: We set model, there is no notion addColumn()
@@ -37,15 +35,15 @@ SymbolDlg::SymbolDlg(QWidget* pParent, const char* szName) :
 	// m_pHintList->hide();
 	// qDebug() << "SymbolDlg::SymbolDlg(): pHintGroup->hide()";
 	// ((QWidget*)m_pHintGroup)->hide();
+	#if 0
 	qDebug() << "SymbolDlg::SymbolDlg(): toggle()";
 	m_pBeginWithRadio->toggle();
 	qDebug() << "SymbolDlg::SymbolDlg(): adjustSize()";
 	adjustSize();
+	#endif
 	
-	// Close the dialogue when either the "OK" or "Cancel" button are clicked
-	connect(m_pOKButton, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 	
+	#if 0
 	// Run a symbol completion query when the "Hint" button is clicked
 	connect(m_pHintButton, SIGNAL(clicked()), this, SLOT(slotHintClicked()));
 	
@@ -124,6 +122,7 @@ void SymbolDlg::setHistory(QStringList& slSymHistory)
  */
 QString SymbolDlg::getSymbol() const
 {
+	qDebug() << "SymbolDlg::getSymbol(): FIXME: NOT IMPLEMENTED";
 	QString sResult;
 	
 	sResult = m_pSymbolHC->currentText().trimmed();
@@ -166,9 +165,10 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 {
 	qDebug() << "SymbolDlg::promptSymbol()";
 	SymbolDlg widget(pParent);
-	SymbolDlg *dlg = new SymbolDlg();
-	// dlg.setupUi(widget);
-	widget.setupUi(dlg);
+	SymbolDlg *dlg = new SymbolDlg(pParent);
+	dlg->setupUi(dlg);
+	//widget.connectSlots();
+	dlg->connectSlots();
 	
 	// Initialise the dialogue
 	qDebug() << "SymbolDlg::promptSymbol() calling setType()";
@@ -184,11 +184,13 @@ QString SymbolDlg::promptSymbol(QWidget* pParent, uint& nType,
 		return "";
 	
 	// Return the text entered by the user
+	/*
 	nType = dlg->getType();
 	bCase = dlg->getCase();
 	qDebug() << "SymbolDlg::addToHistory()";
 	dlg->m_pSymbolHC->addToHistory(dlg->getSymbol());
 	s_slHistory = dlg->m_pSymbolHC->historyItems();
+	*/
 	return dlg->getSymbol();
 }
 
@@ -349,5 +351,20 @@ void SymbolDlg::slotTypeChanged(int nType)
 		// m_pHintButton->setEnabled(true);
 	}
 }
+
+/* FIXME: DELETE
+void SymbolDlg::accept(){
+	qDebug() << "SymbolDlg::SymbolDlg(): accept";
+	QDialog::accept();
+}
+*/
+
+void SymbolDlg::connectSlots(){
+	// Close the dialogue when either the "OK" or "Cancel" button are clicked
+	qDebug() << "SymbolDlg::SymbolDlg(): connecting buttons";
+	connect(m_pOKButton, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+	return;
+}
 } // namespace kscope4
-// Sat Jan 14 20:13:39 PST 2012
+// Sat Jan 21 19:18:53 PST 2012

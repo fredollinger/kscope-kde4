@@ -38,6 +38,8 @@ public:
 	static QString promptSymbol(QWidget*, uint&, const QString&, bool&);
 	static uint getQueryType(uint);
 	static void resetHistory() { s_slHistory.clear(); }
+	void connectSlots(void);
+	// void accept(void); FIXME DELETE
 	
 private:
 	/** A cscope process used for symbol completion. */
