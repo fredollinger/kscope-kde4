@@ -226,7 +226,7 @@ void SymbolDlg::slotHintClicked()
 	}
 	
 	// Clear the previous contents
-	m_pHintList->clearSpans();
+	m_pHintList->clear();
 	
 	// Get the currently entered text (must have at least one character)
 	sText = m_pSymbolHC->currentText().trimmed();
@@ -269,7 +269,7 @@ void SymbolDlg::slotHintDataReady(FrontendToken* pToken)
 		return;
 	
 	// Find the symbol within the list, if found - do not add
-	ql = m_pHintList->findItems(m_reHint.capturedTexts().first(), 0);
+	//ql = m_pHintList->findItems(m_reHint.capturedTexts().first(), 0);
 	if (ql.size() > 0) return;
 	/*
 	if (NULL != (m_pHintList->findItems(m_reHint.capturedTexts().first(), 0)))
@@ -279,7 +279,7 @@ void SymbolDlg::slotHintDataReady(FrontendToken* pToken)
 	// Add a list item
 	// (void)new QListViewItem(m_pHintList, m_reHint.capturedTexts().first());
 	QTableWidgetItem *newitem = new QTableWidgetItem(m_reHint.capturedTexts().first());
-	m_pHintList->setItem(0, m_pHintList->columnCount()+1, newitem);
+	// m_pHintList->setItem(0, m_pHintList->columnCount()+1, newitem);
 
 }
 
