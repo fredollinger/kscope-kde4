@@ -751,6 +751,9 @@ void KScope::slotCommit(){
 	if (noOpenProject()) return;
 	m_pVcsCommit->setSourceRoot(m_pProjMgr->getSourceRoot()); 
 	m_pVcsCommit->exec();
+	// Push the commited code up right away perhaps we can make this configurable
+	// later, but I see no need to.
+	slotPush();
 }
 
 /* Returns false if we have an open project 
