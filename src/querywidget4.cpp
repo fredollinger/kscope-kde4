@@ -17,9 +17,10 @@ void QueryWidget::addQueryPage()
 
 	// Create the page
 	pPage = new QueryPage(this, "Query");
+	return;
 
 	qDebug() << "QueryWidget::addTab";
-	m_pQueryTabs->addTab(pPage, sTitle);
+	// m_pQueryTabs->addTab(pPage, sTitle);
 
 	// Add the page, and set it as the current one
 	//m_pQueryTabs->insertTab(pPage, GET_PIXMAP(TabUnlocked), "Query",
@@ -77,10 +78,13 @@ QueryWidget::~QueryWidget()
 
 void QueryWidget::initQuery(uint nType, const QString& sText, bool bCase)
 {
-	QueryPage* pPage;
 	qDebug() << "QueryWidget::initQuery";
-	addQueryPage();
-	pPage = (QueryPage*)currentPage();
+	QueryPage* pPage;
+	return;
+	// addQueryPage();
+
+	qDebug() << "QueryWidget::initQuery(): pPage = (QueryPage*)currentPage()";
+	// pPage = (QueryPage*)currentPage();
 	// Reset the page's results list
 	// pPage->clear();
 	// pPage->query(nType, sText, bCase);

@@ -914,25 +914,15 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 	// Get the requested symbol and query type
 	if (!getSymbol(nType, sSymbol, bCase, bPrompt))
 		return;
-		
-	/*
-	if (nType == SymbolDlg::CallTree) {
-		// Create and display a call tree dialogue
-		pCallTreeDlg = m_pCallTreeMgr->addDialog();
-		pCallTreeDlg->setRoot(sSymbol);
-		pCallTreeDlg->show();
-	}
-	else {
-	*/
-		// Run the requested query
+	
+		#if 0
 		qDebug() << "KScope::getQueryType";
 		nType = SymbolDlg::getQueryType(nType);
 		qDebug() << "initQuery";
 		m_pQueryWidget->initQuery(nType, sSymbol, bCase);
-		
-		// Ensure Query Window is visible
 		toggleQueryWindow(true);	
-	// }
+		#endif
+
 }
 
 QString KScope::getSourceRoot(){
@@ -972,6 +962,9 @@ bool KScope::slotBuildProject(){
 	this, SLOT(slotBuildReady() ) );
 
 	m_pQueryWidget->addQueryPage();
+
+	qDebug() << "addQueryPage: SUCCESS!!";
+	qDebug() << "m_pBuild->build(getSourceRoot())";
 
 	return m_pBuild->build(getSourceRoot()); 
 }
