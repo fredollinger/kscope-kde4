@@ -164,6 +164,12 @@ void KScope::setupActions()
 	actionCollection()->addAction("project_new", projectNew);
 	connect(projectNew, SIGNAL(triggered(bool)),
 	this, SLOT(slotCreateProject()));
+
+	KAction* projectProperties = new KAction(this);
+  	projectProperties->setText(i18n("Project Properties"));
+	actionCollection()->addAction("project_open", projectProperties);
+	connect(projectProperties, SIGNAL(triggered(bool)),
+	this, SLOT(slotProjectProperties()));
 	
 	KAction* projectBuild = new KAction(this);
   	projectBuild->setText(i18n("Build"));
@@ -967,6 +973,58 @@ bool KScope::slotBuildProject(){
 	qDebug() << "m_pBuild->build(getSourceRoot())";
 
 	return m_pBuild->build(getSourceRoot()); 
+}
+
+
+/**
+ * Handles the "Project->Properties..." command.
+ * Opens the project's properties dialog, which allows the user to change
+ * some attributes of the current project.
+ * source files.
+ */
+void KScope::slotProjectProps()
+{
+	ProjectBase* pProj;
+	ProjectBase::Options opt;
+	
+	// A project must be open
+	pProj = m_pProjMgr->curProject();
+	if (!pProj)
+		return;
+
+	// No properties for a temporary project
+	if (pProj->isTemporary()) {
+		KMessageBox::error(0, i18n("The Project Properties dialogue is not "
+			"available for temporary projects."));
+		return;
+	}
+	
+	// Create the properties dialog
+	NewProjectDlg dlg(false, this);
+	pProj->getOptions(opt);
+	dlg.setProperties(pProj->getName(), pProj->getPath(), opt);
+		
+	// Display the properties dialog
+	if (dlg.exec() != QDialog::Accepted)
+		return;
+
+	// Set new properties
+	dlg.getOptions(opt);
+	pProj->setOptions(opt);
+	
+	// Reset the CscopeFrontend class and the builder object
+	initCscope();
+	
+	// Set auto-completion parameters
+	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
+		opt.nACDelay, opt.nACMaxEntries);
+	
+	// Set per-project command-line arguments for Ctags
+	// CtagsFrontend::setExtraArgs(opt.sCtagsCmd);
+	
+	// Set the source root
+	// m_pFileView->setRoot(pProj->getSourceRoot());
+	return;
 }
 
 } // namespace kscope4
