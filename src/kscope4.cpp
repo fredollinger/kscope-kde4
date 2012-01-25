@@ -111,11 +111,13 @@ void KScope::setupActions()
 	connect(vcsCommit, SIGNAL(triggered(bool)),
 	this, SLOT(slotCommit()));
 
+	/*
 	KAction* vcsPush = new KAction(this);
   	vcsPush->setText(i18n("Push"));
 	actionCollection()->addAction("vcs_push", vcsPush);
 	connect(vcsPush, SIGNAL(triggered(bool)),
 	this, SLOT(slotPush()));
+	*/
 	
 	KAction* vcsDiff = new KAction(this);
   	vcsDiff->setText(i18n("Show Recent Changes"));
