@@ -160,7 +160,7 @@ private:
 
 
 private slots:
-	void slotProjectProps(void);
+	void slotProjectProperties(void);
 	void slotQuery(uint, bool);
 	void slotQueryPattern();
 

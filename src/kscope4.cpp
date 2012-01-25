@@ -167,7 +167,7 @@ void KScope::setupActions()
 
 	KAction* projectProperties = new KAction(this);
   	projectProperties->setText(i18n("Project Properties"));
-	actionCollection()->addAction("project_open", projectProperties);
+	actionCollection()->addAction("project_properties", projectProperties);
 	connect(projectProperties, SIGNAL(triggered(bool)),
 	this, SLOT(slotProjectProperties()));
 	
@@ -982,8 +982,8 @@ bool KScope::slotBuildProject(){
  * some attributes of the current project.
  * source files.
  */
-void KScope::slotProjectProps()
-{
+void KScope::slotProjectProperties(){
+	qDebug() << "KScope::slotProjectProps()";
 	ProjectBase* pProj;
 	ProjectBase::Options opt;
 	
