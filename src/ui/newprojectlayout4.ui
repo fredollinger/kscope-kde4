@@ -550,38 +550,57 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
       <attribute name="title">
        <string>Version Control</string>
       </attribute>
-      <widget class="QWidget" name="verticalLayoutWidget">
+      <widget class="KButtonGroup" name="kbuttongroup">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>521</width>
-         <height>311</height>
+         <width>511</width>
+         <height>301</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QRadioButton" name="radioButton_3">
-          <property name="text">
-           <string>RadioButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_2">
-          <property name="text">
-           <string>RadioButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton">
-          <property name="text">
-           <string>RadioButton</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <property name="title">
+        <string>Select the Appropriate Version Control System for this Project</string>
+       </property>
+       <property name="current" stdset="0">
+        <number>-1</number>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>511</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QRadioButton" name="radioButton_3">
+           <property name="text">
+            <string>None</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_2">
+           <property name="text">
+            <string>git</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton">
+           <property name="text">
+            <string>Perforce</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -632,6 +651,12 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
    <class>KUrlRequester</class>
    <extends>QFrame</extends>
    <header>kurlrequester.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KButtonGroup</class>
+   <extends>QGroupBox</extends>
+   <header>kbuttongroup.h</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
    <class>Q3GroupBox</class>
