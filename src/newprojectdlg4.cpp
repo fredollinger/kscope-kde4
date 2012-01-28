@@ -70,6 +70,8 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
+	connect( m_kbuttongroupVcs , SIGNAL(clicked(int)), this, SLOT(vcsChanged(int)));
+
 	// Show the auto-completion properties dialogue
 	connect(m_pACButton, SIGNAL(clicked()), m_pAutoCompDlg, SLOT(exec()));	
 		
@@ -92,8 +94,13 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 
 }
 
+
 NewProjectDlg::~NewProjectDlg()
 {
+}
+
+void NewProjectDlg::vcsChanged(int i){
+	qDebug() << "vcsChanged: " << i;
 }
 
 /**

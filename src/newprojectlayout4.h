@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'newprojectlayout4.ui'
 **
-** Created: Fri Jan 27 10:52:00 2012
+** Created: Sat Jan 28 09:44:35 2012
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -98,12 +98,12 @@ public:
     QLabel *textLabel1_4;
     Q3TextEdit *m_pCtagsCmdEdit;
     QWidget *VCS;
-    KButtonGroup *kbuttongroup;
+    KButtonGroup *m_kbuttongroupVcs;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_2;
-    QRadioButton *radioButton;
+    QRadioButton *radioButtonvcsNone;
+    QRadioButton *radioButtonVcsGit;
+    QRadioButton *radioButtonVcsP4;
     QHBoxLayout *qhbl1;
     QSpacerItem *spacer8;
     QPushButton *m_pCreateButton;
@@ -389,32 +389,32 @@ public:
         tabWidget2->addTab(TabPage2, QString());
         VCS = new QWidget();
         VCS->setObjectName(QString::fromUtf8("VCS"));
-        kbuttongroup = new KButtonGroup(VCS);
-        kbuttongroup->setObjectName(QString::fromUtf8("kbuttongroup"));
-        kbuttongroup->setGeometry(QRect(0, 0, 511, 301));
-        kbuttongroup->setProperty("current", QVariant(-1));
-        verticalLayoutWidget = new QWidget(kbuttongroup);
+        m_kbuttongroupVcs = new KButtonGroup(VCS);
+        m_kbuttongroupVcs->setObjectName(QString::fromUtf8("m_kbuttongroupVcs"));
+        m_kbuttongroupVcs->setGeometry(QRect(0, 0, 511, 301));
+        m_kbuttongroupVcs->setProperty("current", QVariant(-1));
+        verticalLayoutWidget = new QWidget(m_kbuttongroupVcs);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 20, 511, 271));
+        verticalLayoutWidget->setGeometry(QRect(0, -10, 511, 271));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        radioButton_3 = new QRadioButton(verticalLayoutWidget);
-        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
-        radioButton_3->setChecked(true);
+        radioButtonvcsNone = new QRadioButton(verticalLayoutWidget);
+        radioButtonvcsNone->setObjectName(QString::fromUtf8("radioButtonvcsNone"));
+        radioButtonvcsNone->setChecked(true);
 
-        verticalLayout->addWidget(radioButton_3);
+        verticalLayout->addWidget(radioButtonvcsNone);
 
-        radioButton_2 = new QRadioButton(verticalLayoutWidget);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+        radioButtonVcsGit = new QRadioButton(verticalLayoutWidget);
+        radioButtonVcsGit->setObjectName(QString::fromUtf8("radioButtonVcsGit"));
 
-        verticalLayout->addWidget(radioButton_2);
+        verticalLayout->addWidget(radioButtonVcsGit);
 
-        radioButton = new QRadioButton(verticalLayoutWidget);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioButtonVcsP4 = new QRadioButton(verticalLayoutWidget);
+        radioButtonVcsP4->setObjectName(QString::fromUtf8("radioButtonVcsP4"));
 
-        verticalLayout->addWidget(radioButton);
+        verticalLayout->addWidget(radioButtonVcsP4);
 
         tabWidget2->addTab(VCS, QString());
 
@@ -575,10 +575,10 @@ public:
         tabWidget2->setTabText(tabWidget2->indexOf(TabPage1), QApplication::translate("NewProjectLayout", "&Options", 0, QApplication::UnicodeUTF8));
         textLabel1_4->setText(QApplication::translate("NewProjectLayout", "Ctags command line (Do not change unless you know what you are doing!)", 0, QApplication::UnicodeUTF8));
         tabWidget2->setTabText(tabWidget2->indexOf(TabPage2), QApplication::translate("NewProjectLayout", "&Advanced", 0, QApplication::UnicodeUTF8));
-        kbuttongroup->setTitle(QApplication::translate("NewProjectLayout", "Select the Appropriate Version Control System for this Project", 0, QApplication::UnicodeUTF8));
-        radioButton_3->setText(QApplication::translate("NewProjectLayout", "None", 0, QApplication::UnicodeUTF8));
-        radioButton_2->setText(QApplication::translate("NewProjectLayout", "git", 0, QApplication::UnicodeUTF8));
-        radioButton->setText(QApplication::translate("NewProjectLayout", "Perforce", 0, QApplication::UnicodeUTF8));
+        m_kbuttongroupVcs->setTitle(QApplication::translate("NewProjectLayout", "Select the Appropriate Version Control System for this Project", 0, QApplication::UnicodeUTF8));
+        radioButtonvcsNone->setText(QApplication::translate("NewProjectLayout", "None", 0, QApplication::UnicodeUTF8));
+        radioButtonVcsGit->setText(QApplication::translate("NewProjectLayout", "git", 0, QApplication::UnicodeUTF8));
+        radioButtonVcsP4->setText(QApplication::translate("NewProjectLayout", "Perforce", 0, QApplication::UnicodeUTF8));
         tabWidget2->setTabText(tabWidget2->indexOf(VCS), QApplication::translate("NewProjectLayout", "Version Control", 0, QApplication::UnicodeUTF8));
         m_pCreateButton->setText(QApplication::translate("NewProjectLayout", "&Create", 0, QApplication::UnicodeUTF8));
         m_pCancelButton->setText(QApplication::translate("NewProjectLayout", "Ca&ncel", 0, QApplication::UnicodeUTF8));

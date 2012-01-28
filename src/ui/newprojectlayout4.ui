@@ -550,7 +550,7 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
       <attribute name="title">
        <string>Version Control</string>
       </attribute>
-      <widget class="KButtonGroup" name="kbuttongroup">
+      <widget class="KButtonGroup" name="m_kbuttongroupVcs">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -569,14 +569,14 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>20</y>
+          <y>-10</y>
           <width>511</width>
           <height>271</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QRadioButton" name="radioButton_3">
+          <widget class="QRadioButton" name="radioButtonvcsNone">
            <property name="text">
             <string>None</string>
            </property>
@@ -586,14 +586,14 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_2">
+          <widget class="QRadioButton" name="radioButtonVcsGit">
            <property name="text">
             <string>git</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QRadioButton" name="radioButtonVcsP4">
            <property name="text">
             <string>Perforce</string>
            </property>

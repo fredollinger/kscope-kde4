@@ -53,6 +53,7 @@ public:
 
 public slots:		
 	int exec();
+	int vcsChanged();
 	
 protected slots:
 	virtual void accept();
