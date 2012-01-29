@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'newprojectlayout4.ui'
 **
-** Created: Sat Jan 28 09:44:35 2012
+** Created: Sun Jan 29 08:59:28 2012
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -99,11 +99,9 @@ public:
     Q3TextEdit *m_pCtagsCmdEdit;
     QWidget *VCS;
     KButtonGroup *m_kbuttongroupVcs;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QRadioButton *radioButtonvcsNone;
     QRadioButton *radioButtonVcsGit;
     QRadioButton *radioButtonVcsP4;
+    QRadioButton *radioButtonvcsNone;
     QHBoxLayout *qhbl1;
     QSpacerItem *spacer8;
     QPushButton *m_pCreateButton;
@@ -393,29 +391,16 @@ public:
         m_kbuttongroupVcs->setObjectName(QString::fromUtf8("m_kbuttongroupVcs"));
         m_kbuttongroupVcs->setGeometry(QRect(0, 0, 511, 301));
         m_kbuttongroupVcs->setProperty("current", QVariant(-1));
-        verticalLayoutWidget = new QWidget(m_kbuttongroupVcs);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, -10, 511, 271));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        radioButtonvcsNone = new QRadioButton(verticalLayoutWidget);
-        radioButtonvcsNone->setObjectName(QString::fromUtf8("radioButtonvcsNone"));
-        radioButtonvcsNone->setChecked(true);
-
-        verticalLayout->addWidget(radioButtonvcsNone);
-
-        radioButtonVcsGit = new QRadioButton(verticalLayoutWidget);
+        radioButtonVcsGit = new QRadioButton(m_kbuttongroupVcs);
         radioButtonVcsGit->setObjectName(QString::fromUtf8("radioButtonVcsGit"));
-
-        verticalLayout->addWidget(radioButtonVcsGit);
-
-        radioButtonVcsP4 = new QRadioButton(verticalLayoutWidget);
+        radioButtonVcsGit->setGeometry(QRect(30, 120, 509, 22));
+        radioButtonVcsP4 = new QRadioButton(m_kbuttongroupVcs);
         radioButtonVcsP4->setObjectName(QString::fromUtf8("radioButtonVcsP4"));
-
-        verticalLayout->addWidget(radioButtonVcsP4);
-
+        radioButtonVcsP4->setGeometry(QRect(30, 190, 509, 22));
+        radioButtonvcsNone = new QRadioButton(m_kbuttongroupVcs);
+        radioButtonvcsNone->setObjectName(QString::fromUtf8("radioButtonvcsNone"));
+        radioButtonvcsNone->setGeometry(QRect(30, 50, 509, 22));
+        radioButtonvcsNone->setChecked(true);
         tabWidget2->addTab(VCS, QString());
 
         vboxLayout->addWidget(tabWidget2);
@@ -576,9 +561,9 @@ public:
         textLabel1_4->setText(QApplication::translate("NewProjectLayout", "Ctags command line (Do not change unless you know what you are doing!)", 0, QApplication::UnicodeUTF8));
         tabWidget2->setTabText(tabWidget2->indexOf(TabPage2), QApplication::translate("NewProjectLayout", "&Advanced", 0, QApplication::UnicodeUTF8));
         m_kbuttongroupVcs->setTitle(QApplication::translate("NewProjectLayout", "Select the Appropriate Version Control System for this Project", 0, QApplication::UnicodeUTF8));
-        radioButtonvcsNone->setText(QApplication::translate("NewProjectLayout", "None", 0, QApplication::UnicodeUTF8));
         radioButtonVcsGit->setText(QApplication::translate("NewProjectLayout", "git", 0, QApplication::UnicodeUTF8));
         radioButtonVcsP4->setText(QApplication::translate("NewProjectLayout", "Perforce", 0, QApplication::UnicodeUTF8));
+        radioButtonvcsNone->setText(QApplication::translate("NewProjectLayout", "None", 0, QApplication::UnicodeUTF8));
         tabWidget2->setTabText(tabWidget2->indexOf(VCS), QApplication::translate("NewProjectLayout", "Version Control", 0, QApplication::UnicodeUTF8));
         m_pCreateButton->setText(QApplication::translate("NewProjectLayout", "&Create", 0, QApplication::UnicodeUTF8));
         m_pCancelButton->setText(QApplication::translate("NewProjectLayout", "Ca&ncel", 0, QApplication::UnicodeUTF8));

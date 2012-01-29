@@ -53,7 +53,6 @@ public:
 
 public slots:		
 	int exec();
-	int vcsChanged();
 	
 protected slots:
 	virtual void accept();
@@ -97,6 +96,9 @@ public:
 	QString getPath();
 	void getOptions(ProjectBase::Options&);
 	
+public slots:
+	void vcsChanged(int i);
+
 protected slots:
 	virtual void accept();
 	virtual void slotAddType();

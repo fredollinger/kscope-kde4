@@ -565,41 +565,47 @@ path for all source files, but is not required.&lt;/blockquote&gt;</string>
        <property name="current" stdset="0">
         <number>-1</number>
        </property>
-       <widget class="QWidget" name="verticalLayoutWidget">
+       <widget class="QRadioButton" name="radioButtonVcsGit">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>-10</y>
-          <width>511</width>
-          <height>271</height>
+          <x>30</x>
+          <y>120</y>
+          <width>509</width>
+          <height>22</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QRadioButton" name="radioButtonvcsNone">
-           <property name="text">
-            <string>None</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButtonVcsGit">
-           <property name="text">
-            <string>git</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButtonVcsP4">
-           <property name="text">
-            <string>Perforce</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <property name="text">
+         <string>git</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButtonVcsP4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>190</y>
+          <width>509</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Perforce</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButtonvcsNone">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>50</y>
+          <width>509</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>None</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </widget>
      </widget>
