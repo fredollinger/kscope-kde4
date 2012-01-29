@@ -58,6 +58,7 @@ public:
 
 	const QString& getCurrentProject();
 	void setCurrentProject(const QString& sProjPath);
+	void setVcs(const int i);
 	
 	const QString& getCscopePath() const;
 	void setCscopePath(const QString&);

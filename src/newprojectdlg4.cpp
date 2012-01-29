@@ -39,6 +39,7 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "newprojectdlg4.h"
+#include "kscopeconfig4.h"
 
 /**
  * Class constructor.
@@ -92,8 +93,10 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 		m_pPathRequester->setEnabled(false);
 	}
 
-}
+	// Set the version control system
+    	m_kbuttongroupVcs->setSelected(kscope4::Config().vcs());
 
+}
 
 NewProjectDlg::~NewProjectDlg()
 {
@@ -101,6 +104,8 @@ NewProjectDlg::~NewProjectDlg()
 
 void NewProjectDlg::vcsChanged(int i){
 	qDebug() << "vcsChanged: " << i;
+	kscope4::Config().setVcs(i);
+	return;
 }
 
 /**

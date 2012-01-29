@@ -565,5 +565,9 @@ const QString& KScopeConfig::getCurrentProject()
 
 }
 
+/* Set the name of the version control system that we use */
+void KScopeConfig::setVcs(const int i){
+	mVcs = i;
+}
 } // namespace kscope4
-// Sun Dec 25 16:28:52 PST 2011
+// Sun Jan 29 11:04:52 PST 2012
