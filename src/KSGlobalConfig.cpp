@@ -16,6 +16,12 @@ KSGlobalConfig::KSGlobalConfig(  )
   KConfigSkeleton::ItemString  *itemLastOpenProject;
   itemLastOpenProject = new KConfigSkeleton::ItemString( currentGroup(), QLatin1String( "LastOpenProject" ), mLastOpenProject );
   addItem( itemLastOpenProject, QLatin1String( "LastOpenProject" ) );
+  KConfigSkeleton::ItemInt  *itemVcs;
+  itemVcs = new KConfigSkeleton::ItemInt( currentGroup(), QLatin1String( "vcs" ), mVcs );
+  addItem( itemVcs, QLatin1String( "vcs" ) );
+  KConfigSkeleton::ItemStringList  *itemOpenedFiles;
+  itemOpenedFiles = new KConfigSkeleton::ItemStringList( currentGroup(), QLatin1String( "OpenedFiles" ), mOpenedFiles );
+  addItem( itemOpenedFiles, QLatin1String( "OpenedFiles" ) );
 }
 
 KSGlobalConfig::~KSGlobalConfig()

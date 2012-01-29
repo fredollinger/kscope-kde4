@@ -35,11 +35,31 @@ class KSGlobalConfig : public KConfigSkeleton
       return mLastOpenProject;
     }
 
+
+    /**
+      Get Which Version Control System is Used
+    */
+    int vcs() const
+    {
+      return mVcs;
+    }
+
+
+    /**
+      Get List of Files Which Were Still Open When We Closed
+    */
+    QStringList openedFiles() const
+    {
+      return mOpenedFiles;
+    }
+
   protected:
 
     // Projects
     QStringList mRecentProjects;
     QString mLastOpenProject;
+    int mVcs;
+    QStringList mOpenedFiles;
 
   private:
 };

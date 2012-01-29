@@ -9,6 +9,8 @@ openprojectlayout4.h \
 symbollayout4.h \
 vcsCommitLayout.h
 
+.PHONY: newprojectlayout4.h KSGlobalConfig.h
+
 all:
 	mkdir -p build
 	cd build && make 2>err
@@ -34,6 +36,13 @@ test:
 
 vcsCommitLayout.h:
 	$(UI) vcsCommitLayout.ui > vcsCommitLayout.h
-		
+
+newprojectlayout4.h:
+	uic-qt4 ui/newprojectlayout4.ui > newprojectlayout4.h 
+
+
+KSGlobalConfig.h:
+	rm -f KSGlobalConfig.h
+	kconfig_compiler KSGlobalConfig.kcfg KSGlobalConfig.kcfgc
 
 # Sun Oct 16 18:44:17 PDT 2011

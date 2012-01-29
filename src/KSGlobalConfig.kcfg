@@ -12,5 +12,11 @@
     <entry name="LastOpenProject" type="String">
       <label>Path to the last open project</label>
     </entry>
+    <entry name="vcs" type="int">
+      <label>Which Version Control System is Used</label>
+    </entry>
+    <entry name="OpenedFiles" type="StringList">
+      <label>List of Files Which Were Still Open When We Closed</label>
+    </entry>
   </group>
 </kcfg>

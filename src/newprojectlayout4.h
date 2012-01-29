@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'newprojectlayout4.ui'
 **
-** Created: Sun Jan 29 08:59:28 2012
+** Created: Sun Jan 29 09:42:38 2012
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
