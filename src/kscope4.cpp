@@ -22,6 +22,7 @@
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "kscope4.h"
+#include "kscope4-common.h"
 #include "kscopeconfig4.h"
 #include "kdockwidget4.h"
 #include "newprojectdlg4.h"
