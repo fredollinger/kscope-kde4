@@ -43,8 +43,7 @@ bool vcsFrontEnd::push(QString rootdir){
 
 	setOutputChannelMode(KProcess::MergedChannels);
 	
-	QString s_sProjPath = "."; // FIXME: put in project path
-
+	const QString s_sProjPath = Config().lastOpenProject();
 	
 	if (VCS_GIT == Config().vcs()){
 		slCmdLine << "push";
@@ -151,7 +150,7 @@ bool vcsFrontEnd::diff(){
 
 	QStringList slCmdLine;
 
-	QString s_sProjPath = "."; // FIXME: put in project path
+	const QString s_sProjPath = Config().lastOpenProject();
 
 	setOutputChannelMode(KProcess::MergedChannels);
 	
@@ -176,7 +175,7 @@ bool vcsFrontEnd::pull(){
 
 	setOutputChannelMode(KProcess::MergedChannels);
 	
-	QString s_sProjPath = "."; // FIXME: put in project path
+	const QString s_sProjPath = Config().lastOpenProject();
 
 	slCmdLine << "pull";
 
