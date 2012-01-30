@@ -45,11 +45,18 @@ KScope::KScope(QWidget *) :
 {
 
 	QString currentProject;
+
 	
 	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
 	m_doc = editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-	setCentralWidget(m_view);
+
+
+	KTabWidget *m_pKTabWidget = new KTabWidget(this);
+	m_pKTabWidget->addTab(new QWidget(m_view), tr("UNSAVED"));
+
+	setCentralWidget(m_pKTabWidget);
+	// setCentralWidget(m_view);
 
 	setupActions();
 

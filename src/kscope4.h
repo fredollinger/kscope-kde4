@@ -78,6 +78,9 @@ public:
 	QString getSourceRoot(void);
 
 private:
+	// holds all the document pages
+	KTabWidget *m_pKTabWidget; 
+
 	void restoreSession(void);
 	vcsFrontEnd *m_pVcs;
 	buildFrontEnd *m_pBuild;
