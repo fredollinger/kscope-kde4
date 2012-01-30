@@ -10,7 +10,7 @@
 #include <qdebug.h>
 
 #include "kscopeconfig4.h"
-#include "ksconfig4.h"
+// #include "ksconfig4.h"
 #include "KSGlobalConfig.h"
 
 // NOTE:
@@ -543,7 +543,6 @@ KScopeConfig& Config()
  */
 void KScopeConfig::addRecentProject(const QString& sProjPath)
 {
-// FIXME: Change all m_slRecentProcject to mRecentProjects. 
 	mRecentProjects.prepend(sProjPath);
 	mRecentProjects.removeDuplicates();
 
@@ -568,6 +567,19 @@ const QString& KScopeConfig::getCurrentProject()
 /* Set the name of the version control system that we use */
 void KScopeConfig::setVcs(const int i){
 	mVcs = i;
+}
+
+/**
+ * Adds the given opened file to the beginning of the recently used projects
+ * list.
+ * @param	sOpenFile	The path of the open file
+ */
+void KScopeConfig::addOpenedFile(const QString& sOpenedFile)
+{
+
+	mOpenedFiles.prepend(sOpenedFile);
+	mOpenedFiles.removeDuplicates();
+	return;
 }
 } // namespace kscope4
 // Sun Jan 29 11:04:52 PST 2012

@@ -1,4 +1,3 @@
-
 #include <KConfig>
 #include <KConfigGroup>
 

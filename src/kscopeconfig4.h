@@ -48,6 +48,8 @@ public:
 		parts. */
 	enum EditorPopup { Embedded, KScopeOnly };	
 	
+	void addOpenedFile(const QString&);
+
 	void load();
 	void loadDefault();
 	void loadWorkspace(KParts::MainWindow*);
@@ -69,6 +71,8 @@ public:
 	const QStringList& getRecentProjects() const;
 	void addRecentProject(const QString&);
 	void removeRecentProject(const QString&);
+
+
 	bool getShowTagList() const;
 	void setShowTagList(bool);
 	// const SPLIT_SIZES& getEditorSizes() const;

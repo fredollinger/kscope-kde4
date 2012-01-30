@@ -16,8 +16,8 @@ install(FILES KSGlobalConfig.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 
 set(kscope_SRCS
-KSGlobalConfig.cpp
 ksconfig4.cpp
+KSGlobalConfig.cpp
 project4.cpp
 buildFrontEnd.cpp
 vcsFrontEnd.cpp

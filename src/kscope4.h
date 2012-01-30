@@ -78,19 +78,14 @@ public:
 	QString getSourceRoot(void);
 
 private:
+	void restoreSession(void);
 	vcsFrontEnd *m_pVcs;
 	buildFrontEnd *m_pBuild;
-
-     	// QDockWidget *resDock;
-	/*
-    	QListView *listView;
-	QStringList m_list;
-	QStringListModel *m_model;
-	*/
 
 	vcsCommitDlg *m_pVcsCommit;
 
 	QListWidget *customerList;
+
 	/**
 	 * Manages menu and tool-bar commands.
 	 */

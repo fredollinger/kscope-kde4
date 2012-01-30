@@ -72,7 +72,6 @@ KScope::KScope(QWidget *) :
 	
 	if ( QDir(currentProject).exists() && currentProject.length() > 2 )
 		openProject(currentProject);
-
 }
 
 KScope::~KScope()
@@ -177,9 +176,32 @@ void KScope::setupActions()
 	setupGUI(Default, "kscope-kde4.rc");
 }
 
+/**
+ * Reopens all files which were open when the project was last closed.
+ * In order to reduce the time required by this operation, the GUI of all
+ * but the last editor part is not merged with that of the main window.
+ */
+void KScope::restoreSession()
+{
+	const QStringList slOpenedFiles = Config().openedFiles();
+	if (slOpenedFiles.count() == 0)
+		return;
+
+	// FIXME: Must loop through all files and open them.
+	// Of course, we need to support multiple files via tabs, first.
+	openFileNamed(slOpenedFiles.at(0));
+
+	return;
+}
+
+
 void KScope::openFile()
 {
-	m_view->document()->openUrl(KFileDialog::getOpenFileName());	
+	KUrl kuDoc =  KFileDialog::getOpenFileName();
+	m_view->document()->openUrl(kuDoc);	
+
+	Config().addOpenedFile(kuDoc.pathOrUrl() );
+	return;
 }
 
 void KScope::openFileNamed(QString name)
@@ -188,13 +210,20 @@ void KScope::openFileNamed(QString name)
 
 	if (!file->open(QIODevice::ReadOnly | QIODevice::Text)){
 		qDebug() << file << " does not exist! \n";
+
+		QMessageBox::information(this, tr("Warning!"), 
+			tr("File does not exist!"),
+                	QMessageBox::Ok, 
+                	QMessageBox::Ok);
+
         	return;
 	}
-
 
 	QByteArray *ba = new QByteArray(file->readAll());
 	QString qs = QString(ba->data());
 	m_view->document()->setText(qs);	
+
+	Config().addOpenedFile(name);
 }
 
 /**
@@ -477,6 +506,7 @@ void KScope::openProject(const QString& sDir)
 					slotPull();
 	}
 
+	restoreSession();
 	/*
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
 		opt.nACDelay, opt.nACMaxEntries);
