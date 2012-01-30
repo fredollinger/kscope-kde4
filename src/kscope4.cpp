@@ -53,8 +53,9 @@ KScope::KScope(QWidget *) :
 
 
 	KTabWidget *m_pKTabWidget = new KTabWidget(this);
-	m_pKTabWidget->addTab(new QWidget(m_view), tr("UNSAVED"));
+	m_pKTabWidget->addTab(m_view, tr("UNSAVED"));
 
+	//FIXME: We need a central widget for the tab insteaad of m_view...
 	setCentralWidget(m_pKTabWidget);
 	// setCentralWidget(m_view);
 
