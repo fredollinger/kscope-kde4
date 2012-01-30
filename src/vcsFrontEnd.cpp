@@ -14,6 +14,8 @@
 #include "frontend4.h"
 
 #include "vcsFrontEnd.h"
+#include "kscope4-common.h"
+#include "kscopeconfig4.h"
 
 namespace kscope4{
 vcsFrontEnd::vcsFrontEnd() : 
@@ -37,17 +39,27 @@ vcsFrontEnd::~vcsFrontEnd()
 
 bool vcsFrontEnd::push(QString rootdir){
 	QStringList slCmdLine;
+	QString cmd;
 
 	setOutputChannelMode(KProcess::MergedChannels);
 	
 	QString s_sProjPath = "."; // FIXME: put in project path
 
-	slCmdLine << "push";
+	
+	if (VCS_GIT == Config().vcs()){
+		slCmdLine << "push";
+		cmd = "git"; 
+	}
+	else{
+		qDebug() << "there is no version of push for this vcs!!";
+		return true;
+	}
 
 	connect(this, SIGNAL(readyRead()),
 	this, SLOT(slotDisplayResults()));
 		
 	// Run a new process
+
 	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
 		emit aborted();
 		return false;
@@ -80,23 +92,36 @@ bool vcsFrontEnd::slotDisplayResults(){
  */
 bool vcsFrontEnd::commit(QString s_sProjPath, QString msg){
 	QStringList slCmdLine;
+	QString cmd;
 
 	QString fmsg = "\""; //msg which is fixed with quotes
 	fmsg.append(msg);
 	fmsg.append("\"");
 
-	slCmdLine << "commit";
-
-	slCmdLine << "-a";
-
-	slCmdLine << "-m"; 
-	slCmdLine << fmsg;
+	// BEGIN git
+	if (VCS_GIT == Config().vcs()){
+		slCmdLine << "commit";
+		slCmdLine << "-a";
+		slCmdLine << "-m"; 
+		slCmdLine << fmsg;
+		cmd = "git";
+	}
+	// END git
+	else if (VCS_P4 == Config().vcs()){
+		slCmdLine << "submit";
+		slCmdLine << "-m"; 
+		slCmdLine << fmsg;
+		cmd = "p4";
+	}
+	else{
+		qDebug() << "No vcs!!";
+	}
 
 	// FIXME:Branch based upon command, that is p4, etc
 		
 	// Run a new process
 	//if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
-	Frontend::run("git", slCmdLine, s_sProjPath);
+	Frontend::run(cmd, slCmdLine, s_sProjPath);
 
 	// FIXME: we need to return false if command fails...
 	return true;
