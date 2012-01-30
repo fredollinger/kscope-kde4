@@ -65,30 +65,21 @@ KScope::KScope(QWidget *) :
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
-	// m_pEditMgr = new EditorManager(this);
-	// m_pCallTreeMgr = new CallTreeManager(this);
-	// m_pFileView = new FileView(this);
 	m_pVcs = new vcsFrontEnd();
 	m_pBuild = new buildFrontEnd();
 
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
 	
-	qDebug() << "current project: " << currentProject;
-
 	if ( QDir(currentProject).exists() && currentProject.length() > 2 )
 		openProject(currentProject);
 
 }
 
-/**
- * Class destructor.
- */
 KScope::~KScope()
 {
 	qDebug() << "KScope::~KScope()";
 	// Save configuration
 	Config().store();
-	// Config().storeWorkspace(this);
 
 	QString currentProject;
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
@@ -111,14 +102,6 @@ void KScope::setupActions()
 	actionCollection()->addAction("vcs_commit", vcsCommit);
 	connect(vcsCommit, SIGNAL(triggered(bool)),
 	this, SLOT(slotCommit()));
-
-	/*
-	KAction* vcsPush = new KAction(this);
-  	vcsPush->setText(i18n("Push"));
-	actionCollection()->addAction("vcs_push", vcsPush);
-	connect(vcsPush, SIGNAL(triggered(bool)),
-	this, SLOT(slotPush()));
-	*/
 	
 	KAction* vcsDiff = new KAction(this);
   	vcsDiff->setText(i18n("Show Recent Changes"));
@@ -482,6 +465,17 @@ void KScope::openProject(const QString& sDir)
 	pProj->getOptions(opt);
 
 	Config().setCurrentProject(sDir);
+
+	if (VCS_NONE != Config().vcs() ){
+		if (QMessageBox::Yes == QMessageBox::question( 
+               		 this, 
+               		 tr(""), 
+                		tr("Would you like to update latest sources from version control now?"), 
+                		QMessageBox::Yes | 
+                		QMessageBox::No,
+                		QMessageBox::Yes )) 
+					slotPull();
+	}
 
 	/*
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
