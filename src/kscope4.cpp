@@ -46,18 +46,20 @@ KScope::KScope(QWidget *) :
 
 	QString currentProject;
 
-	
-	KTextEditor::Editor *editor = KTextEditor::EditorChooser::editor();
-	m_doc = editor->createDocument(0);
+	m_editor = KTextEditor::EditorChooser::editor();
+	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 
+	// QWidget *centralWidget = new QWidget(this);
+	m_pTabWidget = new KTabWidget(this);
+	setCentralWidget(m_pTabWidget);
+	// QTabWidget *m_pQTabWidget = new QTabWidget(this);
+	
 
-	KTabWidget *m_pKTabWidget = new KTabWidget(this);
-	m_pKTabWidget->addTab(m_view, tr("UNSAVED"));
+	m_pTabWidget->addTab(m_view, tr("First"));
 
 	//FIXME: We need a central widget for the tab insteaad of m_view...
-	setCentralWidget(m_pKTabWidget);
-	// setCentralWidget(m_view);
+	//setCentralWidget(m_pKTabWidget);
 
 	setupActions();
 
@@ -226,10 +228,14 @@ void KScope::openFileNamed(QString name)
 
         	return;
 	}
+	m_doc = m_editor->createDocument(0);
+   	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+	m_pTabWidget->addTab(m_view, name);
 
 	QByteArray *ba = new QByteArray(file->readAll());
 	QString qs = QString(ba->data());
-	m_view->document()->setText(qs);	
+
+	m_doc->setText(qs);	
 
 	Config().addOpenedFile(name);
 }
@@ -1066,4 +1072,3 @@ void KScope::slotProjectProperties(){
 }
 
 } // namespace kscope4
-// Thu Nov 24 15:23:32 PST 2011

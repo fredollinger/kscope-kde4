@@ -5,6 +5,8 @@
 #include <KParts/MainWindow>
 #include <kparts/part.h>
 
+#include <KTextEditor/Editor>
+
 #include <QDockWidget>
 #include <QStringListModel>
 #include <QtGui/QKeyEvent>
@@ -79,7 +81,7 @@ public:
 
 private:
 	// holds all the document pages
-	KTabWidget *m_pKTabWidget; 
+	KTabWidget *m_pTabWidget; 
 
 	void restoreSession(void);
 	vcsFrontEnd *m_pVcs;
@@ -112,8 +114,10 @@ private:
 	bool m_bHideQueryOnSelection;
 
 	KParts::ReadWritePart *m_part;
-   	KTextEditor::View *m_view;
+	KTextEditor::Editor *m_editor;
 	KTextEditor::Document *m_doc;
+   	KTextEditor::View *m_view;
+	
 
 	/** A persistent dialog used to display error messages from Cscope. */
 	CscopeMsgDlg* m_pMsgDlg;
