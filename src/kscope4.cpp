@@ -208,9 +208,16 @@ void KScope::restoreSession()
 void KScope::openFile()
 {
 	KUrl kuDoc =  KFileDialog::getOpenFileName();
+	openFileNamed(kuDoc.pathOrUrl());
+	/*
+	m_doc = m_editor->createDocument(0);
+   	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+	m_doc->openUrl(kuDoc);
 	m_view->document()->openUrl(kuDoc);	
+	m_pTabWidget->addTab(m_view, kuDoc->fileName());
 
 	Config().addOpenedFile(kuDoc.pathOrUrl() );
+	*/
 	return;
 }
 
