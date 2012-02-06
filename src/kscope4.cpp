@@ -50,16 +50,11 @@ KScope::KScope(QWidget *) :
 	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 
-	// QWidget *centralWidget = new QWidget(this);
 	m_pTabWidget = new KTabWidget(this);
+	m_pTabWidget->setCloseButtonEnabled(true);
 	setCentralWidget(m_pTabWidget);
-	// QTabWidget *m_pQTabWidget = new QTabWidget(this);
-	
 
 	m_pTabWidget->addTab(m_view, tr("First"));
-
-	//FIXME: We need a central widget for the tab insteaad of m_view...
-	//setCentralWidget(m_pKTabWidget);
 
 	setupActions();
 
@@ -94,9 +89,11 @@ KScope::~KScope()
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
 	qDebug() << "current project: " << currentProject;
 	
+	/*
 	delete m_pProjMgr;
 	delete m_pVcs;
 	delete m_pBuild;
+	*/
 }
 
 void KScope::setupActions()
@@ -194,12 +191,21 @@ void KScope::setupActions()
 void KScope::restoreSession()
 {
 	const QStringList slOpenedFiles = Config().openedFiles();
+
+	// If there's no opened doc, open an empty doc
 	if (slOpenedFiles.count() == 0)
+		m_doc = m_editor->createDocument(0);
+   		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+		m_pTabWidget->addTab(m_view, "UNSAVED");
 		return;
 
 	// FIXME: Must loop through all files and open them.
 	// Of course, we need to support multiple files via tabs, first.
-	openFileNamed(slOpenedFiles.at(0));
+	//openFileNamed(slOpenedFiles.at(0));
+
+	foreach (QString str, slOpenedFiles ) {  
+		openFileNamed(str);
+    	}
 
 	return;
 }
@@ -528,6 +534,7 @@ void KScope::openProject(const QString& sDir)
 	}
 
 	restoreSession();
+
 	/*
 	SymbolCompletion::initAutoCompletion(opt.bACEnabled, opt.nACMinChars,
 		opt.nACDelay, opt.nACMaxEntries);
