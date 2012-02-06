@@ -83,11 +83,13 @@ KScope::~KScope()
 {
 	qDebug() << "KScope::~KScope()";
 	// Save configuration
+	/*
 	Config().store();
 
 	QString currentProject;
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
 	qDebug() << "current project: " << currentProject;
+	*/
 	
 	/*
 	delete m_pProjMgr;
@@ -215,15 +217,7 @@ void KScope::openFile()
 {
 	KUrl kuDoc =  KFileDialog::getOpenFileName();
 	openFileNamed(kuDoc.pathOrUrl());
-	/*
-	m_doc = m_editor->createDocument(0);
-   	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-	m_doc->openUrl(kuDoc);
-	m_view->document()->openUrl(kuDoc);	
-	m_pTabWidget->addTab(m_view, kuDoc->fileName());
 
-	Config().addOpenedFile(kuDoc.pathOrUrl() );
-	*/
 	return;
 }
 
@@ -354,10 +348,8 @@ void KScope::slotConfigure()
 bool KScope::slotCloseProject()
 {
 
-
 	ProjectBase* pProj;
 	Project::Session sess;
-
 	
 	// Do nothing if no project is open
 	pProj = m_pProjMgr->curProject();
