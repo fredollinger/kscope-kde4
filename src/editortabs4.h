@@ -2,7 +2,7 @@
 #define EDITORTABS_H
 
 #include <qwidget.h>
-#include <qpopupmenu.h>
+// #include <qpopupmenu.h>
 #include "tabwidget.h"
 #include "editorpage.h"
 #include "projectmanager.h"
