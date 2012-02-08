@@ -29,13 +29,13 @@
 #define EDITORPAGE_H
 
 #include <qwidget.h>
-#include <qhbox.h>
+//#include <qhbox.h>
 #include <qsplitter.h>
 #include <qtabwidget.h>
-#include <qpopupmenu.h>
+// #include <qpopupmenu.h>
 #include <ktexteditor/document.h>
 #include <ktexteditor/view.h>
-#include <ktexteditor/markinterfaceextension.h>
+// #include <ktexteditor/markinterfaceextension.h>
 #include "ctagsfrontend.h"
 #include "ctagslist.h"
 #include "kscopeconfig.h"
