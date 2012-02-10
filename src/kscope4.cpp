@@ -54,7 +54,7 @@ KScope::KScope(QWidget *) :
 	m_pTabWidget->setCloseButtonEnabled(true);
 	setCentralWidget(m_pTabWidget);
 
-	m_pTabWidget->addTab(m_view, tr("First"));
+	m_pTabWidget->addTab(m_view, tr("UNSAVED"));
 
 	setupActions();
 
@@ -83,17 +83,18 @@ KScope::~KScope()
 {
 	qDebug() << "KScope::~KScope()";
 	// Save configuration
-	/*
 	Config().store();
 
 	QString currentProject;
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
 	qDebug() << "current project: " << currentProject;
-	*/
 	
 	/*
+	qDebug() << "delete proj mgr";
 	delete m_pProjMgr;
+	qDebug() << "delete pVcs";
 	delete m_pVcs;
+	qDebug() << "delete pBuild";
 	delete m_pBuild;
 	*/
 }
@@ -235,9 +236,11 @@ void KScope::openFileNamed(QString name)
 
         	return;
 	}
-	m_doc = m_editor->createDocument(0);
-   	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-	m_pTabWidget->addTab(m_view, name);
+	if (! m_doc->isEmpty() ){
+		m_doc = m_editor->createDocument(0);
+   		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+		m_pTabWidget->addTab(m_view, name);
+	}
 
 	QByteArray *ba = new QByteArray(file->readAll());
 	QString qs = QString(ba->data());

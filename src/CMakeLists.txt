@@ -16,7 +16,6 @@ install(FILES KSGlobalConfig.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 
 set(kscope_SRCS
-editortabs4.cpp
 ksconfig4.cpp
 KSGlobalConfig.cpp
 project4.cpp
@@ -32,7 +31,6 @@ grepfrontend.cpp
 qlistviewitem4.cpp
 encoder4.cpp
 kdockwidget4.cpp
-tabwidget4.cpp
 progressdlg4.cpp
 symboldlg4.cpp
 symbolcompletion4.cpp
