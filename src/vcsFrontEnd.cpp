@@ -188,5 +188,54 @@ bool vcsFrontEnd::pull(){
 	return true;
 }
 
+bool vcsFrontEnd::pullNeeded(){
+	QStringList slCmdLine;
+
+	connect(this, SIGNAL(readyRead()),
+	this, SLOT(slotPullNeededDone()));
+
+	setOutputChannelMode(KProcess::MergedChannels);
+	
+	const QString s_sProjPath = Config().lastOpenProject();
+
+	slCmdLine << "pull";
+	slCmdLine << "--stat";
+
+	// Run a new process
+	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+		return false;
+	}
+	
+	return true;
+}
+
+bool vcsFrontEnd::slotPullNeededDone(){
+	disconnect(this, SIGNAL(readyRead()), 0, 0);
+
+	setReadChannel(QProcess::StandardOutput);
+	QString qs;
+	QByteArray qba;
+	while (atEnd() == false){
+		qba = readLine(2000);	
+		qs = qs + QString(qba);
+	}
+
+	qDebug() << "pull needed res:" <<qs;
+	if (! qs.contains("Already up-to-date.", Qt::CaseInsensitive)){ 
+
+		if (VCS_NONE != Config().vcs() ){
+		if (QMessageBox::Yes == QMessageBox::question( 
+               		 this, 
+               		 tr(""), 
+                	tr("Would you like to update latest sources from version control now?"), 
+                	QMessageBox::Yes | 
+                	QMessageBox::No,
+                	QMessageBox::Yes )) 
+			pull();
+		}
+	}
+	return true;
+}
+
 } // namespace kscope4
 // Sat Oct 29 09:12:36 PDT 2011

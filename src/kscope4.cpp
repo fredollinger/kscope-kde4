@@ -516,17 +516,8 @@ void KScope::openProject(const QString& sDir)
 	pProj->getOptions(opt);
 
 	Config().setCurrentProject(sDir);
-
-	if (VCS_NONE != Config().vcs() ){
-		if (QMessageBox::Yes == QMessageBox::question( 
-               		 this, 
-               		 tr(""), 
-                		tr("Would you like to update latest sources from version control now?"), 
-                		QMessageBox::Yes | 
-                		QMessageBox::No,
-                		QMessageBox::Yes )) 
-					slotPull();
-	}
+	
+	m_pVcs->pullNeeded();
 
 	restoreSession();
 

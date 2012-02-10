@@ -16,9 +16,7 @@ install(FILES KSGlobalConfig.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 
 set(kscope_SRCS
-tabwidget.cpp
-editortabs4.cpp
-editorpage.cpp
+tabwidget4.cpp
 ksconfig4.cpp
 KSGlobalConfig.cpp
 project4.cpp
@@ -62,3 +60,4 @@ ${KDE4_KTEXTEDITOR_LIBS})
 install(TARGETS kscope4  DESTINATION ${BIN_INSTALL_DIR})
 install(FILES kscope-kde4.rc DESTINATION ${DATA_INSTALL_DIR}/kscope-kde4)
 install(FILES kscope4_config DESTINATION ${BIN_INSTALL_DIR})
+# Fri Feb 10 09:20:49 PST 2012

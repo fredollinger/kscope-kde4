@@ -34,6 +34,7 @@ public:
 	bool push(QString); // send files to server (no p4 equivalent)
 	bool pull(); // send files to server (no p4 equivalent)
 	bool diff(); // diff of current changes and last commit
+	bool pullNeeded(); // do we need to pull?
 
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
@@ -64,6 +65,7 @@ private:
 
 private slots:
 	bool slotDisplayResults();
+	bool slotPullNeededDone(); // do we need to pull?
 };
 
 } // namespace kscope4
