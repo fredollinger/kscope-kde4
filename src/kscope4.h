@@ -21,6 +21,7 @@
 // #include "fileview4.h"
 #include "querywidget4.h"
 #include "progressdlg4.h"
+#include "tabwidget4.h"
 #include "vcsCommitDlg.h"
 
 class ProjectManager;
@@ -81,7 +82,7 @@ public:
 
 private:
 	// holds all the document pages
-	KTabWidget *m_pTabWidget; 
+	TabWidget *m_pTabWidget; 
 
 	void restoreSession(void);
 	vcsFrontEnd *m_pVcs;

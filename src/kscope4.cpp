@@ -31,6 +31,7 @@
 #include "project4.h"
 #include "symbolcompletion4.h"
 #include "symboldlg4.h"
+#include "tabwidget4.h"
 #include "querywidget4.h"
 #include "vcsCommitDlg.h"
 #include "vcsFrontEnd.h"
@@ -50,7 +51,7 @@ KScope::KScope(QWidget *) :
 	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 
-	m_pTabWidget = new KTabWidget(this);
+	m_pTabWidget = new TabWidget(this);
 	m_pTabWidget->setCloseButtonEnabled(true);
 	setCentralWidget(m_pTabWidget);
 
@@ -246,6 +247,7 @@ void KScope::openFileNamed(QString name)
 	QString qs = QString(ba->data());
 
 	m_doc->setText(qs);	
+	m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), name);
 
 	Config().addOpenedFile(name);
 }
