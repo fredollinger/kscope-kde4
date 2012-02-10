@@ -70,7 +70,7 @@ KScope::KScope(QWidget *) :
 
 	// Create control objects
 	m_pProjMgr = new ProjectManager();
-	m_pVcs = new vcsFrontEnd();
+	m_pVcs = new vcsFrontEnd(this);
 	m_pBuild = new buildFrontEnd();
 
 	currentProject=QDir::cleanPath(Config().getCurrentProject());

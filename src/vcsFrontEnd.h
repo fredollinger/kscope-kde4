@@ -28,7 +28,7 @@ class vcsFrontEnd : public Frontend
 	Q_OBJECT
 
 public:
-	vcsFrontEnd();
+	vcsFrontEnd(QWidget*);
 	~vcsFrontEnd();
 	bool commit(QString, QString); // also called submit in the p4 world
 	bool push(QString); // send files to server (no p4 equivalent)
@@ -39,6 +39,7 @@ public:
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
 private:
+	QWidget *m_parent;
 	QMessageBox *m_qmbMsg; // message box dialog
 	/** The current state of the parser state machine. */
 	VcsState m_state;

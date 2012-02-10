@@ -14,7 +14,7 @@ vcsCommitDlg::vcsCommitDlg(QWidget* pParent, const char* szName) :
 	setupUi(this);
 
 	// create persistent version control process
-	m_pVcs = new vcsFrontEnd();
+	m_pVcs = new vcsFrontEnd(pParent);
 
 	connect(buttonBox, SIGNAL(accepted()), this, SLOT(slotCommit()));
 }

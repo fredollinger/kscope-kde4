@@ -18,7 +18,8 @@
 #include "kscopeconfig4.h"
 
 namespace kscope4{
-vcsFrontEnd::vcsFrontEnd() : 
+vcsFrontEnd::vcsFrontEnd(QWidget *parent) : 
+	m_parent(parent),
 	Frontend(CSCOPE_RECORD_SIZE, false),
 	m_state(vcsUnknown),
 	m_sErrMsg(""),
@@ -220,12 +221,10 @@ bool vcsFrontEnd::slotPullNeededDone(){
 		qs = qs + QString(qba);
 	}
 
-	qDebug() << "pull needed res:" <<qs;
 	if (! qs.contains("Already up-to-date.", Qt::CaseInsensitive)){ 
-
 		if (VCS_NONE != Config().vcs() ){
 		if (QMessageBox::Yes == QMessageBox::question( 
-               		 this, 
+               		m_parent, 
                		 tr(""), 
                 	tr("Would you like to update latest sources from version control now?"), 
                 	QMessageBox::Yes | 
@@ -238,4 +237,4 @@ bool vcsFrontEnd::slotPullNeededDone(){
 }
 
 } // namespace kscope4
-// Sat Oct 29 09:12:36 PDT 2011
+// Fri Feb 10 11:23:30 PST 2012
