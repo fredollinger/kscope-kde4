@@ -163,6 +163,7 @@ private:
 
 
 private slots:
+	void slotCloseTab(int);
 	void slotProjectProperties(void);
 	void slotQuery(uint, bool);
 	void slotQueryPattern();

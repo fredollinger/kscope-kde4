@@ -57,6 +57,8 @@ KScope::KScope(QWidget *) :
 
 	m_pTabWidget->addTab(m_view, tr("UNSAVED"));
 
+	connect (m_pTabWidget,closeRequest(int), this, slotCloseTab(int));
+
 	setupActions();
 
 	// Create the initial GUI (no active part)
@@ -1071,6 +1073,10 @@ void KScope::slotProjectProperties(){
 	// Set the source root
 	// m_pFileView->setRoot(pProj->getSourceRoot());
 	return;
+}
+
+void KScope::slotCloseTab(int i){
+	qDebug() << "KScope::slotCloseTab: "<< i;
 }
 
 } // namespace kscope4
