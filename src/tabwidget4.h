@@ -12,10 +12,11 @@ class TabWidget : public KTabWidget
 {
 Q_OBJECT
 public:
-    TabWidget(QWidget* pParent = 0, const char* szName = 0);
-    ~TabWidget();
-
+	TabWidget(QWidget* pParent = 0);
+	~TabWidget();
+public slots:
+	void closeRequest(int);
 };
 
 #endif
-// Fri Feb 10 09:31:31 PST 2012
+// Sat Feb 11 13:14:35 PST 2012

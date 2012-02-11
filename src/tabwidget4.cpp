@@ -1,11 +1,21 @@
 #include "tabwidget4.h"
+#include "kscope4.h"
 
-TabWidget::TabWidget(QWidget* pParent, const char* szName) :
+#include <QDebug>
+#include <KTabWidget>
+
+TabWidget::TabWidget(QWidget* pParent) :
 	KTabWidget(pParent)
 {
+	// connect (this, closeRequest(int), pParent, slotCloseTab(int));
 }
 
 TabWidget::~TabWidget()
 {
 }
-// Fri Feb 10 09:31:53 PST 2012
+
+void TabWidget::closeRequest(int i)
+{
+	qDebug()<<"closeRequest: "<<i;
+}
+// Sat Feb 11 13:13:52 PST 2012

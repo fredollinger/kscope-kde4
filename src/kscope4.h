@@ -161,9 +161,10 @@ private:
 	void createDockWindows();
 	// END PRIVATE FUNCTION PROTOTYPES
 
+public slots:
+	void slotCloseTab(int);
 
 private slots:
-	void slotCloseTab(int);
 	void slotProjectProperties(void);
 	void slotQuery(uint, bool);
 	void slotQueryPattern();

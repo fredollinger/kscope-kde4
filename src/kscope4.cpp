@@ -14,7 +14,7 @@
 
 #include <QDockWidget>
 #include <QFile>
-#include <QTabWidget>
+#include <KTabWidget>
 
 #include "buildFrontEnd.h"
 #include "calltreedlg4.h"
@@ -51,13 +51,14 @@ KScope::KScope(QWidget *) :
 	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 
-	m_pTabWidget = new TabWidget(this);
+   	m_pTabWidget = new TabWidget(this);
+
 	m_pTabWidget->setCloseButtonEnabled(true);
 	setCentralWidget(m_pTabWidget);
 
 	m_pTabWidget->addTab(m_view, tr("UNSAVED"));
 
-	connect (m_pTabWidget,closeRequest(int), this, slotCloseTab(int));
+	// connect (m_pTabWidget, closeRequest(QWidget*), this, slotCloseTab(QWidget*));
 
 	setupActions();
 
@@ -1076,7 +1077,8 @@ void KScope::slotProjectProperties(){
 }
 
 void KScope::slotCloseTab(int i){
-	qDebug() << "KScope::slotCloseTab: "<< i;
+
+	qDebug() <<"slotCloseTab()"<<i;
 }
 
 } // namespace kscope4
