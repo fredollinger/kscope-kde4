@@ -1149,5 +1149,55 @@ void KScope::savePage(QWidget *w){
 	return;
 }
 
+
+#if 0
+// BEGIN KScope::removeAllPages()
+// FIXME: Change to KScope
+/**
+ * Removes all editor pages.
+ * @return	true if successful, false if the user aborts the operation
+ */
+bool KScope::removeAllPages()
+{
+	QWidget* pPage;
+	
+	// Check if there are any modified files
+	if (getModifiedFilesCount()) {
+		// Prompt the user to save these files
+		switch (KMessageBox::questionYesNoCancel(NULL,
+			i18n("Some files contain unsaved changes.\nWould you like to "
+			"save these files?"))) {
+			case KMessageBox::Yes:
+				// Save files
+				slotSaveAll();
+				break;
+				
+			case KMessageBox::No:
+				// Close files, ignoring changes
+				break;
+				
+			case KMessageBox::Cancel:
+				// Abort
+				return false;
+		}
+	}
+	
+	// Avoid warning about modification on disk
+	Kate::Document::setFileChangedDialogsActivated(false);
+	
+	// Iterate pages until none is left
+	while ((pPage = currentPage()) != NULL)
+		removePage(pPage, true);
+	
+	// Restore kate warning if enabled
+	Kate::Document::setFileChangedDialogsActivated(
+		Config().getWarnModifiedOnDisk());
+	
+	// All pages were successfully removed
+	return true;
+}
+// END KScope::removeAllPages()
+#endif
+
 } // namespace kscope4
 // Sat Feb 11 17:32:52 PST 2012

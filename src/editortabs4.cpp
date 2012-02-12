@@ -3,9 +3,8 @@
 #include <kmessagebox.h>
 #include <kurldrag.h>
 #include <kate/document.h>
-#include "editortabs.h"
-#include "kscopepixmaps.h"
-#include "queryview.h"
+#include "editortabs4.h"
+#include "queryview4.h"
 
 /**
  * Class constructor.

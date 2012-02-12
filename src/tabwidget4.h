@@ -16,8 +16,6 @@ Q_OBJECT
 public:
 	TabWidget(QWidget* pParent = 0);
 	~TabWidget();
-	KUrl getName(int i);
-	void setName(int i, KUrl);
 signals:	
 	void signalClose(QWidget *w);
 public slots:

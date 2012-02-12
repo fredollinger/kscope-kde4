@@ -16,6 +16,7 @@ install(FILES KSGlobalConfig.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 
 set(kscope_SRCS
+editorpage4.cpp
 tabwidget4.cpp
 ksconfig4.cpp
 KSGlobalConfig.cpp

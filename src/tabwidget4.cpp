@@ -21,14 +21,4 @@ void TabWidget::closeClicked(QWidget *w){
 	emit signalClose(w);
 }
 
-KUrl TabWidget::getName(int i){
-	// FIXME: Use QStringList b/c of many tabs
-	return m_kuName;
-}
-
-void TabWidget::setName(int i, KUrl ku){
-	m_kuName = ku;
-	setTabText(i, ku.pathOrUrl());
-}
-
 // Sat Feb 11 13:13:52 PST 2012

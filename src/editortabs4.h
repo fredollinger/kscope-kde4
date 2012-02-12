@@ -2,10 +2,9 @@
 #define EDITORTABS_H
 
 #include <qwidget.h>
-// #include <qpopupmenu.h>
-#include "tabwidget.h"
-#include "editorpage.h"
-#include "projectmanager.h"
+#include "tabwidget4.h"
+#include "editorpage4.h"
+#include "projectmanager4.h"
 
 typedef QMap<QString, EditorPage*> EditorMap;
 class QueryView;
