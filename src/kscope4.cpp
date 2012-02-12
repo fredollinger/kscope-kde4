@@ -1083,14 +1083,13 @@ void KScope::slotProjectProperties(){
 
 void KScope::slotCloseTab(QWidget *w){
 	savePage(w);
-	//delete dynamic_cast<KTextEditor::View*>(w)->document();
-	//delete m_view;
 	m_pTabWidget->removePage(w);
 }
 
-void KScope::savePage(QWidget *v){
-	// FIXME: Get the tab name
-	dynamic_cast<KTextEditor::View*>(v)->document()->documentSave();
+void KScope::savePage(QWidget *w){
+	dynamic_cast<KTextEditor::View*>(w)->document()->queryClose();
+	//dynamic_cast<KTextEditor::View*>(w)->document()->documentSave();
+	//dynamic_cast<KTextEditor::View*>(v)->document()->saveToUrl(m_pTabWidget->getName());
 
 	return;
 }
