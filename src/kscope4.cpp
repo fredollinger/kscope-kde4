@@ -211,7 +211,8 @@ void KScope::restoreSession()
 	//openFileNamed(slOpenedFiles.at(0));
 
 	foreach (QString str, slOpenedFiles ) {  
-		openFileNamed(str);
+		qDebug() << "openfilenamed:" << str;
+		// openFileNamed(str);
     	}
 
 	return;
@@ -225,18 +226,20 @@ void KScope::openFile()
 	if (! m_doc->isEmpty() ){
 		m_doc = m_editor->createDocument(0);
    		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-		m_pTabWidget->addTab(m_view, kuDoc.pathOrUrl());
+		m_pTabWidget->addTab(m_view, kuDoc.fileName());
 	}
 
 	m_doc->openUrl(kuDoc);
-
-	// openFileNamed(kuDoc.pathOrUrl());
+	Config().addOpenedFile(kuDoc.pathOrUrl());
 
 	return;
 }
 
 void KScope::openFileNamed(QString name)
 {
+	qDebug() << "KScope::openFileNamed: FIXME: Not done.";
+	return;
+
 	QFile *file = new QFile(name);
 	const KUrl ku = name;
 
@@ -1092,7 +1095,7 @@ void KScope::slotProjectProperties(){
 
 void KScope::slotCloseTab(QWidget *w){
 	savePage(w);
-	Config().removeOpenedFile(name);
+	// Config().removeOpenedFile(name);
 	m_pTabWidget->removePage(w);
 }
 
