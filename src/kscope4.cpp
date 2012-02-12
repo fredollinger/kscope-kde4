@@ -58,7 +58,8 @@ KScope::KScope(QWidget *) :
 
 	m_pTabWidget->addTab(m_view, tr("UNSAVED"));
 
-	// connect (m_pTabWidget, closeRequest(QWidget*), this, slotCloseTab(QWidget*));
+	connect(m_pTabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(slotCloseTab(int)));
+	connect(m_pTabWidget, SIGNAL(signalClose(QWidget*)), this, SLOT(savePage(QWidget*)));
 
 	setupActions();
 
@@ -1079,6 +1080,14 @@ void KScope::slotProjectProperties(){
 void KScope::slotCloseTab(int i){
 
 	qDebug() <<"slotCloseTab()"<<i;
+	savePage(m_pTabWidget->widget(i));
+	delete m_doc;
+}
+
+void KScope::savePage(QWidget *doc){
+	qDebug() <<"savePage";
+	// dynamic_cast<KTextEditor::Document*>(doc)->documentSave();
+	return;
 }
 
 } // namespace kscope4

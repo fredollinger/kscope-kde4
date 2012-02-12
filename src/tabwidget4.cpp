@@ -7,15 +7,18 @@
 TabWidget::TabWidget(QWidget* pParent) :
 	KTabWidget(pParent)
 {
-	// connect (this, closeRequest(int), pParent, slotCloseTab(int));
+	connect(this, SIGNAL(closeRequest(QWidget*)),
+	this, SLOT(closeClicked(QWidget*)));
 }
 
 TabWidget::~TabWidget()
 {
 }
 
-void TabWidget::closeRequest(int i)
-{
-	qDebug()<<"closeRequest: "<<i;
+void TabWidget::closeClicked(QWidget *w){
+	qDebug()<<"TabWidget::closeClicked";
+	emit signalClose(w);
 }
+
+
 // Sat Feb 11 13:13:52 PST 2012

@@ -163,6 +163,7 @@ private:
 
 public slots:
 	void slotCloseTab(int);
+	void savePage(QWidget*);
 
 private slots:
 	void slotProjectProperties(void);

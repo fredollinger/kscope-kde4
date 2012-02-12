@@ -14,9 +14,12 @@ Q_OBJECT
 public:
 	TabWidget(QWidget* pParent = 0);
 	~TabWidget();
+signals:	
+	void signalClose(QWidget *w);
 public slots:
-	void closeRequest(int);
+	void closeClicked(QWidget *w);
 };
 
 #endif
 // Sat Feb 11 13:14:35 PST 2012
+
