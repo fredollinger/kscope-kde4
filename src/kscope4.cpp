@@ -1080,13 +1080,17 @@ void KScope::slotProjectProperties(){
 void KScope::slotCloseTab(int i){
 
 	qDebug() <<"slotCloseTab()"<<i;
-	savePage(m_pTabWidget->widget(i));
-	delete m_doc;
+	//savePage(m_pTabWidget->widget(i));
+	// delete m_doc;
 }
 
-void KScope::savePage(QWidget *doc){
+void KScope::savePage(QWidget *v){
 	qDebug() <<"savePage";
-	// dynamic_cast<KTextEditor::Document*>(doc)->documentSave();
+	qDebug() << dynamic_cast<KTextEditor::View*>(v)->viewMode();//->document()->documentSave();
+	dynamic_cast<KTextEditor::View*>(v)->document()->documentSave();
+   	// m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+// querywidget.cpp:        pPage = dynamic_cast<QueryPage*>(currentPage());
+
 	return;
 }
 
