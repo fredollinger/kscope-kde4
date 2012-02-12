@@ -58,8 +58,8 @@ KScope::KScope(QWidget *) :
 
 	m_pTabWidget->addTab(m_view, tr("UNSAVED"));
 
-	connect(m_pTabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(slotCloseTab(int)));
-	connect(m_pTabWidget, SIGNAL(signalClose(QWidget*)), this, SLOT(savePage(QWidget*)));
+	// connect(m_pTabWidget, SIGNAL(signalClose(QWidget*)), this, SLOT(savePage(QWidget*)));
+	connect(m_pTabWidget, SIGNAL(signalClose(QWidget*)), this, SLOT(slotCloseTab(QWidget*)));
 
 	setupActions();
 
@@ -230,6 +230,7 @@ void KScope::openFile()
 void KScope::openFileNamed(QString name)
 {
 	QFile *file = new QFile(name);
+	const KUrl ku = name;
 
 	if (!file->open(QIODevice::ReadOnly | QIODevice::Text)){
 		qDebug() << file << " does not exist! \n";
@@ -241,16 +242,19 @@ void KScope::openFileNamed(QString name)
 
         	return;
 	}
+
 	if (! m_doc->isEmpty() ){
 		m_doc = m_editor->createDocument(0);
    		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 		m_pTabWidget->addTab(m_view, name);
 	}
 
+	// m_doc->openUrl(ku);
 	QByteArray *ba = new QByteArray(file->readAll());
 	QString qs = QString(ba->data());
 
 	m_doc->setText(qs);	
+	// m_doc->saveAs(ku);
 	m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), name);
 
 	Config().addOpenedFile(name);
@@ -1077,19 +1081,18 @@ void KScope::slotProjectProperties(){
 	return;
 }
 
-void KScope::slotCloseTab(int i){
+void KScope::slotCloseTab(QWidget *w){
 
-	qDebug() <<"slotCloseTab()"<<i;
-	//savePage(m_pTabWidget->widget(i));
+	qDebug() <<"slotCloseTab()";
+	savePage(w);
 	// delete m_doc;
 }
 
 void KScope::savePage(QWidget *v){
 	qDebug() <<"savePage";
-	qDebug() << dynamic_cast<KTextEditor::View*>(v)->viewMode();//->document()->documentSave();
+
+	// FIXME: Get the tab name
 	dynamic_cast<KTextEditor::View*>(v)->document()->documentSave();
-   	// m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-// querywidget.cpp:        pPage = dynamic_cast<QueryPage*>(currentPage());
 
 	return;
 }

@@ -162,7 +162,7 @@ private:
 	// END PRIVATE FUNCTION PROTOTYPES
 
 public slots:
-	void slotCloseTab(int);
+	void slotCloseTab(QWidget*);
 	void savePage(QWidget*);
 
 private slots:
