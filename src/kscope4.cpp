@@ -58,7 +58,6 @@ KScope::KScope(QWidget *) :
 
 	m_pTabWidget->addTab(m_view, tr("UNSAVED"));
 
-	// connect(m_pTabWidget, SIGNAL(signalClose(QWidget*)), this, SLOT(savePage(QWidget*)));
 	connect(m_pTabWidget, SIGNAL(signalClose(QWidget*)), this, SLOT(slotCloseTab(QWidget*)));
 
 	setupActions();
@@ -255,7 +254,8 @@ void KScope::openFileNamed(QString name)
 
 	m_doc->setText(qs);	
 	// m_doc->saveAs(ku);
-	m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), name);
+	// m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), name);
+	m_pTabWidget->setName(m_pTabWidget->currentIndex(), ku);
 
 	Config().addOpenedFile(name);
 }
@@ -1082,8 +1082,6 @@ void KScope::slotProjectProperties(){
 }
 
 void KScope::slotCloseTab(QWidget *w){
-
-	qDebug() <<"slotCloseTab()";
 	savePage(w);
 	//delete dynamic_cast<KTextEditor::View*>(w)->document();
 	//delete m_view;
@@ -1091,8 +1089,6 @@ void KScope::slotCloseTab(QWidget *w){
 }
 
 void KScope::savePage(QWidget *v){
-	qDebug() <<"savePage";
-
 	// FIXME: Get the tab name
 	dynamic_cast<KTextEditor::View*>(v)->document()->documentSave();
 
@@ -1100,3 +1096,4 @@ void KScope::savePage(QWidget *v){
 }
 
 } // namespace kscope4
+// Sat Feb 11 17:32:52 PST 2012
