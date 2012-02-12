@@ -77,3 +77,4 @@ inline Application* theApp() { return static_cast<Application*>(qApp); }
 } // namespace KScope
 
 #endif // __APP_APPLICATION_H
+

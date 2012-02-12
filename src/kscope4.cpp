@@ -93,14 +93,14 @@ KScope::~KScope()
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
 	qDebug() << "current project: " << currentProject;
 	
-	/*
 	qDebug() << "delete proj mgr";
 	delete m_pProjMgr;
 	qDebug() << "delete pVcs";
 	delete m_pVcs;
 	qDebug() << "delete pBuild";
 	delete m_pBuild;
-	*/
+	qDebug() << "delete m_pTabWidget";
+	delete m_pTabWidget;
 }
 
 void KScope::setupActions()
@@ -241,10 +241,27 @@ void KScope::openFile()
 void KScope::openFileNamed(QString name)
 {
 	qDebug() << "KScope::openFileNamed: FIXME: Not done: "<< name;
+	const KUrl kuDoc = name;
+
+	int i_tab = m_pTabWidget->currentIndex();
+
+	if (! m_doc->isEmpty() || i_tab < 0 ){
+		m_doc = m_editor->createDocument(0);
+   		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+		i_tab = m_pTabWidget->addTab(m_view, kuDoc.fileName());
+		m_pTabWidget->setCurrentIndex(i_tab);
+	}
+
+	m_doc->openUrl(kuDoc);
+	Config().addOpenedFile(kuDoc.pathOrUrl());
+	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
+
+	return;
+
+	#if 0
 	return;
 
 	QFile *file = new QFile(name);
-	const KUrl ku = name;
 
 	if (!file->open(QIODevice::ReadOnly | QIODevice::Text)){
 		qDebug() << file << " does not exist! \n";
@@ -271,8 +288,10 @@ void KScope::openFileNamed(QString name)
 	// m_doc->saveAs(ku);
 	// m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), name);
 	m_pTabWidget->setName(m_pTabWidget->currentIndex(), ku);
+	
 
 	Config().addOpenedFile(name);
+	#endif
 }
 
 /**
@@ -1100,6 +1119,7 @@ void KScope::slotCloseTab(QWidget *w){
 	savePage(w);
 	// Config().removeOpenedFile(name);
 	m_pTabWidget->removePage(w);
+	delete w;
 }
 
 void KScope::savePage(QWidget *w){
