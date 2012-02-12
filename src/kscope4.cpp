@@ -231,13 +231,14 @@ void KScope::openFile()
 
 	m_doc->openUrl(kuDoc);
 	Config().addOpenedFile(kuDoc.pathOrUrl());
+	m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), kuDoc.fileName() );
 
 	return;
 }
 
 void KScope::openFileNamed(QString name)
 {
-	qDebug() << "KScope::openFileNamed: FIXME: Not done.";
+	qDebug() << "KScope::openFileNamed: FIXME: Not done: "<< name;
 	return;
 
 	QFile *file = new QFile(name);
