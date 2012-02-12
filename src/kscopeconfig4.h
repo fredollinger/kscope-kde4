@@ -49,6 +49,7 @@ public:
 	enum EditorPopup { Embedded, KScopeOnly };	
 	
 	void addOpenedFile(const QString&);
+	void removeOpenedFile(const QString&);
 
 	void load();
 	void loadDefault();

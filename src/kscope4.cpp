@@ -221,7 +221,16 @@ void KScope::restoreSession()
 void KScope::openFile()
 {
 	KUrl kuDoc =  KFileDialog::getOpenFileName();
-	openFileNamed(kuDoc.pathOrUrl());
+
+	if (! m_doc->isEmpty() ){
+		m_doc = m_editor->createDocument(0);
+   		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+		m_pTabWidget->addTab(m_view, kuDoc.pathOrUrl());
+	}
+
+	m_doc->openUrl(kuDoc);
+
+	// openFileNamed(kuDoc.pathOrUrl());
 
 	return;
 }
@@ -1083,6 +1092,7 @@ void KScope::slotProjectProperties(){
 
 void KScope::slotCloseTab(QWidget *w){
 	savePage(w);
+	Config().removeOpenedFile(name);
 	m_pTabWidget->removePage(w);
 }
 
