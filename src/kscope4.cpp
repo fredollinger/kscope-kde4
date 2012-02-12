@@ -1085,7 +1085,9 @@ void KScope::slotCloseTab(QWidget *w){
 
 	qDebug() <<"slotCloseTab()";
 	savePage(w);
-	// delete m_doc;
+	//delete dynamic_cast<KTextEditor::View*>(w)->document();
+	//delete m_view;
+	m_pTabWidget->removePage(w);
 }
 
 void KScope::savePage(QWidget *v){
