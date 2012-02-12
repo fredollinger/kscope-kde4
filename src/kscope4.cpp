@@ -222,16 +222,18 @@ void KScope::restoreSession()
 void KScope::openFile()
 {
 	KUrl kuDoc =  KFileDialog::getOpenFileName();
+	int i_tab = m_pTabWidget->currentIndex();
 
-	if (! m_doc->isEmpty() ){
+	if (! m_doc->isEmpty() || i_tab < 0 ){
 		m_doc = m_editor->createDocument(0);
    		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-		m_pTabWidget->addTab(m_view, kuDoc.fileName());
+		i_tab = m_pTabWidget->addTab(m_view, kuDoc.fileName());
+		m_pTabWidget->setCurrentIndex(i_tab);
 	}
 
 	m_doc->openUrl(kuDoc);
 	Config().addOpenedFile(kuDoc.pathOrUrl());
-	m_pTabWidget->setTabText(m_pTabWidget->currentIndex(), kuDoc.fileName() );
+	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
 
 	return;
 }
