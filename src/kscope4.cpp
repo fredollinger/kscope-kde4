@@ -199,12 +199,14 @@ void KScope::restoreSession()
 {
 	const QStringList slOpenedFiles = Config().openedFiles();
 
+	#if 0
 	// If there's no opened doc, open an empty doc
 	if (slOpenedFiles.count() == 0)
 		m_doc = m_editor->createDocument(0);
    		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 		m_pTabWidget->addTab(m_view, "UNSAVED");
 		return;
+	#endif
 
 	// FIXME: Must loop through all files and open them.
 	// Of course, we need to support multiple files via tabs, first.
@@ -212,7 +214,7 @@ void KScope::restoreSession()
 
 	foreach (QString str, slOpenedFiles ) {  
 		qDebug() << "openfilenamed:" << str;
-		// openFileNamed(str);
+		openFileNamed(str);
     	}
 
 	return;
@@ -240,8 +242,25 @@ void KScope::openFile()
 
 void KScope::openFileNamed(QString name)
 {
-	qDebug() << "KScope::openFileNamed: FIXME: Not done: "<< name;
-	const KUrl kuDoc = name;
+	KUrl kuDoc = name;
+	qDebug() << "KScope::openFileNamed: FIXME: Not done: "<< kuDoc.directory();
+
+	/* If we are not valid, perhaps we are relative path and need to be here */
+	if (kuDoc.directory().isEmpty() ){
+		QString dir = QDir::currentPath();
+		kuDoc.setDirectory(dir);
+		kuDoc.setFileName(name);
+		//path.append(name);
+		//kuDoc.setUrl(path);
+		//kuDoc.addPath(name);
+	}
+
+	qDebug() << "KScope::openFileNamed(): opening: "<< kuDoc.pathOrUrl();
+
+	if (! kuDoc.isValid() ){
+		qDebug() << "KScope::openFileNamed(): path does NOT exist. Bailing: "<< kuDoc.pathOrUrl();
+		return;
+	}
 
 	int i_tab = m_pTabWidget->currentIndex();
 

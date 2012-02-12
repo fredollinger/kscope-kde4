@@ -31,8 +31,8 @@ install: build/kscope4
 	#cd build && sudo make install
 test:
 	su -c "make install"
-	#/usr/local/bin/kscope4 kscope4.cpp
-	/usr/local/bin/kscope4 /home/follinge/projects/kscope-kde4/src/kscope4.cpp
+	/usr/local/bin/kscope4 kscope4.cpp
+	#/usr/local/bin/kscope4 /home/follinge/projects/kscope-kde4/src/kscope4.cpp
 
 vcsCommitLayout.h:
 	$(UI) vcsCommitLayout.ui > vcsCommitLayout.h
