@@ -281,7 +281,7 @@ void KScope::openFileNamed(QString name)
 
 	m_doc->openUrl(kuDoc);
 	// Config().addOpenedFile(kuDoc.pathOrUrl());
-	((Project*)pProj)->addFile(kuDoc.pathOrUrl() );
+	((Project*)pProj)->addOpenedFile(kuDoc.pathOrUrl() );
 	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
 
 	return;
