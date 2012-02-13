@@ -214,7 +214,7 @@ void KScope::restoreSession()
 
 	foreach (QString str, slOpenedFiles ) {  
 		qDebug() << "openfilenamed:" << str;
-		openFileNamed(str);
+		// openFileNamed(str);
     	}
 
 	return;
@@ -224,7 +224,13 @@ void KScope::restoreSession()
 void KScope::openFile()
 {
 	KUrl kuDoc =  KFileDialog::getOpenFileName();
+	openFileNamed(kuDoc.pathOrUrl());
+	/*
 	int i_tab = m_pTabWidget->currentIndex();
+
+	ProjectBase* pProj;
+	pProj = m_pProjMgr->curProject();
+
 
 	if (! m_doc->isEmpty() || i_tab < 0 ){
 		m_doc = m_editor->createDocument(0);
@@ -234,8 +240,10 @@ void KScope::openFile()
 	}
 
 	m_doc->openUrl(kuDoc);
-	Config().addOpenedFile(kuDoc.pathOrUrl());
+	// Config().addOpenedFile(kuDoc.pathOrUrl());
+	((Project*)pProj)->addFile(kuDoc.pathOrUrl());
 	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
+	*/
 
 	return;
 }
@@ -245,14 +253,14 @@ void KScope::openFileNamed(QString name)
 	KUrl kuDoc = name;
 	qDebug() << "KScope::openFileNamed: FIXME: Not done: "<< kuDoc.directory();
 
+	ProjectBase* pProj;
+	pProj = m_pProjMgr->curProject();
+
 	/* If we are not valid, perhaps we are relative path and need to be here */
 	if (kuDoc.directory().isEmpty() ){
 		QString dir = QDir::currentPath();
 		kuDoc.setDirectory(dir);
 		kuDoc.setFileName(name);
-		//path.append(name);
-		//kuDoc.setUrl(path);
-		//kuDoc.addPath(name);
 	}
 
 	qDebug() << "KScope::openFileNamed(): opening: "<< kuDoc.pathOrUrl();
@@ -272,7 +280,8 @@ void KScope::openFileNamed(QString name)
 	}
 
 	m_doc->openUrl(kuDoc);
-	Config().addOpenedFile(kuDoc.pathOrUrl());
+	// Config().addOpenedFile(kuDoc.pathOrUrl());
+	((Project*)pProj)->addFile(kuDoc.pathOrUrl() );
 	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
 
 	return;

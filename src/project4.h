@@ -46,6 +46,8 @@ public:
 	 */
 	virtual bool isTemporary() { return false; }
 	static bool create(const QString&, const QString&, const Options&);
+
+	void addOpenedFile(const QString&);
 	
 private:
 	/** The configuration file ("cscope.proj") */
@@ -58,6 +60,9 @@ private:
 	QString m_sMakeCmd;
 	
 	QString m_sMakeRoot;
+
+	// Here we cache a list of open files
+	QStringList m_qsOpenFiles;
 	
 	static void writeOptions(kscope4::KSConfig*, const Options&);
 };

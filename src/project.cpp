@@ -411,3 +411,19 @@ void Project::writeOptions(KConfig* pConf, const Options& opt)
 	pConf->writeEntry("Delay", opt.nACDelay);
 	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
+
+
+/**
+ * Adds the given opened file to the beginning of the recently used projects
+ * list.
+ * @param	sOpenFile	The path of the open file
+ */
+void Project::addOpenedFile(const QString& sOpenedFile)
+{
+
+	m_OpenedFiles.prepend(sOpenedFile);
+	m_OpenedFiles.removeDuplicates();
+	return;
+}
+	
+}

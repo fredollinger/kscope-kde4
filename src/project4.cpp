@@ -221,8 +221,9 @@ void Project::storeSession(const Session& sess)
 	m_pConf->setGroup("Session");
 	
 	// Write the list of open file locations
-	stringListFromFlList(slEntry, sess.fllOpenFiles);
-	m_pConf->writeEntry("OpenFiles", slEntry);
+	//stringListFromFlList(slEntry, sess.fllOpenFiles);
+	//m_pConf->writeEntry("OpenFiles", slEntry);
+	m_pConf->writeEntry("OpenFiles", m_qsOpenFiles);
 
 	
 	// Write the path of the last viewed file
@@ -428,6 +429,15 @@ void Project::writeOptions(kscope4::KSConfig* pConf, const Options& opt)
 	pConf->writeEntry("Delay", opt.nACDelay);
 	pConf->writeEntry("MaxEntries", opt.nACMaxEntries);
 }
+
+void Project::addOpenedFile(const QString& sOpenedFile)
+{
+
+	m_qsOpenFiles.prepend(sOpenedFile);
+	m_qsOpenFiles.removeDuplicates();
+	return;
+}
+
 
 }// namespace kscope4
 // Sat Dec 24 13:15:32 PST 2011
