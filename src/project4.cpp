@@ -433,7 +433,7 @@ void Project::writeOptions(kscope4::KSConfig* pConf, const Options& opt)
 void Project::addOpenedFile(const QString& sOpenedFile)
 {
 
-	qDebug() << "Project::addOpenedFile()";
+	qDebug() << "Project::addOpenedFile()"<< sOpenedFile;
 	m_qsOpenFiles.prepend(sOpenedFile);
 	m_qsOpenFiles.removeDuplicates();
 	return;
