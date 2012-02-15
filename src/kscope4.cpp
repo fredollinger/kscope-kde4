@@ -225,25 +225,6 @@ void KScope::openFile()
 {
 	KUrl kuDoc =  KFileDialog::getOpenFileName();
 	openFileNamed(kuDoc.pathOrUrl());
-	/*
-	int i_tab = m_pTabWidget->currentIndex();
-
-	ProjectBase* pProj;
-	pProj = m_pProjMgr->curProject();
-
-
-	if (! m_doc->isEmpty() || i_tab < 0 ){
-		m_doc = m_editor->createDocument(0);
-   		m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
-		i_tab = m_pTabWidget->addTab(m_view, kuDoc.fileName());
-		m_pTabWidget->setCurrentIndex(i_tab);
-	}
-
-	m_doc->openUrl(kuDoc);
-	// Config().addOpenedFile(kuDoc.pathOrUrl());
-	((Project*)pProj)->addFile(kuDoc.pathOrUrl());
-	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
-	*/
 
 	return;
 }
