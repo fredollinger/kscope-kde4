@@ -24,16 +24,16 @@ public:
 	EditorTabs(QWidget* pParent = 0, const char* szName = 0);
 	~EditorTabs();
 
-	void setWindowMenu(QPopupMenu*);
+	// void setWindowMenu(QPopupMenu*);
 	void addEditorPage(EditorPage*);
 	EditorPage* findEditorPage(const QString&, bool bForceChange = false);
 	EditorPage* getCurrentPage();
 	void removeCurrentPage();
 	bool removeAllPages();
 	void applyPrefs();
-	void getOpenFiles(FileLocationList&);
-	void getBookmarks(FileLocationList&);
-	void setBookmarks(FileLocationList&);
+	// void getOpenFiles(FileLocationList&);
+	// void getBookmarks(FileLocationList&);
+	// void setBookmarks(FileLocationList&);
 	void showBookmarks(QueryView*);
 	
 public slots:
@@ -76,7 +76,7 @@ private:
 	EditorPage* m_pCurPage;
 	
 	/** A popup menu with Cscope operations for the editor windows. */
-	QPopupMenu* m_pWindowMenu;
+	// QPopupMenu* m_pWindowMenu;
 	
 	/** The number of items added to the window menu (used for removing old
 		items). */

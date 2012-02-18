@@ -1,8 +1,8 @@
 #include <qfileinfo.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <kurldrag.h>
-#include <kate/document.h>
+// #include <kurldrag.h>
+// #include <kate/document.h>
 #include "editortabs4.h"
 #include "queryview4.h"
 
@@ -12,9 +12,8 @@
  * @param	szName		The widget's name
  */
 EditorTabs::EditorTabs(QWidget* pParent, const char* szName) :
-	TabWidget(pParent, szName),
+	TabWidget(pParent),
 	m_pCurPage(NULL),
-	m_pWindowMenu(NULL),
 	m_nWindowMenuItems(0),
 	m_nNewFiles(0)
 {
@@ -48,6 +47,7 @@ EditorTabs::~EditorTabs()
  * @param	pWindowMenu	Pointer to the main window's "Window" menu (used to
  * 						add an activation menu item for each editor page)
  */
+#if 0
 void EditorTabs::setWindowMenu(QPopupMenu* pWindowMenu)
 {
 	m_pWindowMenu = pWindowMenu;
@@ -56,6 +56,7 @@ void EditorTabs::setWindowMenu(QPopupMenu* pWindowMenu)
 	connect(pWindowMenu, SIGNAL(activated(int)), this,
 		SLOT(slotSetCurrentPage(int)));
 }
+#endif
 
 /**
  * Adds a new editor page to the tab widget.
@@ -64,8 +65,8 @@ void EditorTabs::setWindowMenu(QPopupMenu* pWindowMenu)
 void EditorTabs::addEditorPage(EditorPage* pNewPage)
 {
 	// Create a new tab and set is as the current one
-	insertTab(pNewPage, "");
-	showPage(pNewPage);
+	//insertTab(pNewPage, "");
+	//showPage(pNewPage);
 
 	// Add the file edited by this page to the map, and display its name,
 	// once the file is opened
@@ -82,8 +83,8 @@ void EditorTabs::addEditorPage(EditorPage* pNewPage)
 	
 	// If this is the first page, the current page will not be set by the 
 	// signal handler, so we need to do it manually
-	if (count() == 1)
-		slotCurrentChanged(pNewPage);
+	//if (count() == 1)
+	//	slotCurrentChanged(pNewPage);
 }
 
 /**
@@ -111,7 +112,7 @@ EditorPage* EditorTabs::findEditorPage(const QString& sFileName,
 	// Set the page as the current one
 	pPage = *itr;
 	bEmit = (bForceChange && (pPage == m_pCurPage));
-	showPage(pPage);
+	// showPage(pPage);
 
 	// Emit the editorChanged() signal, if required
 	if (bEmit)
@@ -124,10 +125,12 @@ EditorPage* EditorTabs::findEditorPage(const QString& sFileName,
  * Returns the page associated with the selected tab.
  * @return	The current editor page
  */
+/*
 EditorPage* EditorTabs::getCurrentPage()
 {
-	return (EditorPage*)currentPage();
+	//return (EditorPage*)currentPage();
 }
+*/
 
 /**
  * Deletes the currently active page.
@@ -139,7 +142,7 @@ void EditorTabs::removeCurrentPage()
 	QWidget* pPage;
 
 	// Get the active page, if any
-	pPage = currentPage();
+	//pPage = currentPage();
 	if (pPage == NULL)
 		return;
 
@@ -177,15 +180,15 @@ bool EditorTabs::removeAllPages()
 	}
 	
 	// Avoid warning about modification on disk
-	Kate::Document::setFileChangedDialogsActivated(false);
+	//Kate::Document::setFileChangedDialogsActivated(false);
 	
 	// Iterate pages until none is left
-	while ((pPage = currentPage()) != NULL)
-		removePage(pPage, true);
+	//while ((pPage = currentPage()) != NULL)
+		//removePage(pPage, true);
 	
 	// Restore kate warning if enabled
-	Kate::Document::setFileChangedDialogsActivated(
-		Config().getWarnModifiedOnDisk());
+	//Kate::Document::setFileChangedDialogsActivated(
+	//	Config().getWarnModifiedOnDisk());
 	
 	// All pages were successfully removed
 	return true;
@@ -293,6 +296,7 @@ void EditorTabs::applyPrefs()
  * open.
  * @param	list	The list to fill
  */
+#if 0
 void EditorTabs::getOpenFiles(FileLocationList& list)
 {
 	int i;
@@ -312,12 +316,14 @@ void EditorTabs::getOpenFiles(FileLocationList& list)
 		list.append(new FileLocation(pPage->getFilePath(), nLine, nCol));
 	}
 }
+#endif 
 
 /**
  * Constructs a list bookmarks set to open files.
  * Used to store all currently set bookmarks when a session is closed.
  * @param	fll	The list to fill
  */
+#if 0
 void EditorTabs::getBookmarks(FileLocationList& fll)
 {
 	int i;
@@ -329,7 +335,9 @@ void EditorTabs::getBookmarks(FileLocationList& fll)
 		pPage->getBookmarks(fll);
 	}
 }
+#endif
 
+#if 0
 /**
  * Assigns bookmarks to open files.
  * Called when a session is opened, to restore any bookmarks set to existing
@@ -352,6 +360,7 @@ void EditorTabs::setBookmarks(FileLocationList& fll)
 		}
 	}
 }
+#endif
 
 /**
  * Fills a QueryView object with the list of currently active bookmarks.
@@ -408,10 +417,12 @@ void EditorTabs::slotToggleTagList()
 	Config().setShowTagList(!Config().getShowTagList());
 	
 	// Apply for the current page, if any
+	/*
 	if ((pPage = (EditorPage*)currentPage()) != NULL) {
 		pPage->setLayout(Config().getShowTagList(),
 			Config().getEditorSizes());
 	}
+	*/
 }
 
 /**
@@ -543,13 +554,14 @@ void EditorTabs::slotFillWindowMenu()
 	// Delete old menu items
 	// NOTE: We can't use aboutToHide() to do that, since it is emitted 
 	// _before_ the activated() signal
-	for (i = 0; i < m_nWindowMenuItems; i++)
-		m_pWindowMenu->removeItem(i);
+	
+//	for (i = 0; i < m_nWindowMenuItems; i++)
+//		m_pWindowMenu->removeItem(i);
 	
 	// Add new items
 	for (i = 0; i < count(); i++) {
 		sLabel = (i < 10) ? QString("&%1 %2").arg(i).arg(label(i)) : label(i);
-		m_pWindowMenu->insertItem(sLabel, i);
+		//m_pWindowMenu->insertItem(sLabel, i);
 	}
 	
 	// Store the number of items added
@@ -601,8 +613,8 @@ bool EditorTabs::removePage(QWidget* pPage, bool bForce)
 	// Update the new state if no other page exists (if another page has
 	// become active, it will update the new state, so there is no need for
 	// special handling)
-	if (currentPage() == NULL)
-		slotCurrentChanged(NULL);
+	//if (currentPage() == NULL)
+	//	slotCurrentChanged(NULL);
 	
 	// Notify the page has been removed
 	emit editorRemoved(pEditPage);
