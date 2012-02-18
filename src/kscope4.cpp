@@ -82,12 +82,16 @@ KScope::KScope(QWidget *) :
 	if ( QDir(currentProject).exists() && currentProject.length() > 2 )
 		openProject(currentProject);
 }
+// END KScope CONSTRUCTOR
 
+// BEGIN KScope DESTRUCTOR
 KScope::~KScope()
 {
 	qDebug() << "KScope::~KScope()";
 	// Save configuration
 	Config().store();
+
+	closeAllTabs();
 
 	QString currentProject;
 	currentProject=QDir::cleanPath(Config().getCurrentProject());
@@ -101,6 +105,16 @@ KScope::~KScope()
 	delete m_pBuild;
 	qDebug() << "delete m_pTabWidget";
 	delete m_pTabWidget;
+}
+
+void KScope::closeAllTabs(){
+	int total = m_pTabWidget->count();
+	
+	if (total < 1) return;
+	for (int i = 0; i < total; ++i) {
+		slotCloseTab(i);
+	}
+
 }
 
 void KScope::setupActions()
@@ -214,7 +228,7 @@ void KScope::restoreSession()
 
 	foreach (QString str, slOpenedFiles ) {  
 		qDebug() << "openfilenamed:" << str;
-		// openFileNamed(str);
+		openFileNamed(str);
     	}
 
 	return;
@@ -1129,6 +1143,13 @@ void KScope::slotCloseTab(QWidget *w){
 	// Config().removeOpenedFile(name);
 	m_pTabWidget->removePage(w);
 	delete w;
+	return;
+}
+
+void KScope::slotCloseTab(int i){
+	m_pTabWidget->setCurrentIndex (i);
+	slotCloseTab(m_pTabWidget->currentWidget());
+	return;
 }
 
 void KScope::savePage(QWidget *w){

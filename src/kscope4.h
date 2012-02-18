@@ -81,6 +81,7 @@ public:
 	QString getSourceRoot(void);
 
 private:
+	void closeAllTabs();
 	// holds all the document pages
 	TabWidget *m_pTabWidget; 
 
@@ -163,6 +164,7 @@ private:
 
 public slots:
 	void slotCloseTab(QWidget*);
+	void slotCloseTab(int);
 	void savePage(QWidget*);
 
 private slots:
