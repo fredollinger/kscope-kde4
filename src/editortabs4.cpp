@@ -5,6 +5,7 @@
 // #include <kate/document.h>
 #include "editortabs4.h"
 #include "queryview4.h"
+#include <QMenu>
 
 /**
  * Class constructor.
@@ -209,8 +210,8 @@ void EditorTabs::slotCurrentChanged(QWidget* pWidget)
 	// For some reason, this slot is being called twice for every external
 	// tab activation (e.g., through the Window menu).
 	// We avoid it, but this really needs to be fixed properly.
-	if (pWidget == m_pCurPage)
-		return;
+	//if (pWidget == m_pCurPage)
+	//	return;
 
 	// Set the new active page
 	pOldPage = m_pCurPage;
@@ -218,11 +219,11 @@ void EditorTabs::slotCurrentChanged(QWidget* pWidget)
 
 	if (m_pCurPage) {
 		// Set the keyboard focus to the editor part of the page
-		m_pCurPage->setEditorFocus();
+		//m_pCurPage->setEditorFocus();
 		
 		// Adjust the splitter sizes
-		m_pCurPage->setLayout(Config().getShowTagList(),
-			Config().getEditorSizes());
+		//m_pCurPage->setLayout(Config().getShowTagList(),
+		//	Config().getEditorSizes());
 	}
 	
 	/* Notify the main window */
@@ -239,18 +240,20 @@ void EditorTabs::slotAttachFile(EditorPage* pEditPage,
 	const QString& sFilePath)
 {
 	// Set the appropriate tab icon, according to the file permissions
+	/*
 	if (pEditPage->isWritable())
 		setTabIconSet(pEditPage, Pixmaps().getPixmap(KScopePixmaps::TabRW));
 	else
 		setTabIconSet(pEditPage, Pixmaps().getPixmap(KScopePixmaps::TabRO));
+	*/
 	
 	// Do nothing if the file name has not changed
 	if (m_mapEdit[sFilePath] == pEditPage)
 		return;
 
 	// Set the tab caption to the file name, and a tool-tip to the full path
-	changeTab(pEditPage, pEditPage->getFileName());
-	setTabToolTip(pEditPage, sFilePath);
+	//changeTab(pEditPage, pEditPage->getFileName());
+	//setTabToolTip(pEditPage, sFilePath);
 
 	// Associate the EditorPage object with its file name
 	m_mapEdit[sFilePath] = pEditPage;
@@ -268,27 +271,12 @@ void EditorTabs::slotNewFile(EditorPage* pEditPage)
 	// Set the tab caption to mark a new file
 	m_nNewFiles++;
 	sCaption = i18n("Untitled ") + QString::number(m_nNewFiles);
+	/*
 	changeTab(pEditPage, 
-		Pixmaps().getPixmap(KScopePixmaps::TabRW),
+		//Pixmaps().getPixmap(KScopePixmaps::TabRW),
 		sCaption);
-	setTabToolTip(pEditPage, i18n("New unsaved file"));
-}
-
-/**
- * Applies the user's colour and font preferences to all pages.
- */
-void EditorTabs::applyPrefs()
-{
-	EditorPage* pPage;
-	int i;
-
-	// Iterate editor pages
-	for (i = 0; i < count(); i++) {
-		pPage = (EditorPage*)page(i);
-		pPage->applyPrefs();
-		setTabIconSet(pPage, Pixmaps().getPixmap(pPage->isWritable() ? 
-			KScopePixmaps::TabRW : KScopePixmaps::TabRO));
-	}
+	*/
+	//setTabToolTip(pEditPage, i18n("New unsaved file"));
 }
 
 /**
@@ -363,261 +351,26 @@ void EditorTabs::setBookmarks(FileLocationList& fll)
 #endif
 
 /**
- * Fills a QueryView object with the list of currently active bookmarks.
- * @param	pView	The widget to use for displaying bookmarks
- */
-void EditorTabs::showBookmarks(QueryView* pView)
-{
-	int i;
-	EditorPage* pPage;
-	FileLocationList fll;
-	FileLocation* pLoc;
-	
-	fll.setAutoDelete(true);
-	
-	// Iterate over all editor pages
-	for (i = 0; i < count(); i++) {
-		// Obtain file and cursor position information
-		pPage = (EditorPage*)page(i);
-		pPage->getBookmarks(fll);
-		
-		// Populate the view
-		for (pLoc = fll.first(); pLoc; pLoc = fll.next()) {
-			pView->addRecord("", pLoc->m_sPath,
-				QString::number(pLoc->m_nLine + 1),
-				pPage->getLineContents(pLoc->m_nLine + 1));
-		}
-		
-		fll.clear();
-	}
-}
-
-/**
- * Removes an editor page.
- * If there are unsaved changes, the user is prompted, and the file is closed 
- * according to the user's choice.
- * This slot is connected to the clicked() signal of the tab's close button.
- * @param	pPage	The EditorPage object to remove
- */
-void EditorTabs::slotRemovePage(QWidget* pPage)
-{
-	removePage(pPage, false);
-}
-
-/**
- * Handles the "View->Show/Hide Tag List" menu item.
- * Shows/hides the tag list for the current page, and sets the default values
- * for all pages.
- */
-void EditorTabs::slotToggleTagList()
-{
-	EditorPage* pPage;
-	
-	// Change the default value
-	Config().setShowTagList(!Config().getShowTagList());
-	
-	// Apply for the current page, if any
-	/*
-	if ((pPage = (EditorPage*)currentPage()) != NULL) {
-		pPage->setLayout(Config().getShowTagList(),
-			Config().getEditorSizes());
-	}
-	*/
-}
-
-/**
- * Handles drag events over an empty tab widget, or over the tab bar.
- * The event is accepted if the dragged object is a list of file paths.
- * @param	pEvent	The drag move event object
- */
-void EditorTabs::dragMoveEvent(QDragMoveEvent* pEvent)
-{
-	KURL::List list;
-	bool bAccept;
-	
-	bAccept = KURLDrag::decode(pEvent, list);
-	pEvent->accept(bAccept);
-}
-
-/**
- * Handles file drops over an empty tab widget, or over the tab bar.
- * @param	pEvent	The drop event object
- */
-void EditorTabs::dropEvent(QDropEvent* pEvent)
-{
-	emit filesDropped(pEvent);
-}
-
-/**
- * Called when an editor tab is dragged from the tab widget.
- * Initialises the drag operation with a URL that corresponds to the path of
- * the file being edited in the corresponding page.
- * This slot is connected to the initiateDrag() signal emitted by the tab
- * widget.
- * @param	pWidget	The page whose tab is being dragged
- */
-void EditorTabs::slotInitiateDrag(QWidget* pWidget)
-{
-	KURL url;
-	KURLDrag* pDrag;
-
-	// Create a URL list containing the appropriate file path
-	url.setPath(((EditorPage*)pWidget)->getFilePath());
-	pDrag = new KURLDrag(KURL::List(url), this);
-	
-	// Start the drag
-	pDrag->dragCopy();
-}
-
-/**
- * Changes the tab icon of a modified file.
- * @param	pEditPage	The editor page whose file was modified
- * @param	bModified	true if the file has changed its status to modified,
- *						false otherwise (i.e., when undo operations restore it
- *						to its original contents.)
- */
-void EditorTabs::slotFileModified(EditorPage* pEditPage, bool bModified)
-{
-	if (bModified)
-		setTabIconSet(pEditPage, Pixmaps().getPixmap(KScopePixmaps::TabSave));
-	else
-		setTabIconSet(pEditPage, Pixmaps().getPixmap(KScopePixmaps::TabRW));
-}
-
-/**
- * Counts the number of pages containing modified files.
- * @return	The number of modified files
- */
-int EditorTabs::getModifiedFilesCount()
-{
-	int i, nResult;
-	
-	// Iterate through pages
-	for (i = 0, nResult = 0; i < count(); i++) {
-		if (((EditorPage*)page(i))->isModified())
-			nResult++;
-	}
-	
-	return nResult;
-}
-
-/**
  * Saves all files open for editing.
  */
 void EditorTabs::slotSaveAll()
 {
-	int i;
+	//int i;
 	
 	// Iterate through pages
-	for (i = 0; i < count(); i++)
-		((EditorPage*)page(i))->save();
+	//for (i = 0; i < count(); i++)
+	//	((EditorPage*)page(i))->save();
 }
 
-/**
- * Selects the page to the left of the current one.
- */
-void EditorTabs::slotGoLeft()
-{
-	int nIndex;
-	
-	nIndex = currentPageIndex();
-	if (nIndex > 0) {
-		nIndex--;
-		setCurrentPage(nIndex);
-	}
+void EditorTabs::dragMoveEvent(QDragMoveEvent *w){
 }
 
-/**
- * Selects the page to the right of the current one.
- */
-void EditorTabs::slotGoRight()
-{
-	int nIndex;
-	
-	nIndex = currentPageIndex();
-	if (nIndex < count() - 1) {
-		nIndex++;
-		setCurrentPage(nIndex);
-	}
+void EditorTabs::dropEvent(QDropEvent *w){
 }
 
-/**
- * Fills the main window's "Window" menu with the current list of file tabs.
- * This slot is attached to the aboutToShow() signal, emitted by the Window
- * popup menu.
- */
-void EditorTabs::slotFillWindowMenu()
-{
-	QString sLabel;
-	int i;
-	
-	// Delete old menu items
-	// NOTE: We can't use aboutToHide() to do that, since it is emitted 
-	// _before_ the activated() signal
-	
-//	for (i = 0; i < m_nWindowMenuItems; i++)
-//		m_pWindowMenu->removeItem(i);
-	
-	// Add new items
-	for (i = 0; i < count(); i++) {
-		sLabel = (i < 10) ? QString("&%1 %2").arg(i).arg(label(i)) : label(i);
-		//m_pWindowMenu->insertItem(sLabel, i);
-	}
-	
-	// Store the number of items added
-	m_nWindowMenuItems = i;
+int EditorTabs::getModifiedFilesCount(){
+	return 0;
 }
 
-/**
- * Sets the current page to the given one.
- * This slot is attached to the activated() signal, emitted by the "Window"
- * popup menu. The tab number to switch to is given by the menu item ID.
- * Note that we do not trust setCurrentPage() to filter out the IDs of other
- * menu items (which are supposed to be negative numbers).
- */
-void EditorTabs::slotSetCurrentPage(int nId)
-{
-	if (nId >= 0 && nId < count())
-		setCurrentPage(nId);
-}
 
-/**
- * Closes an edited file, and removes its page.
- * Once a file has been closed, its page is removed from the tab widget stack,
- * its menu item in the "Windows" menu is deleted and all other references to
- * it are removed.
- * Note that the operation may fail if the user chooses not to close the file
- * when prompted for unsaved changes.
- * @param	pPage	The EditorPage object to remove
- * @param	bForce	true to close the page even if there are unsaved changes,
- *					false otherwise
- * @return	true if the page was removed, false otherwise
- */
-bool EditorTabs::removePage(QWidget* pPage, bool bForce)
-{
-	EditorPage* pEditPage;
-	QString sFilePath;
-	
-	// Store the file path for later
-	pEditPage = (EditorPage*)pPage;
-	sFilePath = pEditPage->getFilePath();
-	
-	// Close the edited file (may fail if the user aborts the action)
-	if (!pEditPage->close(bForce))
-		return false;
-		
-	// Remove the page and all references to it
-	m_mapEdit.remove(sFilePath);
-	TabWidget::removePage(pPage);
-
-	// Update the new state if no other page exists (if another page has
-	// become active, it will update the new state, so there is no need for
-	// special handling)
-	//if (currentPage() == NULL)
-	//	slotCurrentChanged(NULL);
-	
-	// Notify the page has been removed
-	emit editorRemoved(pEditPage);
-	return true;
-}
-// Sun Feb  5 17:13:20 PST 2012
+// Sat Feb 18 15:59:04 PST 2012

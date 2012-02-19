@@ -37,11 +37,13 @@ public:
 	void showBookmarks(QueryView*);
 	
 public slots:
+	void slotSaveAll();
+/*
 	void slotRemovePage(QWidget*);
 	void slotToggleTagList();
-	void slotSaveAll();
 	void slotGoLeft();
 	void slotGoRight();
+*/
 	
 signals:
 	/**
@@ -92,10 +94,12 @@ private slots:
 	void slotCurrentChanged(QWidget*);
 	void slotAttachFile(EditorPage*, const QString&);
 	void slotNewFile(EditorPage*);
+/*
 	void slotFileModified(EditorPage*, bool);
 	void slotInitiateDrag(QWidget*);
 	void slotFillWindowMenu();
 	void slotSetCurrentPage(int);
+*/
 };
 #endif
 // Sun Feb  5 17:13:39 PST 2012
