@@ -121,6 +121,7 @@ void KScope::setupActions()
 {
 
 	KStandardAction::open(this, SLOT(openFile()), actionCollection());
+	KStandardAction::openNew(this, SLOT(newFile()), actionCollection());
 
 	// BEGIN KACTIONS
 	// BEGIN version control menu
@@ -237,6 +238,19 @@ void KScope::restoreSession()
 		qDebug() << "openfilenamed:" << str;
 		// openFileNamed(str);
     	}
+
+	return;
+}
+
+void KScope::newFile()
+{
+	qDebug() << "new file";
+	int i_tab; 
+
+	m_doc = m_editor->createDocument(0);
+   	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
+	i_tab = m_pTabWidget->addTab(m_view, "UNSAVED");
+	m_pTabWidget->setCurrentIndex(i_tab);
 
 	return;
 }

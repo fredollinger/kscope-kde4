@@ -75,6 +75,7 @@ public:
 	bool noOpenProject();
 	void open(const QString&);
 	void openFileNamed(QString);
+	void newFile();
 	void openProject(const QString&);
 	void save(void);
 	void verifyCscope(void);
