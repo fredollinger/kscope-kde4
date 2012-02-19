@@ -181,12 +181,13 @@ private slots:
 
 	// BEGIN Menu actions
 	// BEGIN Version Control Actions
+	void slotAdd(void);
 	void slotCommit(void);	
+	void slotDiff(void);	
 	void slotDiffDone(int i, QProcess::ExitStatus es);
 	void slotDiffReady(void);	
 	void slotPull(void);	
 	void slotPush(void);	
-	void slotDiff(void);	
 	// END Version Control Actions
 
 	void openFile(void);

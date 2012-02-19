@@ -11,6 +11,7 @@
 	<Menu name="vcs"><text>&amp;VCS</text>
 		<Action name="vcs_commit"/>
 		<Action name="vcs_push"/>
+		<Action name="vcs_add"/>
 		<Action name="vcs_diff"/>
 		<Action name="vcs_pull"/>
 	</Menu>

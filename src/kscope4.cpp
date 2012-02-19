@@ -136,6 +136,13 @@ void KScope::setupActions()
 	connect(vcsDiff, SIGNAL(triggered(bool)),
 	this, SLOT(slotDiff()));
 
+	KAction* vcsAdd = new KAction(this);
+  	vcsAdd->setText(i18n("Add file to versioning"));
+	actionCollection()->addAction("vcs_add", vcsAdd);
+	connect(vcsAdd, SIGNAL(triggered(bool)),
+	this, SLOT(slotAdd()));
+
+
 	KAction* vcsPull = new KAction(this);
   	vcsPull->setText(i18n("Pull"));
 	actionCollection()->addAction("vcs_pull", vcsPull);
@@ -886,6 +893,12 @@ void KScope::slotPush(){
 	qDebug() << "push: " << m_pProjMgr->getSourceRoot();
 	if (noOpenProject()) return;
 	m_pVcs->push(m_pProjMgr->getSourceRoot()); 
+}
+
+
+void KScope::slotAdd(){
+	qDebug() << "slotAdd";
+	//m_pVcs->pull(); 
 }
 
 void KScope::slotPull(){
