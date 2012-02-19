@@ -71,7 +71,7 @@ public:
 	void setDotPath(const QString&);
 	const QStringList& getRecentProjects() const;
 	void addRecentProject(const QString&);
-	void removeRecentProject(const QString&);
+	void removeProject(const QString&);
 
 
 	bool getShowTagList() const;

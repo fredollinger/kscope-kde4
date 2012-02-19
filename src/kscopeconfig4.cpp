@@ -194,17 +194,6 @@ const QStringList& KScopeConfig::getRecentProjects() const
 }
 
 /**
- * Removes the given project path from recently used projects list.
- * @param	sProjPath	The path of the project to remove
- */
-void KScopeConfig::removeRecentProject(const QString& sProjPath)
-{
-
-	qDebug() << "KScopeConfig::removeRecentProject need replacement to QString.find() \n";
-	// mRecentProjects.remove(sProjPath);
-}
-
-/**
  * @return	true if the tag list should be visible, false otherwise
  */
 bool KScopeConfig::getShowTagList() const
@@ -546,6 +535,16 @@ void KScopeConfig::addRecentProject(const QString& sProjPath)
 	mRecentProjects.prepend(sProjPath);
 	mRecentProjects.removeDuplicates();
 
+}
+
+/**
+ * Removes the given project path from recently used projects list.
+ * @param	sProjPath	The path of the project to remove
+ */
+void KScopeConfig::removeProject(const QString& sProjPath)
+{
+	mRecentProjects.removeDuplicates();
+	mRecentProjects.removeOne(sProjPath);
 }
 
 /* Set the name of the project that we will load when start up KScope */

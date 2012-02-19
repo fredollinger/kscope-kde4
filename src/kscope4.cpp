@@ -526,7 +526,9 @@ void KScope::slotOpenProject()
 	QString sPath;
 	
 	if (dlg.exec() == QDialog::Rejected){
+		sPath = dlg.getPath();
 		qDebug() << "KScope::slotOpenProject(): Rejected Selected.";
+		Config().removeProject(sPath);
 		return;
 	}
 

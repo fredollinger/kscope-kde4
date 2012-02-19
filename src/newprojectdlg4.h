@@ -98,6 +98,7 @@ public:
 	
 public slots:
 	void vcsChanged(int i);
+	void remove();
 
 protected slots:
 	virtual void accept();

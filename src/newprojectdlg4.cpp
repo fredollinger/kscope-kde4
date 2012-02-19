@@ -71,6 +71,8 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
+	connect(m_pRemoveButton, SIGNAL(clicked()), this, SLOT(remove()));
+
 	connect( m_kbuttongroupVcs , SIGNAL(clicked(int)), this, SLOT(vcsChanged(int)));
 
 	// Show the auto-completion properties dialogue
@@ -105,6 +107,11 @@ NewProjectDlg::~NewProjectDlg()
 void NewProjectDlg::vcsChanged(int i){
 	qDebug() << "vcsChanged: " << i;
 	kscope4::Config().setVcs(i);
+	return;
+}
+
+void NewProjectDlg::remove(){
+	qDebug() << "NewProjectDlg::remove(): STUB";
 	return;
 }
 
