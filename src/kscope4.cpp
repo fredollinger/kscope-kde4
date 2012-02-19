@@ -898,7 +898,13 @@ void KScope::slotPush(){
 
 void KScope::slotAdd(){
 	qDebug() << "slotAdd";
-	//m_pVcs->pull(); 
+	if (noOpenProject()) return;
+
+	QWidget *w = m_pTabWidget->currentWidget();
+
+	KUrl ku = dynamic_cast<KTextEditor::View*>(w)->document()->url();
+
+	m_pVcs->add(ku.pathOrUrl() ); 
 }
 
 void KScope::slotPull(){

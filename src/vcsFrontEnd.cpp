@@ -168,6 +168,30 @@ bool vcsFrontEnd::diff(){
 	return true;
 }
 
+bool vcsFrontEnd::add(QString qs){
+	QStringList slCmdLine;
+
+	const QString s_sProjPath = Config().lastOpenProject();
+
+	qDebug()<< "vcsFrontEnd::add: "<< qs;
+
+	connect(this, SIGNAL(readyRead()),
+	this, SLOT(slotDisplayResults()));
+
+	setOutputChannelMode(KProcess::MergedChannels);
+	
+	slCmdLine << "add";
+	slCmdLine << qs;
+
+	// Run a new process
+	if (!Frontend::run("git", slCmdLine, s_sProjPath)) {
+		emit aborted();
+		return false;
+	}
+	
+	return true;
+}
+
 bool vcsFrontEnd::pull(){
 	QStringList slCmdLine;
 

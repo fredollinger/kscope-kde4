@@ -30,11 +30,13 @@ class vcsFrontEnd : public Frontend
 public:
 	vcsFrontEnd(QWidget*);
 	~vcsFrontEnd();
+	bool add(QString); // add files to versioning 
 	bool commit(QString, QString); // also called submit in the p4 world
-	bool push(QString); // send files to server (no p4 equivalent)
-	bool pull(); // send files to server (no p4 equivalent)
 	bool diff(); // diff of current changes and last commit
+	bool edit(); // make file editable (co or chmod)
+	bool pull(); // send files to server (no p4 equivalent)
 	bool pullNeeded(); // do we need to pull?
+	bool push(QString); // send files to server (no p4 equivalent)
 
 protected:
 	virtual ParseResult parseStdout(QString&, ParserDelim);
