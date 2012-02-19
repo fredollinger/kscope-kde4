@@ -66,6 +66,7 @@ void OpenProjectDlg::slotProjectSelected(const QString& sProjPath)
 
 }
 
+// BEGIN DEPRECATED
 /**
  * Removes a project from the recent projects list.
  * This slot is connected to the clicked() signal of the "Remove" button.
@@ -83,6 +84,7 @@ void OpenProjectDlg::slotRemoveRecent()
 	}
 	*/
 }
+// END DEPRECATED
 
 /**
  * Selects a project for opening when an item is highlighted in the recent
@@ -126,5 +128,18 @@ void OpenProjectDlg::loadRecent()
 	// Create a list item for each project in the list
 	while (itr.hasNext())
 		m_pRecentList->addItem(itr.next());
+}
+
+
+void OpenProjectDlg::removeProject(){
+	QListWidgetItem *pItem;
+
+	// Remove the selected item, if any
+	pItem = m_pRecentList->currentItem();
+	if (pItem != NULL) {
+		kscope4::Config().removeProject(pItem->text());
+		m_pRecentList->takeItem(m_pRecentList->currentRow());
+	}
+	return;
 }
 // Sun Dec  4 09:30:23 PST 2011

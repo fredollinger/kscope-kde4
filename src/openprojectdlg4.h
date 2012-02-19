@@ -30,12 +30,13 @@ protected slots:
 	virtual void slotOpenRecent(QListWidgetItem*);
 	// END ORIG
 
-	// BEGIN FROM kscope2
+	// BEGIN FROM kscope4
 	/* Trying to connect to existing slots from openprojectdialog  
 	 */
 	virtual void recentProjectSelected(void);
 	virtual void accept(void);
-	// END FROM kscope2
+	void removeProject();
+	// END FROM kscope4
 
 private:
 	void loadRecent();

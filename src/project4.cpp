@@ -440,5 +440,15 @@ void Project::addOpenedFile(const QString& sOpenedFile)
 }
 
 
+void Project::removeOpenedFile(const QString& sOpenedFile)
+{
+
+	qDebug() << "Project::removeOpenedFile()"<< sOpenedFile;
+	m_qsOpenFiles.removeDuplicates();
+	m_qsOpenFiles.removeOne(sOpenedFile);
+	return;
+}
+
+
 }// namespace kscope4
 // Sat Dec 24 13:15:32 PST 2011

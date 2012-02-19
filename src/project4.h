@@ -48,6 +48,7 @@ public:
 	static bool create(const QString&, const QString&, const Options&);
 
 	void addOpenedFile(const QString&);
+	void removeOpenedFile(const QString&);
 	
 private:
 	/** The configuration file ("cscope.proj") */

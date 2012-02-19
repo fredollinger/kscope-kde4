@@ -582,7 +582,8 @@ void KScopeConfig::addOpenedFile(const QString& sOpenedFile)
 }
 
 void KScopeConfig::removeOpenedFile(const QString& sProjPath){
-	qDebug() << "FIXME: kscopeconfig4: removeRecentProject not done";
+	mOpenedFiles.removeDuplicates();
+	mOpenedFiles.removeOne(sProjPath);
 }
 
 } // namespace kscope4

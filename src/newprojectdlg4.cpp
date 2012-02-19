@@ -66,12 +66,10 @@ NewProjectDlg::NewProjectDlg(bool bNewProj, QWidget* pParent,
 		KFile::LocalOnly);
 	m_pSrcRootRequester->setMode(KFile::Directory | KFile::ExistingOnly | 
 			KFile::LocalOnly);
-	
+
 	// Set up the Create/Cancel buttons	
 	connect(m_pCreateButton, SIGNAL(clicked()), this, SLOT(accept()));
 	connect(m_pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
-
-	connect(m_pRemoveButton, SIGNAL(clicked()), this, SLOT(remove()));
 
 	connect( m_kbuttongroupVcs , SIGNAL(clicked(int)), this, SLOT(vcsChanged(int)));
 
@@ -107,11 +105,6 @@ NewProjectDlg::~NewProjectDlg()
 void NewProjectDlg::vcsChanged(int i){
 	qDebug() << "vcsChanged: " << i;
 	kscope4::Config().setVcs(i);
-	return;
-}
-
-void NewProjectDlg::remove(){
-	qDebug() << "NewProjectDlg::remove(): STUB";
 	return;
 }
 

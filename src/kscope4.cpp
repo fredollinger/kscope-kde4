@@ -228,7 +228,7 @@ void KScope::restoreSession()
 
 	foreach (QString str, slOpenedFiles ) {  
 		qDebug() << "openfilenamed:" << str;
-		openFileNamed(str);
+		// openFileNamed(str);
     	}
 
 	return;
@@ -275,7 +275,6 @@ void KScope::openFileNamed(QString name)
 	}
 
 	m_doc->openUrl(kuDoc);
-	// Config().addOpenedFile(kuDoc.pathOrUrl());
 	((Project*)pProj)->addOpenedFile(kuDoc.pathOrUrl() );
 	m_pTabWidget->setTabText(i_tab, kuDoc.fileName() );
 
@@ -526,9 +525,9 @@ void KScope::slotOpenProject()
 	QString sPath;
 	
 	if (dlg.exec() == QDialog::Rejected){
-		sPath = dlg.getPath();
+		//sPath = dlg.getPath();
 		qDebug() << "KScope::slotOpenProject(): Rejected Selected.";
-		Config().removeProject(sPath);
+		//Config().removeProject(sPath);
 		return;
 	}
 
@@ -1141,8 +1140,15 @@ void KScope::slotProjectProperties(){
 }
 
 void KScope::slotCloseTab(QWidget *w){
+	// A project must be open
+	ProjectBase* pProj;
+	pProj = m_pProjMgr->curProject();
+	if (pProj){
+		KUrl ku = dynamic_cast<KTextEditor::View*>(w)->document()->url();
+		((Project*)pProj)->removeOpenedFile(ku.pathOrUrl() );
+	}
+
 	savePage(w);
-	// Config().removeOpenedFile(name);
 	m_pTabWidget->removePage(w);
 	delete w;
 	return;
