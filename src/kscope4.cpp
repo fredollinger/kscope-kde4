@@ -21,6 +21,7 @@
 #include "cscopefrontend4.h"
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
+#include "editortabs4.h"
 #include "kscope4.h"
 #include "kscope4-common.h"
 #include "kscopeconfig4.h"
@@ -47,6 +48,8 @@ KScope::KScope(QWidget *) :
 
 	QString currentProject;
 
+	// Create the main child widgets
+	m_pEditTabs = new EditorTabs(this, NULL);
 	m_editor = KTextEditor::EditorChooser::editor();
 	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
@@ -1201,54 +1204,45 @@ void KScope::savePage(QWidget *w){
 	return;
 }
 
-
 #if 0
-// BEGIN KScope::removeAllPages()
-// FIXME: Change to KScope
 /**
- * Removes all editor pages.
- * @return	true if successful, false if the user aborts the operation
+ * Opens a file in a new editor tab.
+ * If an editor page already exists for the requested file, it is selected.
+ * Otherwise, a new page is created, and the requested file is loaded.
+ * @param	sFilePath	The path of the file to open
+ * @return	A pointer to the found or newly created editor page
  */
-bool KScope::removeAllPages()
+EditorPage* KScope::addEditor(const QString& sFilePath)
 {
-	QWidget* pPage;
+	EditorPage* pPage;
+	QString sAbsFilePath;
+	ProjectBase* pProj;
 	
-	// Check if there are any modified files
-	if (getModifiedFilesCount()) {
-		// Prompt the user to save these files
-		switch (KMessageBox::questionYesNoCancel(NULL,
-			i18n("Some files contain unsaved changes.\nWould you like to "
-			"save these files?"))) {
-			case KMessageBox::Yes:
-				// Save files
-				slotSaveAll();
-				break;
-				
-			case KMessageBox::No:
-				// Close files, ignoring changes
-				break;
-				
-			case KMessageBox::Cancel:
-				// Abort
-				return false;
-		}
+	// If the file name is given using a relative path, we need to convert
+	// it to an absolute one
+	// TODO: Project needs a translatePath() method
+	pProj = m_pProjMgr->curProject();
+	if (sFilePath[0] != '/' && pProj) {
+		sAbsFilePath = QDir::cleanPath(pProj->getSourceRoot() + "/" +
+			sFilePath);
+	}
+	else {
+		sAbsFilePath = QDir::cleanPath(sFilePath);
 	}
 	
-	// Avoid warning about modification on disk
-	Kate::Document::setFileChangedDialogsActivated(false);
+	// Do not open a new editor if one exists for this file
+	pPage = m_pEditTabs->findEditorPage(sAbsFilePath);
+	if (pPage != NULL)
+		return pPage;
+
+	// Create a new page
+	pPage = createEditorPage();	
+				
+	// Open the requested file
+	pPage->open(sAbsFilePath);
 	
-	// Iterate pages until none is left
-	while ((pPage = currentPage()) != NULL)
-		removePage(pPage, true);
-	
-	// Restore kate warning if enabled
-	Kate::Document::setFileChangedDialogsActivated(
-		Config().getWarnModifiedOnDisk());
-	
-	// All pages were successfully removed
-	return true;
+	return pPage;
 }
-// END KScope::removeAllPages()
 #endif
 
 } // namespace kscope4

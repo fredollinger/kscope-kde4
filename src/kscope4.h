@@ -82,21 +82,25 @@ public:
 	QString getSourceRoot(void);
 
 private:
-	void closeAllTabs();
 	// holds all the document pages
 	TabWidget *m_pTabWidget; 
-
-	void restoreSession(void);
+	EditorTabs* m_pEditTabs;
+	EditorPage* addEditor(const QString&);
+	KParts::ReadWritePart *m_part;
+	KTextEditor::Editor *m_editor;
+	KTextEditor::Document *m_doc;
+   	KTextEditor::View *m_view;
 	vcsFrontEnd *m_pVcs;
-	buildFrontEnd *m_pBuild;
+	QListWidget *customerList;
 
 	vcsCommitDlg *m_pVcsCommit;
 
-	QListWidget *customerList;
+	void closeAllTabs();
+	void restoreSession(void);
+	buildFrontEnd *m_pBuild;
 
-	/**
-	 * Manages menu and tool-bar commands.
-	 */
+
+	// Manages menu and tool-bar commands.
 	KScopeActions* m_pActions;
 
 	/** The query window docking area. */
@@ -116,12 +120,7 @@ private:
 		item. */	
 	bool m_bHideQueryOnSelection;
 
-	KParts::ReadWritePart *m_part;
-	KTextEditor::Editor *m_editor;
-	KTextEditor::Document *m_doc;
-   	KTextEditor::View *m_view;
 	
-
 	/** A persistent dialog used to display error messages from Cscope. */
 	CscopeMsgDlg* m_pMsgDlg;
 
