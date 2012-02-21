@@ -1,0 +1,11 @@
+1. reimplement filelocationlist (see project.h) as a container (stl style) class w/ all vars and functions in a file called filelocationclass.cpp. This will now be its own calss.
+
+2. pull this filelocationclass into project4.cpp and other files where it belongs (see src-orig) for complete list
+
+3. do all prerequ classes for editorpage.cpp such as symbol table crap and ctagsfrontend.cpp shit. This should be way easier now that we have the skillz. Once all this shit is done, we can get eidtorpage4.cpp done, flawlessly.
+
+4. finally, get editortab4.cpp reimplmenting everything
+
+5. once this is done, study kscope.cpp for how editortab replaces our crappy tabwidget4.cpp. This should be dropped in everywhere
+
+6. kspopup.cpp should finally get all of its functions implemented properly
