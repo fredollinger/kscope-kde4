@@ -11,8 +11,12 @@ class KSPopup : public QMenu
 public: 
 	KSPopup(QWidget* pParent = 0, const char* szName = 0);
 	~KSPopup();
-	void removeItem(int);
+	void clear(void);
 	void insertItem(QString, int);
+	void popup(int);
+	void removeItem(int);
+signals:
+	void activated(int);
 };
 } // namespace kscope4
 #endif // KS_POPUP_H
