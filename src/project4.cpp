@@ -32,7 +32,6 @@ inline void flListFromStringList(FileLocationList& fll, const QStringList& sl)
 inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
 {
 	FileLocationList* pList;
-	FileLocation* pLoc;
 	QString sLoc;
 
 	// Nasty...
@@ -41,13 +40,18 @@ inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
 	
 	// Turn the object list into a string list, so that it can be written in
 	// the configuration file
+	 //QList<FileLocation*>::iterator pLoc;
+	QListIterator<FileLocationList*>::pLoc(FileLocation);
+	// FileLocation* pLoc;
+
 	for (pLoc = pList->first(); pLoc != NULL; pLoc = pList->next()) {
+ 	//for (pLoc = pList->begin(); pLoc != pList->end(); ++pLoc){
 		sLoc = "";
 		// QTextOStream(&sLoc) << pLoc->m_sPath << ":" << pLoc->m_nLine << ":" 
 				//<< pLoc->m_nCol;
 
-		QTextStream(&sLoc, QIODevice::WriteOnly) << pLoc->m_sPath << ":" 
-			<< pLoc->m_nLine << ":" << pLoc->m_nCol;
+		QTextStream(&sLoc, QIODevice::WriteOnly) << *pLoc.m_sPath << ":" 
+			<< *pLoc.m_nLine << ":" << *pLoc.m_nCol;
 		sl.append(sLoc);
 	}
 }

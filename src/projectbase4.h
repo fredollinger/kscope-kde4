@@ -29,6 +29,7 @@
 #ifndef PROJECTBASE_H
 #define PROJECTBASE_H
 
+#include <QList>
 #include <Q3PtrList>
 #include <qstringlist.h>
 #include <qdir.h>
@@ -148,7 +149,7 @@ struct FileLocation
 /**
  * A list of file locations used for restoring a session.
  */
-typedef Q3PtrList<FileLocation> FileLocationList;
+typedef QList<FileLocation*> FileLocationList;
 
 class FileSemaphore;
 
