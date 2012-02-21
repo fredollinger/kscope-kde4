@@ -13,7 +13,7 @@ public:
 	~KSPopup();
 	void clear(void);
 	void insertItem(QString, int);
-	void popup(int);
+	void popup(QPoint);
 	void removeItem(int);
 signals:
 	void activated(int);

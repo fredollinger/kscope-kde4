@@ -6,8 +6,10 @@
 #include "editorpage4.h"
 #include "projectmanager4.h"
 
-typedef QMap<QString, EditorPage*> EditorMap;
 class QueryView;
+typedef QMap<QString, EditorPage*> EditorMap;
+
+namespace kscope4{
 
 /**
  * A tab widget that holds several editor windows.
@@ -101,5 +103,6 @@ private slots:
 	void slotSetCurrentPage(int);
 */
 };
+} // namespace kscope4
 #endif
 // Sun Feb  5 17:13:39 PST 2012

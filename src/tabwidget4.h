@@ -1,29 +1,34 @@
 #ifndef TABWIDGET_H
 #define TABWIDGET_H
 
-#include <ktabwidget.h>
-#include <KUrl>
 
+#include <qtoolbutton.h>
+#include "kspopup.h"
+#include <ktabwidget.h>
 
 /**
  * An extension to the standard KDE tab widget that allows the user to select
  * a tab from a list displayed as a popup menu.
  * @author Elad Lahav
  */
+namespace kscope4{
 class TabWidget : public KTabWidget
 {
 Q_OBJECT
 public:
-	TabWidget(QWidget* pParent = 0);
-	~TabWidget();
-signals:	
-	void signalClose(QWidget *w);
-public slots:
-	void closeClicked(QWidget *w);
+    TabWidget(QWidget* pParent = 0, const char* szName = 0);
+    ~TabWidget();
+
 private:
-	KUrl m_kuName;
+	/** The list button. */
+	QToolButton* m_pButton;
+	
+	/** A popup-menu containing all tab labels. */
+	KSPopup * m_pMenu;
+	
+private slots:
+	void slotShowTabList();
 };
+}// namespace kscope4
 
 #endif
-// Sat Feb 11 13:14:35 PST 2012
-

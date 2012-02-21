@@ -12,6 +12,7 @@
  * @param	pParent		The parent widget
  * @param	szName		The widget's name
  */
+namespace kscope4{
 EditorTabs::EditorTabs(QWidget* pParent, const char* szName) :
 	TabWidget(pParent),
 	m_pCurPage(NULL),
@@ -371,6 +372,5 @@ void EditorTabs::dropEvent(QDropEvent *w){
 int EditorTabs::getModifiedFilesCount(){
 	return 0;
 }
-
-
+} // namespace kscope4
 // Sat Feb 18 15:59:04 PST 2012

@@ -25,7 +25,7 @@ void KSPopup::insertItem(QString qs, int i){
 void KSPopup::clear(){
 }
 
-void KSPopup::popup(int){
+void KSPopup::popup(QPoint qp){
 }
 
 

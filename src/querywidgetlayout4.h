@@ -25,7 +25,7 @@ class Ui_QueryWidgetLayout
 {
 public:
     QHBoxLayout *hboxLayout;
-    TabWidget *m_pQueryTabs;
+    kscope4::TabWidget *m_pQueryTabs;
 
     void setupUi(QWidget *QueryWidgetLayout)
     {
@@ -36,7 +36,7 @@ public:
         hboxLayout->setSpacing(0);
         hboxLayout->setContentsMargins(0, 0, 0, 0);
         hboxLayout->setObjectName(QString::fromUtf8("hboxLayout"));
-        m_pQueryTabs = new TabWidget(QueryWidgetLayout);
+        m_pQueryTabs = new kscope4::TabWidget(QueryWidgetLayout);
         m_pQueryTabs->setObjectName(QString::fromUtf8("m_pQueryTabs"));
 
         hboxLayout->addWidget(m_pQueryTabs);
