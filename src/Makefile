@@ -44,5 +44,7 @@ newprojectlayout4.h:
 KSGlobalConfig.h:
 	rm -f KSGlobalConfig.h
 	kconfig_compiler KSGlobalConfig.kcfg KSGlobalConfig.kcfgc
+deps:
+	sudo apt-get install kdelibs5-dev g++ cmake
 
 # Sun Oct 16 18:44:17 PDT 2011

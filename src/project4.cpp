@@ -25,12 +25,13 @@ inline void flListFromStringList(FileLocationList& fll, const QStringList& sl)
 		sPath = (*itr).section(':', 0, 0);
 		nLine = (*itr).section(':', 1, 1).toUInt();
 		nCol = (*itr).section(':', 2, 2).toUInt();
-		fll.append(new FileLocation(sPath, nLine, nCol));
+		// fll.append(new FileLocation(sPath, nLine, nCol));
 	}
 }
 
 inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
 {
+	#if 0
 	FileLocationList* pList;
 	QString sLoc;
 
@@ -40,13 +41,17 @@ inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
 	
 	// Turn the object list into a string list, so that it can be written in
 	// the configuration file
-	 //QList<FileLocation*>::iterator pLoc;
-	QListIterator<FileLocationList*>::pLoc(FileLocation);
-	// FileLocation* pLoc;
+	// QListIterator<QList<kscope4::FileLocation*>*> pLoc;
 
-	for (pLoc = pList->first(); pLoc != NULL; pLoc = pList->next()) {
+
+	// /home/follinge/projects/kscope-kde4/src/project4.cpp :47:2: error: 'pLoc' is not a member of 'QListIterator<QList<kscope4::FileLocation*>*>'
+	// /home/follinge/projects/kscope-kde4/src/project4.cpp:44:2: error: 'pLoc' is not a member of 'QListIterator<QList<kscope4::FileLocation*>*>'
+	FileLocation* pLoc;
+	QListIterator<FileLocationList*>::pLoc(FileLocation);
+
+	// for (pLoc = pList->first(); pLoc != NULL; pLoc = pList->next()) {
  	//for (pLoc = pList->begin(); pLoc != pList->end(); ++pLoc){
-		sLoc = "";
+	//	sLoc = "";
 		// QTextOStream(&sLoc) << pLoc->m_sPath << ":" << pLoc->m_nLine << ":" 
 				//<< pLoc->m_nCol;
 
@@ -54,6 +59,7 @@ inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
 			<< *pLoc.m_nLine << ":" << *pLoc.m_nCol;
 		sl.append(sLoc);
 	}
+	#endif
 }
 
 /**

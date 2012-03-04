@@ -452,8 +452,8 @@ bool KScope::slotCloseProject()
 	qDebug() << "KScope::slotCloseProject() FIXME: rebuild \n";
 	
 	// Make sure all FileLocation objects are deleted
-	sess.fllOpenFiles.setAutoDelete(true);
-	sess.fllBookmarks.setAutoDelete(true);
+	//sess.fllOpenFiles.setAutoDelete(true);
+	//sess.fllBookmarks.setAutoDelete(true);
 	
 	// Close all open editor pages
 	/*
