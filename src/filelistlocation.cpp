@@ -1,7 +1,8 @@
 #include "filelistlocation.h"
 
 namespace kscope4{
-FileListLocation::FileListLocation() : QWidget()
+FileListLocation(QString sPath, uint nLine, uint nCol) : m_sPath(sPath),
+//FileListLocation::FileListLocation() : QWidget()
 {
 }
 
