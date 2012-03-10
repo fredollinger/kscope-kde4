@@ -13,6 +13,12 @@ Q_OBJECT
 public:
 	FileListLocation();
 	~FileListLocation();
+	void append(QString, uint, uint);
+
+private:
+	QList<QString> m_sPathList;
+	QList<uint> m_nLineList;
+	QList<uint> m_nColList;
 };
 
 }

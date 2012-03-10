@@ -30,7 +30,7 @@
 #define PROJECTBASE_H
 
 #include <QList>
-#include <Q3PtrList>
+// #include <Q3PtrList>
 #include <qstringlist.h>
 #include <qdir.h>
 #include <qfile.h>
