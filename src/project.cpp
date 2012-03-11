@@ -425,5 +425,6 @@ void Project::addOpenedFile(const QString& sOpenedFile)
 	m_OpenedFiles.removeDuplicates();
 	return;
 }
+
 	
 }

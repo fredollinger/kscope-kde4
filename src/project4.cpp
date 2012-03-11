@@ -9,6 +9,7 @@
 #include "cscopefrontend4.h"
 #include "kscopeconfig4.h"
 #include "ksconfig4.h"
+#include "ksession.h"
 #include "project4.h"
 
 namespace kscope4{
@@ -457,6 +458,43 @@ void Project::removeOpenedFile(const QString& sOpenedFile)
 	m_qsOpenFiles.removeDuplicates();
 	m_qsOpenFiles.removeOne(sOpenedFile);
 	return;
+}
+
+/**
+ * Saves session-related information in the project's configuration file.
+ * @param	sess	Session parameters
+ */
+void Project::storeSessionNew(const KSession& sess)
+{
+	QStringList slEntry;
+	
+	m_pConf->setGroup("Session");
+	
+	#if 0
+	// Write the list of open file locations
+	stringListFromFlList(slEntry, sess.fllOpenFiles);
+	m_pConf->writeEntry("OpenFiles", slEntry);
+	
+	// Write the path of the last viewed file
+	m_pConf->writeEntry("LastOpenFile", sess.sLastFile);
+	
+	// Write the lists of locked query files and call-tree/graph files
+	m_pConf->writeEntry("QueryFiles", sess.slQueryFiles);
+	m_pConf->writeEntry("CallTreeFiles", sess.slCallTreeFiles);
+	
+	// Write the list of bookmarks
+	stringListFromFlList(slEntry, sess.fllBookmarks);
+	m_pConf->writeEntry("Bookmarks", slEntry);
+	
+	// Write make-related information
+	// Be careful not to write empty strings, as they may occur if the make
+	// dialogue was not invoked during this session
+	if (!sess.sMakeCmd.isEmpty())
+		m_pConf->writeEntry("MakeCommand", sess.sMakeCmd);
+	if (!sess.sMakeRoot.isEmpty())
+		m_pConf->writeEntry("MakeRoot", sess.sMakeRoot);
+
+	#endif
 }
 
 

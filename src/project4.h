@@ -2,6 +2,7 @@
 #define PROJECT_H
 
 #include "ksconfig4.h"
+#include "ksession.h"
 #include "projectbase4.h"
 
 /**
@@ -11,6 +12,9 @@ namespace kscope4{
 class Project : public ProjectBase
 {
 public:
+	// temp function which will replace storeSession
+	void storeSessionNew(const KSession&);
+
 	Project();
 	virtual ~Project();
 	

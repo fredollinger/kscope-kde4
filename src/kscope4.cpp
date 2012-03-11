@@ -26,6 +26,7 @@
 #include "kscope4-common.h"
 #include "kscopeconfig4.h"
 #include "kdockwidget4.h"
+#include "ksession.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
 #include "projectmanager4.h"
