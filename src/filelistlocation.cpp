@@ -1,6 +1,7 @@
 #include "filelistlocation.h"
 #include <QList>
 #include <QDebug>
+#include <QTextStream>
 
 namespace kscope4{
 FileListLocation::FileListLocation() : QWidget()
@@ -40,17 +41,34 @@ FileListLocation::flListFromStringList(const QStringList& sl, FileListLocation &
 }
 
 // BEGIN string List From FlList
-void stringListFromFlList(QStringList& sl, const FileListLocation& fll){
+void FileListLocation::stringListFromFlList(QStringList& sl){
 	qDebug() << __PRETTY_FUNCTION__ << "FIXME";
 
 //	FileLocationList* pList;
 //	FileLocation* pLoc;
 	QString sLoc;
 
-	// Nasty...
-//	pList = (FileLocationList*)&fll;
 	sl.clear();
+
+//	QList<QString> m_sPathList;
+
+	int c=0;
 	
+	QListIterator<QString> i(m_sPathList);
+    	while (i.hasNext()){
+		qDebug() << "FIXME: do it here.";	
+		sLoc = "";
+
+		QTextStream(&sLoc, QIODevice::WriteOnly) << i << ":" << 
+			m_nLineList.at(c) << 
+			":" << m_nColList.at(c);
+
+		sl.append(sLoc);
+
+		// last line here c++
+		c++;
+	}
+
 	// Turn the object list into a string list, so that it can be written in
 	// the configuration file
 	/*

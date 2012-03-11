@@ -1,3 +1,5 @@
+1. reimlement a smarter ksession class and replace all instances of session struct with the class.
+
 1. reimplement filelocationlist (see project.h) as a container (stl style) class w/ all vars and functions in a file called filelocationclass.cpp. This will now be its own calss.
 
 2. pull this filelocationclass into project4.cpp and other files where it belongs (see src-orig) for complete list
