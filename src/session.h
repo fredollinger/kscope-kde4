@@ -3,6 +3,7 @@
 
 #include <QList>
 #include <QWidget>
+#include "filelistlocation.h"
 
 namespace kscope4{
 class Session : public QWidget
@@ -15,10 +16,13 @@ public:
 	~Session();
 
 private:
-	QList<QString> m_sPathList;
-	QList<uint> m_nLineList;
-	QList<uint> m_nColList;
-
+	FileListLocation fllOpenFiles;
+	QString sLastFile;
+	QStringList slQueryFiles;
+	QStringList slCallTreeFiles;
+	FileListLocation fllBookmarks;
+	QString sMakeCmd;
+	QString sMakeRoot;
 };
 
 }
