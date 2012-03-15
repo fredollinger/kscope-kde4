@@ -43,6 +43,7 @@ void FileListLocation::stringListFromFlList(QStringList& sl){
 	qDebug() << __PRETTY_FUNCTION__ << "FIXME";
 
 	QString sLoc;
+	QString qs;
 	int c=0;
 
 	sl.clear();
@@ -53,7 +54,8 @@ void FileListLocation::stringListFromFlList(QStringList& sl){
 		sLoc = "";
 
 		qDebug() << "fix this";
-		sLoc << i.next() << ":" << m_nLineList.at(c) << ":" << m_nColList.at(c);
+		qs = i.next();
+		sLoc = qs + ":" + m_nLineList.at(c) + ":" + m_nColList.at(c);
 
 		sl.append(sLoc);
 
