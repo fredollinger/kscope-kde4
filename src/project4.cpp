@@ -30,39 +30,6 @@ inline void flListFromStringList(FileLocationList& fll, const QStringList& sl)
 	}
 }
 
-inline void stringListFromFlList(QStringList& sl, const FileLocationList& fll)
-{
-	#if 0
-	FileLocationList* pList;
-	QString sLoc;
-
-	// Nasty...
-	pList = (FileLocationList*)&fll;
-	sl.clear();
-	
-	// Turn the object list into a string list, so that it can be written in
-	// the configuration file
-	// QListIterator<QList<kscope4::FileLocation*>*> pLoc;
-
-
-	// /home/follinge/projects/kscope-kde4/src/project4.cpp :47:2: error: 'pLoc' is not a member of 'QListIterator<QList<kscope4::FileLocation*>*>'
-	// /home/follinge/projects/kscope-kde4/src/project4.cpp:44:2: error: 'pLoc' is not a member of 'QListIterator<QList<kscope4::FileLocation*>*>'
-	FileLocation* pLoc;
-	QListIterator<FileLocationList*>::pLoc(FileLocation);
-
-	// for (pLoc = pList->first(); pLoc != NULL; pLoc = pList->next()) {
- 	//for (pLoc = pList->begin(); pLoc != pList->end(); ++pLoc){
-	//	sLoc = "";
-		// QTextOStream(&sLoc) << pLoc->m_sPath << ":" << pLoc->m_nLine << ":" 
-				//<< pLoc->m_nCol;
-
-		QTextStream(&sLoc, QIODevice::WriteOnly) << *pLoc.m_sPath << ":" 
-			<< *pLoc.m_nLine << ":" << *pLoc.m_nCol;
-		sl.append(sLoc);
-	}
-	#endif
-}
-
 /**
  */
 Project::Project() : ProjectBase(),
@@ -245,7 +212,7 @@ void Project::storeSession(const Session& sess)
 	m_pConf->writeEntry("CallTreeFiles", sess.slCallTreeFiles);
 	
 	// Write the list of bookmarks
-	stringListFromFlList(slEntry, sess.fllBookmarks);
+	// stringListFromFlList(slEntry, sess.fllBookmarks);
 	m_pConf->writeEntry("Bookmarks", slEntry);
 	
 	// Write make-related information
@@ -470,31 +437,30 @@ void Project::storeSessionNew(const KSession& sess)
 	
 	m_pConf->setGroup("Session");
 	
-	#if 0
 	// Write the list of open file locations
-	stringListFromFlList(slEntry, sess.fllOpenFiles);
+	// FIXME:
+	//stringListFromFlList(slEntry, sess.fllOpenFiles);
 	m_pConf->writeEntry("OpenFiles", slEntry);
 	
 	// Write the path of the last viewed file
-	m_pConf->writeEntry("LastOpenFile", sess.sLastFile);
+	//m_pConf->writeEntry("LastOpenFile", sess.sLastFile);
 	
 	// Write the lists of locked query files and call-tree/graph files
-	m_pConf->writeEntry("QueryFiles", sess.slQueryFiles);
-	m_pConf->writeEntry("CallTreeFiles", sess.slCallTreeFiles);
+	//m_pConf->writeEntry("QueryFiles", sess.slQueryFiles);
+	//m_pConf->writeEntry("CallTreeFiles", sess.slCallTreeFiles);
 	
 	// Write the list of bookmarks
-	stringListFromFlList(slEntry, sess.fllBookmarks);
+	//stringListFromFlList(slEntry, sess.fllBookmarks);
 	m_pConf->writeEntry("Bookmarks", slEntry);
 	
 	// Write make-related information
 	// Be careful not to write empty strings, as they may occur if the make
 	// dialogue was not invoked during this session
-	if (!sess.sMakeCmd.isEmpty())
-		m_pConf->writeEntry("MakeCommand", sess.sMakeCmd);
-	if (!sess.sMakeRoot.isEmpty())
-		m_pConf->writeEntry("MakeRoot", sess.sMakeRoot);
+	//if (!sess.sMakeCmd.isEmpty())
+		//m_pConf->writeEntry("MakeCommand", sess.sMakeCmd);
+	//if (!sess.sMakeRoot.isEmpty())
+	//	m_pConf->writeEntry("MakeRoot", sess.sMakeRoot);
 
-	#endif
 }
 
 

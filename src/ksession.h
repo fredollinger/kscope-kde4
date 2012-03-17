@@ -14,6 +14,7 @@ Q_OBJECT
 public:
 	KSession();
 	~KSession();
+	void stringList(QStringList&);
 
 private:
 	FileListLocation fllOpenFiles;
