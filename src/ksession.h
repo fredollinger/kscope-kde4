@@ -14,7 +14,8 @@ Q_OBJECT
 public:
 	KSession();
 	~KSession();
-	void stringList(QStringList&);
+	void toStringList(QStringList&) const;
+	void FromStringList(const QStringList& sl);
 
 private:
 	FileListLocation fllOpenFiles;

@@ -439,7 +439,7 @@ void Project::storeSessionNew(const KSession& sess)
 	
 	// Write the list of open file locations
 	// FIXME:
-	//stringListFromFlList(slEntry, sess.fllOpenFiles);
+	sess.toStringList(slEntry);
 	m_pConf->writeEntry("OpenFiles", slEntry);
 	
 	// Write the path of the last viewed file

@@ -11,7 +11,7 @@ KSession::~KSession()
 {
 }
 
-void KSession::stringList(QStringList& sl)
+void KSession::toStringList(QStringList& sl) const
 {
 	#if 0
 	FileLocationList* pList;
@@ -40,6 +40,23 @@ void KSession::stringList(QStringList& sl)
 		QTextStream(&sLoc, QIODevice::WriteOnly) << *pLoc.m_sPath << ":" 
 			<< *pLoc.m_nLine << ":" << *pLoc.m_nCol;
 		sl.append(sLoc);
+	}
+	#endif
+}
+
+void KSession::FromStringList(const QStringList& sl)
+{
+	#if 0
+	QStringList::ConstIterator itr;
+	QString sPath;
+	uint nLine, nCol;
+
+	// Transform the string into a list of file locations
+	for (itr = sl.begin(); itr != sl.end(); ++itr) {
+		sPath = (*itr).section(':', 0, 0);
+		nLine = (*itr).section(':', 1, 1).toUInt();
+		nCol = (*itr).section(':', 2, 2).toUInt();
+		fll.append(new FileLocation(sPath, nLine, nCol));
 	}
 	#endif
 }
