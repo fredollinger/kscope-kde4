@@ -15,7 +15,7 @@ public:
 	~FileListLocation();
 	void append(QString, uint, uint);
 	void flListFromStringList(const QStringList&);
-	void stringListFromFlList(QStringList&);
+	QStringList stringListFromFlList(void) const;
 
 private:
 	QList<QString> m_sPathList;

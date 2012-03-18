@@ -14,7 +14,7 @@ Q_OBJECT
 public:
 	KSession();
 	~KSession();
-	void toStringList(QStringList&) const;
+	QStringList toStringList(void) const;
 	void FromStringList(const QStringList& sl);
 
 private:

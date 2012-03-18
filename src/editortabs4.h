@@ -7,9 +7,10 @@
 #include "projectmanager4.h"
 
 class QueryView;
-typedef QMap<QString, EditorPage*> EditorMap;
 
 namespace kscope4{
+
+typedef QMap<QString, EditorPage*> EditorMap;
 
 /**
  * A tab widget that holds several editor windows.

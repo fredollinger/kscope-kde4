@@ -39,11 +39,12 @@ FileListLocation::flListFromStringList(const QStringList& sl)
 }
 
 // BEGIN string List From FlList
-void FileListLocation::stringListFromFlList(QStringList& sl){
+QStringList FileListLocation::stringListFromFlList() const {
 	qDebug() << __PRETTY_FUNCTION__ << "FIXME";
 
 	QString sLoc;
 	QString qs;
+	QStringList sl;
 	int c=0;
 
 	sl.clear();
@@ -62,7 +63,9 @@ void FileListLocation::stringListFromFlList(QStringList& sl){
 		// last line here c++
 		c++;
 	}
+	return sl;
 }
+
 // END string List From FlList
 
 } // namespace kscope4

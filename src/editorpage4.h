@@ -11,6 +11,7 @@
 // #include <ktexteditor/markinterfaceextension.h>
 // #include "ctagsfrontend.h"
 //#include "ctagslist.h"
+#include "filelistlocation.h"
 #include "kscopeconfig4.h"
 #include "symbolcompletion4.h"
 #include "projectbase4.h"
@@ -27,6 +28,7 @@
  * @author Elad Lahav
  */
 
+namespace kscope4{
 class EditorPage : public QHBoxLayout
 {
    Q_OBJECT
@@ -44,7 +46,7 @@ public:
 	void setEditorFocus();
 	void setTagListFocus();
 	void addBookmark(uint);
-	// void getBookmarks(FileLocationList&);
+	void getBookmarks(kscope4::FileListLocation&);
 	
 	KTextEditor::Document* getDocument();
 	KTextEditor::View* getView();
@@ -188,5 +190,6 @@ private slots:
 	void slotCursorPosChange();
 */
 };
-
+} // namespace kscope4
 #endif
+// Sun Mar 18 11:59:55 PDT 2012
