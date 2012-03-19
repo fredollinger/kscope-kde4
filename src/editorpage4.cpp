@@ -1,10 +1,11 @@
 #include <kdeversion.h>
 
-#include <Q3PtrList>
+//#include <Q3PtrList>
 #include <qfileinfo.h>
 #include <QHBoxLayout>
 
 #include <KTextEditor/MarkInterface>
+#include <KTextEditor::ViewCursorInterface>
 
 #include "editorpage4.h"
 #include "filelistlocation.h"
@@ -75,6 +76,30 @@ void EditorPage::getBookmarks(FileListLocation& fll)
 QString EditorPage::getFilePath()
 {
 	return m_pDoc->url().path();
+}
+
+/**
+ * Returns the current position of the cursor.
+ * @param	nLine	Holds the line on which the cursor is currently located
+ * @param	nCol	Holds the column on which the cursor is currently located
+ * @return	true if successful, false otherwise (cursor interface was not
+ *			obtained)
+ */
+bool EditorPage::getCursorPos(uint& nLine, uint& nCol)
+{
+	KTextEditor::ViewCursorInterface* pCursorIf;
+	
+	// Acquire the view cursor
+	pCursorIf = dynamic_cast<KTextEditor::ViewCursorInterface*>(m_pView);
+	if (pCursorIf == NULL)
+		return false;
+	
+	// Get the cursor position (adjusted to 1-based counting)
+	pCursorIf->cursorPosition(&nLine, &nCol);
+	nLine++;
+	nCol++;
+	
+	return true;
 }
 
 

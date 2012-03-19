@@ -18,6 +18,7 @@ Q_OBJECT
 public:
     TabWidget(QWidget* pParent = 0, const char* szName = 0);
     ~TabWidget();
+    QWidget* page(int) const;
 
 private:
 	/** The list button. */

@@ -55,4 +55,9 @@ void TabWidget::slotShowTabList()
 	// Show the menu
 	m_pMenu->popup(mapToGlobal(m_pButton->pos()));
 }
+
+QWidget* TabWidget::page(int i) const{
+	return widget(i);
+}
+
 } // namespace kscope4

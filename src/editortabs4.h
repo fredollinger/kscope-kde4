@@ -34,7 +34,7 @@ public:
 	void removeCurrentPage();
 	bool removeAllPages();
 	void applyPrefs();
-	// void getOpenFiles(FileLocationList&);
+	void getOpenFiles(FileListLocation&);
 	// void getBookmarks(FileLocationList&);
 	// void setBookmarks(FileLocationList&);
 	void showBookmarks(QueryView*);

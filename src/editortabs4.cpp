@@ -285,8 +285,7 @@ void EditorTabs::slotNewFile(EditorPage* pEditPage)
  * open.
  * @param	list	The list to fill
  */
-#if 0
-void EditorTabs::getOpenFiles(FileLocationList& list)
+void EditorTabs::getOpenFiles(FileListLocation& list)
 {
 	int i;
 	EditorPage* pPage;
@@ -302,10 +301,9 @@ void EditorTabs::getOpenFiles(FileLocationList& list)
 		}
 		
 		// Create a new list item
-		list.append(new FileLocation(pPage->getFilePath(), nLine, nCol));
+		list.append(pPage->getFilePath(), nLine, nCol);
 	}
 }
-#endif 
 
 /**
  * Constructs a list bookmarks set to open files.
