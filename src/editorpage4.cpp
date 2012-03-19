@@ -85,7 +85,7 @@ QString EditorPage::getFilePath()
  * @return	true if successful, false otherwise (cursor interface was not
  *			obtained)
  */
-bool EditorPage::getCursorPos(uint& nLine, uint& nCol)
+bool EditorPage::getCursorPos(int& nLine, int& nCol)
 {
 	KTextEditor::View* pCursorIf;
 	
@@ -95,10 +95,8 @@ bool EditorPage::getCursorPos(uint& nLine, uint& nCol)
 		return false;
 	
 	// Get the cursor position (adjusted to 1-based counting)
-
-///home/follinge/projects/kscope-kde4/src/editorpage4.cpp :98:41: error: no matching function for call to 'KTextEditor::View::cursorPosition(uint*, uint*)'
-//usr/include/KDE/KTextEditor/../../ktexteditor/view.h:363:20: note: candidate is: virtual KTextEditor::Cursor KTextEditor::View::cursorPosition() const
-	pCursorIf->cursorPosition(&nLine, &nCol);
+	//pCursorIf->cursorPosition(&nLine, &nCol);
+	pCursorIf->cursorPosition().position(nLine, nCol);
 	nLine++;
 	nCol++;
 	
