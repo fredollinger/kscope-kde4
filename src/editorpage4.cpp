@@ -5,7 +5,7 @@
 #include <QHBoxLayout>
 
 #include <KTextEditor/MarkInterface>
-#include <KTextEditor::ViewCursorInterface>
+#include <KTextEditor/View>
 
 #include "editorpage4.h"
 #include "filelistlocation.h"
@@ -87,14 +87,17 @@ QString EditorPage::getFilePath()
  */
 bool EditorPage::getCursorPos(uint& nLine, uint& nCol)
 {
-	KTextEditor::ViewCursorInterface* pCursorIf;
+	KTextEditor::View* pCursorIf;
 	
 	// Acquire the view cursor
-	pCursorIf = dynamic_cast<KTextEditor::ViewCursorInterface*>(m_pView);
+	pCursorIf = dynamic_cast<KTextEditor::View*>(m_pView);
 	if (pCursorIf == NULL)
 		return false;
 	
 	// Get the cursor position (adjusted to 1-based counting)
+
+///home/follinge/projects/kscope-kde4/src/editorpage4.cpp :98:41: error: no matching function for call to 'KTextEditor::View::cursorPosition(uint*, uint*)'
+//usr/include/KDE/KTextEditor/../../ktexteditor/view.h:363:20: note: candidate is: virtual KTextEditor::Cursor KTextEditor::View::cursorPosition() const
 	pCursorIf->cursorPosition(&nLine, &nCol);
 	nLine++;
 	nCol++;
