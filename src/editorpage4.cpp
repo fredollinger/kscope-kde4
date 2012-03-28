@@ -85,6 +85,7 @@ QString EditorPage::getFilePath()
  * @return	true if successful, false otherwise (cursor interface was not
  *			obtained)
  */
+// /home/follinge/projects/kscope-kde4/src/editorpage4.h:61:7: error: candidate is: bool kscope4::EditorPage::getCursorPos(uint&, uint&)
 bool EditorPage::getCursorPos(int& nLine, int& nCol)
 {
 	KTextEditor::View* pCursorIf;

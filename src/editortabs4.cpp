@@ -289,7 +289,7 @@ void EditorTabs::getOpenFiles(FileListLocation& list)
 {
 	int i;
 	EditorPage* pPage;
-	uint nLine, nCol;
+	int nLine, nCol;
 	
 	// Iterate over all editor pages
 	for (i = 0; i < count(); i++) {
