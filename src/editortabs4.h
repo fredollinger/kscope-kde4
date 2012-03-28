@@ -27,16 +27,15 @@ public:
 	EditorTabs(QWidget* pParent = 0, const char* szName = 0);
 	~EditorTabs();
 
-	// void setWindowMenu(QPopupMenu*);
-	void addEditorPage(EditorPage*);
 	EditorPage* findEditorPage(const QString&, bool bForceChange = false);
 	EditorPage* getCurrentPage();
-	void removeCurrentPage();
-	bool removeAllPages();
+
+	void addEditorPage(EditorPage*);
 	void applyPrefs();
 	void getOpenFiles(FileListLocation&);
-	// void getBookmarks(FileLocationList&);
-	// void setBookmarks(FileLocationList&);
+	bool removeAllPages();
+	void removeCurrentPage();
+	bool removePage(QWidget*, bool);
 	void showBookmarks(QueryView*);
 	
 public slots:
@@ -91,7 +90,6 @@ private:
 	int m_nNewFiles;
 	
 	int getModifiedFilesCount();
-	bool removePage(QWidget*, bool);
 		
 private slots:
 	void slotCurrentChanged(QWidget*);
@@ -106,4 +104,4 @@ private slots:
 };
 } // namespace kscope4
 #endif
-// Sun Feb  5 17:13:39 PST 2012
+// Tue Mar 27 19:47:05 PDT 2012

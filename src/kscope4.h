@@ -83,7 +83,8 @@ public:
 
 private:
 	// holds all the document pages
-	TabWidget *m_pTabWidget; 
+	//TabWidget *m_pTabWidget; 
+	EditorTabs* m_pTabWidget; 
 	EditorTabs* m_pEditTabs;
 	EditorPage* addEditor(const QString&);
 	KParts::ReadWritePart *m_part;

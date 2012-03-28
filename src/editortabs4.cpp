@@ -370,5 +370,47 @@ void EditorTabs::dropEvent(QDropEvent *w){
 int EditorTabs::getModifiedFilesCount(){
 	return 0;
 }
+
+
+/**
+ * Closes an edited file, and removes its page.
+ * Once a file has been closed, its page is removed from the tab widget stack,
+ * its menu item in the "Windows" menu is deleted and all other references to
+ * it are removed.
+ * Note that the operation may fail if the user chooses not to close the file
+ * when prompted for unsaved changes.
+ * @param	pPage	The EditorPage object to remove
+ * @param	bForce	true to close the page even if there are unsaved changes,
+ *					false otherwise
+ * @return	true if the page was removed, false otherwise
+ */
+bool EditorTabs::removePage(QWidget* pPage, bool bForce)
+{
+	EditorPage* pEditPage;
+	QString sFilePath;
+	
+	// Store the file path for later
+	pEditPage = (EditorPage*)pPage;
+	sFilePath = pEditPage->getFilePath();
+	
+	// Close the edited file (may fail if the user aborts the action)
+	if (!pEditPage->close(bForce))
+		return false;
+		
+	// Remove the page and all references to it
+	m_mapEdit.remove(sFilePath);
+	TabWidget::removePage(pPage);
+
+	// Update the new state if no other page exists (if another page has
+	// become active, it will update the new state, so there is no need for
+	// special handling)
+	// FIXME: define currentPage and slotCurrentChanged, if needed
+	// if (currentPage() == NULL)
+		//slotCurrentChanged(NULL);
+	
+	// Notify the page has been removed
+	emit editorRemoved(pEditPage);
+	return true;
+}
 } // namespace kscope4
 // Sat Feb 18 15:59:04 PST 2012

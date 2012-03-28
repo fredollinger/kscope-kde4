@@ -104,6 +104,33 @@ bool EditorPage::getCursorPos(int& nLine, int& nCol)
 	return true;
 }
 
+/**
+ * Closes an edited file.
+ * @param	bForce	true to close the file regardless of any modifications, 
+ *					false to prompt the user in case of unsaved chnages 
+ * @return	true if the file has been closed, false if the user has aborted
+ */
+bool EditorPage::close(bool bForce)
+{
+	QString sPath;
+	
+	// To override the prompt-on-close behaviour, we need to mark the file
+	// as unmodified
+	if (bForce)
+		m_pDoc->setModified(false);
+	
+	// Close the file, unless the user aborts the action
+	sPath = m_pDoc->url().path();
+	m_pDoc->documentSave();
+	// emit KTextEditor::Document::aboutToClose(m_pDoc);
+
+	delete m_pDoc;
+	//if (!m_pDoc->closeURL())
+	//	return false;
+		
+	emit fileClosed(sPath);
+	return true;
+}
 
 } // namespace kscope4
 // Sun Mar 18 11:43:51 PDT 2012

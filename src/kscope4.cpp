@@ -55,7 +55,8 @@ KScope::KScope(QWidget *) :
 	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 
-   	m_pTabWidget = new TabWidget(this);
+//   	m_pTabWidget = new TabWidget(this);
+	 m_pTabWidget= new EditorTabs(this, NULL);
 
 	m_pTabWidget->setCloseButtonEnabled(true);
 	setCentralWidget(m_pTabWidget);
@@ -1186,7 +1187,7 @@ void KScope::slotCloseTab(QWidget *w){
 	}
 
 	savePage(w);
-	m_pTabWidget->removePage(w);
+	m_pTabWidget->removePage(w, true);
 	delete w;
 	return;
 }
@@ -1247,4 +1248,4 @@ EditorPage* KScope::addEditor(const QString& sFilePath)
 #endif
 
 } // namespace kscope4
-// Sat Feb 11 17:32:52 PST 2012
+// Tue Mar 27 19:42:13 PDT 2012
