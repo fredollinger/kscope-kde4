@@ -36,6 +36,9 @@ class EditorPage : public QHBoxLayout
 public:
 	EditorPage(KTextEditor::Document*, QTabWidget* pParent = 0,
 		const char* szName = 0);
+
+	EditorPage::EditorPage(KTextEditor::Document* pDoc, KSPopup* pMenu,
+		QTabWidget* pParent, const char* szName = 0);
 	~EditorPage();
 
 	void open(const QString&);

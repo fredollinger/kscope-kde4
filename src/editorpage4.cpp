@@ -1,6 +1,5 @@
 #include <kdeversion.h>
 
-//#include <Q3PtrList>
 #include <qfileinfo.h>
 #include <QHBoxLayout>
 
@@ -19,6 +18,8 @@
  * @param	szName	The widget's name
  */
 namespace kscope4{
+// BEGIN DEPRECATED
+// FIXME REMOVE
 EditorPage::EditorPage(KTextEditor::Document* pDoc, 
 	QTabWidget* pParent, const char* szName) : QHBoxLayout(pParent),
 	m_pParentTab(pParent),
@@ -32,6 +33,23 @@ EditorPage::EditorPage(KTextEditor::Document* pDoc,
 	m_bSaveNewSizes(false)
 {
 }
+// END DEPRECATED
+
+EditorPage::EditorPage(KTextEditor::Document* pDoc, KSPopup* pMenu,
+	QTabWidget* pParent, const char* szName) : QHBoxLayout(pParent),
+	m_pParentTab(pParent),
+	m_pDoc(pDoc),
+	m_bOpen(false),
+	m_bNewFile(false),
+	m_sName(""),
+	m_bWritable(true), /* new documents are writable by default */
+	m_bModified(false),
+	m_nLine(0),
+	m_bSaveNewSizes(false)
+{
+}
+
+
 
 /**
  * Class destructor.

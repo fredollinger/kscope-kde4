@@ -1,3 +1,7 @@
+#include <QDebug>
+#include <QDockWidget>
+#include <QFile>
+
 #include <kparts/part.h>
 
 #include <KActionCollection>
@@ -6,15 +10,12 @@
 #include <KStandardAction>
 #include <KStatusBar>
 #include <KSystemTrayIcon>
+#include <KTabWidget>
 #include <KTextEditor/Document>
-#include <KTextEditor/View>
 #include <KTextEditor/Editor>
 #include <KTextEditor/EditorChooser>
+#include <KTextEditor/View>
 #include <KXMLGUIFactory>
-
-#include <QDockWidget>
-#include <QFile>
-#include <KTabWidget>
 
 #include "buildFrontEnd.h"
 #include "calltreedlg4.h"
@@ -22,10 +23,11 @@
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "editortabs4.h"
+#include "kdockwidget4.h"
 #include "kscope4.h"
 #include "kscope4-common.h"
 #include "kscopeconfig4.h"
-#include "kdockwidget4.h"
+#include "kspopup.h"
 #include "ksession.h"
 #include "newprojectdlg4.h"
 #include "projectbase4.h"
@@ -37,8 +39,6 @@
 #include "querywidget4.h"
 #include "vcsCommitDlg.h"
 #include "vcsFrontEnd.h"
-
-#include <qdebug.h>
 
 namespace kscope4{
 KScope::KScope(QWidget *) :
@@ -55,8 +55,7 @@ KScope::KScope(QWidget *) :
 	m_doc = m_editor->createDocument(0);
    	m_view = qobject_cast<KTextEditor::View*>(m_doc->createView(this));
 
-//   	m_pTabWidget = new TabWidget(this);
-	 m_pTabWidget= new EditorTabs(this, NULL);
+	m_pTabWidget= new EditorTabs(this, NULL);
 
 	m_pTabWidget->setCloseButtonEnabled(true);
 	setCentralWidget(m_pTabWidget);
@@ -68,7 +67,6 @@ KScope::KScope(QWidget *) :
 	setupActions();
 
 	// Create the initial GUI (no active part)
-	
 	createShellGUI();
 	guiFactory()->addClient(m_view);
 
@@ -1246,6 +1244,54 @@ EditorPage* KScope::addEditor(const QString& sFilePath)
 	return pPage;
 }
 #endif
+
+// BEGIN createEditorPage()
+/**
+ * Creates a new editor page, and adds it to the editors tab widget.
+ * @return	A pointer to the new page
+ */
+EditorPage* KScope::createEditorPage()
+{
+	KTextEditor::Document* pDoc;
+	EditorPage* pPage;
+	KSPopup* pMenu;
+	ProjectBase* pProj;
+	
+	// Load a new document part
+	pDoc = m_pEditMgr->add();
+	if (pDoc == NULL)
+		return NULL;
+
+	// Create the new editor page
+	pMenu = (KSPopup*)factory()->container(Config().getEditorPopupName(),
+		this);
+	pPage = new EditorPage(pDoc, pMenu, m_pEditTabs);
+	m_pEditTabs->addEditorPage(pPage);
+
+	// Show the file's path in the main title
+	connect(pPage, SIGNAL(fileOpened(EditorPage*, const QString&)), this,
+		SLOT(slotFileOpened(EditorPage*, const QString&)));
+
+	// Show cursor position in the status bar
+	connect(pPage, SIGNAL(cursorPosChanged(uint, uint)), this,
+		SLOT(slotShowCursorPos(uint, uint)));
+	
+	// Rebuild the database after a file has changed
+	connect(pPage, SIGNAL(fileSaved(const QString&, bool)), this,
+		SLOT(slotFileSaved(const QString&, bool)));
+	
+	// Handle file drops
+	connect(pPage->getView(), SIGNAL(dropEventPass(QDropEvent*)), this,
+		SLOT(slotDropEvent(QDropEvent*)));
+
+	// Apply per-project configuration
+	pProj = m_pProjMgr->curProject();
+	if (pProj && pProj->getTabWidth() > 0)
+		pPage->setTabWidth(pProj->getTabWidth());
+	
+	return pPage;
+}
+// END createEditorPage()
 
 } // namespace kscope4
 // Tue Mar 27 19:42:13 PDT 2012

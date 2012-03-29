@@ -81,29 +81,28 @@ public:
 	void verifyCscope(void);
 	QString getSourceRoot(void);
 
+// BEGIN PRIVATE:
 private:
+	// BEGIN KSCOPE PRIVATE VARIABLES
 	// holds all the document pages
+
+	/** Set to true after a shell script has verified that Cscope 
+		is installed
+		and correctly configured on this system.
+		No Cscope operations should be run if this flag is set to false.
+	*/
+	bool m_bCscopeVerified;
+
+	/**
+	 * Used to postpone rebuilding of the database, until Cscope is ready.
+	 */
+	bool m_bRebuildDB;
+
+	/** Whether the query window should be hidden after the user selects an
+		item. */	
+	bool m_bHideQueryOnSelection;
+
 	//TabWidget *m_pTabWidget; 
-	EditorTabs* m_pTabWidget; 
-	EditorTabs* m_pEditTabs;
-	EditorPage* addEditor(const QString&);
-	KParts::ReadWritePart *m_part;
-	KTextEditor::Editor *m_editor;
-	KTextEditor::Document *m_doc;
-   	KTextEditor::View *m_view;
-	vcsFrontEnd *m_pVcs;
-	QListWidget *customerList;
-
-	vcsCommitDlg *m_pVcsCommit;
-
-	void closeAllTabs();
-	void restoreSession(void);
-	buildFrontEnd *m_pBuild;
-
-
-	// Manages menu and tool-bar commands.
-	KScopeActions* m_pActions;
-
 	/** The query window docking area. */
 	// KDockWidget* m_pQueryDock;
 	KDockWidget* m_pQueryDock;
@@ -117,24 +116,28 @@ private:
 	/** Creates and maintains call tree dialogues. */
 	CallTreeManager* m_pCallTreeMgr;
 
-	/** Whether the query window should be hidden after the user selects an
-		item. */	
-	bool m_bHideQueryOnSelection;
+	buildFrontEnd *m_pBuild;
+	EditorManager *m_pEditMgr;
+	EditorTabs* m_pTabWidget; 
+	EditorTabs* m_pEditTabs;
+	KParts::ReadWritePart *m_part;
 
+	// Manages menu and tool-bar commands.
+	KScopeActions* m_pActions;
+
+	KTextEditor::Editor *m_editor;
+	KTextEditor::Document *m_doc;
+   	KTextEditor::View *m_view;
+
+	vcsFrontEnd *m_pVcs;
+
+	EditorPage* addEditor(const QString&);
+
+	void closeAllTabs();
+	void restoreSession(void);
 	
 	/** A persistent dialog used to display error messages from Cscope. */
 	CscopeMsgDlg* m_pMsgDlg;
-
-	/** Set to true after a shell script has verified that Cscope 
-		is installed
-		and correctly configured on this system.
-		No Cscope operations should be run if this flag is set to false. 	*/
-	bool m_bCscopeVerified;
-
-	/**
-	 * Used to postpone rebuilding of the database, until Cscope is ready.
-	 */
-	bool m_bRebuildDB;
 
 	/** A project manager used to load projects and read their properties. */
 	ProjectManager* m_pProjMgr;
@@ -150,18 +153,22 @@ private:
 		the first time. */
 	ProgressDlg* m_pProgressDlg;
 
-	// Manages menu and tool-bar commands.
-	// KScopeActions* m_pActions;
+	vcsCommitDlg *m_pVcsCommit;
+	// END KSCOPE PRIVATE VARIABLES
 
 	// BEGIN PRIVATE FUNCTION PROTOTYPES
 	bool getSymbol(uint&, QString&, bool&, bool bPrompt = true);
+	bool openCscopeOut(const QString&);
+
 	void initCscope();
 	void initMainWindow();
-	bool openCscopeOut(const QString&);
 	void setupActions();
 	void toggleQueryWindow(bool bShow);
 	void createDockWindows();
+
+	EditorPage* createEditorPage();
 	// END PRIVATE FUNCTION PROTOTYPES
+// END PRIVATE:
 
 public slots:
 	void slotCloseTab(QWidget*);

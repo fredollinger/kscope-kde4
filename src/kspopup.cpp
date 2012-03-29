@@ -28,7 +28,5 @@ void KSPopup::clear(){
 void KSPopup::popup(QPoint qp){
 }
 
-
-
 } // namespace kscope4
 // Mon Feb 20 08:58:07 PST 2012
