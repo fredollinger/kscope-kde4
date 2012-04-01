@@ -16,6 +16,7 @@ install(FILES KSGlobalConfig.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 
 set(kscope_SRCS
+editormanager.cpp
 ksession.cpp 
 filelistlocation.cpp
 kspopup.cpp

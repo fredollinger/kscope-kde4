@@ -13,6 +13,7 @@
 //#include "ctagslist.h"
 #include "filelistlocation.h"
 #include "kscopeconfig4.h"
+#include "kspopup.h"
 #include "symbolcompletion4.h"
 #include "projectbase4.h"
 #include <QHBoxLayout>
@@ -37,8 +38,7 @@ public:
 	EditorPage(KTextEditor::Document*, QTabWidget* pParent = 0,
 		const char* szName = 0);
 
-	EditorPage::EditorPage(KTextEditor::Document* pDoc, KSPopup* pMenu,
-		QTabWidget* pParent, const char* szName = 0);
+	EditorPage(KTextEditor::Document* pDoc, KSPopup* pMenu, QTabWidget* pParent, const char* szName = 0);
 	~EditorPage();
 
 	void open(const QString&);
