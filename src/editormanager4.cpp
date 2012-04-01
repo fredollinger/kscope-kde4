@@ -26,7 +26,6 @@
  ***************************************************************************/
 
 #include <ktexteditor/editorchooser.h>
-#include <kate/document.h>
 #include "editormanager4.h"
 #include "kscopeconfig4.h"
 
@@ -35,9 +34,10 @@
  * @param	pParent	The parent widget
  * @param	szName	The widget's name
  */
-EditorManager::EditorManager(QWidget* pParent, const char* szName) :
-	KParts::PartManager(pParent, szName)
+EditorManager::EditorManager(QWidget* pParent) :
+	KParts::PartManager(pParent)
 {
+	m_editor = KTextEditor::EditorChooser::editor();
 	applyPrefs();
 }
 
@@ -57,7 +57,8 @@ KTextEditor::Document* EditorManager::add()
 	KTextEditor::Document* pDoc;
 	
 	// Create the document
-	pDoc = KTextEditor::EditorChooser::createDocument(this);
+	pDoc = m_editor->createDocument(0);
+	//pDoc = KTextEditor::EditorChooser::createDocument(0);
 	addPart(pDoc);
 
 	return pDoc;
@@ -82,7 +83,9 @@ void EditorManager::remove(KTextEditor::Document* pDoc)
  */
 void EditorManager::applyPrefs()
 {
-	Kate::Document::setFileChangedDialogsActivated(
-		Config().getWarnModifiedOnDisk());
+	// FIXME:
+	qDebug() << __PRETTY_FUNCTION__ << "STUB";
+//	Kate::Document::setFileChangedDialogsActivated(
+//		Config().getWarnModifiedOnDisk());
 }
-
+// Sun Apr  1 09:07:09 PDT 2012

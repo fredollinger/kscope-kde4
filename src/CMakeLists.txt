@@ -14,9 +14,8 @@ vcsCommitLayout.ui
 kde4_add_kcfg_files(kscope4_SRCS KSGlobalConfig.kcfgc)
 install(FILES KSGlobalConfig.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
-
 set(kscope_SRCS
-editormanager.cpp
+editormanager4.cpp
 ksession.cpp 
 filelistlocation.cpp
 kspopup.cpp

@@ -32,6 +32,7 @@
 #include <kparts/partmanager.h>
 #include <klibloader.h>
 #include <ktexteditor/document.h>
+#include <KTextEditor/EditorChooser>
 
 /**
  * Creates text editor parts, used to open source files.
@@ -53,6 +54,7 @@ public:
 	void applyPrefs();
 private:
 	KTextEditor::EditorChooser* pEd;
+	KTextEditor::Editor *m_editor;
 };
 
 #endif
