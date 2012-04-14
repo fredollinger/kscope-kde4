@@ -150,5 +150,31 @@ bool EditorPage::close(bool bForce)
 	return true;
 }
 
+void EditorPage::setTabWidth(uint nTabWidth)
+{
+	qDebug() << __PRETTY_FUNCTION__<< "FIXME: STUB";
+	/*
+	Kate::Document* pKateDoc;
+	Kate::Command* pKateCmd;
+	QString sCmd, sResult;
+	
+	pKateDoc = dynamic_cast<Kate::Document*>(m_pDoc);
+	if ((pKateDoc) &&
+		(pKateCmd = pKateDoc->queryCommand("set-tab-width"))) {
+		sCmd.sprintf("set-tab-width %u", nTabWidth);
+		pKateCmd->exec((Kate::View*)m_pView, sCmd, sResult);
+	}
+	*/
+}
+
+/**
+ * Returns a pointer to the editor view object embedded in this page.
+ * @returns	the view pointer
+ */
+KTextEditor::View* EditorPage::getView()
+{
+	return m_pView;
+}
+
 } // namespace kscope4
 // Sun Mar 18 11:43:51 PDT 2012

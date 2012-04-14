@@ -23,6 +23,7 @@
 #include "openprojectdlg4.h"
 #include "editormanager4.h"
 #include "editortabs4.h"
+#include "grepfrontend.h"
 #include "kdockwidget4.h"
 #include "kscope4.h"
 #include "kscope4-common.h"
@@ -705,8 +706,7 @@ bool KScope::openCscopeOut(const QString& sFilePath)
 void KScope::slotQueryPattern()
 {
 	ProjectBase* pProj;
-	qDebug() << "slotQueryPattern";
-	// slotQuery(SymbolDlg::Pattern, true);
+	qDebug() << __PRETTY_FUNCTION__;
 
 	pProj = m_pProjMgr->curProject();
 	qDebug() << "slotQueryPattern: calling slotQuery";
@@ -1061,8 +1061,7 @@ void KScope::slotQuery(uint nType, bool bPrompt)
 {
 	QString sSymbol;
 
-	qDebug() << "KScope::slotQuery";
-	// CallTreeDlg* pCallTreeDlg;
+	qDebug() << __PRETTY_FUNCTION__ << "FIXME: call the query from here";
 	bool bCase;
 	
 	// Get the requested symbol and query type
