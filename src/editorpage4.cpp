@@ -176,5 +176,21 @@ KTextEditor::View* EditorPage::getView()
 	return m_pView;
 }
 
+/**
+ * Sets the visibility status and sizes of the child widgets.
+ * @param	bShowTagList	true to show the tag list, false otherwise
+ * @param	si				The new sizes to use
+ */
+void EditorPage::setLayout(bool bShowTagList, const SPLIT_SIZES& si)
+{
+	// Make sure sizes are not stored during this process
+	m_bSaveNewSizes = false;
+	
+	// Adjust the layout
+	m_pCtagsList->setShown(bShowTagList);
+	if (bShowTagList)
+		m_pSplit->setSizes(si);
+}
+
 } // namespace kscope4
 // Sun Mar 18 11:43:51 PDT 2012

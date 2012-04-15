@@ -60,7 +60,7 @@ public:
 	QString getSelection();
 	QString getSuggestedText();
 	QString getLineContents(uint);
-	//void setLayout(bool bShowTagList, const SPLIT_SIZES&);	
+	void setLayout(bool bShowTagList, const SPLIT_SIZES&);	
 	bool getCursorPos(int&, int&);
 	bool setCursorPos(uint, uint nCol = 1);
 	void setTabWidth(uint);

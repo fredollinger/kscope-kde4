@@ -6,8 +6,9 @@
 #include <qstringlist.h>
 #include <qcolor.h>
 #include "KSGlobalConfig.h"
+#include <QList>
 
-// typedef QList<int> SPLIT_SIZES;
+typedef QList<int> SPLIT_SIZES;
 
 /**
  * Loads and stores global configuration parameters.
